@@ -2,8 +2,6 @@
 
 namespace App\Model;
 
-use DateTime;
-
 class Article
 {
     public $title;
@@ -15,7 +13,7 @@ class Article
     public function __construct(
         string $title,
         string $slug,
-        DateTime $date,
+        \DateTime $date,
         string $language,
         string $content
     ) {

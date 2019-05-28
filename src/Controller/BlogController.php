@@ -26,7 +26,7 @@ class BlogController extends AbstractController
     public function list()
     {
         $articles = $this->manager->getContents(Article::class, 'date');
-        dump($articles);
+
         return $this->render('blog/index.html.twig', [
             'articles' => $articles,
         ]);

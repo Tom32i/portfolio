@@ -49,7 +49,19 @@ class ContentManager
             $order ? ksort($contents) : krsort($contents);
         }
 
-        return $contents;
+        return array_values($contents);
+    }
+
+    public function getContent(string $type, string $id)
+    {
+        $provider = $this->getProvider($type);
+        $files = $this->listFiles($provider)->name($id . '.*');
+
+        if (!$files->hasResults()) {
+            throw new Exception(sprintf('Content not found for type "%s" and id "%s".', $type, $id));
+        }
+
+        return $this->load($provider, current(\iterator_to_array($files)));
     }
 
     public function addContentProvider(ContentProviderInterface $provider)

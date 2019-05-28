@@ -1,9 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Blog</title>
-</head>
-<body>
-    {% block body %}{% endblock %}
-</body>
-</html>
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% block header %}
+    {% endblock %}
+
+    <section class="content">
+        {% block content '' %}
+    </section>
+
+    {% block footer %}
+    {% endblock %}
+{% endblock %}

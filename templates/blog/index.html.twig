@@ -1,13 +1,21 @@
-{% extends 'base.html.twig' %}
+{% extends 'blog/base.html.twig' %}
 
-{% block body %}
-<ul>
+{% block content %}
     {% for article in articles %}
-        <li>
-            <a href="{{ path('blog_article', { slug: article.slug }) }}">
-                {{ article.title }}
-            </a>
-        </li>
+        {% block preview %}
+            <article class="article preview">
+                <header class="header">
+                    <time datetime="{{ article.date|date('Y-m-d') }}">
+                        {{ article.date|date('d M Y') }}
+                    </time>
+                    <a href="{{ path('blog_article', { slug: article.slug }) }}">
+                        <h2 class="title">{{ article.title }}</h2>
+                    </a>
+                    {% if article.description is defined %}
+                        <p class="description">{{ article.description }}</p>
+                    {% endif %}
+                </header>
+            </article>
+        {% endblock %}
     {% endfor %}
-</ul>
 {% endblock %}

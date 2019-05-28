@@ -88,7 +88,7 @@ class Parsedown extends BaseParsedown
 
         $text = $Block['element']['text']['text'];
 
-        if ($this->pygments && $language = $this->getLanguage($Block)) {
+        if ($this->pygments->isAvailable() && $language = $this->getLanguage($Block)) {
             return $this->pygments->highlight($text, $language);
         }
 

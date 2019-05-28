@@ -1,7 +1,18 @@
 {% extends 'blog/base.html.twig' %}
 
-{% block body %}
-    <div class="content">
-        {% block content '' %}
-    </div>
+{% block content %}
+    <article>
+        <header>
+            <h1>{{ article.title }}</h1>
+            {% block date %}
+                <time datetime="{{ article.date|date('Y-m-d') }}">
+                    {{ article.date|date('d M Y') }}
+                </time>
+            {% endblock %}
+        </header>
+        <div class="article-content">
+            {{ article.content|raw }}
+        </div>
+        <footer></footer>
+    </article>
 {% endblock %}

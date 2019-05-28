@@ -1,0 +1,109 @@
+<div>
+    <h2>Variable with scalar values</h2>
+    <p>The `let` statement defines a simple variable.</p>
+    <code class="input">
+let value = 'foo';
+    </code>
+    <code data-output="value"></code>
+</div>
+
+<div>
+    <p>That can be re-assigned.</p>
+    <code class="input">
+let value = 'foo';
+value = 'bar';
+    </code>
+    <code data-output="value"></code>
+</div>
+
+<div>
+    <h2>Constants</h2>
+    <p>The `const` statement defines a constant that can't be re-assigned to a different value.</p>
+    <code class="input">
+const value = 'foo';
+value = 'bar';
+    </code>
+    <p>If you try it you'll get an error.</p>
+    <code data-output="value"></code>
+</div>
+
+{#<!--div>
+    <p>Same goes with incrementing constant numbers:</p>
+    <code class="input">
+const integer = 42;
+
+integer++;
+    </code>
+    <code data-output="integer"></code>
+    <p>Because `++` operator is means `integer = integer + 1;`</p>
+</div-->
+<!--div>
+    <h2>Arrays are objects</h2>
+    <p><a target="_blank" href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array">Array</a> is a global class in Javascript that can be instantiated like any object, with a constructor.</p>
+    <code class="input">
+let value = new Array();
+    </code>
+    <code data-output="value"></code>
+</div-->#}
+
+<div>
+    <h2>Assigning objects to variables</h2>
+    <p>When you instantiate a new object and assign it to a variable, the variable is just a reference to that instance.</p>
+    <p>So several variables can reference the same instance.</p>
+    <p>This is true for an Array since it is an object:</p>
+    <code class="input">
+let myArray = [];
+let value = myArray;
+myArray.push('foo');
+    </code>
+    <code data-output="myArray"></code>
+    <code data-output="value"></code>
+    <p>In this example there are 2 variables but only 1 array in memory.</p>
+    <p>So both variables can be used to modify the array. And both variables will show the array in its new state.</p>
+</div>
+
+<div>
+    <h2>What about constants?</h2>
+    <p>When assigning an object to a constant, the constant will reference the object and won't be able to be re-assigned to anything else.</p>
+    <p>It will always reference this specific object in memory.</p>
+    <code class="input">
+const value = [];
+value = 'foo';
+    </code>
+    <code data-output="value"></code>
+</div>
+
+<div>
+    <h2>Why can I modify the object then?</h2>
+    <p>Well... you can have both a <em>variable</em> and a <em>constant</em> referencing the same object!</p>
+    <code class="input">
+let anything = [];
+const value = anything;
+anything.push('foo');
+anything = 41;
+    </code>
+    <code data-output="anything"></code>
+    <code data-output="value"></code>
+
+    <p>What we just did here is:</p>
+
+    <ol>
+        <li>Create a variable reference to a new object.</li>
+        <li>Create a constant reference to this object.</li>
+        <li>Modify the object using the variable.</li>
+        <li>Change the variable reference to something else.</li>
+    </ol>
+
+    <p>What's important to understand is that `let` and `const` are not defining the behaviour of the object but the type of the <strong>reference</strong>.</p>
+    <p>Although a constant is locked on to a specific object, it doesn't make the object immutable.</p>
+    <p>In fact, there is simply no immutability in Javascript.</p>
+</div>
+
+<hr>
+
+<div>
+    <h2>Epilogue: Everything is an object</h2>
+    <p>So <em>"why didn't they just"</em> made `const` declare an immutable object?</p>
+    <p>Many other languages, like <a href="https://wiki.php.net/rfc/immutability">PHP</a>, choose to prevent Objects from being declared as constants and don't offer immutable objects as for now.</p>
+    <p>Well in Javascript: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">everything is an object</a>, so nothing is immutable.</p>
+</div>

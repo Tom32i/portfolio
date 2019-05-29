@@ -1,11 +1,11 @@
 <?php
 
-namespace Content\Service;
+namespace Content;
 
 use Exception;
-//use Content\Routing\Route;
-use Content\Model\RouteInfo;
-use Content\Model\Sitemap;
+use Content\Builder\PageList;
+use Content\Builder\RouteInfo;
+use Content\Builder\Sitemap;
 use Content\ContentManager;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
@@ -65,20 +65,36 @@ class Builder
         HttpKernelInterface $httpKernel,
         UrlGeneratorInterface $urlGenerator,
         Environment $templating,
-        ContentManager $contentManager,
+        //ContentManager $contentManager,
+        PageList $pageList,
         Sitemap $sitemap,
         string $source,
         string $destination
     ) {
-        $this->routes = RouteInfo::createFromRouteCollection($router->getRouteCollection());
         $this->httpKernel = $httpKernel;
         $this->urlGenerator = $urlGenerator;
         $this->templating = $templating;
-        $this->contentManager = $contentManager;
+        $this->pageList = $pageList;
+        $this->sitemap = $sitemap;
         $this->source = $source;
         $this->destination = $destination;
-        $this->sitemap = $sitemap;
         $this->files = new Filesystem();
+
+        $this->initUrls($router);
+    }
+
+    private function initUrls(RouterInterface $router) {
+        foreach (RouteInfo::createFromRouteCollection($router->getRouteCollection()) as $name => $route) {
+            if ($route->isVisible() && $route->isGettable()) {
+                try {
+                    $url = $this->urlGenerator->generate($name, [], UrlGeneratorInterface::ABSOLUTE_URL);
+                } catch (\Exception $exception) {
+                    continue;
+                }
+
+                $this->pageList->add($url);
+            }
+        }
     }
 
     public function setDestination(string $destination = null)
@@ -92,7 +108,6 @@ class Builder
     {
         $this->urlGenerator->getContext()->setHost($host);
     }
-
 
     public function setScheme(string $scheme)
     {
@@ -111,54 +126,15 @@ class Builder
         $this->files->mkdir($this->destination);
     }
 
-    public function count()
-    {
-        return count($this->routes);
-    }
-
-    public function buildAll()
-    {
-        foreach ($this->routes as $route) {
-            if (!$route->isVisible()) {
-                continue;
-            }
-
-            if (!$route->isGettable()) {
-                throw new Exception(sprintf('Only GET method supported, "%s" given.', $route->getName()));
-            }
-
-            if ($route->hasContent()) {
-                if ($route->isList()) {
-                    /*if ($route->isPaginated()) {
-                        $this->buildPaginatedRoute($route);
-                    } else {*/
-                        $this->buildListRoute($route);
-                    /*}*/
-                } else {
-                    $this->buildContentRoutes($route);
-                }
-            } else {
-                //$this->logger->log(sprintf('Building route <comment>%s</comment>'));
-                $this->build($route);
-            }
-        }
-    }
-
     /**
-     * Build the given Route into a file
-     *
-     * @param Route $route
-     * @param array $parameters
+     * Build all pages
      */
-    public function build(RouteInfo $route, array $parameters = [])
+    public function build()
     {
-        $url = $this->urlGenerator->generate($route->getName(), $parameters, UrlGeneratorInterface::ABSOLUTE_URL);
-        $request = Request::create($url, 'GET', $parameters);
-        $response = $this->httpKernel->handle($request);
-        list($path, $file) = $this->getFilePath($request->getPathInfo());
-
-        $this->write($response->getContent(), $path, $file);
-        //$request->getFormat($response->headers->get('Content-Type', 'text/html')),
+        while ($url = $this->pageList->getNext()) {
+            $this->buildUrl($url);
+            $this->pageList->markAsDone($url);
+        }
     }
 
     /**
@@ -166,11 +142,15 @@ class Builder
      */
     public function buildSitemap()
     {
+        dump($this->sitemap);
         $content = $this->templating->render('@Content/sitemap.xml.twig', ['sitemap' => $this->sitemap]);
 
         $this->write($content, '/', 'sitemap.xml');
     }
 
+    /**
+     * Export public files
+     */
     public function expose()
     {
         $finder = new Finder();
@@ -180,7 +160,7 @@ class Builder
             return;
         }
 
-        foreach ($finder->files()->in($this->source) as $file) {
+        foreach ($finder->files()->in($this->source)->notName('*.php') as $file) {
             $files->copy(
                 $file->getPathName(),
                 str_replace($this->source, $this->destination, $file->getPathName()),
@@ -189,42 +169,33 @@ class Builder
         }
     }
 
-    private function getFilePath($path)
+    /**
+     * Build the given Route into a file
+     */
+    private function buildUrl(string $url)
     {
-        $info = pathinfo($path);
+        $request = Request::create($url, 'GET');
+        $response = $this->httpKernel->handle($request);
 
-        if (!isset($info['extension'])) {
-            return [$path, 'index.html'];
-        }
+        $this->httpKernel->terminate($request, $response);
 
-        return [$info['dirname'], $info['basename']];
+        list($path, $file) = $this->getFilePath($request->getPathInfo());
+
+        $this->write($response->getContent(), $path, $file);
     }
 
     /**
-     * Build content route
-     *
-     * @param Route $route
+     * Get file path from URL
      */
-    private function buildContentRoutes(RouteInfo $route)
+    private function getFilePath(string $url): array
     {
-        $contentType = $route->getContent();
-        $contents = $this->contentManager->listContents($contentType);
+        $info = pathinfo($url);
 
-        /*$this->logger->log(sprintf(
-            'Building route <comment>%s</comment> for <info>%s</info> <comment>%s(s)</comment>',
-            $route->getName(),
-            count($contents),
-            $route->getContent()
-        ));
-        $this->logger->getProgress(count($contents));
-        $this->logger->start();*/
-
-        foreach ($contents as $content) {
-            $this->build($route, [$contentType => $content]);
-            //$this->logger->advance();
+        if (!isset($info['extension'])) {
+            return [$url, 'index.html'];
         }
 
-        //$this->logger->finish();
+        return [$info['dirname'], $info['basename']];
     }
 
     /**

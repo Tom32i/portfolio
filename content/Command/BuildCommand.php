@@ -3,10 +3,11 @@
 namespace Content\Command;
 
 use Exception;
+use App\Kernel;
 use Content\EventListener\SitemapListener;
-use Content\Service\Builder;
-use Content\Console\Logger;
-use Content\Model\Sitemap;
+use Content\Builder;
+use Content\Builder\Sitemap;
+//use Content\Console\Logger;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Input\InputArgument;
@@ -35,11 +36,15 @@ class BuildCommand extends Command
      */
     private $sitemap;
 
-    public function __construct(Builder $builder)
+    public function __construct()
     {
         parent::__construct();
 
-        $this->builder = $builder;
+        $httpKernel = new Kernel('production', true);
+
+        $httpKernel->boot();
+
+        $this->builder = $httpKernel->getContainer()->get(Builder::class);
     }
 
     /**
@@ -87,7 +92,7 @@ class BuildCommand extends Command
      */
     protected function initialize(InputInterface $input, OutputInterface $output)
     {
-        $this->logger = new Logger($output);
+        //$this->logger = new Logger($output);
 
         $this->builder->setDestination($input->getArgument('destination'));
 
@@ -105,19 +110,19 @@ class BuildCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $this->logger->log('[ Clearing destination folder ]');
+        $output->writeln('[ Clearing destination folder ]');
         $this->builder->clear();
 
-        $this->logger->log(sprintf('[ Building <info>%s</info> routes ]', $this->builder->count()));
-        $this->builder->buildAll();
+        $output->writeln(sprintf('[ Building pages ]'));
+        $this->builder->build();
 
         if (!$input->getOption('no-sitemap')) {
-            $this->logger->log(sprintf('[ Building sitemap ]'));
+            $output->writeln('[ Building sitemap ]');
             $this->builder->buildSitemap();
         }
 
         if (!$input->getOption('no-expose')) {
-            $this->logger->log(sprintf('[ Exposing public directory ]'));
+            $output->writeln('[ Exposing public directory ]');
             $this->builder->expose();
         }
     }

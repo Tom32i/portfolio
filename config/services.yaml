@@ -12,27 +12,7 @@ services:
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
 
-    Symfony\Component\Serializer\Encoder\YamlEncoder: ~
-
-    Content\:
-        resource: '../content/*'
-        #exclude: '../content/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
-
-    Content\ContentManager:
-        #$normalizers: []
-        arguments:
-            $path: '%kernel.project_dir%/data'
-            $decoders:
-                - '@Symfony\Component\Serializer\Encoder\YamlEncoder'
-                - '@Content\Decoder\MarkdownDecoder'
-                - '@Content\Decoder\HtmlDecoder'
-        calls:
-            # Content Providers
-            - { method: 'addProvider', arguments: ['@App\Provider\ArticleProvider'] }
-            # Property Handlers
-            - { method: 'addPropertyHandler', arguments: ['date', '@Content\PropertyHandler\DateTimePropertyHandler'] }
-            - { method: 'addPropertyHandler', arguments: ['lastModified', '@Content\PropertyHandler\LastModifiedPropertyHandler'] }
-            - { method: 'addPropertyHandler', arguments: ['slug', '@Content\PropertyHandler\SlugPropertyHandler'] }
+    ## APP
 
     App\:
         resource: '../src/*'

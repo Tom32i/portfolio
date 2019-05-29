@@ -14,4 +14,16 @@ class PortfolioController extends AbstractController
     {
         return $this->render('portfolio/index.html.twig');
     }
+
+    /**
+     * @Route("test.json", name="test_json")
+     */
+    public function testJson()
+    {
+        return $this->json([
+            'foo' => true,
+            'bar' => 45,
+            'baz' => 'baz'
+        ]);
+    }
 }

@@ -15,6 +15,7 @@ class ArticleDenormalizer implements DenormalizerInterface
             $this->get($data, 'title'),
             $this->get($data, 'slug'),
             $this->get($data, 'date'),
+            $this->get($data, 'lastModified'),
             $this->get($data, 'language', 'fr'),
             $this->get($data, 'content')
         );

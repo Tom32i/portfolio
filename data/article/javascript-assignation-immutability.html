@@ -10,7 +10,7 @@
     <section>
         <h2>Variable with scalar values</h2>
         <p>The `let` statement defines a simple variable.</p>
-        <code class="input">
+        <code class="input" highlight="javascript">
 let value = 'foo';
         </code>
         <code data-output="value"></code>
@@ -18,7 +18,7 @@ let value = 'foo';
     <section>
         <p>That can be re-assigned.</p>
 
-        <code class="input">
+        <code class="input" highlight="javascript">
 let value = 'foo';
 value = 'bar';
         </code>
@@ -27,7 +27,7 @@ value = 'bar';
     <section>
         <h2>Constants</h2>
         <p>The `const` statement defines a constant that can't be re-assigned to a different value.</p>
-        <code class="input">
+        <code class="input" highlight="javascript">
 const value = 'foo';
 value = 'bar';
         </code>
@@ -36,7 +36,7 @@ value = 'bar';
     </section>
     <!--section>
         <p>Same goes with incrementing constant numbers:</p>
-        <code class="input">
+        <code class="input" highlight="javascript">
     const integer = 42;
 
     integer++;
@@ -47,7 +47,7 @@ value = 'bar';
     <!--section>
         <h2>Arrays are objects</h2>
         <p><a target="_blank" href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array">Array</a> is a global class in Javascript that can be instantiated like any object, with a constructor.</p>
-        <code class="input">
+        <code class="input" highlight="javascript">
     let value = new Array();
         </code>
         <code data-output="value"></code>
@@ -57,7 +57,7 @@ value = 'bar';
         <p>When you instantiate a new object and assign it to a variable: the variable is just a reference to that instance.</p>
         <p>So several variables can reference the same instance.</p>
         <p>This is true for an Array since it is an object:</p>
-        <code class="input">
+        <code class="input" highlight="javascript">
 let myArray = [];
 let value = myArray;
 myArray.push('foo');
@@ -71,7 +71,7 @@ myArray.push('foo');
         <h2>What about constants?</h2>
         <p>When assigning an object to a constant, the constant will reference the object and won't be able to be re-assigned to anything else.</p>
         <p>It will always reference this specific object in memory.</p>
-         <code class="input">
+         <code class="input" highlight="javascript">
 const value = [];
 value = 'foo';
         </code>
@@ -80,7 +80,7 @@ value = 'foo';
     <section>
         <h2>Why can I modify the object then?</h2>
         <p>Well... you can have both a <em>variable</em> and a <em>constant</em> referencing the same object!</p>
-        <code class="input">
+        <code class="input" highlight="javascript">
 let anything = [];
 const value = anything;
 anything.push('foo');

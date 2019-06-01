@@ -2,8 +2,8 @@
 
 namespace Content\Service;
 
+use Content\Behaviour\HighlighterInterface;
 use Parsedown as BaseParsedown;
-use Content\Service\Pygments;
 
 /**
  * Parsedown
@@ -11,20 +11,20 @@ use Content\Service\Pygments;
 class Parsedown extends BaseParsedown
 {
     /**
-     * Pygment highlighter
+     * Code highlighter
      *
-     * @var Pygment
+     * @var HighlighterInterface
      */
-    protected $pygments;
+    protected $highlighter;
 
     /**
      * Constructor
      *
-     * @param Pygments|null $pygments
+     * @param HighlighterInterface $highlighter
      */
-    public function __construct(Pygments $pygments = null)
+    public function __construct(HighlighterInterface $highlighter = null)
     {
-        $this->pygments = $pygments;
+        $this->highlighter = $highlighter;
     }
 
     protected function blockCode($Line, $Block = null)
@@ -85,6 +85,16 @@ class Parsedown extends BaseParsedown
         return $data;
     }
 
+    protected function inlineCode($Excerpt)
+    {
+        $data = parent::inlineCode($Excerpt);
+
+        $data['element']['name'] = 'span';
+        $data['element']['attributes']['class'] = 'inline-code';
+
+        return $data;
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -112,8 +122,8 @@ class Parsedown extends BaseParsedown
 
         $text = $Block['element']['text']['text'];
 
-        if ($this->pygments->isAvailable() && $language = $this->getLanguage($Block)) {
-            return $this->pygments->highlight($text, $language);
+        if ($this->highlighter && $language = $this->getLanguage($Block)) {
+            return $this->highlighter->highlight($text, $language);
         }
 
         return $this->escape($text);

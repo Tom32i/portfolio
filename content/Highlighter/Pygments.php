@@ -1,15 +1,15 @@
 <?php
 
-namespace Content\Service;
+namespace Content\Highlighter;
 
-use RuntimeException;
+use Content\Behaviour\HighlighterInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Process\Process;
 
 /**
  * Pygments code highlight
  */
-class Pygments
+class Pygments implements HighlighterInterface
 {
     /**
      * File system
@@ -25,26 +25,30 @@ class Pygments
      */
     private $temporaryPath;
 
-    /**
-     * Constructor
-     *
-     * @param string $temporaryPath
-     */
-    public function __construct($temporaryPath = null)
+    public function __construct(string $temporaryPath = null)
     {
         $this->temporaryPath = $temporaryPath ?: sys_get_temp_dir();
         $this->files = new Filesystem();
     }
 
     /**
-     * Highlight a portion of code with pygmentize
+     * Is pygmentize available?
      *
-     * @param string $value
-     * @param string $language
-     *
-     * @return string
+     * @return boolean
      */
-    public function highlight($value, $language)
+    public static function isAvailable(): bool
+    {
+        $process = new Process('pygmentize -V');
+
+        $process->run();
+
+        return $process->isSuccessful();
+    }
+
+    /**
+     * Highlight a portion of code with pygmentize
+     */
+    public function highlight(string $value,  string $language): string
     {
         $path = tempnam($this->temporaryPath, 'pyg');
 
@@ -54,7 +58,7 @@ class Pygments
 
         $this->files->dumpFile($path, $value);
 
-        $value = $this->pygmentize($path, $language);
+        $value = $this->execute($language, $path);
 
         unlink($path);
 
@@ -67,36 +71,17 @@ class Pygments
 
     /**
      * Run 'pygmentize' command on the given file
-     *
-     * @param string $path
-     * @param string $language
-     *
-     * @return string
      */
-    public function pygmentize($path, $language)
+    private function execute(string $language, string $path): string
     {
         $process = Process::fromShellCommandline(sprintf('pygmentize -f html -l %s %s', $language, $path));
 
         $process->run();
 
         if (!$process->isSuccessful()) {
-            throw new RuntimeException($process->getErrorOutput());
+            throw new \RuntimeException($process->getErrorOutput());
         }
 
         return trim($process->getOutput());
-    }
-
-    /**
-     * Is pygmentize available?
-     *
-     * @return boolean
-     */
-    public static function isAvailable()
-    {
-        $process = new Process('pygmentize -V');
-
-        $process->run();
-
-        return $process->isSuccessful();
     }
 }

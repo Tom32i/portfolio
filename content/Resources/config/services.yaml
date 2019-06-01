@@ -3,16 +3,25 @@ services:
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
 
+    Content\Command\BuildCommand: ~
+
     Content\Builder\PageList: ~
     Content\Builder\Sitemap: ~
-    Content\Command\BuildCommand: ~
-    Content\Decoder\HtmlDecoder: ~
+
     Content\Decoder\MarkdownDecoder: ~
     Content\Decoder\YamlDecoder: ~
+
     Content\EventListener\Informator: ~
     Content\EventListener\SitemapListener: ~
-    Content\Service\Parsedown: ~
-    Content\Service\Pygments: ~
+
+    Content\Highlighter\Pygments: ~
+    Content\Highlighter\Prism: ~
+
+    Content\Decoder\HtmlDecoder:
+        $highlighter: '@Content\Highlighter\Prism'
+
+    Content\Service\Parsedown:
+        $highlighter: '@Content\Highlighter\Prism'
 
     Content\PropertyHandler\DateTimePropertyHandler:
         tags:

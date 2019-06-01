@@ -78,6 +78,10 @@ class Informator implements EventSubscriberInterface
      */
     private function getCanonicalUrl(Request $request)
     {
+        if (!$request->attributes->get('_route')) {
+            return '';
+        }
+
         return $this->urlGenerator->generate(
             $request->attributes->get('_route'),
             $request->attributes->get('_route_params'),

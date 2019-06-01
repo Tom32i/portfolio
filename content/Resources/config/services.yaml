@@ -3,20 +3,28 @@ services:
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
 
-    Symfony\Component\Serializer\Encoder\YamlEncoder: ~
-
     Content\Builder\PageList: ~
     Content\Builder\Sitemap: ~
     Content\Command\BuildCommand: ~
     Content\Decoder\HtmlDecoder: ~
     Content\Decoder\MarkdownDecoder: ~
+    Content\Decoder\YamlDecoder: ~
     Content\EventListener\Informator: ~
     Content\EventListener\SitemapListener: ~
-    Content\PropertyHandler\DateTimePropertyHandler: ~
-    Content\PropertyHandler\LastModifiedPropertyHandler: ~
-    Content\PropertyHandler\SlugPropertyHandler: ~
     Content\Service\Parsedown: ~
     Content\Service\Pygments: ~
+
+    Content\PropertyHandler\DateTimePropertyHandler:
+        tags:
+            - { name: 'content.property_handler', property: 'date' }
+
+    Content\PropertyHandler\LastModifiedPropertyHandler:
+        tags:
+            - { name: 'content.property_handler', property: 'lastModified' }
+
+    Content\PropertyHandler\SlugPropertyHandler:
+        tags:
+            - { name: 'content.property_handler', property: 'slug' }
 
     Content\Routing\UrlGenerator:
         decorates: Symfony\Component\Routing\Generator\UrlGeneratorInterface
@@ -28,17 +36,7 @@ services:
             $destination: "%kernel.project_dir%/build"
 
     Content\ContentManager:
-        #$normalizers: []
         arguments:
             $path: '%kernel.project_dir%/data'
-            $decoders:
-                - '@Symfony\Component\Serializer\Encoder\YamlEncoder'
-                - '@Content\Decoder\MarkdownDecoder'
-                - '@Content\Decoder\HtmlDecoder'
-        calls:
-            # Content Providers
-            - { method: 'addProvider', arguments: ['@App\Provider\ArticleProvider'] }
-            # Property Handlers
-            - { method: 'addPropertyHandler', arguments: ['date', '@Content\PropertyHandler\DateTimePropertyHandler'] }
-            - { method: 'addPropertyHandler', arguments: ['lastModified', '@Content\PropertyHandler\LastModifiedPropertyHandler'] }
-            - { method: 'addPropertyHandler', arguments: ['slug', '@Content\PropertyHandler\SlugPropertyHandler'] }
+            $denormalizers: []
+            $decoders: []

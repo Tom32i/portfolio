@@ -8,14 +8,16 @@ use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
 use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\PropertyAccess\PropertyAccess;
 
 class ContentManager
 {
-    public function __construct(string $path, array $normalizers = [], array $decoders = [])
+    public function __construct(string $path, array $denormalizers = [], array $decoders = [])
     {
         $this->path = rtrim($path, '/');
-        $this->serializer = new Serializer($normalizers, $decoders);
+        $this->serializer = new Serializer($denormalizers, $decoders);
         $this->files = new FileSystem();
+        $this->propertyAccessor = PropertyAccess::createPropertyAccessor();
         $this->providers = [];
         $this->handlers = [];
         $this->cache = [
@@ -41,7 +43,7 @@ class ContentManager
         $files = $this->listFiles($provider);
 
         foreach ($files as $file) {
-            $content = $this->load($provider, $file);
+            $content = $this->load($provider, $type, $file);
             $contents[$this->getIndex($file, $content, $index)] = $content;
         }
 
@@ -61,7 +63,7 @@ class ContentManager
             throw new Exception(sprintf('Content not found for type "%s" and id "%s".', $type, $id));
         }
 
-        return $this->load($provider, current(\iterator_to_array($files)));
+        return $this->load($provider, $type, current(\iterator_to_array($files)));
     }
 
     public function addContentProvider(ContentProviderInterface $provider)
@@ -139,22 +141,23 @@ class ContentManager
         return clone $this->cache['files'][$path];
     }
 
-    private function load(ContentProviderInterface $provider, SplFileInfo $file)
+    private function load(ContentProviderInterface $provider, string $type, SplFileInfo $file)
     {
         $path = $file->getPathName();
 
         if (!isset($this->cache['contents'][$path])) {
-            $data = $this->serializer->decode($file->getContents(), static::getFormat($file));
+            $format = static::getFormat($file);
+            $data = $this->serializer->decode($file->getContents(), $format);
 
-            if (is_array($data)) {
-                foreach ($this->handlers as $property => $handler) {
-                    $value = isset($data[$property]) ? $data[$property] : null;
+            foreach ($this->handlers as $property => $handler) {
+                $value = isset($data[$property]) ? $data[$property] : null;
 
-                    if ($handler->isSupported($value)) {
-                        $data[$property] = $handler->handle($value, ['file' => $file, 'data' => $data]);
-                    }
+                if ($handler->isSupported($value)) {
+                    $data[$property] = $handler->handle($value, ['file' => $file, 'data' => $data]);
                 }
             }
+
+            $data = $this->serializer->denormalize($data, $type, $format);
 
             $this->cache['contents'][$path] = $data;
         }
@@ -173,11 +176,11 @@ class ContentManager
      */
     private function getIndex(SplFileInfo $file, $content, $key = null)
     {
-        if ($key === null || !isset($content[$key])) {
+        if ($key === null || !$this->propertyAccessor->isReadable($content, $key)) {
             return static::getName($file);
         }
 
-        $index = $content[$key];
+        $index = $this->propertyAccessor->getValue($content, $key);
 
         if ($index instanceof \DateTime) {
             return $index->format('U');

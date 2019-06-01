@@ -26,10 +26,11 @@ class BlogController extends AbstractController
     public function list()
     {
         $articles = $this->manager->getContents(Article::class, 'date');
+        $lastModified = max(array_map(function ($article) { return $article->lastModified; }, $articles));
 
         return $this->render('blog/index.html.twig', [
             'articles' => $articles,
-        ]);
+        ])->setLastModified($lastModified);
     }
 
     /**
@@ -37,8 +38,10 @@ class BlogController extends AbstractController
      */
     public function article(string $slug)
     {
+        $article = $this->manager->getContent(Article::class, $slug);
+
         return $this->render('blog/article.html.twig', [
-            'article' => $this->manager->getContent(Article::class, $slug)
-        ]);
+            'article' => $article,
+        ])->setLastModified($article->lastModified);
     }
 }

@@ -3,13 +3,13 @@
 namespace Content\Decoder;
 
 use Content\Service\Parsedown;
-use Symfony\Component\Serializer\Encoder\DecoderInterface;
+use Content\Behaviour\ContentDecoderInterface;
 use Symfony\Component\Yaml\Yaml;
 
 /**
  * Parse Markdown data
  */
-class MarkdownDecoder implements DecoderInterface
+class MarkdownDecoder implements ContentDecoderInterface
 {
     /**
      * Supported format

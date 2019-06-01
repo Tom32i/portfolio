@@ -57,7 +57,12 @@ class SitemapListener implements EventSubscriberInterface
     {
         $request = $event->getRequest();
         $response = $event->getResponse();
-        $route = $this->routes[$request->attributes->get('_route')];
+
+        if (!$routeName = $request->attributes->get('_route')) {
+            return;
+        }
+
+        $route = $this->routes[$routeName];
 
         if ($route && $route->isMapped()) {
             $this->sitemap->add(

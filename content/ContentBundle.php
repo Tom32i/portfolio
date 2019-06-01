@@ -2,7 +2,8 @@
 
 namespace Content;
 
-use Content\DependencyInjection\Compiler\ContentCompilerPass;
+use Content\DependencyInjection\Compiler\ContentManagerCompilerPass;
+use Content\DependencyInjection\Compiler\TwigExtensionFixerCompilerPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
@@ -12,6 +13,7 @@ class ContentBundle extends Bundle
     {
         parent::build($container);
 
-        $container->addCompilerPass(new ContentCompilerPass());
+        $container->addCompilerPass(new TwigExtensionFixerCompilerPass());
+        $container->addCompilerPass(new ContentManagerCompilerPass());
     }
 }

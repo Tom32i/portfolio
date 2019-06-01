@@ -27,12 +27,29 @@ class Parsedown extends BaseParsedown
         $this->pygments = $pygments;
     }
 
+    protected function blockCode($Line, $Block = null)
+    {
+        if (isset($Block) and ! isset($Block['type']) and ! isset($Block['interrupted']))
+        {
+            return;
+        }
+
+        if ($Line['indent'] >= 4)
+        {
+            $Block['element']['text']['text'] = substr($Line['body'], 4);
+
+            return $Block;
+        }
+    }
+
     /**
      * {@inheritdoc}
      */
     protected function blockCodeComplete($Block)
     {
         $Block['element']['text']['text'] = $this->getCode($Block);
+        $Block['element'] = $Block['element']['text'];
+        $Block['element']['handler'] = 'noescape';
 
         return $Block;
     }
@@ -43,8 +60,15 @@ class Parsedown extends BaseParsedown
     protected function blockFencedCodeComplete($Block)
     {
         $Block['element']['text']['text'] = $this->getCode($Block);
+        $Block['element'] = $Block['element']['text'];
+        $Block['element']['handler'] = 'noescape';
 
         return $Block;
+    }
+
+    protected function noescape($text)
+    {
+        return $text;
     }
 
     /**
@@ -92,7 +116,7 @@ class Parsedown extends BaseParsedown
             return $this->pygments->highlight($text, $language);
         }
 
-        return htmlspecialchars($text, ENT_NOQUOTES, 'UTF-8');
+        return $this->escape($text);
     }
 
     /**

@@ -136,6 +136,9 @@
     "symfony/http-kernel": {
         "version": "v4.2.8"
     },
+    "symfony/inflector": {
+        "version": "v4.2.9"
+    },
     "symfony/polyfill-mbstring": {
         "version": "v1.11.0"
     },
@@ -147,6 +150,9 @@
     },
     "symfony/profiler-pack": {
         "version": "v1.0.4"
+    },
+    "symfony/property-access": {
+        "version": "v4.2.9"
     },
     "symfony/routing": {
         "version": "4.2",

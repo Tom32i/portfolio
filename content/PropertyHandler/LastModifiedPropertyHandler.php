@@ -23,6 +23,7 @@ class LastModifiedPropertyHandler implements PropertyHandlerInterface
     public function handle($value, array $context)
     {
         $lastModified = new \DateTime();
+
         $lastModified->setTimestamp($context['file']->getMTime());
 
         return $lastModified;

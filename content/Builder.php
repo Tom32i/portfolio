@@ -142,7 +142,6 @@ class Builder
      */
     public function buildSitemap()
     {
-        dump($this->sitemap);
         $content = $this->templating->render('@Content/sitemap.xml.twig', ['sitemap' => $this->sitemap]);
 
         $this->write($content, '/', 'sitemap.xml');

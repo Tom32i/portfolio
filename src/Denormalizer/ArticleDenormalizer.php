@@ -3,11 +3,9 @@
 namespace App\Denormalizer;
 
 use App\Model\Article;
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Content\Behaviour\ContentDenormalizerInterface;
 
-class ArticleDenormalizer implements DenormalizerInterface
+class ArticleDenormalizer implements ContentDenormalizerInterface
 {
     public function denormalize($data, $class, $format = null, array $context = [])
     {

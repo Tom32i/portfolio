@@ -7,7 +7,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
-class ContentCompilerPass implements CompilerPassInterface
+class TwigExtensionFixerCompilerPass implements CompilerPassInterface
 {
     public function process(ContainerBuilder $container)
     {

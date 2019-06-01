@@ -2,13 +2,13 @@
 
 namespace Content\Decoder;
 
-use Symfony\Component\Serializer\Encoder\DecoderInterface;
+use Content\Behaviour\ContentDecoderInterface;
 use Symfony\Component\DomCrawler\Crawler;
 
 /**
  * Parse Html data
  */
-class HtmlDecoder implements DecoderInterface
+class HtmlDecoder implements ContentDecoderInterface
 {
     /**
      * Supported format

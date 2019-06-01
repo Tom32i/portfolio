@@ -75,7 +75,7 @@ class Pygments
      */
     public function pygmentize($path, $language)
     {
-        $process = new Process(sprintf('pygmentize -f html -l %s %s', $language, $path));
+        $process = Process::fromShellCommandline(sprintf('pygmentize -f html -l %s %s', $language, $path));
 
         $process->run();
 

@@ -3,6 +3,7 @@ date: "2016-01-16 10:00:03"
 tags: ["Symfony", "Event", "Kernel", "Terminate", "Response"]
 title: "Delaying listeners execution to improve response time - Part III"
 description: "Improve your app response time by calling your listeners on kernel.terminate with the DelayedEventDispatcher."
+language: en
 ---
 
 Although we just set up a [decoupled](../events-part-1) and [consistant](../events-part-2) event workflow, our work is not done yet.

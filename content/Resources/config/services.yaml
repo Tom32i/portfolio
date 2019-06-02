@@ -5,6 +5,7 @@ services:
 
     Content\Command\BuildCommand: ~
 
+    Content\Builder\AssetList: ~
     Content\Builder\PageList: ~
     Content\Builder\Sitemap: ~
 
@@ -35,15 +36,22 @@ services:
         tags:
             - { name: 'content.property_handler', property: 'slug' }
 
+    # Decorators
     Content\Routing\UrlGenerator:
         decorates: Symfony\Component\Routing\Generator\UrlGeneratorInterface
 
+    Content\Asset\Packages:
+        decorates: assets._default_package
+
+    # Builder
     Content\Builder:
         public: true
         arguments:
             $source: "%kernel.project_dir%/public"
             $destination: "%kernel.project_dir%/build"
+            $assets: "%kernel.project_dir%/assets"
 
+    # Content Manager
     Content\ContentManager:
         arguments:
             $path: '%kernel.project_dir%/data'

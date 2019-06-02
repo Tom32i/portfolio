@@ -29,7 +29,7 @@ class Parsedown extends BaseParsedown
 
     protected function blockCode($Line, $Block = null)
     {
-        if (isset($Block) and ! isset($Block['type']) and ! isset($Block['interrupted']))
+        if (isset($Block) and !isset($Block['type']) and !isset($Block['interrupted']))
         {
             return;
         }

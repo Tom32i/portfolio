@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Denormalizer;
+namespace App\Serializer;
 
 use App\Model\Article;
 use Content\Behaviour\ContentDenormalizerInterface;

@@ -3,6 +3,7 @@ date: "2016-01-16 10:00:01"
 tags: ["Symfony", "Event", "Dispatcher", "Pattern", "Custom"]
 title: "Decoupling with Symfony Events - Part I"
 description: "How Symfony events can help you build a better workflow for your application by separating actions and consequences."
+language: en
 ---
 
 _Already familiar with the Symfony Event Dispather? [Skip the basics](../events-part-2)_

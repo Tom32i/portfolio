@@ -1,9 +1,10 @@
 {% extends 'blog/base.html.twig' %}
 
 {% block content %}
+    <img src="{{ asset('/img/tom32i.jpg') }}">
     {% for article in articles %}
         {% block preview %}
-            <article class="article preview">
+            <article class="article preview" lang="{{ article.language }}">
                 <header class="header">
                     <time datetime="{{ article.date|date('Y-m-d') }}">
                         {{ article.date|date('d M Y') }}

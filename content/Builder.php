@@ -2,7 +2,7 @@
 
 namespace Content;
 
-use Exception;
+use Content\Builder\AssetList;
 use Content\Builder\PageList;
 use Content\Builder\RouteInfo;
 use Content\Builder\Sitemap;
@@ -49,35 +49,27 @@ class Builder
      */
     private $files;
 
-    /**
-     * Constructor
-     *
-     * @param RouterInterface $router
-     * @param HttpKernelInterface $httpKernel
-     * @param UrlGeneratorInterface $urlGenerator
-     * @param Environment $templating
-     * @param ContentManager $contentManager
-     * @param Sitemap $sitemap
-     * @param string $destination
-     */
     public function __construct(
         RouterInterface $router,
         HttpKernelInterface $httpKernel,
         UrlGeneratorInterface $urlGenerator,
         Environment $templating,
-        //ContentManager $contentManager,
+        AssetList $assetList,
         PageList $pageList,
         Sitemap $sitemap,
         string $source,
-        string $destination
+        string $destination,
+        string $assets
     ) {
         $this->httpKernel = $httpKernel;
         $this->urlGenerator = $urlGenerator;
         $this->templating = $templating;
+        $this->assetList = $assetList;
         $this->pageList = $pageList;
         $this->sitemap = $sitemap;
         $this->source = $source;
         $this->destination = $destination;
+        $this->assets = $assets;
         $this->files = new Filesystem();
 
         $this->initUrls($router);
@@ -99,9 +91,7 @@ class Builder
 
     public function setDestination(string $destination = null)
     {
-        if ($destination) {
-            $this->destination = $destination;
-        }
+        $this->destination = $destination;
     }
 
     public function setHost(string $host)
@@ -114,10 +104,25 @@ class Builder
         $this->urlGenerator->getContext()->setScheme($scheme);
     }
 
+    public function build(bool $sitemap = true, bool $assets = true)
+    {
+        $this->clear();
+
+        $this->buildPages();
+
+        if ($sitemap) {
+            $this->buildSitemap();
+        }
+
+        if ($assets) {
+            $this->buildAssets();
+        }
+    }
+
     /**
      * Clear destination folder
      */
-    public function clear()
+    private function clear()
     {
         if ($this->files->exists($this->destination)) {
             $this->files->remove($this->destination);
@@ -129,7 +134,7 @@ class Builder
     /**
      * Build all pages
      */
-    public function build()
+    private function buildPages()
     {
         while ($url = $this->pageList->getNext()) {
             $this->buildUrl($url);
@@ -140,7 +145,7 @@ class Builder
     /**
      * Build sitemap xml file from Sitemap
      */
-    public function buildSitemap()
+    private function buildSitemap()
     {
         $content = $this->templating->render('@Content/sitemap.xml.twig', ['sitemap' => $this->sitemap]);
 
@@ -148,21 +153,14 @@ class Builder
     }
 
     /**
-     * Export public files
+     * Expose assets
      */
-    public function expose()
+    private function buildAssets()
     {
-        $finder = new Finder();
-        $files = new Filesystem();
-
-        if (!file_exists($this->source)) {
-            return;
-        }
-
-        foreach ($finder->files()->in($this->source)->notName('*.php') as $file) {
-            $files->copy(
-                $file->getPathName(),
-                str_replace($this->source, $this->destination, $file->getPathName()),
+        foreach ($this->assetList as $path) {
+            $this->files->copy(
+                implode('/', [$this->assets, $path]),
+                implode('/', [$this->destination, $path]),
                 true
             );
         }

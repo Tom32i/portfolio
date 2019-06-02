@@ -43,73 +43,13 @@ class RouteInfo
     }
 
     /**
-     * Get content
-     *
-     * @return string
-     */
-    /*public function getContent()
-    {
-        return $this->route->getOption('content');
-    }*/
-
-    /**
-     * Has content?
-     *
-     * @return boolean
-     */
-    /*public function hasContent()
-    {
-        return $this->route->hasOption('content');
-    }*/
-
-    /**
-     * Is content list?
-     *
-     * @return boolean
-     */
-    /*public function isList()
-    {
-        return $this->route->getOption('list');
-    }*/
-
-    /**
-     * Get index by
-     *
-     * @return string
-     */
-    /*public function getIndexBy()
-    {
-        return $this->route->getOption('index');
-    }*/
-
-    /**
-     * Get sort order
-     *
-     * @return boolean
-     */
-    /*public function getOrder()
-    {
-        return $this->route->getOption('order');
-    }*/
-
-    /**
-     * Is pagination enabled?
-     *
-     * @return boolean
-     */
-    /*public function isPaginated()
-    {
-        return $this->route->hasOption('page');
-    }*/
-
-    /**
      * Is visible?
      *
      * @return boolean
      */
-    public function isVisible()
+    public function isVisible(): bool
     {
-        return $this->route->getOption('visible') ?: $this->name[0] !== '_';
+        return $this->route->getOption('visible') ?? $this->name[0] !== '_';
     }
 
     /**
@@ -117,7 +57,7 @@ class RouteInfo
      *
      * @return boolean
      */
-    public function isGettable()
+    public function isGettable(): bool
     {
         $methods = $this->route->getMethods();
 
@@ -129,57 +69,9 @@ class RouteInfo
      *
      * @return boolean
      */
-    public function isMapped()
+    public function isMapped(): bool
     {
-        return $this->isVisible() && $this->route->getOption('mapped') ?: true;
-    }
-
-    /**
-     * Format
-     *
-     * @param string $format
-     *
-     * @return Route
-     */
-    public function setFormat($format)
-    {
-        $this
-            ->value('_format', $format)
-            ->assert('_format', $format);
-    }
-
-    /**
-     * Set template
-     *
-     * @param string $template
-     *
-     * @return Route
-     */
-    public function template($template)
-    {
-        $this->value('_template', $template);
-    }
-
-    /**
-     * Set number of contents per page
-     *
-     * @param integer $perPage
-     *
-     * @return Route
-     */
-    public function setPerPage($perPage)
-    {
-        $this->route->setOption('perPage', $perPage);
-    }
-
-    /**
-     * Get number of contents per page
-     *
-     * @return integer
-     */
-    public function getPerPage()
-    {
-        return $this->route->getOption('perPage') ?: 10;
+        return $this->route->getOption('mapped') ?? $this->isVisible();
     }
 
     /**
@@ -187,7 +79,7 @@ class RouteInfo
      *
      * @return string
      */
-    public function getFormat()
+    public function getFormat(): string
     {
         return $this->route->getOption('_format') ?: 'html';
     }

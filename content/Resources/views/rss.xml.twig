@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>{{ title }}</title>
         <description>{{ description }}</description>
-        <language>{{ language|default('en') }}</language>
+        <language>{{ language|default(app.request.locale) }}</language>
         <link>{{ link|default(canonical) }}</link>
         <atom:link href="{{ link|default(canonical) }}" rel="self" type="application/rss+xml" />
         {% if webmaster.email|default(null) and webmaster.name|default(null) %}
@@ -12,6 +12,9 @@
         {% set pubDate = pubDate|default((items|first).pubDate) %}
         {% if pubDate %}
             <pubDate>{{ pubDate|date(constant('DateTime::RFC2822')) }}</pubDate>
+        {% endif %}
+        {% if copyright|default(null) %}
+            <copyright>{{ copyright }}</copyright>
         {% endif %}
         {% if image|default(null) %}
         <image>

@@ -6,7 +6,7 @@ use Symfony\Component\Routing\Route;
 use Symfony\Component\Routing\RouterInterface;
 
 /**
- * PageList
+ * Page List
  */
 class PageList
 {
@@ -31,7 +31,7 @@ class PageList
         return current($this->getQueue());
     }
 
-    private function getQueue()
+    private function getQueue(): array
     {
         return array_keys(array_filter($this->urls));
     }

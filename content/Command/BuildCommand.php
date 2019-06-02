@@ -7,7 +7,6 @@ use App\Kernel;
 use Content\EventListener\SitemapListener;
 use Content\Builder;
 use Content\Builder\Sitemap;
-//use Content\Console\Logger;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Input\InputArgument;
@@ -92,9 +91,9 @@ class BuildCommand extends Command
      */
     protected function initialize(InputInterface $input, OutputInterface $output)
     {
-        //$this->logger = new Logger($output);
-
-        $this->builder->setDestination($input->getArgument('destination'));
+        if ($destination = $input->getArgument('destination')) {
+            $this->builder->setDestination($destination);
+        }
 
         if ($host = $input->getOption('host')) {
             $this->builder->setHost($host);
@@ -110,20 +109,8 @@ class BuildCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $output->writeln('[ Clearing destination folder ]');
-        $this->builder->clear();
+        $output->writeln(sprintf('Building'));
 
-        $output->writeln(sprintf('[ Building pages ]'));
-        $this->builder->build();
-
-        if (!$input->getOption('no-sitemap')) {
-            $output->writeln('[ Building sitemap ]');
-            $this->builder->buildSitemap();
-        }
-
-        if (!$input->getOption('no-expose')) {
-            $output->writeln('[ Exposing public directory ]');
-            $this->builder->expose();
-        }
+        $this->builder->build(!$input->getOption('no-sitemap'), !$input->getOption('no-expose'));
     }
 }

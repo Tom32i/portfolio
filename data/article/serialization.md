@@ -3,6 +3,7 @@ date: "2015-09-15 10:00:00"
 tags: ["Symfony", "Serialization"]
 title: "Better serialization with Symfony"
 description: "How to write strong and clean Serialization process with Symfony2 and why you should."
+language: en
 ---
 
 If you ever built an export script or an API, you surely had to format your content and deal with serialization.

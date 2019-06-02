@@ -16,9 +16,4 @@ class ArticleProvider implements ContentProviderInterface
     {
         return is_a($className, Article::class, true);
     }
-
-    public function findAll()
-    {
-        return $this->articles;
-    }
 }

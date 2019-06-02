@@ -44,7 +44,7 @@ class ContentManager
 
         foreach ($files as $file) {
             $content = $this->load($provider, $type, $file);
-            $contents[$this->getIndex($file, $content, $index)] = $content;
+            $contents[] = $content;
         }
 
         if ($order !== null) {
@@ -150,7 +150,7 @@ class ContentManager
             $data = $this->serializer->decode($file->getContents(), $format);
 
             foreach ($this->handlers as $property => $handler) {
-                $value = isset($data[$property]) ? $data[$property] : null;
+                $value = $data[$property] ?? null;
 
                 if ($handler->isSupported($value)) {
                     $data[$property] = $handler->handle($value, ['file' => $file, 'data' => $data]);

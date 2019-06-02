@@ -1,7 +1,7 @@
 {% extends 'blog/base.html.twig' %}
 
 {% block content %}
-    <article>
+    <article lang="{{ article.language }}">
         <header>
             <h1>{{ article.title }}</h1>
             {% block date %}

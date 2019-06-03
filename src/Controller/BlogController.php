@@ -29,7 +29,7 @@ class BlogController extends AbstractController
      */
     public function list()
     {
-        $articles = $this->manager->getContents(Article::class, 'date');
+        $articles = $this->manager->getContents(Article::class, ['date' => false]);
         $lastModified = max(array_map(function ($article) { return $article->lastModified; }, $articles));
 
         return $this->render('blog/index.html.twig', [

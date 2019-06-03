@@ -36,22 +36,20 @@ class ContentManager
         $this->handlers[$property] = $handler;
     }
 
-    public function getContents(string $type, string $index = null, bool $order = true): array
+    public function getContents(string $type, $sortBy = null): array
     {
         $contents = [];
         $provider = $this->getProvider($type);
-        $files = $this->listFiles($provider);
 
-        foreach ($files as $file) {
-            $content = $this->load($provider, $type, $file);
-            $contents[] = $content;
+        foreach ($this->listFiles($provider) as $file) {
+            $contents[] = $this->load($provider, $type, $file);
         }
 
-        if ($order !== null) {
-            $order ? ksort($contents) : krsort($contents);
+        if ($sorter = $this->getSortFunction($sortBy)) {
+            usort($contents, $sorter);
         }
 
-        return array_values($contents);
+        return $contents;
     }
 
     public function getContent(string $type, string $id)
@@ -165,16 +163,58 @@ class ContentManager
         return $this->cache['contents'][$path];
     }
 
+    public function sortContent(array $contents, callable $sorter)
+    {
+        if (!$sorter) {
+            return;
+        }
+
+        usort($contents, $sorter);
+    }
+
+    private function getSortFunction($sortBy): callable
+    {
+        if (!$sortBy) {
+            return null;
+        }
+
+        if (is_callable($sortBy)) {
+            return $sortBy;
+        }
+
+        if (is_array($sortBy)) {
+            $key = array_keys($sortBy)[0];
+            $asc = (bool) array_values($sortBy)[0];
+
+            return function ($a, $b) use ($key, $asc) {
+                $valueA = $this->propertyAccessor->getValue($a, $key);
+                $valueB = $this->propertyAccessor->getValue($b, $key);
+
+                if ($valueA == $valueB) {
+                    return 0;
+                }
+
+                return ($valueA > $valueB) === $asc ? 1 : -1;
+            };
+        }
+
+        if (is_string($sortBy)) {
+            return $this->getSortFunction([$sortBy => true]);
+        }
+
+        throw new \Exception('Unknown sorter');
+    }
+
     /**
      * Get index of the given content for content lists
      *
      * @param SplFileInfo $file
-     * @param array $content
+     * @param array|object $content
      * @param string|null $key
      *
      * @return string The string index (by default, the file name)
      */
-    private function getIndex(SplFileInfo $file, $content, $key = null)
+    private function getIndex(SplFileInfo $file, $content, string $key = null)
     {
         if ($key === null || !$this->propertyAccessor->isReadable($content, $key)) {
             return static::getName($file);

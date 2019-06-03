@@ -1,0 +1,9 @@
+body {
+    background-color: pink;
+}
+
+.title {
+    color: white;
+    font-weight: bold;
+    font-size: 32px;
+}

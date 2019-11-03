@@ -1,0 +1,61 @@
+.portfolio {
+    background-color: var(--background-color);
+    color: var(--text-white);
+    font-size: 18px;
+    font-family: sans-serif;
+    padding: 0 4em;
+    width: 800px;
+    margin: 0 auto;
+
+    header {
+        display: flex;
+        flex-direction: row;
+        align-items: baseline;
+        justify-content: space-between;
+        padding: 4em 0 2em;
+
+        blockquote {
+            margin: 0;
+        }
+    }
+
+    .title {
+        color: var(--text-white);
+        font-weight: bold;
+        font-size: 32px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    h3 {
+        margin: 3em 0 1em;
+    }
+
+    h4 {
+        margin: 0 0 1em;
+    }
+
+    /* Row */
+    .row {
+        display: flex;
+        margin: 0 -2em;
+
+        > * {
+            flex: 1;
+            margin: 0 2em;
+        }
+    }
+
+    /* Card */
+    .card {
+        display: flex;
+        background-color: var(--text-white);
+        color: var(--background-color);
+        border-radius: 0.5em;
+        padding: 1em;
+
+        .card-title {
+            font-weight: bold;
+        }
+    }
+}

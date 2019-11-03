@@ -19,6 +19,7 @@
         "symfony/serializer": "4.3.*",
         "symfony/templating": "4.3.*",
         "symfony/translation": "4.3.*",
+        "symfony/webpack-encore-bundle": "^1.7",
         "symfony/yaml": "4.3.*"
     },
     "require-dev": {

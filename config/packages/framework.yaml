@@ -12,8 +12,9 @@ framework:
         #cookie_samesite: lax
 
     assets:
-        base_urls:
-            - '%router.request_context.scheme%://%router.request_context.host%'
+        json_manifest_path: '%kernel.project_dir%/public/assets/manifest.json'
+        #base_urls:
+        #    - '%router.request_context.scheme%://%router.request_context.host%'
 
     #esi: true
     #fragments: true

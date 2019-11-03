@@ -1,52 +1,80 @@
-{% extends 'blog/base.html.twig' %}
+{% extends 'base.html.twig' %}
 
-{% block stylesheets %}
-<link rel="stylesheet" type="text/css" href="assets/style.css">
-{% endblock %}
+{% block body_class 'portfolio' %}
 
 {% block body %}
-    <h1 class="title">Thomas Jarrand</h1>
-    <H2 class="subtitle">Dévelopeur Web.</h2>
+    <header>
+        <h1 class="title">
+            <span>Thomas Jarrand</span>
+            <small class="subtitle">Dévelopeur Web</small>
+        </h1>
+        <blockquote>Je code des deux coté de la requête HTTP.</blockquote>
+    </header>
 
-    <p>Code des deux coté de la requête HTTP.</p>
+    <div class="content">
+        <p>Je concois et developpes des applications pour le web depuis 10 ans avec PHP, Javascript et HTML.</p>
+        <p>Cette vision d'ensemble me permet d'architecturer mes solutions techniques de manière pertinente.</p>
 
-    <p>Je concois et developpes des applications pour le web depuis 10 ans avec PHP, Javascript et HTML.</p>
-    <p>Cette vision d'ensemble me permet d'architecturer mes solutions techniques de manière pertinente.</p>
+        <section>
+            <h3>Comment je travail</h3>
 
-    <h3>Comment je travail</h3>
+            <div class="row">
+                <div>
+                    <h4>Je m'investi</h4>
+                    <p>J'ai besoin de comprendre le besoin : pour proposer aux utilisateurs et aux utilisatrices des solutions qui facilitent leur quotidien.</p>
+                </div>
 
-    <div>
-        <h4>Je m'investi</h4>
-        <p>J'ai besoin de comprendre le besoin : pour proposer aux utilisateurs et aux utilisatrices des solutions qui facilitent leur quotidien.</p>
+                <div>
+                    <h4>Je vise la qualité</h4>
+                    <p>Je m'appuie sur les standards et les bonnes pratiques. Mon code est découplé, efficace et utilisable par d'autres.</p>
+                </div>
 
-        <h4>Je vise la qualité</h4>
-        <p>Je m'appuie sur les standards et les bonnes pratiques. Mon code est découplé, efficace et utilisable par d'autres.</p>
+                <div>
+                    <h4>J'aime apprendre</h4>
+                    <p>Je suis avec interet les évolutions des technologies du web, j'expériemente et je m'adapte.</p>
+                </div>
+            </div>
+        </section>
 
-        <h4>J'aime apprendre</h4>
-        <p>Je suis avec interet les évolutions des technologies du web, j'expériemente et je m'adapte.</p>
+        <section>
+            <h3>Mes outils</h3>
+
+            <p>En ce moment, je suis particulierement efficace avec Symfony et React, mais je propose des solutions standards et low-tech dès que c'est pertinent.</p>
+            <p>J'organise ma production de code autour du workflow git, notamment sur Github.</p>
+            <p>Je sais provisionner mes serveurs avec Ansible et servir mes applications avec Nginx.</p>
+        </section>
+
+        <section>
+            <h3>Talks</h3>
+            <p>J'essai de partager régulierement les sujets qui me passionnent dans des évenement comme ceux de l'AFUP Lyon, Lyon JS, Human Talks et même à l'Apéro des designers.</p>
+            <p>J'ai eu la chance de donner l'une de mes conférences à Blend Web Mix, ainsi qu'au Forum PHP.</p>
+        </section>
+
+        <section>
+            <h3>Experiences</h3>
+            <p>J'ai fais mes débuts à Grenoble dans une agence web pendant 3 ans, puis j'ai travaillé en anglais pour un an en Australie avant de venir m'installer à Lyon, je suis en poste depuis 7 ans chez élao</p>
+        </section>
+
+        <section>
+            <h3>Projets</h3>
+            <div class="row">
+                <a href="http://curvytron.com" class="card">
+                    <span class="card-title">Curvytron</span>
+                </a>
+                <a href="http://whatthetune.com" class="card">
+                    <span class="card-title">What the Tune ?!</span>
+                </a>
+            </div>
+        </section>
+
+        <section>
+            <h3>Passion</h3>
+            <p></p>
+        </section>
     </div>
-
-    <h3>Mes outils</h3>
-
-    <p>En ce moment, je suis particulierement efficace avec Symfony et React, mais je propose des solutions standards et low-tech dès que c'est pertinent.</p>
-    <p>J'organise ma production de code autour du workflow git, notamment sur Github.</p>
-    <p>Je sais provisionner mes serveurs avec Ansible et servir mes applications avec Nginx.</p>
-
-    <h3>Talks</h3>
-    <p>J'essai de partager régulierement les sujets qui me passionnent dans des évenement comme ceux de l'AFUP Lyon, Lyon JS, Human Talks et même à l'Apéro des designers.</p>
-    <p>J'ai eu la chance de donner l'une de mes conférences à Blend Web Mix, ainsi qu'au Forum PHP.</p>
-
-    <h3>Experiences</h3>
-    <p>J'ai fais mes débuts à Grenoble dans une agence web pendant 3 ans, puis j'ai travaillé en anglais pour un an en Australie avant de venir m'installer à Lyon, je suis en poste depuis 7 ans chez élao</p>
-
-    <h3>Projets</h3>
-    <a href="http://curvytron.com">Curvytron</a>
-    <a href="http://whatthetune.com">Waht the Tune ?!</a>
-
-    <h3>Passion</h3>
-    <p></p>
-
-    <a href="{{ path('blog') }}">
-        Blog
-    </a>
+    <footer>
+        <a href="{{ path('blog') }}">
+            Blog
+        </a>
+    </footer>
 {% endblock %}

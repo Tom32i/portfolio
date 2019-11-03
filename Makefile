@@ -30,8 +30,17 @@ install:
 start:
 	bin/console server:run
 
+## Watch and build assets
+watch:
+	./node_modules/.bin/encore dev --watch
+
 ## Build static site
-build:
+build: build-assets build-content
+
+build-assets:
+	./node_modules/.bin/encore production
+
+build-content:
 	bin/console content:build
 
 ## Server static site

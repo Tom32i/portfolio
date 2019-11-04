@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/Tom32i/portfolio-2019#readme",
   "dependencies": {
-    "prismjs": "^1.16.0",
+    "prismjs": "^1.17.1",
     "reset-css": "^5.0.1"
   },
   "devDependencies": {

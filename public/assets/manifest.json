@@ -3,5 +3,9 @@
   "assets/app.js": "/assets/app.js",
   "assets/runtime.js": "/assets/runtime.js",
   "assets/vendors~app.css": "/assets/vendors~app.css",
-  "assets/vendors~app.js": "/assets/vendors~app.js"
+  "assets/vendors~app.js": "/assets/vendors~app.js",
+  "assets/fonts/bebas.woff2": "/assets/fonts/bebas.12dae993.woff2",
+  "assets/fonts/bebas.eot": "/assets/fonts/bebas.5d94526b.eot",
+  "assets/fonts/bebas.woff": "/assets/fonts/bebas.9a62fff5.woff",
+  "assets/fonts/bebas.ttf": "/assets/fonts/bebas.cf034e78.ttf"
 }

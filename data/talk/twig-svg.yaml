@@ -1,0 +1,8 @@
+date: "2017-07-01"
+duration: 10
+title: Des graphiques dans mon Symfony avec Twig et SVG
+description: |
+  A-t-on toujours besoin d'une librairie javascript complexe pour génerer de jolis graphiques dans nos applications Symfony ?
+  Regardons ce que le format SVG peut faire pour nos représentations de données, ce qu'il apporte et comment il s'intègre (bien) dans notre stack Symfony / Twig.
+  Camemberts, courbes, diagrammes bâtons, ... des exemples concrets et cas d'usage à l'appui !"
+slides: https://talk.tom32i.fr/web-apis/

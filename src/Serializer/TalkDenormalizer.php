@@ -2,27 +2,27 @@
 
 namespace App\Serializer;
 
-use App\Model\Article;
+use App\Model\Talk;
 use Content\Behaviour\ContentDenormalizerInterface;
 
-class ArticleDenormalizer implements ContentDenormalizerInterface
+class TalkDenormalizer implements ContentDenormalizerInterface
 {
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         dump($data);
-        return new Article(
+        return new Talk(
             $this->get($data, 'title'),
-            $this->get($data, 'slug'),
+            $this->get($data, 'description'),
+            $this->get($data, 'duration'),
             $this->get($data, 'date'),
-            $this->get($data, 'lastModified'),
-            $this->get($data, 'language', 'fr'),
-            $this->get($data, 'content')
+            $this->get($data, 'slides'),
+            $this->get($data, 'video')
         );
     }
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return is_a($type, Article::class, true);
+        return is_a($type, Talk::class, true);
     }
 
     private function get(array $data, string $property, $default = null)

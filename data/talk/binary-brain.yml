@@ -1,0 +1,14 @@
+date: "2018-10-01"
+duration: 50
+title: Voyage au centre du cerveau humain ou comment manipuler des données binaires en Javascript
+description: |
+  Parcourir l’intérieur de votre cerveau, sur votre téléphone, uniquement avec des technologies web : c’est possible ! Et si je vous montrais comment on fait ?
+  On en profitera pour se demander :
+    – Une IRM c’est quoi au juste ?
+    – Comment on stocke une image dans un fichier ?
+    – Comment ça marche le binaire pour un humain ?
+    – Javascript sait faire ça !?
+    – À quoi tout cela peut-il nous servir dans nos quotidiens de dev ?
+  Un talk avec des vrais morceaux de science, des 0, des 1, des exemples concrets et une démo live !
+slides: https://talk.tom32i.fr/binary-brain/
+video: https://www.youtube.com/watch?v=LuCXFhaRXcw

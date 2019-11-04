@@ -15,12 +15,12 @@
 
     <section id="jeux">
         <div class="container">
-            <h3>Jeux & expérimentations</h3>
+            <h3>Jeux et expérimentations</h3>
             <div class="row">
-                <a href="http://curvytron.com" class="card">
+                <a href="http://curvytron.com" target="_blank" class="card">
                     <span class="card-title">Curvytron</span>
                 </a>
-                <a href="http://whatthetune.com" class="card">
+                <a href="http://whatthetune.com" target="_blank" class="card">
                     <span class="card-title">What the Tune ?!</span>
                 </a>
             </div>
@@ -59,8 +59,45 @@
     <section>
         <div class="container">
             <h3>Talks</h3>
+
             <p>J'essai de partager régulierement les sujets qui me passionnent dans des évenement comme ceux de l'AFUP Lyon, Lyon JS, Human Talks et même à l'Apéro des designers.</p>
+
             <p>J'ai eu la chance de donner l'une de mes conférences à Blend Web Mix, ainsi qu'au Forum PHP.</p>
+
+            <div>
+                {% for talk in talks %}
+                    <a class="card" href="{{ talk.slides }}">
+                        <div class="head">
+                            <h5>{{ talk.title }}</h5>
+                            <span class="date">{{ talk.date|date('Y') }}</span>
+                            <span class="format">{{ talk.duration }}"</span>
+                        </div>
+                        <p>{{ talk.description }}</p>
+                    </a>
+                {% endfor %}
+                {#<li>
+                    <a class="card" href="https://talk.tom32i.fr/rando-velo/">
+                        La randonnée à vélo - 2018 - 10"
+                    </a>
+                </li>
+                <li>
+                    <a class="card" href="https://talk.tom32i.fr/web-apis/">
+                        API web insoupçonnées - 2018 - 10"
+                        {# Petit tour d'horizon de quelques capacités de vos navigateurs dont vous ignoriez peut-être l'existence ! # }
+                    </a>
+                </li>
+                <li>
+                    <a class="card" href="https://talk.tom32i.fr/rando-velo/">
+                        Voyage au centre du cerveau humain ou comment manipuler des données binaires en Javascript - 2018 - 50"
+                        <iframe class="card" style="flex: inherit;" width="560" height="315" src="https://www.youtube-nocookie.com/embed/LuCXFhaRXcw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </a>
+                </li>
+                <li>
+                    <a class="card" href="https://talk.tom32i.fr/emoji/#/">
+                        Emoji - 2015 - 10"
+                    </a>
+                </li>#}
+            </div>
         </div>
     </section>
 

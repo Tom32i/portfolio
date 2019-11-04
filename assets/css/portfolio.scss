@@ -1,14 +1,14 @@
 .portfolio {
     color: $text-white;
     font-size: 24px;
-    font-family: sans-serif;
+    font-family: Georgia, Cambria, "Times New Roman", Times, serif;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: stretch;
 
     header {
-        background-color: $color-1;
+        background-color: $color-gray; //$color-1
         color: $color-3;
 
         .container {
@@ -36,20 +36,28 @@
         min-width: 200px;
         width: 65%;
         max-width: 960px;
+
+        & *:first-child {
+            margin-top: 0;
+        }
+
+        & *:last-child {
+            margin-bottom: 0;
+        }
     }
 
-    section:nth-of-type(4n) {
-        background-color: $color-2;
-    }
-    section:nth-of-type(4n+1) {
+    section:nth-of-type(2n) {
         background-color: $color-3;
     }
-    section:nth-of-type(4n+2) {
+    section:nth-of-type(2n+1) {
         background-color: $color-4;
     }
-    section:nth-of-type(4n+3) {
+    /*section:nth-of-type(3n+2) {
+        background-color: $color-4;
+    }*/
+    /*section:nth-of-type(4n+3) {
         background-color: $color-5;
-    }
+    }*/
 
     footer {
         background-color: $color-dark;
@@ -62,15 +70,20 @@
         flex-direction: column;
 
         span {
-            font-weight: bold;
+            font-weight: 700;
+            line-height: 1.2em;
         }
         small {
+            font-weight: 400;
             font-size: 0.8em;
+            line-height: 1em;
         }
     }
 
     h1, h2, h3, h4, h5 {
-        font-family: 'Bebas Neue';
+        font-family: "Cabin", sans-serif;
+        font-weight: normal;
+        margin: 1.3em 0 1em;
     }
 
     h2 {
@@ -79,12 +92,15 @@
 
     h3 {
         font-size: 1.8em;
-        margin: 3rem 0 1rem;
     }
 
     h4 {
         font-size: 1.4em;
-        margin: 0 0 1rem;
+    }
+
+    p {
+        line-height: 1.4em;
+        margin-bottom: 1rem;
     }
 
     /* Row */
@@ -101,8 +117,9 @@
     /* Card */
     .card {
         display: flex;
+        flex-direction: column;
         background-color: $text-white;
-        color: $color-2;
+        color: $color-3;
         border-radius: 0.5rem;
         padding: 1rem;
 

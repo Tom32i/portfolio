@@ -1,15 +1,18 @@
-:root {
-    --background-color: slateblue;
-    --text-white: white;
-    --text-black: black;
+$color-1: #d2fafb;
+$color-2: #51dacf;
+$color-3: #41aaa8;
+$color-4: #fc7978;
+$color-5: #ffafb0;
+$color-dark: #2c003e;
+$text-white: white;
+$text-black: black;
 
-    --monokai-red: #ff6188;
-    --monokai-green: #a9dc76;
-    --monokai-yellow: #ffd866;
-    --monokai-orange: #fc9867;
-    --monokai-purple: #ab9df2;;
-    --monokai-blue: #78dce8;
-    --monokai-grey: #ccc;
-    --monokai-mutted: #999;
-    --monokai-error: lightcoral;
-}
+$monokai-red: #ff6188;
+$monokai-green: #a9dc76;
+$monokai-yellow: #ffd866;
+$monokai-orange: #fc9867;
+$monokai-purple: #ab9df2;;
+$monokai-blue: #78dce8;
+$monokai-grey: #ccc;
+$monokai-mutted: #999;
+$monokai-error: lightcoral;

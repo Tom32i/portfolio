@@ -1,58 +1,110 @@
 .portfolio {
-    background-color: var(--background-color);
-    color: var(--text-white);
-    font-size: 18px;
+    color: $text-white;
+    font-size: 24px;
     font-family: sans-serif;
-    padding: 0 4em;
-    width: 800px;
-    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: stretch;
 
     header {
-        display: flex;
-        flex-direction: row;
-        align-items: baseline;
-        justify-content: space-between;
-        padding: 4em 0 2em;
+        background-color: $color-1;
+        color: $color-3;
 
-        blockquote {
-            margin: 0;
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: baseline;
+            justify-content: space-between;
+
+            blockquote {
+                margin: 0;
+            }
         }
     }
 
-    .title {
-        color: var(--text-white);
-        font-weight: bold;
-        font-size: 32px;
+    section, header, footer {
+        padding: 5rem 0;
+        margin: 0;
+        width: 100%;
         display: flex;
         flex-direction: column;
+        align-items: center;
+    }
+
+    .container {
+        min-width: 200px;
+        width: 65%;
+        max-width: 960px;
+    }
+
+    section:nth-of-type(4n) {
+        background-color: $color-2;
+    }
+    section:nth-of-type(4n+1) {
+        background-color: $color-3;
+    }
+    section:nth-of-type(4n+2) {
+        background-color: $color-4;
+    }
+    section:nth-of-type(4n+3) {
+        background-color: $color-5;
+    }
+
+    footer {
+        background-color: $color-dark;
+        color: $text-white;
+    }
+
+    .title {
+        font-size: 60px;
+        display: flex;
+        flex-direction: column;
+
+        span {
+            font-weight: bold;
+        }
+        small {
+            font-size: 0.8em;
+        }
+    }
+
+    h1, h2, h3, h4, h5 {
+        font-family: 'Bebas Neue';
+    }
+
+    h2 {
+        font-size: 2.4em;
     }
 
     h3 {
-        margin: 3em 0 1em;
+        font-size: 1.8em;
+        margin: 3rem 0 1rem;
     }
 
     h4 {
-        margin: 0 0 1em;
+        font-size: 1.4em;
+        margin: 0 0 1rem;
     }
 
     /* Row */
     .row {
         display: flex;
-        margin: 0 -2em;
+        margin: 0 -2rem;
 
         > * {
             flex: 1;
-            margin: 0 2em;
+            margin: 0 2rem;
         }
     }
 
     /* Card */
     .card {
         display: flex;
-        background-color: var(--text-white);
-        color: var(--background-color);
-        border-radius: 0.5em;
-        padding: 1em;
+        background-color: $text-white;
+        color: $color-2;
+        border-radius: 0.5rem;
+        padding: 1rem;
 
         .card-title {
             font-weight: bold;

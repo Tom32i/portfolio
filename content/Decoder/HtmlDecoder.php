@@ -48,7 +48,11 @@ class HtmlDecoder implements ContentDecoderInterface
 
         $crawler->filter('code')->each(function (Crawler $node) {
             if ($language = $node->attr('highlight')) {
-                $this->setContent($node, $this->highlighter->highlight(trim($node->html()), $language));
+                $element = $node->getNode(0);
+                $this->setContent($element, $this->highlighter->highlight(trim($node->html()), $language));
+
+                $element->removeAttribute('highlight');
+                $this->addClass($element, $language);
             };
         });
 
@@ -69,10 +73,16 @@ class HtmlDecoder implements ContentDecoderInterface
         return self::FORMAT === $format;
     }
 
-    public function setContent(Crawler $node, string $content): void
+    public function addClass(\DomElement $element, string $class)
     {
-        $element = $node->getNode(0);
+        $element->setAttribute('class', implode(' ', array_filter([
+            trim($element->getAttribute('class')),
+            $class,
+        ])));
+    }
 
+    public function setContent(\DomElement $element, string $content): void
+    {
         $element->nodeValue = '';
 
         $child = $element->ownerDocument->createDocumentFragment();

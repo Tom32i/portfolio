@@ -1,7 +1,5 @@
 .portfolio {
     color: $text-white;
-    font-size: 24px;
-    font-family: Georgia, Cambria, "Times New Roman", Times, serif;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -46,11 +44,31 @@
         }
     }
 
-    section:nth-of-type(2n) {
+    h1 {
+        font-size: 2.8em;
+    }
+
+    h2 {
+        font-size: 2.4em;
+    }
+
+    h3 {
+        font-size: 1.8em;
+    }
+
+    h4 {
+        font-size: 1.4em;
+    }
+
+    section:nth-of-type(3n) {
         background-color: $color-3;
     }
-    section:nth-of-type(2n+1) {
+    section:nth-of-type(3n+1) {
         background-color: $color-4;
+    }
+    section:nth-of-type(3n+2) {
+        background-color: $color-gray; //$color-1
+        color: $color-3;
     }
     /*section:nth-of-type(3n+2) {
         background-color: $color-4;
@@ -62,6 +80,10 @@
     footer {
         background-color: $color-dark;
         color: $text-white;
+
+        a {
+            color: $text-white;
+        }
     }
 
     .title {
@@ -78,29 +100,6 @@
             font-size: 0.8em;
             line-height: 1em;
         }
-    }
-
-    h1, h2, h3, h4, h5 {
-        font-family: "Cabin", sans-serif;
-        font-weight: normal;
-        margin: 1.3em 0 1em;
-    }
-
-    h2 {
-        font-size: 2.4em;
-    }
-
-    h3 {
-        font-size: 1.8em;
-    }
-
-    h4 {
-        font-size: 1.4em;
-    }
-
-    p {
-        line-height: 1.4em;
-        margin-bottom: 1rem;
     }
 
     /* Row */
@@ -125,6 +124,41 @@
 
         .card-title {
             font-weight: bold;
+        }
+    }
+
+    .talk {
+        text-decoration: none;
+        margin-bottom: 2rem;
+
+        .head {
+            display: flex;
+            flex-direction: row;
+        }
+
+        h5 {
+            font-size: 1.2em;
+        }
+
+        .description {
+            white-space: pre-wrap;
+            display: none;
+        }
+
+        .date, .format {
+            //flex: 0;
+            margin-left: 1rem;
+            white-space: nowrap;
+        }
+
+        .date::before {
+            content: "📅";
+            margin-right: 0.4rem;
+        }
+
+        .format::before {
+            content: "⏱";
+            margin-right: 0.4rem;
         }
     }
 }

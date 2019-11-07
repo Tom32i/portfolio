@@ -1,45 +1,76 @@
 .blog {
     width: 100%;
-    background-color: #E5E5E5;
-    font-family: Verdana, sans-serif;
+    background-color: $color-gray;
     font-size: 16px;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 0;
     margin: 0;
-    color: var(--text-black);
+    color: black;
 
     .content {
         box-sizing: border-box;
-        width: 600px;
+        width: 680px;
         max-width: 100%;
         padding: 2em;
     }
 
+    .article-content {
+        margin-top: 3rem;
+    }
+
+    time {
+        color: $monokai-mutted;
+        font-size: 1.2em;
+    }
+
+    h1, h2, h3, h4, h5 {
+        font-weight: bold;
+    }
+
     h1 {
+        font-size: 2.4em;
         margin: 1em 0 2em;
     }
 
     h2 {
+        font-size: 1.8em;
         margin: 2em 0 1em;
+    }
+
+    h3 {
+        font-size: 1.4em;
     }
 
     section {
         flex: 1;
     }
 
+    a, a:visited {
+        color: $text-dark;
+    }
+
     p, li {
-        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+        //font-family: Georgia, Cambria, "Times New Roman", Times, serif;
         line-height: 1.5em;
         font-size: 1.3em;
         font-style: normal;
     }
 
+    .inline-code {
+        background-color: rgba($color-3, 0.4);
+        color: $text-black;
+        border-radius: 0.2em;
+        padding: 0 0.2em;
+        font-size: 0.9em;
+        font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    }
+
     code {
         margin: 1em 0;
         padding: 1em;
-        background: #3B3C3C;
+        background: $code-background;
         color: white;
         white-space: pre;
         display: block;
@@ -51,17 +82,18 @@
         line-height: 1.5;
         tab-size: 4;
         hyphens: none;
+        overflow-x: auto;
     }
 
     code.success {
-        color: var(--monokai-green);
+        color: $monokai-green;
         margin-left: -0.5em;
-        border-left: 0.5em solid var(--monokai-green);
+        border-left: 0.5em solid $monokai-green;
     }
 
     code.error {
-        color: var(--monokai-error);
-        border-left: 0.5em solid var(--monokai-error);
+        color: $monokai-error;
+        border-left: 0.5em solid $monokai-error;
         margin-left: -0.5em;
     }
 
@@ -70,7 +102,7 @@
     }
     code[data-output]::before {
         content: attr(data-output);
-        color: var(--monokai-mutted);
+        color: $monokai-mutted;
         margin-right: 1em;
     }
 
@@ -79,11 +111,11 @@
     .token.prolog,
     .token.doctype,
     .token.cdata {
-        color: var(--monokai-mutted);
+        color: $monokai-mutted;
     }
 
     .token.punctuation {
-        color: var(--monokai-grey);
+        color: $monokai-grey;
     }
 
     .token.operator,
@@ -93,19 +125,19 @@
     .token.attr-name,
     .token.namespace,
     .token.deleted {
-        color: var(--monokai-red);
+        color: $monokai-red;
     }
 
     .token.boolean,
     .token.number {
-        color: var(--monokai-purple);
+        color: $monokai-purple;
     }
 
     .token.property,
     .token.class-name,
     .token.constant,
     .token.symbol {
-        color: var(--monokai-orange);
+        color: $monokai-orange;
     }
 
     .token.function-name,
@@ -115,7 +147,7 @@
     .token.atrule,
     .token.keyword,
     .token.builtin {
-        color: var(--monokai-blue);
+        color: $monokai-blue;
     }
 
     .token.string,
@@ -123,7 +155,7 @@
     .token.attr-value,
     .token.regex,
     .token.variable {
-        color: var(--monokai-yellow);
+        color: $monokai-yellow;
     }
 
     .token.important,

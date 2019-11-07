@@ -27,48 +27,33 @@ class Parsedown extends BaseParsedown
         $this->highlighter = $highlighter;
     }
 
-    protected function blockCode($Line, $Block = null)
-    {
-        if (isset($Block) and !isset($Block['type']) and !isset($Block['interrupted']))
-        {
-            return;
-        }
-
-        if ($Line['indent'] >= 4)
-        {
-            $Block['element']['text']['text'] = substr($Line['body'], 4);
-
-            return $Block;
-        }
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     protected function blockCodeComplete($Block)
     {
-        $Block['element']['text']['text'] = $this->getCode($Block);
-        $Block['element'] = $Block['element']['text'];
-        $Block['element']['handler'] = 'noescape';
+        // Drop the <pre>
+        $Block['element'] = [
+            'name' => 'code',
+            'text' => $Block['element']['text']['text'],
+        ];
 
         return $Block;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function blockFencedCodeComplete($Block)
     {
-        $Block['element']['text']['text'] = $this->getCode($Block);
-        $Block['element'] = $Block['element']['text'];
-        $Block['element']['handler'] = 'noescape';
+        $language = $this->getLanguage($Block);
+        $content = $Block['element']['text']['text'];
+
+        // Drop the <pre> + highlight
+        $Block['element'] = [
+            'name' => 'code',
+            'handler' => 'noescape',
+            'text' => $this->getCode($content, $language),
+            'attributes' => [
+                'class' => $language,
+            ],
+        ];
 
         return $Block;
-    }
-
-    protected function noescape($text)
-    {
-        return $text;
     }
 
     /**
@@ -114,19 +99,21 @@ class Parsedown extends BaseParsedown
      *
      * @return string
      */
-    protected function getCode($Block)
+    protected function getCode(string $text, string $language): string
     {
-        if (!isset($Block['element']['text']['text'])) {
-            return null;
-        }
-
-        $text = $Block['element']['text']['text'];
-
-        if ($this->highlighter && $language = $this->getLanguage($Block)) {
+        if ($this->highlighter) {
             return $this->highlighter->highlight($text, $language);
         }
 
         return $this->escape($text);
+    }
+
+    /**
+     * No espace filter
+     */
+    protected function noescape(string $text): string
+    {
+        return $text;
     }
 
     /**

@@ -5,7 +5,7 @@
         <header>
             <h1>{{ article.title }}</h1>
             {% block date %}
-                <time datetime="{{ article.date|date('Y-m-d') }}">
+                <time datetime="{{ article.date|date('c') }}">
                     {{ article.date|date('d M Y') }}
                 </time>
             {% endblock %}

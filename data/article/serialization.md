@@ -20,6 +20,8 @@ However, if you're working on specific domain logic for small/medium projects (a
 
 But you know what?
 
+    test();
+
 ## Symfony has a great serialization component!
 
 Symfony already addressed the problem of content serialization with the __Serializer Component__.
@@ -53,8 +55,7 @@ To write a custom normalizer, you need to implement `NormalizerInterface`, which
 
 Here's an example:
 
-``` php
-<?php
+```php
 
 namespace Acme\Serializer\Normalizer;
 
@@ -98,8 +99,7 @@ _Note:_ You are free to add some logic/complexity here, you've separated the _mo
 
 The result of the normalization would be:
 
-``` php
-<?php
+```php
 [
     'id'     => 1,
     'name'   => 'Foo Bar',
@@ -115,8 +115,7 @@ When your normalizer extends the `SerializerAwareNormalizer`, it will receive th
 
 Let's update our previous example:
 
-``` php
-<?php
+```php
 
 namespace Acme\Serializer\Normalizer;
 
@@ -148,8 +147,7 @@ class UserNormalizer extends SerializerAwareNormalizer implements NormalizerInte
 
 All you need to do now is to write a normalizer that supports `Group` objects!
 
-``` php
-<?php
+```php
 
 // ...
 
@@ -181,8 +179,7 @@ class GroupNormalizer extends SerializerAwareNormalizer implements NormalizerInt
 
 The result of the normalization:
 
-``` php
-<?php
+```php
 [
     'id'        => 1,
     'firstname' => 'Foo',
@@ -208,8 +205,7 @@ The Serializer Component offers a `$context` variable that is passed on throught
 
 You can use it to store any information that your normalizer would need and affect their behavior.
 
-``` php
-<?php
+```php
 
 namespace Acme\Serializer\Normalizer;
 

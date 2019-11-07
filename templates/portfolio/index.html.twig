@@ -17,11 +17,13 @@
         <div class="container">
             <h3>Jeux et expérimentations</h3>
             <div class="row">
-                <a href="http://curvytron.com" target="_blank" class="card">
-                    <span class="card-title">Curvytron</span>
+                <a href="http://curvytron.com" target="_blank">
+                    <img class="card" src="{{ asset('img/curvytron.png') }}">
+                    <h5 class="card-title">Curvytron</h5>
                 </a>
-                <a href="http://whatthetune.com" target="_blank" class="card">
-                    <span class="card-title">What the Tune ?!</span>
+                <a href="http://whatthetune.com" target="_blank">
+                    <img class="card" src="{{ asset('img/wtt.jpg') }}">
+                    <h5 class="card-title">What the Tune ?!</h5>
                 </a>
             </div>
         </div>
@@ -60,19 +62,19 @@
         <div class="container">
             <h3>Talks</h3>
 
-            <p>J'essai de partager régulierement les sujets qui me passionnent dans des évenement comme ceux de l'AFUP Lyon, Lyon JS, Human Talks et même à l'Apéro des designers.</p>
+            <p>Je partage régulierement sur des sujets qui me passionnent dans des évenement comme ceux de l'<strong>AFUP Lyon</strong>, <strong>Lyon JS</strong>, <strong>Human Talks</strong> et même à l'<strong>Apéro des designers</strong>.</p>
 
-            <p>J'ai eu la chance de donner l'une de mes conférences à Blend Web Mix, ainsi qu'au Forum PHP.</p>
+            <p>J'ai aussi eu la chance de monter sur la scène du <strong>Blend Web Mix 2017</strong> et du <strong>Forum PHP 2018</strong>.</p>
 
             <div>
                 {% for talk in talks %}
-                    <a class="card" href="{{ talk.slides }}">
+                    <a class="card talk" target="_blank" href="{{ talk.slides }}">
                         <div class="head">
                             <h5>{{ talk.title }}</h5>
                             <span class="date">{{ talk.date|date('Y') }}</span>
                             <span class="format">{{ talk.duration }}"</span>
                         </div>
-                        <p>{{ talk.description }}</p>
+                        <p class="description">{{ talk.description }}</p>
                     </a>
                 {% endfor %}
                 {#<li>

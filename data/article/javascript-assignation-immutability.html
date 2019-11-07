@@ -4,12 +4,12 @@
     <title>About variable declaration and immutability in Javascript</title>
     <meta name="date" content="2019-05-25">
     <meta name="language" content="en">
-    <meta name="description" content="About `const` and `let`">
+    <meta name="description" content="About `const` and `let`.">
 </head>
 <body>
     <section>
         <h2>Variable with scalar values</h2>
-        <p>The `let` statement defines a simple variable.</p>
+        <p>The <span class="inline-code">let</span> statement defines a simple variable.</p>
         <code class="input" highlight="javascript">
 let value = 'foo';
         </code>
@@ -26,7 +26,7 @@ value = 'bar';
     </section>
     <section>
         <h2>Constants</h2>
-        <p>The `const` statement defines a constant that can't be re-assigned to a different value.</p>
+        <p>The <span class="inline-code">const</span> statement defines a constant that can't be re-assigned to a different value.</p>
         <code class="input" highlight="javascript">
 const value = 'foo';
 value = 'bar';
@@ -97,14 +97,14 @@ anything = 41;
             <li>Change the variable reference to something else.</li>
         </ol>
 
-        <p>What's important to understand is that `let` and `const` are not defining the behaviour of the object but the type of the <strong>reference</strong>.</p>
+        <p>What's important to understand is that <span class="inline-code">let</span> and <span class="inline-code">const</span> are not defining the behaviour of the object but the type of the <strong>reference</strong>.</p>
         <p>Although a constant is locked on to a specific object, it doesn't make the object immutable.</p>
         <p>In fact, there is simply no immutability in Javascript.</p>
     </section>
     <hr>
     <section>
         <h2>Epilogue: Everything is an object</h2>
-        <p>So <em>"why didn't they just"</em> made `const` declare an immutable object?</p>
+        <p>So <em>"why didn't they just"</em> made <span class="inline-code">const</span> declare an immutable object?</p>
         <p>Many other languages, like <a href="https://wiki.php.net/rfc/immutability">PHP</a>, choose to prevent Objects from being declared as constants and don't offer immutable objects as for now.</p>
         <p>Well in Javascript: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">everything is an object</a>, so nothing is immutable.</p>
     </section>

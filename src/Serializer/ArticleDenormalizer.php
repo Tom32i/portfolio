@@ -9,7 +9,6 @@ class ArticleDenormalizer implements ContentDenormalizerInterface
 {
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        dump($data);
         return new Article(
             $this->get($data, 'title'),
             $this->get($data, 'slug'),

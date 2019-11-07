@@ -9,7 +9,6 @@ class TalkDenormalizer implements ContentDenormalizerInterface
 {
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        dump($data);
         return new Talk(
             $this->get($data, 'title'),
             $this->get($data, 'description'),

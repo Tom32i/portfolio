@@ -1,0 +1,37 @@
+body {
+    font-size: 20px;
+    font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+}
+
+code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: "Cabin", sans-serif;
+    font-weight: normal;
+    margin: 4rem 0 2rem;
+}
+
+p {
+    line-height: 1.4em;
+    margin-bottom: 1rem;
+}
+
+em {
+    font-style: italic;
+}
+
+strong {
+    font-weight: bold;
+}
+
+ol {
+    list-style: decimal;
+    padding-left: 2.4em;
+    margin-bottom: 1rem;
+}
+
+img {
+    max-width: 100%;
+}

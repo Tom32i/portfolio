@@ -1,4 +1,9 @@
-$color-gray: #e5e5e5;
+// Vars
+$color-gray: #e9e4e6;
+$color-gray-light: #f9f4f6;
+$color-light: #effdfd;
+$color-primary: #048998;
+$color-primary-light: #3bb4c1;
 $color-1: #d2fafb;
 $color-2: #51dacf;
 $color-3: #41aaa8;
@@ -8,7 +13,9 @@ $color-dark: #2f1a38;
 $text-white: white;
 $text-dark: #2c7372;
 $text-black: black;
+$text-mutted: #555;
 
+// Code highlighting
 $code-background: #3B3C3C;
 $monokai-red: #ff6188;
 $monokai-green: #a9dc76;
@@ -19,3 +26,16 @@ $monokai-blue: #78dce8;
 $monokai-grey: #ccc;
 $monokai-mutted: #999;
 $monokai-error: lightcoral;
+
+// Icons
+$icomoon-font-family: "icon" !default;
+$icomoon-font-path: "../fonts" !default;
+
+$icon-calendar: "\e900";
+$icon-clock: "\e901";
+$icon-file-text: "\e903";
+$icon-film: "\e907";
+$icon-link: "\e904";
+$icon-mail: "\e905";
+$icon-map-pin: "\e906";
+$icon-monitor: "\e902";

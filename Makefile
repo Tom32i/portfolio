@@ -28,7 +28,7 @@ install:
 
 ## Start dev server
 start:
-	bin/console server:run
+	bin/console server:run 0.0.0.0:8000
 
 ## Watch and build assets
 watch:

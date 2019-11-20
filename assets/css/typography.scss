@@ -1,6 +1,10 @@
 body {
     font-size: 20px;
-    font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+    font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 code {
@@ -10,12 +14,12 @@ code {
 h1, h2, h3, h4, h5 {
     font-family: "Cabin", sans-serif;
     font-weight: normal;
-    margin: 4rem 0 2rem;
+    margin: 2em 0 1.2em;
 }
 
 p {
     line-height: 1.4em;
-    margin-bottom: 1rem;
+    margin: 0.8rem 0;
 }
 
 em {
@@ -34,4 +38,32 @@ ol {
 
 img {
     max-width: 100%;
+}
+
+a {
+    color: $color-primary;
+}
+
+a:visited {
+    color: rgba($color-primary, 0.8);
+}
+
+.notice {
+    font-family: "Cabin", sans-serif;
+    font-weight: bold;
+}
+
+.invit {
+    color: $color-primary;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+hr {
+    margin: 4rem;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: $color-primary;
 }

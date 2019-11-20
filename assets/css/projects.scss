@@ -1,0 +1,33 @@
+.projects {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -2rem -2rem -2rem;
+
+    .project {
+        width: calc(100%/3 - 4rem);
+        margin: 2rem;
+
+        .head {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline;
+            justify-content: space-between;
+            margin: 0.8em 0 0.2em;
+        }
+
+        .date {
+            font-size: 0.8em;
+            color: $code-background;
+        }
+
+        h4 {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .details > *:last-child {
+            margin-bottom: 0;
+        }
+    }
+}

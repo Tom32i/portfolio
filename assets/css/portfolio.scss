@@ -1,13 +1,16 @@
 .portfolio {
-    color: $text-white;
+    background-color: $color-gray-light;
+    color: $text-black;//$color-3;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: stretch;
 
     header {
-        background-color: $color-gray; //$color-1
-        color: $color-3;
+        //background-color: $color-light;
+        color: white;
+        background-color: $color-primary-light;
+        background-image: url('../img/anchor.gif');
 
         .container {
             display: flex;
@@ -35,11 +38,11 @@
         width: 65%;
         max-width: 960px;
 
-        & *:first-child {
+        & > *:first-child {
             margin-top: 0;
         }
 
-        & *:last-child {
+        & > *:last-child {
             margin-bottom: 0;
         }
     }
@@ -60,15 +63,24 @@
         font-size: 1.4em;
     }
 
+    section {
+        //background-color: $color-light;
+        //color: $color-3;
+    }
+
+    section:nth-of-type(2n) {
+        background-color: white;
+    }
+
     section:nth-of-type(3n) {
-        background-color: $color-3;
+        //background-color: $color-3;
     }
     section:nth-of-type(3n+1) {
-        background-color: $color-4;
+        //background-color: $color-4;
     }
     section:nth-of-type(3n+2) {
-        background-color: $color-gray; //$color-1
-        color: $color-3;
+        //background-color: $color-light; //$color-1
+        //color: $color-3;
     }
     /*section:nth-of-type(3n+2) {
         background-color: $color-4;
@@ -78,11 +90,11 @@
     }*/
 
     footer {
-        background-color: $color-dark;
+        background-color: $color-primary;//$color-dark;
         color: $text-white;
 
-        a {
-            color: $text-white;
+        a, a:visited {
+            color: inherit;
         }
     }
 
@@ -113,52 +125,25 @@
         }
     }
 
-    /* Card */
-    .card {
-        display: flex;
-        flex-direction: column;
-        background-color: $text-white;
-        color: $color-3;
-        border-radius: 0.5rem;
-        padding: 1rem;
+    .hero {
+        h1, h2, h3, h4, h5 {
+            margin-top: 0;
 
-        .card-title {
-            font-weight: bold;
+            span {
+                font-weight: bold;
+            }
         }
     }
 
-    .talk {
-        text-decoration: none;
-        margin-bottom: 2rem;
+    /* Card */
+    .card {
+        background-color: white;
+        padding: 0.8rem;
+        border-radius: 0.4rem;
+        padding: 1rem;
+    }
 
-        .head {
-            display: flex;
-            flex-direction: row;
-        }
-
-        h5 {
-            font-size: 1.2em;
-        }
-
-        .description {
-            white-space: pre-wrap;
-            display: none;
-        }
-
-        .date, .format {
-            //flex: 0;
-            margin-left: 1rem;
-            white-space: nowrap;
-        }
-
-        .date::before {
-            content: "📅";
-            margin-right: 0.4rem;
-        }
-
-        .format::before {
-            content: "⏱";
-            margin-right: 0.4rem;
-        }
+    .bordered {
+        border-radius: 0.2rem;
     }
 }

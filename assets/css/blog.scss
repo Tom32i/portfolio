@@ -8,6 +8,7 @@
     padding: 0;
     margin: 0;
     color: black;
+    font-family: Georgia, Cambria, "Times New Roman", Times, serif;
 
     .content {
         box-sizing: border-box;
@@ -48,7 +49,7 @@
     }
 
     a, a:visited {
-        color: $text-dark;
+        color: $color-primary;
     }
 
     p, li {
@@ -59,7 +60,7 @@
     }
 
     .inline-code {
-        background-color: rgba($color-3, 0.4);
+        background-color: rgba($color-primary-light, 0.4);
         color: $text-black;
         border-radius: 0.2em;
         padding: 0 0.2em;

@@ -1,0 +1,103 @@
+.portfolio {
+    /** talks */
+
+    .talk-intro > *:first-child {
+        margin-top: 0;
+    }
+
+    .talks {
+        flex: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: -1rem;
+        margin-bottom: -1rem;
+
+        /*.talk:nth-of-type(2n) {
+            align-self: flex-start;
+        }
+
+        .talk:nth-of-type(2n+1) {
+            align-self: flex-end;
+        }*/
+    }
+
+    .talk {
+        margin: 1rem 0;
+
+        .title {
+            font-size: 1.2em;
+            margin: 0;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .description {
+            white-space: pre-wrap;
+            font-size: 0.8em;
+            // card style
+            background-color: white;
+            padding: 0.6rem 0.8rem;
+            border-radius: 0.4rem;
+            margin: 1rem -0.8rem;
+        }
+
+        .links {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            font-size: 0.9em;
+            margin-bottom: 2rem;
+            margin: 0.6rem -0.6em;
+            color: $text-mutted;
+
+            > * {
+                padding: 0.2em;
+                margin: 0 0.4em;
+                line-height: 1em;
+                white-space: nowrap;
+                display: flex;
+                align-items: center;
+
+                &::before {
+                    margin-right: 0.4em;
+                    text-decoration: none;
+
+                    font-family: '#{$icomoon-font-family}' !important;
+                    speak: none;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-variant: normal;
+                    text-transform: none;
+                    line-height: 1;
+
+                    /* Better Font Rendering =========== */
+                    -webkit-font-smoothing: antialiased;
+                    -moz-osx-font-smoothing: grayscale;
+                }
+            }
+
+            a, button {
+                text-decoration: none;
+                border-radius: 0.2rem;
+                border: 1px solid transparent;
+                background: none;
+                color: $text-dark;
+                font-size: 1em;
+                cursor: pointer;
+
+                &:hover {
+                    color: white;
+                    background-color: $text-dark;
+                    border-color: $text-dark;
+                }
+            }
+        }
+
+        .date::before { content: $icon-calendar; }
+        .format::before { content: $icon-clock; }
+        .slides::before { content: $icon-monitor; }
+        .video::before { content: $icon-film; }
+        .infos::before { content: $icon-file-text; }
+    }
+}

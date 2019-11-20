@@ -13,48 +13,55 @@
         </div>
     </header>
 
-    <section id="jeux">
-        <div class="container">
-            <h3>Jeux et expérimentations</h3>
-            <div class="row">
-                <a href="http://curvytron.com" target="_blank">
-                    <img class="card" src="{{ asset('img/curvytron.png') }}">
-                    <h5 class="card-title">Curvytron</h5>
-                </a>
-                <a href="http://whatthetune.com" target="_blank">
-                    <img class="card" src="{{ asset('img/wtt.jpg') }}">
-                    <h5 class="card-title">What the Tune ?!</h5>
-                </a>
-            </div>
-        </div>
-    </section>
-
     <section id="pro">
         <div class="container">
             <h3>Comment je travail</h3>
 
             <div class="row">
-                <div>
-                    <h4>Je m'investi</h4>
-                    <p>J'ai besoin de comprendre le besoin : pour proposer aux utilisateurs et aux utilisatrices des solutions qui facilitent leur quotidien.</p>
+                <div class="hero">
+                    <h4>Je m'<span>investi</span></h4>
+                    <p>J'ai comprends le besoin pour proposer aux utilisateurs et aux utilisatrices des solutions qui facilitent leur quotidien.</p>
                 </div>
 
-                <div>
-                    <h4>Je vise la qualité</h4>
+                <div class="hero">
+                    <h4>Je vise la <span>qualité</span></h4>
                     <p>Je m'appuie sur les standards et les bonnes pratiques. Mon code est découplé, efficace et utilisable par d'autres.</p>
                 </div>
 
-                <div>
-                    <h4>J'aime apprendre</h4>
+                <div class="hero">
+                    <h4>J'aime <span>apprendre</span></h4>
                     <p>Je suis avec interet les évolutions des technologies du web, j'expériemente et je m'adapte.</p>
                 </div>
             </div>
 
             <h3>Mes outils</h3>
 
-            <p>En ce moment, je suis particulierement efficace avec Symfony et React, mais je propose des solutions standards et low-tech dès que c'est pertinent.</p>
-            <p>J'organise ma production de code autour du workflow git, notamment sur Github.</p>
-            <p>Je sais provisionner mes serveurs avec Ansible et servir mes applications avec Nginx.</p>
+            <p>En ce moment, je suis particulierement efficace avec <span class="notice">Symfony</span> et <span class="notice">React</span>, mais je propose des solutions <span class="notice">standards</span> et low-tech dès que c'est pertinent.</p>
+            <p>J'organise ma production de code autour du workflow <span class="notice">git</span>, notamment sur <span class="notice">Github</span>.</p>
+            <p>Je provisionne mes serveurs avec <span class="notice">Ansible</span> et sers mes applications avec <span class="notice">Nginx</span>.</p>
+        </div>
+    </section>
+
+    <section id="jeux">
+        <div class="container">
+            <h3>Jeux et expérimentations</h3>
+            <p>J'aime développer des jeux vidéo sur mon temps libre, je suis notamment le créateur de <span class="notice">Curvytron</span> et de <span class="notice">What the tune?!</span></p>
+            <div class="projects">
+                {% for key, project in projects %}
+                    <div class="project">
+                        <a href="{{ project.url }}" target="_blank">
+                            <img src="{{ asset('img/' ~ project.image) }}">
+                        </a>
+                        <div class="details">
+                            <div class="head">
+                                <h4>{{ project.title }}</h4>
+                                <span class="date">{{ project.date|date('Y') }}</span>
+                            </div>
+                            <p>{{ project.description }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
     </section>
 
@@ -62,43 +69,44 @@
         <div class="container">
             <h3>Talks</h3>
 
-            <p>Je partage régulierement sur des sujets qui me passionnent dans des évenement comme ceux de l'<strong>AFUP Lyon</strong>, <strong>Lyon JS</strong>, <strong>Human Talks</strong> et même à l'<strong>Apéro des designers</strong>.</p>
+            <div class="row">
+                <div class="talk-intro">
+                    <p>Je partage régulierement sur des sujets qui me passionnent dans des évenement comme ceux de l'<span class="notice">AFUP Lyon</span>, <span class="notice">Lyon JS</span>, <span class="notice">Human Talks</span> et même à l'<span class="notice">Apéro des designers</span>.</p>
+                    <p>J'ai eu la plaisir de monter sur les scènes du <span class="notice">Blend Web Mix</span> 2017 et du <span class="notice">Forum PHP</span> 2018.</p>
+                    <!--img src="{{ asset('img/talk.jpg') }}" class="bordered"-->
+                </div>
 
-            <p>J'ai aussi eu la chance de monter sur la scène du <strong>Blend Web Mix 2017</strong> et du <strong>Forum PHP 2018</strong>.</p>
-
-            <div>
-                {% for talk in talks %}
-                    <a class="card talk" target="_blank" href="{{ talk.slides }}">
-                        <div class="head">
-                            <h5>{{ talk.title }}</h5>
-                            <span class="date">{{ talk.date|date('Y') }}</span>
-                            <span class="format">{{ talk.duration }}"</span>
+                <div class="talks">
+                    {% for talk in talks %}
+                        <div class="talk">
+                            <h5 class="title">{{ talk.title }}</h5>
+                            <p class="description" style="display: none;">{{ talk.description }}</p>
+                            <p class="links">
+                                <span class="format">{{ talk.duration }}'</span>
+                                <span class="date">{{ talk.date|date('Y') }}</span>
+                                <button type="button" class="infos">infos</button>
+                                <a class="slides" target="_blank" href="{{ talk.slides }}">slides</a>
+                                {% if talk.video %}
+                                    <a class="video" target="_blank" href="{{ talk.video }}">vidéo</a>
+                                {% endif %}
+                            </p>
                         </div>
-                        <p class="description">{{ talk.description }}</p>
-                    </a>
-                {% endfor %}
-                {#<li>
-                    <a class="card" href="https://talk.tom32i.fr/rando-velo/">
-                        La randonnée à vélo - 2018 - 10"
-                    </a>
-                </li>
-                <li>
-                    <a class="card" href="https://talk.tom32i.fr/web-apis/">
-                        API web insoupçonnées - 2018 - 10"
-                        {# Petit tour d'horizon de quelques capacités de vos navigateurs dont vous ignoriez peut-être l'existence ! # }
-                    </a>
-                </li>
-                <li>
-                    <a class="card" href="https://talk.tom32i.fr/rando-velo/">
-                        Voyage au centre du cerveau humain ou comment manipuler des données binaires en Javascript - 2018 - 50"
-                        <iframe class="card" style="flex: inherit;" width="560" height="315" src="https://www.youtube-nocookie.com/embed/LuCXFhaRXcw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </a>
-                </li>
-                <li>
-                    <a class="card" href="https://talk.tom32i.fr/emoji/#/">
-                        Emoji - 2015 - 10"
-                    </a>
-                </li>#}
+                    {% endfor %}
+                </div>
+            </div>
+            <hr/>
+            <h4 class="invit">
+                <span>Vous organisez une conférence ?</span>
+                <span>Je répondrai avec plaisir à votre CFP !</span>
+            </h4>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <h3>Autres petites choses</h3>
+
+            <div class="row">
             </div>
         </div>
     </section>

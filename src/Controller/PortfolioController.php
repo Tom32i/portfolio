@@ -29,14 +29,13 @@ class PortfolioController extends AbstractController
     }
 
     /**
-     * @Route("test.json", name="test_json", defaults={"_format": "json"}, options={"mapped": false})
+     * @Route("/short", name="short")
      */
-    public function testJson()
+    public function short()
     {
-        return $this->json([
-            'foo' => true,
-            'bar' => 45,
-            'baz' => 'baz'
+        return $this->render('portfolio/short.html.twig', [
+            'talks' => $this->manager->getContents(Talk::class, ['date' => false]),
+            'projects' => $this->manager->getContents(Project::class, ['date' => false]),
         ]);
     }
 }

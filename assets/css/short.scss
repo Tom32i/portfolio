@@ -1,0 +1,109 @@
+.short {
+    background-color: $color-light;
+    color: $text-white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: stretch;
+
+    .menu {
+        //display: flex;
+        display: none;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-end;
+        margin: 1rem -1rem;
+
+        > * {
+            margin: 0 1rem;
+        }
+    }
+
+    p, h1, h2, h3, h4, h5 {
+        font-family: "Cabin", sans-serif;
+        font-size: 1.4em;
+        line-height: 1.2em;
+        margin: 2rem 0;
+    }
+
+    .note {
+        font-style: italic;
+        font-size: 1.2em;
+    }
+
+    .notive {
+        font-weight: bold;
+    }
+
+    a {
+        color: inherit;
+    }
+
+    h1 {
+        font-size: 2.4em;
+    }
+
+    section, header, footer {
+        padding: 4rem;
+        margin: 0;
+        min-width: 200px;
+        width: 65%;
+        max-width: 640px;
+        //width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    header {
+        //background-color: $color-1;
+        color: $color-3;
+        padding: 8rem 0;
+    }
+
+    section {
+        box-shadow: inset -3rem 0rem rgba(0, 0, -2, 0.05);
+    }
+
+    section:first-of-type {
+        border-top-left-radius: 50% 70%;
+        border-top-right-radius: 50% 70%;
+        padding-top: 12rem;
+    }
+
+    section:last-of-type {
+        border-bottom-left-radius: 2rem;
+        border-bottom-right-radius: 2rem;
+    }
+
+    section:nth-of-type(6n+1) { background-color: $color-2; }
+    section:nth-of-type(6n+2) { background-color: $color-3; }
+    section:nth-of-type(6n+3) { background-color: $color-4; }
+    section:nth-of-type(6n+4) { background-color: $color-5; }
+    section:nth-of-type(6n+5) { background-color: $color-6; }
+    section:nth-of-type(6n+0) { background-color: $color-7; }
+
+    .baton {
+        background-color: $color-wood;
+        border-bottom-left-radius: 5rem;
+        border-bottom-right-radius: 5rem;
+        width: 10rem;
+        height: 32rem;
+        box-shadow: inset -1rem 2rem rgba(0, 0, 0, 0.05);
+        z-index: -1;
+        margin-bottom: 8rem;
+    }
+
+    .container {
+        width: 100%;
+
+        & > *:first-of-type {
+            margin-top: 0;
+        }
+
+        & > *:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+}

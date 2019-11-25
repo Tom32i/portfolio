@@ -10,7 +10,7 @@
         //background-color: $color-light;
         color: white;
         background-color: $color-primary-light;
-        background-image: url('../img/anchor.gif');
+        //background-image: url('../img/anchor.gif');
 
         .container {
             display: flex;
@@ -104,13 +104,17 @@
         flex-direction: column;
 
         span {
-            font-weight: 700;
-            line-height: 1.2em;
+            line-height: 1.6em;
         }
+
+        strong {
+            font-weight: 700;
+        }
+
         small {
             font-weight: 400;
             font-size: 0.8em;
-            line-height: 1em;
+            line-height: 1.4em;
         }
     }
 

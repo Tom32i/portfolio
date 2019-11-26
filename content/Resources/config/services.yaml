@@ -49,7 +49,7 @@ services:
         arguments:
             $source: "%kernel.project_dir%/public"
             $destination: "%kernel.project_dir%/build"
-            $assets: "%kernel.project_dir%/assets"
+            $assets: "%kernel.project_dir%/public"
 
     # Content Manager
     Content\ContentManager:

@@ -12,12 +12,12 @@
 /.web-server-pid
 ###< symfony/web-server-bundle ###
 
-build
-node_modules
-
 ###> symfony/webpack-encore-bundle ###
 /node_modules/
 /public/assets/
 npm-debug.log
 yarn-error.log
 ###< symfony/webpack-encore-bundle ###
+
+# Build
+build

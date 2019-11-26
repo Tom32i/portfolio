@@ -1,6 +1,6 @@
 .short {
     background-color: $color-light;
-    color: $text-white;
+    color: $color-2-dark;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -40,12 +40,14 @@
     }
 
     h1 {
+        color: $color-2-dark;
         font-size: 2.4em;
         line-height: 2em;
     }
 
-    section p {
-        text-shadow: 0em 0.15rem rgba(0,0,0,0.2);
+    h2 {
+        font-size: 1.4em;
+        color: $color-2;
     }
 
     section, header {
@@ -61,18 +63,25 @@
     }
 
     header {
-        color: $color-3;
-        padding: 8rem 0;
+        color: $text-dark;
+        padding: 4rem 0 6rem;
     }
 
     section {
-        box-shadow: inset -3rem 0rem $shadow;
+        color: white;
+        margin-left: -1.5rem;
+        position: relative;
+
+        p {
+            text-shadow: 0em 0.15rem rgba(black ,0.2),
+                         0em 0em 0.2em rgba(black , 0.2);
+        }
     }
 
     section:first-of-type {
         position: relative;
-        border-top-left-radius: 50% 70%;
-        border-top-right-radius: 50% 70%;
+        border-top-left-radius: 50% 90%;
+        border-top-right-radius: 50% 90%;
         padding-top: 12rem;
 
         &::before {
@@ -95,24 +104,38 @@
     section:last-of-type {
         border-bottom-left-radius: 2rem;
         border-bottom-right-radius: 2rem;
+
+        &::after {
+            content: "";
+            display: block;
+            position: absolute;
+            bottom: -40rem;
+            width: 100%;
+            height: 2rem;
+            border-radius: 50%;
+            margin-left: 1.5rem;
+            background-color: $shadow;
+        }
     }
 
-    section:nth-of-type(6n+1) { background-color: $color-2; }
-    section:nth-of-type(6n+2) { background-color: $color-3; }
-    section:nth-of-type(6n+3) { background-color: $color-4; }
-    section:nth-of-type(6n+4) { background-color: $color-5; }
-    section:nth-of-type(6n+5) { background-color: $color-6; }
-    section:nth-of-type(6n+0) { background-color: $color-7; }
+    section:nth-of-type(7n+1) { background-color: $color-1; box-shadow: 3rem 0rem $color-1-dark, 1.5rem 0rem $color-1-dark; }
+    section:nth-of-type(7n+2) { background-color: $color-2; box-shadow: 3rem 0rem $color-2-dark; }
+    section:nth-of-type(7n+3) { background-color: $color-3; box-shadow: 3rem 0rem $color-3-dark; }
+    section:nth-of-type(7n+4) { background-color: $color-4; box-shadow: 3rem 0rem $color-4-dark; }
+    section:nth-of-type(7n+5) { background-color: $color-5; box-shadow: 3rem 0rem $color-5-dark; }
+    section:nth-of-type(7n+6) { background-color: $color-6; box-shadow: 3rem 0rem $color-6-dark; }
+    section:nth-of-type(7n+0) { background-color: $color-7; box-shadow: 3rem 0rem $color-7-dark; }
 
     .baton {
         position: relative;
         background-color: $color-wood;
         border-bottom-left-radius: 5rem;
         border-bottom-right-radius: 5rem;
-        box-shadow: inset -0.8rem 0rem $shadow;
+        box-shadow: 0.8rem 0rem #b8a07d;
         width: 10rem;
         height: 32rem;
-        margin-bottom: 8rem;
+        //margin-left: -0.4rem;
+        margin-bottom: 10rem;
         padding: 2rem 0;
 
         display: flex;

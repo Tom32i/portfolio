@@ -34,6 +34,10 @@ start:
 watch:
 	./node_modules/.bin/encore dev --watch
 
+## Server static site
+serve:
+	php -S 0.0.0.0:8001 -t build
+
 ## Build static site
 build: build-assets build-content
 
@@ -42,7 +46,14 @@ build-assets:
 
 build-content:
 	bin/console content:build
+	cp -r public/assets build
 
-## Server static site
-serve:
-	php -S 0.0.0.0:8000 -t build
+##########
+# Deploy #
+##########
+
+deploy@demo: build
+	rsync -arzv --delete build/* tom32i@deployer.vm:/home/tom32i/portfolio-preview/
+
+deploy@prod: build
+	rsync -arzv --delete build/* tom32i@tom32i.fr:/home/tom32i/portfolio-preview/

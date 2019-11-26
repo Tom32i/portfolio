@@ -9,7 +9,6 @@ class ProjectDenormalizer implements ContentDenormalizerInterface
 {
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        dump($data);
         return new Project(
             $this->get($data, 'title'),
             $this->get($data, 'description'),

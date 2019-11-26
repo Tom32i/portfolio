@@ -1,120 +1,72 @@
 {% extends 'base.html.twig' %}
 
-{% block body_class 'portfolio' %}
+{% block body_class 'short' %}
 
 {% block body %}
-    <header>
-        <div class="container">
-            <h1 class="title">
-                <span>Salut moi c'est <strong>Thomas</strong>,</span>
-                <small class="subtitle">Je code des deux coté de la requête HTTP.</small>
-            </h1>
-        </div>
-    </header>
-
-    <section id="pro">
-        <div class="container">
-            <h3>Comment je travail</h3>
-
-            <div class="row">
-                <div class="hero">
-                    <h4>Je m'<span>investi</span></h4>
-                    <p>J'ai comprends le besoin pour proposer aux utilisateurs et aux utilisatrices des solutions qui facilitent leur quotidien.</p>
-                </div>
-
-                <div class="hero">
-                    <h4>Je vise la <span>qualité</span></h4>
-                    <p>Je m'appuie sur les standards et les bonnes pratiques. Mon code est découplé, efficace et utilisable par d'autres.</p>
-                </div>
-
-                <div class="hero">
-                    <h4>J'aime <span>apprendre</span></h4>
-                    <p>Je suis avec interet les évolutions des technologies du web, j'expériemente et je m'adapte.</p>
-                </div>
-            </div>
-
-            <h3>Mes outils</h3>
-
-            <p>En ce moment, je suis particulierement efficace avec <span class="notice">Symfony</span> et <span class="notice">React</span>, mais je propose des solutions <span class="notice">standards</span> et low-tech dès que c'est pertinent.</p>
-            <p>J'organise ma production de code autour du workflow <span class="notice">git</span>, notamment sur <span class="notice">Github</span>.</p>
-            <p>Je provisionne mes serveurs avec <span class="notice">Ansible</span> et sers mes applications avec <span class="notice">Nginx</span>.</p>
-        </div>
-    </section>
-
-    <section id="jeux">
-        <div class="container">
-            <h3>Jeux et expérimentations</h3>
-            <p>J'aime développer des jeux vidéo sur mon temps libre, je suis notamment le créateur de <span class="notice">Curvytron</span> et de <span class="notice">What the tune?!</span></p>
-            <div class="projects">
-                {% for key, project in projects %}
-                    <div class="project">
-                        <a href="{{ project.url }}" target="_blank">
-                            <img src="{{ asset('img/' ~ project.image) }}">
-                        </a>
-                        <div class="details">
-                            <div class="head">
-                                <h4>{{ project.title }}</h4>
-                                <span class="date">{{ project.date|date('Y') }}</span>
-                            </div>
-                            <p>{{ project.description }}</p>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <div class="container">
-            <h3>Talks</h3>
-
-            <div class="row">
-                <div class="talk-intro">
-                    <p>Je partage régulierement sur des sujets qui me passionnent dans des évenement comme ceux de l'<span class="notice">AFUP Lyon</span>, <span class="notice">Lyon JS</span>, <span class="notice">Human Talks</span> et même à l'<span class="notice">Apéro des designers</span>.</p>
-                    <p>J'ai eu la plaisir de monter sur les scènes du <span class="notice">Blend Web Mix</span> 2017 et du <span class="notice">Forum PHP</span> 2018.</p>
-                    <!--img src="{{ asset('img/talk.jpg') }}" class="bordered"-->
-                </div>
-
-                <div class="talks">
-                    {% for talk in talks %}
-                        <div class="talk">
-                            <h5 class="title">{{ talk.title }}</h5>
-                            <p class="description" style="display: none;">{{ talk.description }}</p>
-                            <p class="links">
-                                <span class="format">{{ talk.duration }}'</span>
-                                <span class="date">{{ talk.date|date('Y') }}</span>
-                                <button type="button" class="infos">infos</button>
-                                <a class="slides" target="_blank" href="{{ talk.slides }}">slides</a>
-                                {% if talk.video %}
-                                    <a class="video" target="_blank" href="{{ talk.video }}">vidéo</a>
-                                {% endif %}
-                            </p>
-                        </div>
-                    {% endfor %}
-                </div>
-            </div>
-            <hr/>
-            <h4 class="invit">
-                <span>Vous organisez une conférence ?</span>
-                <span>Je répondrai avec plaisir à votre CFP !</span>
-            </h4>
-        </div>
-    </section>
-
-    <section>
-        <div class="container">
-            <h3>Autres petites choses</h3>
-
-            <div class="row">
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <a href="{{ path('blog') }}">
-                Blog
-            </a>
-        </div>
-    </footer>
+<header>
+    <div class="container">
+        <nav class="menu">
+            <a target="_blank" href="https://twitter.com/tom32i">Tw</a>
+            <a target="_blank" href="https://instagram.com/tom32i">In</a>
+            <a target="_blank" href="https://github.com/tom32i">Gh</a>
+            <a href="{#{ path('talk') }#}">Talks</a>
+            <a href="{#{ path('blog') }#}">Blog</a>
+        </nav>
+    </div>
+    <div class="container">
+        <h1>Salut ! Moi c'est <span class="notice">Thomas</span>,</h1>
+        <h2>Je code des deux cotés de la requête HTTP.</h2>
+    </div>
+</header>
+<section>
+    <div class="container">
+        <p>Je suis <span class="notice">lead développeur web</span> à Lyon.</p>
+        <p>C'est mon métier depuis bientôt 10 ans.</p>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <p>En ce moment, je suis efficace avec<br><a class="notice" href="https://symfony.com">Symfony</a> et <a class="notice" href="">React</a>.</p>
+        <p class="note">Mais je n'utilise pas systématiquement des frameworks.</p>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <p>J'aime expérimenter dans le navigateur et développer des jeux vidéo en temps réel.</p>
+        <p>Des projets à moi :<br><a class="notice" href="http://curvytron.com">Curvytron</a> et <a class="notice" href="https://whatthetune.com">What the tune?!</a></p>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <p>Je me déplace partout à <span class="notice">vélo</span>.</p>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <p>Je partage régulierement mes passions via des <a target="_blank" href="{#{ path('blog') }#}">articles</a> et des <a target="_blank" href="{#{ path('talk') }#}">conférences</a>.</p>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <p>J'apprends la photographie <a target="_blank" href="https://unsplash.com/tom32i">ici</a> et <a target="_blank" href="https://instagram.com/tom32i">là</a>.</p>
+        <p class="note">(et même <a target="_blank" href="https://instagram.com/gamoscope">ailleurs</a>)</p>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <p>Pour discuter, c'est par <a target="_blank" href="mailto:thomas.jarrand@gmail.com">mail</a> et sur <a target="_blank" href="https://twitter.com/tom32i">Twitter</a>.<p>
+        <p>Bisous.</p>
+    </div>
+</section>
+<footer class="baton">
+    <a target="_blank" href="https://twitter.com/tom32i">
+        <span title="Twitter" class="icon-twitter"></span>
+    </a>
+    <a target="_blank" href="https://instagram.com/tom32i">
+        <span title="Instagram" class="icon-instagram"></span>
+    </a>
+    <a target="_blank" href="https://github.com/tom32i">
+        <span title="Github" class="icon-github"></span>
+    </a>
+</footer>
 {% endblock %}

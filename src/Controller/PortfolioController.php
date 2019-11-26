@@ -20,22 +20,9 @@ class PortfolioController extends AbstractController
      */
     public function index()
     {
-        //ini_set('memory_limit', '2048M');
-
         return $this->render('portfolio/index.html.twig', [
-            'talks' => $this->manager->getContents(Talk::class, ['date' => false]),
-            'projects' => $this->manager->getContents(Project::class, ['date' => false]),
-        ]);
-    }
-
-    /**
-     * @Route("/short", name="short")
-     */
-    public function short()
-    {
-        return $this->render('portfolio/short.html.twig', [
-            'talks' => $this->manager->getContents(Talk::class, ['date' => false]),
-            'projects' => $this->manager->getContents(Project::class, ['date' => false]),
+            //'talks' => $this->manager->getContents(Talk::class, ['date' => false]),
+            //'projects' => $this->manager->getContents(Project::class, ['date' => false]),
         ]);
     }
 }

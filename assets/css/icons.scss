@@ -27,6 +27,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+
 .icon-calendar {
   &:before {
     content: $icon-calendar;
@@ -40,6 +41,11 @@
 .icon-file-text {
   &:before {
     content: $icon-file-text;
+  }
+}
+.icon-film {
+  &:before {
+    content: $icon-film;
   }
 }
 .icon-link {
@@ -60,6 +66,21 @@
 .icon-monitor {
   &:before {
     content: $icon-monitor;
+  }
+}
+.icon-instagram {
+  &:before {
+    content: $icon-instagram;
+  }
+}
+.icon-twitter {
+  &:before {
+    content: $icon-twitter;
+  }
+}
+.icon-github {
+  &:before {
+    content: $icon-github;
   }
 }
 

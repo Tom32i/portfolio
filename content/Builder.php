@@ -14,6 +14,7 @@ use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Routing\Route;
 use Symfony\Component\Routing\RouterInterface;
+use Symfony\WebpackEncoreBundle\Asset\EntrypointLookupInterface;
 use Twig\Environment;
 
 /**
@@ -36,6 +37,13 @@ class Builder
     private $urlGenerator;
 
     /**
+     * Encore webpack
+     *
+     * @var EntrypointLookupInterface
+     */
+    private $entrypointLookup;
+
+    /**
      * Path to build route to
      *
      * @var string
@@ -53,6 +61,7 @@ class Builder
         RouterInterface $router,
         HttpKernelInterface $httpKernel,
         UrlGeneratorInterface $urlGenerator,
+        EntrypointLookupInterface $entrypointLookup,
         Environment $templating,
         AssetList $assetList,
         PageList $pageList,
@@ -64,6 +73,7 @@ class Builder
         $this->httpKernel = $httpKernel;
         $this->urlGenerator = $urlGenerator;
         $this->templating = $templating;
+        $this->entrypointLookup = $entrypointLookup;
         $this->assetList = $assetList;
         $this->pageList = $pageList;
         $this->sitemap = $sitemap;
@@ -175,6 +185,7 @@ class Builder
         $response = $this->httpKernel->handle($request);
 
         $this->httpKernel->terminate($request, $response);
+        $this->entrypointLookup->reset();
 
         list($path, $file) = $this->getFilePath($request->getPathInfo());
 

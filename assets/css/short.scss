@@ -67,43 +67,109 @@
         padding: 4rem 0 6rem;
     }
 
+    section:nth-of-type(7n+1) {
+        --light-color: #{$color-1};
+        --dark-color: #{$color-1-dark};
+        --drop: 66%;
+    }
+    section:nth-of-type(7n+2) {
+        --light-color: #{$color-2};
+        --dark-color: #{$color-2-dark};
+        --drop: 40%;
+    }
+    section:nth-of-type(7n+3) {
+        --light-color: #{$color-3};
+        --dark-color: #{$color-3-dark};
+        --drop: 45%;
+    }
+    section:nth-of-type(7n+4) {
+        --light-color: #{$color-4};
+        --dark-color: #{$color-4-dark};
+        --drop: 66%;
+    }
+    section:nth-of-type(7n+5) {
+        --light-color: #{$color-5};
+        --dark-color: #{$color-5-dark};
+        --drop: 18%;
+    }
+    section:nth-of-type(7n+6) {
+        --light-color: #{$color-6};
+        --dark-color: #{$color-6-dark};
+        --drop: 75%;
+    }
+    section:nth-of-type(7n+0) {
+        --light-color: #{$color-7};
+        --dark-color: #{$color-7-dark};
+        --drop: 0%;
+    }
+
     section {
         color: white;
         margin-left: -1.5rem;
         position: relative;
 
+        background-color: var(--light-color);
+        box-shadow: 3rem 0rem var(--dark-color);
+
         p {
-            text-shadow: 0em 0.15rem rgba(black ,0.2),
-                         0em 0em 0.2em rgba(black , 0.2);
+            /*text-shadow: 0em 0.1rem rgba(black ,0.2),
+                         0em 0em 0.2em rgba(black , 0.2)*/;
+        }
+
+        svg {
+            position: absolute;
+            bottom: 0;
+            left: var(--drop);
+            z-index: 2;
+
+            path {
+                fill: var(--light-color);
+            }
         }
     }
 
     section:first-of-type {
         position: relative;
-        border-top-left-radius: 50% 90%;
-        border-top-right-radius: 50% 90%;
+        border-top-left-radius: 45% 18rem;
+        border-top-right-radius: 45% 18rem;
         padding-top: 12rem;
+        box-shadow: 3rem 0rem var(--dark-color), 1.5rem 0rem var(--dark-color);
 
-        &::before {
+        &::before, &::after {
             content: "";
             display: block;
             position: absolute;
-            top: 3rem;
-            width: 12rem;
-            height: 3rem;
-            background-color: rgba(white, 0.66);
-            left: 7rem;
-            transform: rotate(-25deg);
+            background-color: rgba(white, 0.9);
+        }
+
+        &::before {
+            top: 20%;
+            left: 12%;
+            width: 25%;
+            height: 8%;
+            transform: rotate(-32deg);
             border-top-left-radius: 50% 80%;
             border-top-right-radius: 50% 80%;
             border-bottom-left-radius: 8% 20%;
             border-bottom-right-radius: 8% 20%;
         }
+
+        &::after {
+            top: 42%;
+            left: 8%;
+            width: 5%;
+            height: 4%;
+            transform: rotate(-45deg);
+            border-top-left-radius: 70% 80%;
+            border-top-right-radius: 70% 80%;
+            border-bottom-left-radius: 40% 60%;
+            border-bottom-right-radius: 40% 60%;
+        }
     }
 
     section:last-of-type {
-        border-bottom-left-radius: 2rem;
-        border-bottom-right-radius: 2rem;
+        border-bottom-left-radius: 4rem;
+        border-bottom-right-radius: 4rem;
 
         &::after {
             content: "";
@@ -118,14 +184,6 @@
         }
     }
 
-    section:nth-of-type(7n+1) { background-color: $color-1; box-shadow: 3rem 0rem $color-1-dark, 1.5rem 0rem $color-1-dark; }
-    section:nth-of-type(7n+2) { background-color: $color-2; box-shadow: 3rem 0rem $color-2-dark; }
-    section:nth-of-type(7n+3) { background-color: $color-3; box-shadow: 3rem 0rem $color-3-dark; }
-    section:nth-of-type(7n+4) { background-color: $color-4; box-shadow: 3rem 0rem $color-4-dark; }
-    section:nth-of-type(7n+5) { background-color: $color-5; box-shadow: 3rem 0rem $color-5-dark; }
-    section:nth-of-type(7n+6) { background-color: $color-6; box-shadow: 3rem 0rem $color-6-dark; }
-    section:nth-of-type(7n+0) { background-color: $color-7; box-shadow: 3rem 0rem $color-7-dark; }
-
     .baton {
         position: relative;
         background-color: $color-wood;
@@ -134,7 +192,6 @@
         box-shadow: 0.8rem 0rem #b8a07d;
         width: 10rem;
         height: 32rem;
-        //margin-left: -0.4rem;
         margin-bottom: 10rem;
         padding: 2rem 0;
 

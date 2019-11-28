@@ -3,6 +3,14 @@ body {
     font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
+*, *::before, *::after, *:before, *:after, *:focus, *:active{
+    box-sizing: border-box;
+    outline: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -ms-interpolation-mode: bicubic;
+}
+
 * {
     box-sizing: border-box;
 }

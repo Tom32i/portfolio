@@ -82,14 +82,14 @@
                 border-radius: 0.2rem;
                 border: 1px solid transparent;
                 background: none;
-                color: $text-dark;
+                color: $text-primary;
                 font-size: 1em;
                 cursor: pointer;
 
                 &:hover {
                     color: white;
-                    background-color: $text-dark;
-                    border-color: $text-dark;
+                    background-color: $text-primary;
+                    border-color: $text-primary;
                 }
             }
         }

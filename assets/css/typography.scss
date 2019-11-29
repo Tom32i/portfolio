@@ -1,18 +1,6 @@
 body {
     font-size: 20px;
-    font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-}
-
-*, *::before, *::after, *:before, *:after, *:focus, *:active{
-    box-sizing: border-box;
-    outline: none;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    -ms-interpolation-mode: bicubic;
-}
-
-* {
-    box-sizing: border-box;
+    font-family: 'Cabin', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 code {
@@ -20,7 +8,7 @@ code {
 }
 
 h1, h2, h3, h4, h5 {
-    font-family: "Cabin", sans-serif;
+    font-family: 'Cabin', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-weight: normal;
     margin: 2em 0 1.2em;
 }
@@ -49,20 +37,19 @@ img {
 }
 
 a {
-    color: $color-primary;
+    color: $color-1-dark;
 }
 
 a:visited {
-    color: rgba($color-primary, 0.8);
+    color: rgba($color-1-dark, 0.8);
 }
 
 .notice {
-    font-family: "Cabin", sans-serif;
     font-weight: bold;
 }
 
 .invit {
-    color: $color-primary;
+    color: $color-1-dark;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -73,5 +60,5 @@ hr {
     border-top-color: transparent;
     border-left-color: transparent;
     border-right-color: transparent;
-    border-bottom-color: $color-primary;
+    border-bottom-color: $color-1-dark;
 }

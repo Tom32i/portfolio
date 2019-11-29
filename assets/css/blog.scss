@@ -1,18 +1,16 @@
 .blog {
     width: 100%;
-    background-color: $color-gray;
     font-size: 16px;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 0;
     margin: 0;
-    color: black;
     font-family: Georgia, Cambria, "Times New Roman", Times, serif;
 
     .content {
         box-sizing: border-box;
-        width: 680px;
+        width: 640px;
         max-width: 100%;
         padding: 2em;
     }
@@ -27,6 +25,7 @@
     }
 
     h1, h2, h3, h4, h5 {
+        color: $text-black;
         font-weight: bold;
     }
 
@@ -49,18 +48,17 @@
     }
 
     a, a:visited {
-        color: $color-primary;
+        color: $text-primary;
     }
 
     p, li {
-        //font-family: Georgia, Cambria, "Times New Roman", Times, serif;
         line-height: 1.5em;
         font-size: 1.3em;
         font-style: normal;
     }
 
     .inline-code {
-        background-color: rgba($color-primary-light, 0.4);
+        background-color: rgba($color-1-dark, 0.4);
         color: $text-black;
         border-radius: 0.2em;
         padding: 0 0.2em;

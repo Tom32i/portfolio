@@ -79,43 +79,36 @@
         --light-color: #{$color-1};
         --dark-color: #{$color-1-dark};
         --drop: 66%;
-        --delay: #{1200ms + 0ms};
     }
     section:nth-of-type(7n+2) {
         --light-color: #{$color-2};
         --dark-color: #{$color-2-dark};
         --drop: 40%;
-        --delay: #{1200ms + 400ms};
     }
     section:nth-of-type(7n+3) {
         --light-color: #{$color-3};
         --dark-color: #{$color-3-dark};
         --drop: 68%;
-        --delay: #{1200ms + 800ms};
     }
     section:nth-of-type(7n+4) {
         --light-color: #{$color-4};
         --dark-color: #{$color-4-dark};
         --drop: 66%;
-        --delay: #{1200ms + 1200ms};
     }
     section:nth-of-type(7n+5) {
         --light-color: #{$color-5};
         --dark-color: #{$color-5-dark};
         --drop: 18%;
-        --delay: #{1200ms + 1600ms};
     }
     section:nth-of-type(7n+6) {
         --light-color: #{$color-6};
         --dark-color: #{$color-6-dark};
         --drop: 75%;
-        --delay: #{1200ms + 2000ms};
     }
     section:nth-of-type(7n+0) {
         --light-color: #{$color-7};
         --dark-color: #{$color-7-dark};
         --drop: 0%;
-        --delay: #{1200ms + 2400ms};
     }
 
     section {
@@ -139,11 +132,16 @@
             transform-origin: top;
 
             animation: melt 1s backwards ease-out;
-            animation-delay: var(--delay);
+            animation-play-state: paused;
+            animation-delay: 100ms;
 
             path {
                 fill: var(--light-color);
             }
+        }
+
+        &.active svg {
+            animation-play-state: running;
         }
     }
 

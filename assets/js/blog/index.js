@@ -2,11 +2,11 @@ import 'prismjs';
 import Code from './Code';
 
 /**
- * load codes
+ * Load codes
  */
 function loadCodes() {
     const inputs = Array.from(document.getElementsByClassName('input'));
-    console.log('loadCodes', inputs);
+
     inputs.forEach(element => {
         const [input, ...outputs] = element.parentNode.getElementsByTagName('code');
 

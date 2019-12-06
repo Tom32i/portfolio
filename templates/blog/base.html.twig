@@ -6,12 +6,29 @@
 
 {% block body %}
     {% block header %}
+        <header>
+            <p>Blog technique de <a href="{{ path('portfolio') }}" class="notice">Thomas</a></p>
+        </header>
     {% endblock %}
 
-    <section class="content">
+    <section class="content container">
         {% block content '' %}
     </section>
 
     {% block footer %}
+        <footer>
+            <div class="container">
+                <div class="author">
+                    <h4>À propos de l'auteur</h4>
+                    <a href="{{ path('blog') }}">
+                        <img class="round" src="{{ asset('/img/tom32i.jpg') }}">
+                        Thomas Jarrand
+                    </a>
+                </div>
+                <div class="articles">
+                    <a class="title" href="{{ path('blog') }}">Tout les articles</a>
+                </div>
+            </div>
+        </footer>
     {% endblock %}
 {% endblock %}

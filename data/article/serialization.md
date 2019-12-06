@@ -20,8 +20,6 @@ However, if you're working on specific domain logic for small/medium projects (a
 
 But you know what?
 
-    test();
-
 ## Symfony has a great serialization component!
 
 Symfony already addressed the problem of content serialization with the __Serializer Component__.

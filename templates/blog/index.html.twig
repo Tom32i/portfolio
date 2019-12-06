@@ -1,21 +1,22 @@
 {% extends 'blog/base.html.twig' %}
 
 {% block content %}
-    <img src="{{ asset('/img/tom32i.jpg') }}">
     {% for article in articles %}
         {% block preview %}
             <article class="article preview" lang="{{ article.language }}">
-                <header class="header">
-                    <time datetime="{{ article.date|date('Y-m-d') }}">
+                {% block date %}
+                    <time class="icon-clock" datetime="{{ article.date|date('c') }}">
                         {{ article.date|date('d M Y') }}
                     </time>
-                    <a href="{{ path('blog_article', { slug: article.slug }) }}">
-                        <h2 class="title">{{ article.title }}</h2>
-                    </a>
-                    {% if article.description is defined %}
-                        <p class="description">{{ article.description }}</p>
-                    {% endif %}
-                </header>
+                {% endblock %}
+
+                <a class="title" href="{{ path('blog_article', { slug: article.slug }) }}">
+                    {{ article.title }}
+                </a>
+
+                {% if article.description is defined %}
+                    <p class="description">{{ article.description }}</p>
+                {% endif %}
             </article>
         {% endblock %}
     {% endfor %}

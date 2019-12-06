@@ -2,32 +2,38 @@
 
 @font-face {
   font-family: '#{$icomoon-font-family}';
-  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?4b93c');
-  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?4b93c#iefix') format('embedded-opentype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?4b93c') format('truetype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?4b93c') format('woff'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?4b93c##{$icomoon-font-family}') format('svg');
+  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?2h93p2');
+  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?2h93p2#iefix') format('embedded-opentype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?2h93p2') format('truetype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?2h93p2') format('woff'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?2h93p2##{$icomoon-font-family}') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
 }
 
 [class^="icon-"], [class*=" icon-"] {
-  /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: '#{$icomoon-font-family}' !important;
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
+  &:before {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: '#{$icomoon-font-family}' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
 
-  /* Better Font Rendering =========== */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 }
 
-
+.icon-chevron-right {
+  &:before {
+    content: $icon-chevron-right;
+  }
+}
 .icon-calendar {
   &:before {
     content: $icon-calendar;
@@ -83,4 +89,3 @@
     content: $icon-github;
   }
 }
-

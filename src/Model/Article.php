@@ -6,6 +6,7 @@ class Article
 {
     public $title;
     public $slug;
+    public $description;
     public $language;
     public $date;
     public $lastModified;
@@ -14,6 +15,7 @@ class Article
     public function __construct(
         string $title,
         string $slug,
+        string $description,
         \DateTime $date,
         \DateTime $lastModified,
         string $language,
@@ -21,6 +23,7 @@ class Article
     ) {
         $this->title = $title;
         $this->slug = $slug;
+        $this->description = $description;
         $this->language = $language;
         $this->date = $date;
         $this->lastModified = $lastModified;

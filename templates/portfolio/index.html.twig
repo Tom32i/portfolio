@@ -5,16 +5,12 @@
 {% block javascripts encore_entry_script_tags('portfolio') %}
 
 {% block body %}
+<nav class="menu">
+    <a href="{{ path('blog') }}">
+        Le blog <span class="icon-chevron-right"></span>
+    </a>
+</nav>
 <header>
-    <div class="container">
-        <nav class="menu">
-            <a target="_blank" href="https://twitter.com/tom32i">Tw</a>
-            <a target="_blank" href="https://instagram.com/tom32i">In</a>
-            <a target="_blank" href="https://github.com/tom32i">Gh</a>
-            <a href="{#{ path('talk') }#}">Talks</a>
-            <a href="{{ path('blog') }}">Blog</a>
-        </nav>
-    </div>
     <div class="container">
         <h1>Salut ! Moi c'est <span class="notice">Thomas</span>,</h1>
         <h2>Je code des deux cotés de la requête HTTP.</h2>
@@ -29,7 +25,7 @@
 </section>
 <section>
     <div class="container">
-        <p>En ce moment, je suis efficace avec<br><a class="notice" href="https://symfony.com">Symfony</a> et <a class="notice" href="">React</a>.</p>
+        <p>En ce moment, je suis efficace avec<br><a class="notice" href="https://symfony.com">Symfony</a> et <a class="notice" href="https://fr.reactjs.org/">React</a>.</p>
         <p class="note">Je m'appuie sur les standards du web.</p>
     </div>
     {% include 'portfolio/drop.svg.twig' with { width: 100, height: 25, scale: 2, path: 'm-0.06013,-0.00545c22.8931,0.70175 11.44655,17.5438 23.22014,17.42684c11.77358,-0.11696 2.28931,-15.20461 16.51572,-15.08766c14.22642,0.11695 0.97687,22.46925 13.56807,22.3523c12.5912,-0.11695 1.63948,-18.49267 9.65207,-18.49267c7.52202,5.49706 14.88047,-5.25769 34.83016,-6.19336c19.9497,-0.93567 -103.50943,-3.98204 -97.78615,-0.00545z' } %}
@@ -37,7 +33,7 @@
 <section>
     <div class="container">
         <p>J'aime expérimenter dans le navigateur.</p>
-        <p>Avec des jeux vidéo en temps réel :<br><a class="notice" href="http://curvytron.com">Curvytron</a> et <a class="notice" href="https://whatthetune.com">What the tune?!</a></p>
+        <p>Avec des jeux vidéo en temps réel comme :<br><a class="notice" target="_blank" href="http://curvytron.com">Curvytron</a> et <a class="notice" target="_blank" href="https://whatthetune.com">What the tune?!</a></p>
     </div>
     {% include 'portfolio/drop.svg.twig' with { width: 200, height: 15, scale: 2, path: 'm0.5,-0.00852c148.125,1.47115 133.75961,16.44231 152.68269,14.28846c18.92309,-2.15384 15.6827,-14.90384 47.06731,-14.07692c-10.65383,-37.86539 -187.51925,-15.05769 -199.75,-0.21154z' } %}
 </section>

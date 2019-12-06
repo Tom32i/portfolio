@@ -16,7 +16,7 @@ class PortfolioController extends AbstractController
     }
 
     /**
-     * @Route("", name="home")
+     * @Route("", name="portfolio")
      */
     public function index()
     {

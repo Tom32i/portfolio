@@ -8,15 +8,71 @@
     margin: 0;
     font-family: Georgia, Cambria, "Times New Roman", Times, serif;
 
-    .content {
-        box-sizing: border-box;
+    footer {
+        background-color: $color-7;
+        color: $text-white;
+        width: 100%;
+        padding: 4rem 0;
+        margin-top: 4rem;
+        display: flex;
+        justify-content: center;
+
+        a, a:visited, h1, h2, h3, h4, h5, .title {
+            color: $text-white;
+        }
+
+        .container {
+            display: flex;
+            margin: 0 -1rem;
+
+            > * {
+                margin: 0 1rem;
+            }
+        }
+
+        .author {
+            flex: 1;
+        }
+
+        .articles {
+            flex: 2;
+        }
+    }
+
+    .container {
         width: 640px;
         max-width: 100%;
+
+        & > *:first-of-type {
+            margin-top: 0;
+        }
+
+        & > *:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+
+    .content {
+        box-sizing: border-box;
         padding: 2em;
+
+        header {
+            margin-bottom: 5rem;
+        }
     }
 
     .article-content {
         margin-top: 3rem;
+    }
+
+    .preview {
+        margin: 4rem 0;
+
+        .title {
+            margin: 0.4em 0 0.4em;
+            font-size: 1.8em;
+            display: block;
+        }
     }
 
     time {
@@ -24,14 +80,23 @@
         font-size: 1.2em;
     }
 
-    h1, h2, h3, h4, h5 {
+    h1, h2, h3, h4, h5, .title {
         color: $text-black;
         font-weight: bold;
     }
 
+    a.title, a.title:visited {
+        color: $text-black;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
     h1 {
         font-size: 2.4em;
-        margin: 1em 0 2em;
+        margin: 1em 0 0.4em;
     }
 
     h2 {

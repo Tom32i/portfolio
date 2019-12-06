@@ -7,10 +7,14 @@ code {
     font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 }
 
-h1, h2, h3, h4, h5 {
+h1, h2, h3, h4, h5, .title {
     font-family: 'Cabin', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-weight: normal;
     margin: 2em 0 1.2em;
+}
+
+time {
+    font-family: 'Cabin', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 p {
@@ -61,4 +65,8 @@ hr {
     border-left-color: transparent;
     border-right-color: transparent;
     border-bottom-color: $color-1-dark;
+}
+
+img.round {
+    border-radius: 100%;
 }

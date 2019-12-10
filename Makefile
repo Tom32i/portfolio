@@ -46,7 +46,8 @@ build-assets:
 
 build-content:
 	bin/console content:build
-	cp -r public/assets build
+	cp -r public/* build
+	rm -f build/*.php
 
 ##########
 # Deploy #

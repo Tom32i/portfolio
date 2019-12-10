@@ -1,4 +1,7 @@
-// Vars
+// Dimensions
+$width: 640px;
+
+// Color
 $color-gray: #e9e4e6;
 $color-gray-light: #f9f4f6;
 $color-light: #effdfd;
@@ -23,7 +26,7 @@ $text-white: white;
 $text-primary: $color-2-dark;
 $text-primary-light: $color-2;
 $text-black: #2d3335;
-$text-mutted: #555;
+$text-mutted: #666;
 
 // Code highlighting
 $code-background: #3B3C3C;
@@ -42,6 +45,7 @@ $icomoon-font-family: "icon" !default;
 $icomoon-font-path: "../fonts" !default;
 
 $icon-chevron-right: "\e908";
+$icon-chevron-left: "\e909";
 $icon-calendar: "\e900";
 $icon-clock: "\e901";
 $icon-file-text: "\e903";

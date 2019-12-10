@@ -20,7 +20,8 @@
         "symfony/templating": "4.3.*",
         "symfony/translation": "4.3.*",
         "symfony/webpack-encore-bundle": "^1.7",
-        "symfony/yaml": "4.3.*"
+        "symfony/yaml": "4.3.*",
+        "twig/extensions": "^1.5"
     },
     "require-dev": {
         "symfony/debug-pack": "*",

@@ -5,24 +5,6 @@
     align-items: center;
     justify-content: stretch;
 
-    .menu {
-        position: absolute;
-        top: 0;
-        right: 0;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: flex-end;
-        margin: 1rem;
-
-        > * {
-            margin: 0 1rem;
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-        }
-    }
-
     p {
         font-size: 1.4em;
         line-height: 1.2em;
@@ -43,10 +25,11 @@
     }
 
     header {
-        padding: 4rem 0 6rem;
+        padding: 3rem 0 6rem;
 
         h1, h2 {
             animation: slideIn 1200ms backwards $easeOutExpo;
+            margin: 0;
         }
 
         h1 {
@@ -67,8 +50,6 @@
     }
 
     section, header {
-        margin: 0;
-        width: 640px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -136,7 +117,7 @@
             z-index: 2;
             transform-origin: top;
 
-            animation: melt 1s backwards ease-out;
+            animation: melt 2s backwards ease-out;
             animation-play-state: paused;
             animation-delay: 100ms;
 
@@ -245,11 +226,11 @@
     .container {
         width: 100%;
 
-        & > *:first-of-type {
+        & > *:first-child {
             margin-top: 0;
         }
 
-        & > *:last-of-type {
+        & > *:last-child {
             margin-bottom: 0;
         }
     }

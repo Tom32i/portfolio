@@ -5,17 +5,14 @@
 {% block javascripts encore_entry_script_tags('portfolio') %}
 
 {% block body %}
-<nav class="menu">
-    <a href="{{ path('blog') }}">
-        Le blog <span class="icon-chevron-right"></span>
-    </a>
-</nav>
+
+{% include 'common/menu.html.twig' %}
+
 <header>
-    <div class="container">
-        <h1>Salut ! Moi c'est <span class="notice">Thomas</span>,</h1>
-        <h2>Je code des deux cotés de la requête HTTP.</h2>
-    </div>
+    <h1>Salut ! Moi c'est <span class="notice">Thomas</span>,</h1>
+    <h2>Je code des deux cotés de la requête HTTP.</h2>
 </header>
+
 <section>
     <div class="container">
         <p>Je suis <span class="notice">lead développeur web</span> à Lyon.</p>
@@ -23,6 +20,7 @@
     </div>
     {% include 'portfolio/drop.svg.twig' with { width: 100, height: 20, scale: 2, path: 'm0,0c38.375,0.375 34.37508,19.50627 46.00133,19.50262c11.62625,-0.00365 6.40444,-19.00262 53.99867,-19.50262c47.59423,-0.5 -138.375,-0.375 -100,0z' } %}
 </section>
+
 <section>
     <div class="container">
         <p>En ce moment, je suis efficace avec<br><a class="notice" href="https://symfony.com">Symfony</a> et <a class="notice" href="https://fr.reactjs.org/">React</a>.</p>
@@ -30,6 +28,7 @@
     </div>
     {% include 'portfolio/drop.svg.twig' with { width: 100, height: 25, scale: 2, path: 'm-0.06013,-0.00545c22.8931,0.70175 11.44655,17.5438 23.22014,17.42684c11.77358,-0.11696 2.28931,-15.20461 16.51572,-15.08766c14.22642,0.11695 0.97687,22.46925 13.56807,22.3523c12.5912,-0.11695 1.63948,-18.49267 9.65207,-18.49267c7.52202,5.49706 14.88047,-5.25769 34.83016,-6.19336c19.9497,-0.93567 -103.50943,-3.98204 -97.78615,-0.00545z' } %}
 </section>
+
 <section>
     <div class="container">
         <p>J'aime expérimenter dans le navigateur.</p>
@@ -37,18 +36,21 @@
     </div>
     {% include 'portfolio/drop.svg.twig' with { width: 200, height: 15, scale: 2, path: 'm0.5,-0.00852c148.125,1.47115 133.75961,16.44231 152.68269,14.28846c18.92309,-2.15384 15.6827,-14.90384 47.06731,-14.07692c-10.65383,-37.86539 -187.51925,-15.05769 -199.75,-0.21154z' } %}
 </section>
+
 <section>
     <div class="container">
         <p>Je me déplace partout à <span class="notice">vélo</span>.</p>
     </div>
     {% include 'portfolio/drop.svg.twig' with { width: 100, height: 15, scale: 3, path: 'm-0.09375,-0.03418c16.875,1.0625 14.9375,5 20.625,4.9375c5.6875,-0.0625 6.9375,-2.125 12.625,-2.25c5.6875,-0.125 2,11.6875 8.125,11.8125c6.125,0.125 2.875,-11.9375 8.375,-12c6.5,-0.0625 5.1875,7.4375 8.3125,7.375c3.125,-0.0625 1.125,-7.375 7.75,-7.3125c11.5,0 6.625,-1.9375 34.1875,-2.5c27.5625,-0.5625 -80.5,-6.0625 -100,-0.0625z' } %}
 </section>
+
 <section>
     <div class="container">
         <p>Je partage régulierement mes passions<br>via des <a target="_blank" href="{{ path('blog') }}">articles</a> et des <a target="_blank" href="{#{ path('talk') }#}">conférences</a>.</p>
     </div>
     {% include 'portfolio/drop.svg.twig' with { width: 45, height: 15, scale: 3, path: 'm-0.0295,0.01129c8.9233,1.32744 4.71976,14.08555 9.66077,14.08555c4.941,0 2.50737,-8.18584 5.67846,-10.84071c3.17109,-2.65487 16.51918,-2.50737 29.64602,-3.17109c-10.91445,-3.53982 -53.90855,-1.40119 -44.98525,-0.07375z' } %}
 </section>
+
 <section>
     <div class="container">
         <p>J'apprends la photographie <a target="_blank" href="https://unsplash.com/tom32i">ici</a> et <a target="_blank" href="https://instagram.com/tom32i">là</a>.</p>
@@ -56,6 +58,7 @@
     </div>
     {% include 'portfolio/drop.svg.twig' with { width: 100, height: 20, scale: 1.5, path: 'm0,0c38.375,0.375 34.37508,19.50627 46.00133,19.50262c11.62625,-0.00365 6.40444,-19.00262 53.99867,-19.50262c47.59423,-0.5 -138.375,-0.375 -100,0z' } %}
 </section>
+
 <section>
     <div class="container">
         <p>Pour discuter, c'est par <a target="_blank" href="mailto:thomas.jarrand@gmail.com">mail</a> et sur <a target="_blank" href="https://twitter.com/tom32i">Twitter</a>.<p>

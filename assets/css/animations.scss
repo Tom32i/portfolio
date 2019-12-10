@@ -10,3 +10,23 @@ $easeInOutExpo: cubic-bezier(0.8, 0, 0.2, 1);
   from { transform: translate3d(0, 5rem, 0); opacity: 0; }
   to   { transform: translate3d(0, 0, 0); opacity: 1; }
 }
+
+@keyframes rainbow {
+    0% { text-decoration-color: #{$color-2-dark}; }
+    16.667% { text-decoration-color: #{$color-1-dark}; }
+    33.333% { text-decoration-color: #{$color-3-dark}; }
+    50% { text-decoration-color: #{$color-4-dark}; }
+    66.667% { text-decoration-color: #{$color-5-dark}; }
+    83.333% { text-decoration-color: #{$color-6-dark}; }
+    100% { text-decoration-color: #{$color-7-dark}; }
+}
+
+@keyframes rainbow-color {
+    0% { color: #{$color-2-dark}; }
+    16.667% { color: #{$color-1-dark}; }
+    33.333% { color: #{$color-3-dark}; }
+    50% { color: #{$color-4-dark}; }
+    66.667% { color: #{$color-5-dark}; }
+    83.333% { color: #{$color-6-dark}; }
+    100% { color: #{$color-7-dark}; }
+}

@@ -1,14 +1,12 @@
 {% extends 'blog/base.html.twig' %}
 
+{% use 'blog/blocks.html.twig' %}
+
 {% block content %}
     {% for article in articles %}
         {% block preview %}
             <article class="article preview" lang="{{ article.language }}">
-                {% block date %}
-                    <time class="icon-clock" datetime="{{ article.date|date('c') }}">
-                        {{ article.date|date('d M Y') }}
-                    </time>
-                {% endblock %}
+                {{ block('date') }}
 
                 <a class="title" href="{{ path('blog_article', { slug: article.slug }) }}">
                     {{ article.title }}

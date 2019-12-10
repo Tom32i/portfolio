@@ -15,6 +15,7 @@ h1, h2, h3, h4, h5, .title {
 
 time {
     font-family: 'Cabin', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: $text-mutted;
 }
 
 p {
@@ -60,11 +61,11 @@ a:visited {
 }
 
 hr {
-    margin: 4rem;
-    border-top-color: transparent;
-    border-left-color: transparent;
-    border-right-color: transparent;
-    border-bottom-color: $color-1-dark;
+    width: 66%;
+    height: 1px;
+    margin: 4rem auto;
+    border: none;
+    background-color: $monokai-mutted;
 }
 
 img.round {

@@ -1,0 +1,5 @@
+{% block date %}
+    <time class="icon-calendar" datetime="{{ article.date|date('c') }}">
+        {{ article.date|localizeddate('none', 'none', null, null, 'd MMMM Y') }}
+    </time>
+{% endblock %}

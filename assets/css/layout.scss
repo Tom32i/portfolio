@@ -6,3 +6,13 @@ body {
 * {
     box-sizing: border-box;
 }
+
+.portfolio section,
+.portfolio header,
+.blog .hero,
+.blog .container {
+    width: 100%;
+    max-width: $width + 40px;
+    padding: 0 20px;
+    margin: 0;
+}

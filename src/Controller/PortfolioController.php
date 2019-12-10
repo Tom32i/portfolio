@@ -16,13 +16,10 @@ class PortfolioController extends AbstractController
     }
 
     /**
-     * @Route("", name="portfolio")
+     * @Route("", name="portfolio", defaults={"_menu"="portfolio"})
      */
     public function index()
     {
-        return $this->render('portfolio/index.html.twig', [
-            //'talks' => $this->manager->getContents(Talk::class, ['date' => false]),
-            //'projects' => $this->manager->getContents(Project::class, ['date' => false]),
-        ]);
+        return $this->render('portfolio/index.html.twig');
     }
 }

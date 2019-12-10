@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
 
 /**
- * @Route("/blog", name="blog")
+ * @Route("/blog", name="blog", defaults={"_menu"="blog"})
  */
 class BlogController extends AbstractController
 {

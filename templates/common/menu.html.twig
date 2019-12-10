@@ -1,0 +1,16 @@
+{% set menu = [
+    { route: 'portfolio', label: 'À propos' },
+    { route: 'blog', label: 'Articles' },
+    { route: 'talk', label: 'Conférences' },
+] %}
+
+{% block navigation %}
+<nav class="menu">
+    {% for item in menu %}
+        {% set active =  item.route is currentRoot %}
+        <a href="{{ path(item.route) }}" class="{{ active ? 'active' : '' }}">
+            {{ item.label }}
+        </a>
+    {% endfor %}
+</nav>
+{% endblock %}

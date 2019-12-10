@@ -1,37 +1,38 @@
-@import "variables";
-
 @font-face {
   font-family: '#{$icomoon-font-family}';
-  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?2h93p2');
-  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?2h93p2#iefix') format('embedded-opentype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?2h93p2') format('truetype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?2h93p2') format('woff'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?2h93p2##{$icomoon-font-family}') format('svg');
+  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?vbizv8');
+  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?vbizv8#iefix') format('embedded-opentype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?vbizv8') format('truetype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?vbizv8') format('woff'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?vbizv8##{$icomoon-font-family}') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
 }
 
-[class^="icon-"], [class*=" icon-"] {
-  &:before {
-    /* use !important to prevent issues with browser extensions that change fonts */
-    font-family: '#{$icomoon-font-family}' !important;
-    speak: none;
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
+[class^="icon-"]:before, [class*=" icon-"]:before {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: '#{$icomoon-font-family}' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
 
-    /* Better Font Rendering =========== */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .icon-chevron-right {
   &:before {
     content: $icon-chevron-right;
+  }
+}
+.icon-chevron-left {
+  &:before {
+    content: $icon-chevron-left;
   }
 }
 .icon-calendar {
@@ -89,3 +90,4 @@
     content: $icon-github;
   }
 }
+

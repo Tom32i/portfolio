@@ -1,14 +1,17 @@
 {% extends 'blog/base.html.twig' %}
 
+{% use 'blog/blocks.html.twig' %}
+
+{% block header null %}
+
 {% block content %}
     <article lang="{{ article.language }}">
+        <a href="{{ path('blog') }}" class="chevron-left">
+            Retour au blog
+        </a>
         <header>
             <h1>{{ article.title }}</h1>
-            {% block date %}
-                <time class="icon-clock" datetime="{{ article.date|date('c') }}">
-                    {{ article.date|date('d M Y') }}
-                </time>
-            {% endblock %}
+            {{ block('date') }}
         </header>
         <div class="article-content">
             {{ article.content|raw }}

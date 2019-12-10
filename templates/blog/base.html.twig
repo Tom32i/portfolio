@@ -5,9 +5,13 @@
 {% block javascripts encore_entry_script_tags('blog') %}
 
 {% block body %}
+    {% include 'common/menu.html.twig' %}
+
     {% block header %}
         <header>
-            <p>Blog technique de <a href="{{ path('portfolio') }}" class="notice">Thomas</a></p>
+            <h1>Mon blog technique</h1>
+            <p>(mais pas que ...)</p>
+            <hr>
         </header>
     {% endblock %}
 

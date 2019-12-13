@@ -1,6 +1,10 @@
 body {
     font-size: 18px;
     font-family: 'Cabin', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    outline: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -ms-interpolation-mode: bicubic;
 }
 
 code {

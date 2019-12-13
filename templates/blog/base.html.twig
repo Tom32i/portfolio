@@ -25,12 +25,13 @@
                 <div class="author">
                     <h4>À propos de l'auteur</h4>
                     <a href="{{ path('blog') }}">
-                        <img class="round" src="{{ asset('/img/tom32i.jpg') }}">
+                        <img width="64" height="64" class="round" src="{{ asset('/img/portrait.jpg') }}">
                         Thomas Jarrand
                     </a>
                 </div>
                 <div class="articles">
                     <a class="title" href="{{ path('blog') }}">Tout les articles</a>
+                    {{ render(controller('App\\Controller\\BlogController::latest', { max: 3 })) }}
                 </div>
             </div>
         </footer>

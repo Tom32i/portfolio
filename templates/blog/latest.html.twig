@@ -1,0 +1,12 @@
+{% use 'blog/blocks.html.twig' %}
+
+{% block latest %}
+<ul class="latest">
+    {% for article in articles %}
+        <li>
+            <a href="{{ path('blog_article', { slug: article.slug }) }}">{{ article.title }}</a>
+            {{ block('date') }}
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

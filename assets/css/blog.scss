@@ -6,7 +6,6 @@
     align-items: center;
     padding: 0;
     margin: 0;
-    font-family: Georgia, Cambria, "Times New Roman", Times, serif;
 
     .hero {
         margin-top: 2rem;
@@ -15,10 +14,6 @@
         h1, h2 {
             margin: 0;
             font-weight: normal;
-            outline: none;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            -ms-interpolation-mode: bicubic;
         }
 
         h1 {
@@ -48,8 +43,7 @@
     }
 
     footer {
-        background-color: $color-7;
-        color: $text-white;
+        background-color: $text-black;
         width: 100%;
         padding: 4rem 0;
         margin-top: 4rem;
@@ -57,24 +51,64 @@
         justify-content: center;
 
         a, a:visited, h1, h2, h3, h4, h5, .title {
-            color: $text-white;
+            color: darken($color-gray, 15%);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        h4, a.title {
+            font-size: 1.2em;
+            //font-weight: normal;
         }
 
         .container {
             display: flex;
-            margin: 0 -1rem;
+            margin: 0 -2rem;
 
             > * {
-                margin: 0 1rem;
+                margin: 0 2rem;
             }
         }
 
         .author {
             flex: 1;
+
+            h4 {
+                margin-top: 0;
+            }
+
+            a {
+                display: flex;
+                align-items: center;
+                text-align: center;
+                font-size: 1.1em;
+
+                img {
+                    margin-right: 1rem;
+                }
+            }
         }
 
         .articles {
             flex: 2;
+        }
+
+        .latest {
+            margin: 2rem 0;
+            font-size: 0.8em;
+
+            li {
+                margin: 0.8em 0;
+                line-height: 1.2;
+            }
+
+            time {
+                color: rgba($color-gray-light, 0.6);
+                font-size: 0.8em;
+            }
         }
     }
 
@@ -92,10 +126,23 @@
         header {
             margin-bottom: 5rem;
         }
+
+        a.title, a.title:visited {
+            color: $text-black;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
     }
 
     .article-content {
         margin-top: 3rem;
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+
+        -webkit-font-smoothing: auto;
+        -moz-osx-font-smoothing: auto;
     }
 
     .preview {
@@ -106,20 +153,17 @@
             font-size: 1.8em;
             display: block;
         }
+
+        .description {
+            font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+            -webkit-font-smoothing: auto;
+            -moz-osx-font-smoothing: auto;
+        }
     }
 
     h1, h2, h3, h4, h5, .title {
         color: $text-black;
         font-weight: bold;
-    }
-
-    a.title, a.title:visited {
-        color: $text-black;
-        text-decoration: none;
-
-        &:hover {
-            text-decoration: underline;
-        }
     }
 
     h1 {
@@ -134,6 +178,10 @@
 
     h3 {
         font-size: 1.4em;
+    }
+
+    h4 {
+        font-size: 1.2em;
     }
 
     section {

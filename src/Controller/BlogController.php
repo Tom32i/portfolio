@@ -69,6 +69,16 @@ class BlogController extends AbstractController
 
         return $this->render('blog/article.html.twig', [
             'article' => $article,
+            'lastestArticles' => array_slice($this->manager->getContents(Article::class, ['date' => false]), 0, 3)
         ])->setLastModified($article->lastModified);
+    }
+
+    public function latest(int $max = 3)
+    {
+        $articles = $this->manager->getContents(Article::class, ['date' => false]);
+
+        return $this->render('blog/latest.html.twig', [
+            'articles' => array_slice($articles, 0, $max)
+        ]);
     }
 }

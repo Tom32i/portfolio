@@ -6,9 +6,6 @@
 
 {% block content %}
     <article lang="{{ article.language }}">
-        <a href="{{ path('blog') }}" class="chevron-left">
-            Retour au blog
-        </a>
         <header>
             <h1>{{ article.title }}</h1>
             {{ block('date') }}

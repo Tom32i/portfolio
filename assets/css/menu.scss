@@ -1,40 +1,65 @@
-.menu {
+.menu-container {
     width: 100%;
-    max-width: 320px;
-    margin: 2rem 0;
+    max-width: $width;
+    margin: 0 auto;
+    padding: 1rem 0;
     font-size: 16px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
-    margin: 1rem;
+    justify-content: space-between;
     font-family: 'Cabin', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
-    a {
-        flex: 1;
-        margin: 0 1rem;
-        text-decoration: none;
-        text-align: center;
-        position: relative;
+    .menu {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin: 0 -1rem;
 
-        &.active {
-            text-decoration: underline;
-            text-decoration-thickness: 2px;
-            animation: rainbow 2000ms infinite linear;
-            font-weight: bold;
+        a {
+            flex: 1;
+            margin: 0 1rem;
+            text-decoration: none;
+            text-align: center;
+            position: relative;
+            white-space: nowrap;
+
+            &.active {
+                text-decoration: underline;
+                text-decoration-thickness: 2px;
+                animation: rainbow 2000ms infinite linear;
+                font-weight: bold;
+            }
+        }
+    }
+
+    .brand {
+        //position: relative;
+        //margin-left: 2em;
+        color: $color-2-dark;
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+        text-decoration: none;
+
+        &:hover:before {
+            animation: rotate 1s infinite linear;
         }
 
-        &:first-child:before {
+        &:before {
             content: "";
-            display: block;
-            position: absolute;
-            left: -0.8em;
-            top: 0.05em;
-            width: 0.5em;
-            height: 1em;
+            display: inline-block;
+            //position: absolute;
+            //left: -1.6em;
+            //top: -0.5em;
+            margin-right: 0.6em;
+            width: 1em;
+            height: 2em;
             background-image: url('/img/logo.svg');
             background-size: contain;
             background-repeat: no-repeat;
+            transform-origin: 50% 50%;
         }
     }
 }

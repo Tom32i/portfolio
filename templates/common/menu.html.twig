@@ -5,12 +5,15 @@
 ] %}
 
 {% block navigation %}
-<nav class="menu">
-    {% for item in menu %}
-        {% set active =  item.route is currentRoot %}
-        <a href="{{ path(item.route) }}" class="{{ active ? 'active' : '' }}">
-            {{ item.label }}
-        </a>
-    {% endfor %}
-</nav>
+<div class="menu-container">
+    <a href="{{ path('portfolio') }}" class="brand {{ 'portfolio' is currentRoot ? 'active' : '' }}"></a>
+    <nav class="menu">
+        {% for item in menu %}
+            {% set active =  item.route is currentRoot %}
+            <a href="{{ path(item.route) }}" class="{{ active ? 'active' : '' }}">
+                {{ item.label }}
+            </a>
+        {% endfor %}
+    </nav>
+</div>
 {% endblock %}

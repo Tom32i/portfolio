@@ -2,6 +2,14 @@
 
 {% use 'blog/blocks.html.twig' %}
 
+{% block header %}
+    <header class="container header">
+        <h1>Aticles</h1>
+        <p>Mon blog technique (mais pas que).</p>
+        <hr>
+    </header>
+{% endblock %}
+
 {% block content %}
     {% for article in articles %}
         {% block preview %}

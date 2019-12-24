@@ -1,4 +1,9 @@
 .talks {
+
+    .center {
+        text-align: center;
+    }
+
     .talk {
         margin: 4rem 0;
 
@@ -12,6 +17,9 @@
         .description {
             white-space: pre-wrap;
             font-size: 1em;
+            font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+            -webkit-font-smoothing: auto;
+            -moz-osx-font-smoothing: auto;
         }
 
         .links {

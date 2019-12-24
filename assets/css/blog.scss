@@ -7,39 +7,8 @@
     padding: 0;
     margin: 0;
 
-    .hero {
-        margin-top: 2rem;
-        margin-bottom: 3rem;
-
-        h1, h2 {
-            margin: 0;
-            font-weight: normal;
-        }
-
-        h1 {
-            color: $text-primary;
-            font-size: 2.4em;
-            line-height: 2em;
-
-            .notice {
-                font-family: 'Permanent Marker';
-                text-decoration: none;
-            }
-        }
-
-        h2 {
-            font-size: 1.4em;
-            color: $text-primary-light;
-            animation-delay: 100ms;
-        }
-
-        &:hover h1 .notice {
-            animation: rainbow-color 2000ms infinite linear;
-        }
-
-        p {
-            font-size: 1em;
-        }
+    .header {
+        margin: 3rem 0 4rem;
     }
 
     footer {

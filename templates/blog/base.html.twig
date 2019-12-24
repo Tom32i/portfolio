@@ -7,24 +7,20 @@
 {% block body %}
     {% include 'common/menu.html.twig' %}
 
-    {% block header %}
-        <header>
-            <h1>Mon blog technique</h1>
-            <p>(mais pas que ...)</p>
-            <hr>
-        </header>
-    {% endblock %}
+    {% block header null %}
 
-    <section class="content container">
-        {% block content '' %}
-    </section>
+    {% block content_container %}
+        <section class="content container">
+            {% block content '' %}
+        </section>
+    {% endblock %}
 
     {% block footer %}
         <footer>
             <div class="container">
                 <div class="author">
                     <h4>À propos de moi</h4>
-                    <a href="{{ path('blog') }}">
+                    <a href="{{ path('portfolio') }}">
                         <img width="64" height="64" class="round" src="{{ asset('/img/portrait.jpg') }}">
                         Thomas Jarrand
                     </a>

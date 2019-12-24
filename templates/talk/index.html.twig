@@ -1,52 +1,24 @@
-{% extends 'blog/base.html.twig' %}
+{% extends 'talk/base.html.twig' %}
 
-{% block body_class 'blog' %}
-
-{% block javascripts encore_entry_script_tags('blog') %}
-
-{% block body %}
-    {% include 'common/menu.html.twig' %}
-
-    {% block header %}
-        <header class="container hero">
-            <p>Je partage régulierement sur des sujets qui me passionnent dans des évenement comme ceux de l'<span class="notice">AFUP</span>, <span class="notice">Blend Web Mix</span>, <span class="notice">Lyon JS</span>, <span class="notice">Human Talks</span> et même à l'<span class="notice">Apéro des designers</span>.</p>
-            <p>Vous cherchez des conférenciers pour votre évenement ? À moi le CFP!</p>
-            <hr>
-        </header>
-    {% endblock %}
-
-    <section class="content container talks">
-        {% for talk in talks %}
-            <div class="talk">
-                <p class="links">
-                    <span class="format">{{ talk.duration }}'</span>
-                    <span class="date">{{ talk.date|date('Y') }}</span>
-                    <a class="slides" target="_blank" href="{{ talk.slides }}">slides</a>
-                    {% if talk.video %}
-                        <a class="video" target="_blank" href="{{ talk.video }}">vidéo</a>
-                    {% endif %}
-                </p>
-                <h3 class="title">{{ talk.title }}</h3>
-                <p class="description">{{ talk.description }}</p>
-            </div>
-        {% endfor %}
-    </section>
-
-    {% block footer %}
-        <footer>
-            <div class="container">
-                <div class="author">
-                    <h4>À propos de moi</h4>
-                    <a href="{{ path('blog') }}">
-                        <img width="64" height="64" class="round" src="{{ asset('/img/portrait.jpg') }}">
-                        Thomas Jarrand
-                    </a>
-                </div>
-                <div class="articles">
-                    <a class="title" href="{{ path('blog') }}">Tout les articles</a>
-                    {{ render(controller('App\\Controller\\BlogController::latest', { max: 3 })) }}
-                </div>
-            </div>
-        </footer>
-    {% endblock %}
+{% block content %}
+    <p>Quelques exemples de conférences que je redonnerais avec plaisir :</p>
+    {% for talk in talks %}
+        <div class="talk">
+            <p class="links">
+                <span class="format">{{ talk.duration }}'</span>
+                <span class="date">{{ talk.date|date('Y') }}</span>
+                <a class="slides" target="_blank" href="{{ talk.slides }}">slides</a>
+                {% if talk.video %}
+                    <a class="video" target="_blank" href="{{ talk.video }}">vidéo</a>
+                {% endif %}
+            </p>
+            <h3 class="title">{{ talk.title }}</h3>
+            <p class="description">{{ talk.description }}</p>
+        </div>
+    {% endfor %}
+    <hr>
+    <div class="center">
+        <p>Vous cherchez des conférenciers pour votre évènement ? 👀</p>
+        <p>👉 Mon <a href="mailto:thomas.jarrand@gmail.com">mail</a> et mon <a href="https://twitter.com/tom32i">Twitter</a> 👋</p>
+    </div>
 {% endblock %}

@@ -8,11 +8,11 @@ body {
 }
 
 .portfolio section,
-.portfolio header,
+//.portfolio header,
 .blog .hero,
 .blog .container {
     width: 100%;
-    max-width: $width + 40px;
-    padding: 0 20px;
+    max-width: $width;
+    padding: 0;
     margin: 0;
 }

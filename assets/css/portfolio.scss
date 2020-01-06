@@ -1,4 +1,5 @@
 .portfolio {
+    --ice-depth: 2.8em;
     color: $color-2-dark;
     display: flex;
     flex-direction: column;
@@ -7,12 +8,12 @@
 
     p {
         font-size: 1.4em;
-        line-height: 1.2em;
-        margin: 2rem 0;
+        line-height: 1.1em;
+        margin: 0.8em 0;
     }
 
     .note {
-        font-style: italic;
+        //font-style: italic;
         font-size: 1.2em;
     }
 
@@ -25,7 +26,7 @@
     }
 
     header {
-        padding: 3rem 0 6rem;
+        padding: 2.5em 0 5em;
 
         h1, h2 {
             animation: slideIn 1200ms backwards $easeOutExpo;
@@ -34,16 +35,16 @@
 
         h1 {
             color: $text-primary;
-            font-size: 2.4em;
+            font-size: 2.2em;
             line-height: 2em;
 
             .notice {
-                font-family: 'Permanent Marker';
+                font-weight: bold;
             }
         }
 
         h2 {
-            font-size: 1.4em;
+            font-size: 1.25em;
             color: $text-primary-light;
             animation-delay: 100ms;
         }
@@ -74,7 +75,7 @@
     section:nth-of-type(7n+3) {
         --light-color: #{$color-3};
         --dark-color: #{$color-3-dark};
-        --drop: 68%;
+        --drop: 25%;
     }
     section:nth-of-type(7n+4) {
         --light-color: #{$color-4};
@@ -84,7 +85,7 @@
     section:nth-of-type(7n+5) {
         --light-color: #{$color-5};
         --dark-color: #{$color-5-dark};
-        --drop: 18%;
+        --drop: 48%;
     }
     section:nth-of-type(7n+6) {
         --light-color: #{$color-6};
@@ -99,16 +100,14 @@
 
     section {
         color: white;
-        padding: 4rem;
-        margin-left: -1.5rem;
+        max-width: $width;
+        padding-top: 3.5em;
+        padding-bottom: 3.5em;
+        margin-left: calc(var(--ice-depth)/-2);
         position: relative;
 
         background-color: var(--light-color);
-        box-shadow: 3rem 0rem var(--dark-color);
-
-        p {
-            //text-shadow: 0em 0.1rem rgba(black ,0.2);
-        }
+        box-shadow: var(--ice-depth) 0em var(--dark-color);
 
         svg {
             position: absolute;
@@ -133,10 +132,10 @@
 
     section:first-of-type {
         position: relative;
-        border-top-left-radius: 45% 18rem;
-        border-top-right-radius: 45% 18rem;
-        padding-top: 12rem;
-        box-shadow: 3rem 0rem var(--dark-color), 1.5rem 0rem var(--dark-color);
+        border-top-left-radius: 60% 120%;
+        border-top-right-radius: 60% 120%;
+        padding-top: 8em;
+        box-shadow: var(--ice-depth) 0em var(--dark-color), calc(var(--ice-depth)/2) 0em var(--dark-color);
 
         &::before, &::after {
             content: "";
@@ -146,7 +145,7 @@
         }
 
         &::before {
-            top: 20%;
+            top: 22%;
             left: 12%;
             width: 25%;
             height: 8%;
@@ -158,11 +157,11 @@
         }
 
         &::after {
-            top: 42%;
-            left: 8%;
+            top: 48%;
+            left: 9%;
             width: 5%;
             height: 4%;
-            transform: rotate(-45deg);
+            transform: rotate(-50deg);
             border-top-left-radius: 70% 80%;
             border-top-right-radius: 70% 80%;
             border-bottom-left-radius: 40% 60%;
@@ -171,18 +170,18 @@
     }
 
     section:last-of-type {
-        border-bottom-left-radius: 4rem;
-        border-bottom-right-radius: 4rem;
+        border-bottom-left-radius: 5em;
+        border-bottom-right-radius: 5em;
 
         &::after {
             content: "";
             display: block;
             position: absolute;
-            bottom: -40rem;
+            bottom: -32em;
             width: 100%;
-            height: 2rem;
+            height: 2em;
             border-radius: 50%;
-            margin-left: 1.5rem;
+            margin-left: calc(var(--ice-depth) / 2);
             background-color: $shadow;
         }
     }
@@ -190,13 +189,13 @@
     .baton {
         position: relative;
         background-color: $color-wood;
-        border-bottom-left-radius: 5rem;
-        border-bottom-right-radius: 5rem;
-        box-shadow: 0.8rem 0rem #b8a07d;
-        width: 10rem;
-        height: 32rem;
-        margin-bottom: 10rem;
-        padding: 2rem 0;
+        border-bottom-left-radius: 4em;
+        border-bottom-right-radius: 4em;
+        box-shadow: 0.8em 0em $color-wood-shadow;
+        width: 8em;
+        height: 24em;
+        margin-bottom: 10em;
+        padding: 2em 0;
 
         display: flex;
         flex-direction: column;
@@ -209,14 +208,14 @@
             position: absolute;
             top: 0;
             width: 100%;
-            height: 2rem;
+            height: 2em;
             background-color: $shadow;
         }
 
         a {
             font-size: 3em;
             text-decoration: none;
-            padding: 1rem;
+            padding: 0.3em;
             color: $color-wood-dark;
             text-shadow: 0 2px rgba(white, 0.25);
             z-index: 1;

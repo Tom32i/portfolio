@@ -1,11 +1,11 @@
 .projects {
     display: flex;
     flex-wrap: wrap;
-    margin: 0 -2rem -2rem -2rem;
+    margin: 0 -2em -2em -2em;
 
     .project {
-        width: calc(100%/3 - 4rem);
-        margin: 2rem;
+        width: calc(100%/3 - 4em);
+        margin: 2em;
 
         .head {
             display: flex;

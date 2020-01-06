@@ -8,14 +8,14 @@
     margin: 0;
 
     .header {
-        margin: 3rem 0 4rem;
+        margin: 3em 0 4em;
     }
 
     footer {
         background-color: $text-black;
         width: 100%;
-        padding: 4rem 0;
-        margin-top: 4rem;
+        padding: 4em 0;
+        margin-top: 4em;
         display: flex;
         justify-content: center;
 
@@ -35,10 +35,10 @@
 
         .container {
             display: flex;
-            margin: 0 -2rem;
+            margin: 0 -2em;
 
             > * {
-                margin: 0 2rem;
+                margin: 0 2em;
             }
         }
 
@@ -56,7 +56,7 @@
                 font-size: 1.1em;
 
                 img {
-                    margin-right: 1rem;
+                    margin-right: 1em;
                 }
             }
         }
@@ -66,7 +66,7 @@
         }
 
         .latest {
-            margin: 2rem 0;
+            margin: 2em 0;
             font-size: 0.8em;
 
             li {
@@ -93,7 +93,7 @@
 
     .content {
         header {
-            margin-bottom: 5rem;
+            margin-bottom: 5em;
         }
 
         a.title, a.title:visited {
@@ -107,7 +107,7 @@
     }
 
     .article-content {
-        margin-top: 3rem;
+        margin-top: 3em;
         font-family: Georgia, Cambria, "Times New Roman", Times, serif;
 
         -webkit-font-smoothing: auto;
@@ -115,7 +115,7 @@
     }
 
     .preview {
-        margin: 4rem 0;
+        margin: 4em 0;
 
         .title {
             margin: 0.4em 0 0.4em;

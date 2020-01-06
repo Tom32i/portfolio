@@ -1,0 +1,120 @@
+@media  (max-width: 1024px) {
+  .menu-container {
+    position: relative;
+    padding: 1em;
+
+    a {
+      font-size: 14px;
+    }
+  }
+
+  .portfolio header {
+    //padding-top: 0em;
+
+    h1 {
+      //font-size: 3.2em;
+    }
+
+    h2 {
+      //font-size: 2em;
+    }
+  }
+
+  .blog .header {
+    //margin-top: 0em;
+  }
+
+
+  //.portfolio section,
+  //.portfolio header,
+  .blog .hero,
+  .blog .container {
+    max-width: initial;
+    padding: 0 4em;
+  }
+}
+
+@media (max-width: 767px) {
+  body {
+    font-size: 12px;
+  }
+
+  .portfolio {
+    header {
+      h1 {
+        font-size: 1.8em;
+      }
+
+      h2 {
+        font-size: 1em;
+      }
+    }
+
+    section {
+      --ice-depth: 1.4em;
+      max-width: calc(100% - (2em + var(--ice-depth)));
+      font-size: 10px;
+
+      svg {
+        transform: scale(0.5);
+        animation-name: meltHalf;
+      }
+    }
+
+    section:last-of-type {
+      border-bottom-left-radius: 3em;
+      border-bottom-right-radius: 3em;
+
+      &::after {
+        bottom: -28em;
+      }
+    }
+
+    .baton {
+      font-size: 8px;
+      margin-bottom: 12em;
+      box-shadow: 0.6em 0em $color-wood-shadow;
+
+      a {
+        text-shadow: 0 1px rgba(white, 0.25);
+      }
+    }
+  }
+
+  .blog {
+    font-size: 12px;
+
+    h1 {
+      font-size: 2em;
+    }
+
+    .preview {
+      .title {
+        font-size: 1.6em;
+      }
+    }
+
+    footer {
+      padding-bottom: 0;
+
+      .container {
+        flex-direction: column;
+        //align-items: center;
+        margin: 0;
+
+        > * {
+          margin: 0;
+        }
+
+        > *:first-child {
+          margin-bottom: 2em;
+        }
+      }
+    }
+  }
+
+  .blog .hero,
+  .blog .container {
+    padding: 0 2em;
+  }
+}

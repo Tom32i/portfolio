@@ -1,4 +1,6 @@
 $easeOutExpo: cubic-bezier(0.19, 1, 0.22, 1);
+$easeOutQuad: cubic-bezier(0.165, 0.84, 0.44, 1);
+$easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 $easeInOutExpo: cubic-bezier(0.8, 0, 0.2, 1);
 
 @keyframes melt {
@@ -13,6 +15,12 @@ $easeInOutExpo: cubic-bezier(0.8, 0, 0.2, 1);
 
 @keyframes slideIn {
   from { transform: translate3d(0, 1em, 0); opacity: 0; }
+  to   { transform: translate3d(0, 0, 0); opacity: 1; }
+}
+
+
+@keyframes slideUp {
+  from { transform: translate3d(0, 100vh, 0); opacity: 0; }
   to   { transform: translate3d(0, 0, 0); opacity: 1; }
 }
 
@@ -39,4 +47,9 @@ $easeInOutExpo: cubic-bezier(0.8, 0, 0.2, 1);
 @keyframes rotate {
   from { transform: rotate3d(0, 1, 0, 0deg); }
   to { transform: rotate3d(0, 1, 0, 360deg); }
+}
+
+@keyframes rotateCard {
+  from { transform: rotate3d(0, 1, 0, 0deg); }
+  to { transform: rotate3d(0, 1, 0.1, 360deg); }
 }

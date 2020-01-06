@@ -1,0 +1,125 @@
+.postcard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: stretch;
+    transform: translate3d(0,0,0);
+    perspective: 100vw;
+
+    header {
+        padding: 2.5em 0 5em;
+
+        h1, h2 {
+            animation: slideIn 1200ms backwards $easeOutExpo;
+            margin: 0;
+        }
+
+        h1 {
+            color: $text-primary;
+            font-size: 2.2em;
+            line-height: 2em;
+
+            .notice {
+                font-weight: bold;
+            }
+        }
+
+        h2 {
+            font-size: 1.25em;
+            color: $text-primary-light;
+            animation-delay: 100ms;
+        }
+    }
+
+    .card {
+        width: 800px;
+        max-width: 100%;
+        position: relative;
+        transform-style: preserve-3d;
+        animation: slideUp 1200ms backwards $easeOutBack;
+        //animation-delay: 600ms;
+
+        &.fliped {
+            transform: rotateY(-180deg);
+        }
+
+        .recto {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            visibility:visible;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            background-color: $color-1;
+            border: 1em solid white;
+            z-index: 1;
+        }
+
+        .verso {
+            transform: rotateY( 180deg );
+            display: flex;
+            flex-direction: row;
+            background-color: white;
+            visibility:visible;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            padding: 2em;
+            color: $text-black;
+
+            .left {
+                flex: 3;
+                padding-right: 2em;
+                margin-right: 2em;
+                border-right: 1px dotted $color-text-footer;
+            }
+
+            .right {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+
+            .stamp {
+                align-self: flex-end;
+                width: 8em;
+                height: 10em;
+                object-fit: cover;
+                border-radius: 0.2em;
+                border: 0.4em solid $color-gray-light;
+                transform: rotateZ(2deg);
+            }
+
+            .links {
+                display: flex;
+                flex-direction: column;
+
+                a {
+                    padding: 0.2em 0;
+                    margin: 0.5em 0;
+                    border-bottom: 1px dotted $color-text-footer;
+                }
+            }
+
+            .sicker {
+                p {
+                    content: "       ";
+                    text-decoration-style: wavy;
+                }
+            }
+
+            .notice {
+                font-weight: bold;
+            }
+
+            a {
+                text-decoration: none;
+                color: darken($color-2, 0.5);
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}

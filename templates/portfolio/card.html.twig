@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block body_class 'postcard' %}
+
+{% block javascripts encore_entry_script_tags('card') %}
+
+{% block body %}
+    {% include 'common/menu.html.twig' %}
+
+    <header>
+        <h1>Salut ! Moi c'est <span class="notice">Thomas</span>,</h1>
+        <h2>Je code des deux cotés de la requête HTTP.</h2>
+    </header>
+
+    <div id="card" class="card fliped">
+        <div class="recto">
+
+        </div>
+        <div class="verso">
+            <div class="left">
+                <p>Je suis <span class="notice">lead développeur web</span> à Lyon,<br><span class="note">c'est mon métier depuis bientôt <span class="notice">10 ans</span></span>.</p>
+
+                <p>En ce moment, je suis efficace avec <a class="notice" target="_blank" href="https://symfony.com">Symfony</a> et <a class="notice" target="_blank" href="https://fr.reactjs.org/">React</a>.<br> <span class="note">Je propose des solutions qui s'appuient sur les standards du web.</span></p>
+
+                <p>J'aime expérimenter dans le navigateur avec des jeux vidéo en temps réel comme <a class="notice" target="_blank" href="http://curvytron.com">Curvytron</a> et <a class="notice" target="_blank" href="https://whatthetune.com">What the tune?!</a></p>
+
+                <p>Je me déplace toujours à <span class="notice">vélo</span>.</p>
+
+                <p>Je partage mes passions via des <a class="notice" target="_blank" href="{{ path('blog') }}">articles</a> et des <a class="notice" target="_blank" href="{{ path('talk') }}">conférences</a>.</p>
+
+                <p>J'apprends la photographie <a target="_blank" href="https://unsplash.com/tom32i">ici</a> et <a target="_blank" href="https://instagram.com/tom32i">là</a> (et même dans <a target="_blank" href="https://instagram.com/gamoscope">les jeux vidéo</a>).</p>
+
+                <p>Pour discuter, c'est par <a target="_blank" href="mailto:thomas.jarrand@gmail.com">mail</a> et sur <a target="_blank" href="https://twitter.com/tom32i">Twitter</a>.</p>
+                <p>Bisous.</p>
+            </div>
+            <div class="right">
+                <img class="stamp" src="{{ asset('/img/portrait.jpg') }}">
+                <div class="links">
+                    <a target="_blank" href="https://twitter.com/tom32i">
+                        <span title="Twitter" class="icon-twitter"></span>
+                        Twitter
+                    </a>
+                    <a target="_blank" href="https://instagram.com/tom32i">
+                        <span title="Instagram" class="icon-instagram"></span>
+                        Instagram
+                    </a>
+                    <a target="_blank" href="https://github.com/tom32i">
+                        <span title="Github" class="icon-github"></span>
+                        Github
+                    </a>
+                    <a href="mailto:thomas.jarrand@gmail.com">
+                        <span title="Mail" class="icon-mail"></span>
+                        Mail
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

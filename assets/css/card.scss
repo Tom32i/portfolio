@@ -37,7 +37,8 @@
         position: relative;
         transform-style: preserve-3d;
         animation: slideUp 1200ms backwards $easeOutBack;
-        //animation-delay: 600ms;
+        animation-delay: 200ms;
+        box-shadow: 0 5em 20em 0 rgba(black, 0.1);
 
         &.fliped {
             transform: rotateY(-180deg);
@@ -65,6 +66,7 @@
             -webkit-backface-visibility: hidden;
             padding: 2em;
             color: $text-black;
+            box-shadow: inset 0 0 20em rgba(#765d39, 0.1);
 
             .left {
                 flex: 3;
@@ -88,6 +90,14 @@
                 border-radius: 0.2em;
                 border: 0.4em solid $color-gray-light;
                 transform: rotateZ(2deg);
+            }
+
+            .stamp-mark {
+                position: absolute;
+                width: 11em;
+                right: 8em;
+                top: 2em;
+                transform: rotateZ(8deg);
             }
 
             .links {

@@ -20,14 +20,6 @@ class PortfolioController extends AbstractController
      */
     public function index()
     {
-        return $this->render('portfolio/index.html.twig');
-    }
-
-    /**
-     * @Route("/card", name="card", defaults={"_menu"="portfolio"})
-     */
-    public function card()
-    {
         return $this->render('portfolio/card.html.twig');
     }
 }

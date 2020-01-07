@@ -1,5 +1,5 @@
 export default class Card {
-    static get angle() { return 45; }
+    static get angle() { return 80; }
     static get duration() { return 300; }
 
     constructor(element) {

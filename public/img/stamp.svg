@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?> <!-- Created with Vectornator for iOS (http://vectornator.io/) --><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" xmlns:vectornator="http://vectornator.io" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.1" viewBox="0 0 310 160">
+<style>
+    path {
+        stroke: #333333;
+        stroke-opacity: 0.3;
+        stroke-width: 4.3;
+        fill: none;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+    }
+    text {
+        fill: #333333;
+        fill-opacity: 0.3;
+        font: 18px serif;
+    }
+</style>
+<g id="Layer 1" vectornator:layerName="Layer 1">
+<g opacity="1">
+<path d="M210+110C190+110+180+90+160+90C140+90+130+110+110+110C90+110+80+90+60+90C40+90+30+110+10+110"/>
+<path d="M210+90C190+90+180+70+160+70C140+70+130+90+110+90C90+90+80+70+60+70C40+70+30+90+10+90"/>
+<path d="M210+70C190+70+180+50+160+50C140+50+130+70+110+70C90+70+80+50+60+50C40+50+30+70+10+70"/>
+<path d="M210+130C190+130+180+110+160+110C140+110+130+130+110+130C90+130+80+110+60+110C40+110+30+130+10+130"/>
+</g>
+<g opacity="1">
+<path d="M160+80C160+41.3401+191.34+10+230+10C268.66+10+300+41.3401+300+80C300+118.66+268.66+150+230+150C191.34+150+160+118.66+160+80Z"/>
+<path id="text" d="M183.333+80C183.333+54.2267+204.227+33.3333+230+33.3333C255.773+33.3333+276.667+54.2267+276.667+80C276.667+105.773+255.773+126.667+230+126.667C204.227+126.667+183.333+105.773+183.333+80Z"/>
+</g>
+<text dy="-6">
+    <textPath href="#text" startOffset="0%">✸ GRENOBLE ✸</textPath>
+    <textPath href="#text" startOffset="60%">✸ 1989 ✸</textPath>
+</text>
+</g>
+</svg>

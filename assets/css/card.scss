@@ -5,9 +5,12 @@
     justify-content: stretch;
     transform: translate3d(0,0,0);
     perspective: 100vw;
+    height: 100vh;
+    overflow: hidden;
 
     header {
         padding: 2.5em 0 5em;
+        text-align: center;
 
         h1, h2 {
             animation: slideIn 1200ms backwards $easeOutExpo;
@@ -16,7 +19,7 @@
 
         h1 {
             color: $text-primary;
-            font-size: 2.2em;
+            font-size: 2em;
             line-height: 2em;
 
             .notice {
@@ -25,16 +28,18 @@
         }
 
         h2 {
-            font-size: 1.25em;
+            font-size: 1.2em;
             color: $text-primary-light;
             animation-delay: 200ms;
         }
     }
 
     .card {
-        width: 800px;
+        width: 45em;
+        height: 28em;
         max-width: 100%;
-        position: relative;
+        position: absolute;
+        top: calc(50% - 10em);
         transform-style: preserve-3d;
         animation: slideUp 600ms backwards $easeOutCirc;
         animation-delay: 100ms;
@@ -57,7 +62,9 @@
         }
 
         .verso {
-            transform: rotateY( 180deg );
+            height: 100%;
+            width: 100%;
+            transform: rotateY(180deg);
             display: flex;
             flex-direction: row;
             background-color: white;
@@ -73,6 +80,7 @@
                 padding-right: 2em;
                 margin-right: 2em;
                 border-right: 1px dotted $color-text-footer;
+                position: relative;
             }
 
             .right {
@@ -111,13 +119,6 @@
                 }
             }
 
-            .sicker {
-                p {
-                    content: "       ";
-                    text-decoration-style: wavy;
-                }
-            }
-
             .notice {
                 font-weight: bold;
             }
@@ -130,6 +131,14 @@
                     text-decoration: underline;
                 }
             }
+        }
+
+        .copyright {
+            font-size: 8px;
+            color: #999;
+            position: absolute;
+            bottom: 0;
+            right: 2em;
         }
     }
 }

@@ -57,6 +57,8 @@
             backface-visibility: hidden;
             -webkit-backface-visibility: hidden;
             background-color: $color-1;
+            background-image: url('/img/carte2.svg');
+            background-size: cover;
             border: 1em solid white;
             z-index: 1;
         }

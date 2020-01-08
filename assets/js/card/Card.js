@@ -1,3 +1,5 @@
+import { easeInOutCubic } from './easing';
+
 export default class Card {
     static get angle() { return 80; }
     static get duration() { return 300; }
@@ -103,7 +105,7 @@ export default class Card {
             return this.angle;
         }
 
-        const progress = (Date.now() - this.flippedAt) / this.constructor.duration;
+        const progress = easeInOutCubic((Date.now() - this.flippedAt) / this.constructor.duration);
 
         this.angle = this.flippedFrom + progress * this.flippedDistance;
 

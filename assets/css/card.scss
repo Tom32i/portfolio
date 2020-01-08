@@ -27,7 +27,7 @@
         h2 {
             font-size: 1.25em;
             color: $text-primary-light;
-            animation-delay: 100ms;
+            animation-delay: 200ms;
         }
     }
 
@@ -36,8 +36,8 @@
         max-width: 100%;
         position: relative;
         transform-style: preserve-3d;
-        animation: slideUp 1200ms backwards $easeOutBack;
-        animation-delay: 200ms;
+        animation: slideUp 600ms backwards $easeOutCirc;
+        animation-delay: 100ms;
         box-shadow: 0 5em 20em 0 rgba(black, 0.1);
 
         &.fliped {

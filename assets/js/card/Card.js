@@ -4,8 +4,9 @@ export default class Card {
     static get angle() { return 80; }
     static get duration() { return 300; }
 
-    constructor(element) {
+    constructor(element, onFlip) {
         this.element = element;
+        this.onFlip = onFlip;
         this.loop = null;
         this.transformation = '';
         this.flipped = false;
@@ -38,7 +39,6 @@ export default class Card {
 
         this.start();
 
-        //setTimeout(this.flip, 300);
         this.element.addEventListener('animationend', this.flip);
     }
 
@@ -47,7 +47,7 @@ export default class Card {
             return;
         }
 
-        this.flip();
+        this.flip(true);
     }
 
     onTouch() {
@@ -84,13 +84,17 @@ export default class Card {
         window.addEventListener('deviceorientation', this.onDeviceOrientation);
     }
 
-    flip() {
+    flip(changeCover = false) {
         this.flipped = !this.flipped;
         this.flippedAt = Date.now();
         this.flippedFrom = this.angle;
         const destination = this.flipped ? 180 : (this.angle < 180 ? 0 : 360);
         this.flippedDistance = destination - this.angle;
         this.flipping = true;
+
+        if (changeCover === true && !this.flipped) {
+            this.onFlip();
+        }
     }
 
     render() {

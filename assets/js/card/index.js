@@ -1,10 +1,12 @@
 import Card from './Card';
+import Cover from './Cover';
 
 /**
  * Load card
  */
 function loadCard() {
-    new Card(document.getElementById('card'));
+    const cover = new Cover(document.body, 2);
+    const card = new Card(document.getElementById('card'), cover.onFlip);
 }
 
 // Loading

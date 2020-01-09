@@ -5,7 +5,7 @@ import Cover from './Cover';
  * Load card
  */
 function loadCard() {
-    const cover = new Cover(document.body, 2);
+    const cover = new Cover(document.body, 3);
     const card = new Card(document.getElementById('card'), cover.onFlip);
 }
 

@@ -1,6 +1,0 @@
-{% set sWidth = width * scale|default(1) %}
-{% set sHeight = height * scale|default(1) %}
-
-<svg class="drop" width="{{ sWidth }}" height="{{ sHeight }}" viewBox="0 0 {{ width }} {{ height }}" style="margin-bottom: -{{ sHeight }}px; margin-left: -{{ sWidth / 2 }}px;" xmlns="http://www.w3.org/2000/svg">
-  <path d="{{ path }}"/>
-</svg>

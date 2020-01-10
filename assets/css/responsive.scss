@@ -8,25 +8,7 @@
     }
   }
 
-  .portfolio header {
-    //padding-top: 0em;
 
-    h1 {
-      //font-size: 3.2em;
-    }
-
-    h2 {
-      //font-size: 2em;
-    }
-  }
-
-  .blog .header {
-    //margin-top: 0em;
-  }
-
-
-  //.portfolio section,
-  //.portfolio header,
   .blog .hero,
   .blog .container {
     max-width: initial;
@@ -47,36 +29,6 @@
 
       h2 {
         font-size: 1em;
-      }
-    }
-
-    section {
-      --ice-depth: 1.4em;
-      max-width: calc(100% - (2em + var(--ice-depth)));
-      font-size: 10px;
-
-      svg {
-        transform: scale(0.5);
-        animation-name: meltHalf;
-      }
-    }
-
-    section:last-of-type {
-      border-bottom-left-radius: 3em;
-      border-bottom-right-radius: 3em;
-
-      &::after {
-        bottom: -28em;
-      }
-    }
-
-    .baton {
-      font-size: 8px;
-      margin-bottom: 12em;
-      box-shadow: 0.6em 0em $color-wood-shadow;
-
-      a {
-        text-shadow: 0 1px rgba(white, 0.25);
       }
     }
   }

@@ -31,6 +31,18 @@
         font-size: 1em;
       }
     }
+
+    .card {
+      font-size: 10px;
+
+      .verso {
+        padding: 1.4em;
+
+        .stamp-mark {
+          top: 1em;
+        }
+      }
+    }
   }
 
   .blog {

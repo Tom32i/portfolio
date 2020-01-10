@@ -143,7 +143,9 @@
         }
     }
 
-    &.card-0 .card .recto { background-image: url('/img/carte.svg'); }
-    &.card-1 .card .recto { background-image: url('/img/carte2.svg'); }
-    &.card-2 .card .recto { background-image: url('/img/carte3.svg'); }
+    &.card-0 .card .recto { background-image: url('/img/carte_montagne.svg'); }
+    &.card-1 .card .recto { background-image: url('/img/carte_monstera.svg'); }
+    &.card-2 .card .recto { background-image: url('/img/carte_mer.svg'); }
+    &.card-3 .card .recto { background-image: url('/img/carte_glace.svg'); }
+    &.card-4 .card .recto { background-image: url('/img/carte_velo.svg'); }
 }

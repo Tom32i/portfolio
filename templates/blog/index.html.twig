@@ -14,8 +14,6 @@
     {% for article in articles %}
         {% block preview %}
             <article class="article preview" lang="{{ article.language }}">
-                {{ block('date') }}
-
                 <a class="title" href="{{ path('blog_article', { slug: article.slug }) }}">
                     {{ article.title }}
                 </a>
@@ -23,6 +21,8 @@
                 {% if article.description is defined %}
                     <p class="description">{{ article.description }}</p>
                 {% endif %}
+
+                {{ block('date') }}
             </article>
         {% endblock %}
     {% endfor %}

@@ -35,8 +35,6 @@
     }
 
     .brand {
-        //position: relative;
-        //margin-left: 2em;
         color: $color-2-dark;
         display: flex;
         align-items: center;
@@ -50,12 +48,8 @@
         &:before {
             content: "";
             display: inline-block;
-            //position: absolute;
-            //left: -1.6em;
-            //top: -0.5em;
-            margin-right: 0.6em;
             width: 1em;
-            height: 2em;
+            height: 2.5625em;
             background-image: url('/img/logo.svg');
             background-size: contain;
             background-repeat: no-repeat;

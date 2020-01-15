@@ -16,9 +16,9 @@
                 <h3 class="title">{{ talk.title }}</h3>
 
                 {% if talk.video %}
-                    <iframe class="view" width="640" height="360" src="https://www.youtube-nocookie.com/embed/{{ talk.video }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe class="view" width="640" height="360" src="" data-url="https://www.youtube-nocookie.com/embed/{{ talk.video }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 {% else %}
-                    <iframe class="view" width="640" height="360" src="{{ talk.slides }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe class="view" width="640" height="360" src="" data-url="{{ talk.slides }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen importance="low" loading="lazy" sandbox='allow-scripts'></iframe>
                 {% endif %}
 
                 <p class="links">

@@ -16,6 +16,21 @@ function loadCodes() {
     });
 }
 
-// Loading
+/**
+ * Load slides
+ */
+function loadSlides() {
+    const slides = Array.from(document.getElementsByTagName('iframe'));
 
+    slides.forEach(element => {
+        const url = element.getAttribute('data-url');
+
+        if (url) {
+            element.setAttribute('src', url);
+        }
+    });
+}
+
+// Loading
 window.addEventListener('load', loadCodes);
+window.addEventListener('load', loadSlides);

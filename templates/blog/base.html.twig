@@ -2,7 +2,11 @@
 
 {% block body_class 'blog' %}
 
-{% block javascripts encore_entry_script_tags('blog') %}
+{% block javascripts %}
+    {% for file in encore_entry_js_files('blog') %}
+        <script src="{{ asset(file) }}" async></script>
+    {% endfor %}
+{% endblock %}
 
 {% block body %}
     {% include 'common/menu.html.twig' %}

@@ -2,7 +2,11 @@
 
 {% block body_class 'portfolio' %}
 
-{% block javascripts encore_entry_script_tags('portfolio') %}
+{% block javascripts %}
+    {% for file in encore_entry_js_files('portfolio') %}
+        <script src="{{ asset(file) }}" async></script>
+    {% endfor %}
+{% endblock %}
 
 {% block body %}
     {% include 'common/menu.html.twig' %}

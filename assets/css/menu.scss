@@ -31,6 +31,10 @@
                 animation: rainbow 2000ms infinite linear;
                 font-weight: bold;
             }
+
+            &:visited {
+                color: $color-2-dark;
+            }
         }
     }
 
@@ -48,8 +52,8 @@
         &:before {
             content: "";
             display: inline-block;
-            width: 1em;
-            height: 2.5625em;
+            width: 0.8em;
+            height: 2.05em;
             background-image: url('../img/logo.svg');
             background-size: contain;
             background-repeat: no-repeat;

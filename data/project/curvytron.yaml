@@ -1,5 +1,8 @@
 title: Curvytron
-description: Snake / tron-like multijoueur et open-source.
-url: http://Curvytron.com
+description: |
+  Inspiré du célèbre Tron et du Curve Fever, ce jeu mutlijoueur en temps réel constitue mes premiers pas dans le monde du jeu vidéo.
+  Dévelopé en Javascript / Node JS et boostrapé chez élao, il est encore aujourd'hui soutenu par une communauté enthousiaste.
+  Le projet jouable en ligne et son code est open-source !
+url: http://curvytron.com
 image: curvytron.png
 date: "2014-07-01"

@@ -1,5 +1,8 @@
 title: Lazerdrive
-description: Variante massivement multijoueur de Curvytron
+description: |
+  Une variante massivement multijoueur de Curvytron, crée pour le Blend Web Mix.
+  Plus de 300 personnes ont pu y jouer en direct dans l'amphi lors de la cérémonie de cloture.
+  Les règles ont été apdaptées et la couche réseau complétement ré-écrite pour supporter un tel nombre de joueurs simmultanés.
 url: http://lazerdrive.io
 image: lazerdrive.png
 date: "2015-10-27"

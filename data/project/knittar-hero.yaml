@@ -1,5 +1,7 @@
 title: Knittar Hero
-description: Jeu musical au clavier pour tricoter des écharpes de Noël
+description: |
+  Un jeu musical à la Guittar Hero qui se joue au clavier.
+  Crée et dévelopé chez élao, pour fêter Noël en musique et tricoter des écharpes à motif !
 url: https://noel.elao.com
-image: knittar-hero.png
+image: knittar_hero.png
 date: "2018-12-25"

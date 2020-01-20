@@ -1,5 +1,4 @@
 .talks {
-
     .center {
         text-align: center;
     }
@@ -33,63 +32,5 @@
             max-width: 100%;
             box-shadow: 0em 3px 8px 0px rgba(0,0,0,0.15);
         }
-
-        .links {
-            display: flex;
-            flex-direction: row;
-            align-items: flex-end;
-            font-size: 1em;
-            margin: 0.4em 0 1em;
-            color: $text-mutted;
-
-            > * {
-                font-family: 'Cabin', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-                padding: 0.2em;
-                margin: 0;
-                line-height: 1.2em;
-                white-space: nowrap;
-                display: flex;
-                align-items: center;
-
-                &::before {
-                    margin-right: 0.4em;
-                    text-decoration: none;
-
-                    font-family: '#{$icomoon-font-family}' !important;
-                    speak: none;
-                    font-style: normal;
-                    font-weight: normal;
-                    font-variant: normal;
-                    text-transform: none;
-                    line-height: 1;
-
-                    /* Better Font Rendering =========== */
-                    -webkit-font-smoothing: antialiased;
-                    -moz-osx-font-smoothing: grayscale;
-                }
-            }
-
-            a, button {
-                text-decoration: none;
-                border-radius: 0.2em;
-                border: 1px solid transparent;
-                background: none;
-                color: $text-primary;
-                font-size: 1em;
-                cursor: pointer;
-
-                &:hover {
-                    color: white;
-                    background-color: $text-primary;
-                    border-color: $text-primary;
-                }
-            }
-        }
-
-        .date::before { content: $icon-calendar; }
-        .format::before { content: $icon-clock; }
-        .slides::before { content: $icon-monitor; }
-        .video::before { content: $icon-film; }
-        .infos::before { content: $icon-file-text; }
     }
 }

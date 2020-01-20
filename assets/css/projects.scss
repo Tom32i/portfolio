@@ -1,0 +1,19 @@
+.projects {
+    .project {
+        margin: 5em 0;
+
+        .title {
+            font-size: 1.6em;
+            margin: 0;
+        }
+
+        .description {
+            font-size: 1.2em;
+        }
+
+        img {
+            max-width: 100%;
+            box-shadow: 0em 3px 8px 0px rgba(0,0,0,0.15);
+        }
+    }
+}

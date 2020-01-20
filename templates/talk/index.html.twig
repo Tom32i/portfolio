@@ -23,7 +23,7 @@
 
                 <p class="links">
                     <span class="format">{{ talk.duration }}'</span>
-                    <span class="date">{{ talk.date|date('Y') }}</span>
+                    <time datetime="{{ talk.date|date('c') }}" class="date">{{ talk.date|date('Y') }}</time>
                     <a class="slides" target="_blank" href="{{ talk.slides }}">slides</a>
                     {% if talk.video %}
                         <a class="video" target="_blank" href="https://www.youtube.com/watch?v={{ talk.video }}">vidéo</a>

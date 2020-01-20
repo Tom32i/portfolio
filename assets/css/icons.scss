@@ -90,4 +90,8 @@
     content: $icon-github;
   }
 }
-
+.icon-globe {
+  &:before {
+    content: $icon-globe;
+  }
+}

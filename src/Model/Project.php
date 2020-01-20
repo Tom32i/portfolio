@@ -8,6 +8,7 @@ class Project
     public $description;
     public $url;
     public $date;
+    public $image;
 
     public function __construct(
         string $title,
@@ -21,5 +22,10 @@ class Project
         $this->url = $url;
         $this->date = $date;
         $this->image = $image;
+    }
+
+    public function getSiteName(): string
+    {
+        return trim(preg_replace('/^https?:\/\/(.+)$/', '$1', $this->url), '/');
     }
 }

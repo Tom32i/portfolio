@@ -7,6 +7,13 @@
     perspective: 100vw;
     height: 100vh;
     overflow: hidden;
+    transition: background-color 300ms linear;
+
+    .menu-container .menu {
+        a, a:visited {
+            color: white;
+        }
+    }
 
     header {
         padding: 2.5em 0 5em;
@@ -15,10 +22,10 @@
         h1, h2 {
             animation: slideIn 1200ms backwards $easeOutExpo;
             margin: 0;
+            color: white;
         }
 
         h1 {
-            color: $text-primary;
             font-size: 2em;
             line-height: 2em;
 
@@ -29,7 +36,6 @@
 
         h2 {
             font-size: 1.2em;
-            color: $text-primary-light;
             animation-delay: 200ms;
         }
     }
@@ -124,7 +130,7 @@
                 font-weight: bold;
             }
 
-            a {
+            a, a:visited  {
                 text-decoration: none;
                 color: darken($color-2, 0.5);
 
@@ -148,4 +154,10 @@
     &.card-2 .card .recto { background-image: url('../img/carte_mer.svg'); }
     &.card-3 .card .recto { background-image: url('../img/carte_glace.svg'); }
     &.card-4 .card .recto { background-image: url('../img/carte_velo.svg'); }
+
+    &.card-0 { background-color: $color-3; }
+    &.card-1 { background-color: $color-4; }
+    &.card-2 { background-color: $color-7; }
+    &.card-3 { background-color: $color-1; }
+    &.card-4 { background-color: $color-2; }
 }

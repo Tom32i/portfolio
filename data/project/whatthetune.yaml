@@ -1,6 +1,6 @@
 title: What the Tune ?!
 description: |
-  Un blind-test musicale en ligne multijoueur en temps réel avec un client en react très animé !
+  Un blind-test musical en ligne multijoueur en temps réel avec un client en react très animé !
   Le back-office en Symfony s'appuie sur les API Spotify et Deezer et me permet de composer les playlists de jeu.
   Les scores sont également tracés pour afficher un classement officiel des meilleur(e)s joueurs et joueuses.
 url: https://whatthetune.com

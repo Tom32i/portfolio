@@ -61,7 +61,6 @@
             width: 100%;
             visibility:visible;
             backface-visibility: hidden;
-            -webkit-backface-visibility: hidden;
             background-color: $color-1;
             background-size: cover;
             border: 1em solid white;
@@ -77,10 +76,10 @@
             background-color: white;
             visibility:visible;
             backface-visibility: hidden;
-            -webkit-backface-visibility: hidden;
             padding: 2em;
             color: $text-black;
             box-shadow: inset 0 0 20em rgba(#765d39, 0.1);
+            z-index: 2;
 
             .left {
                 flex: 3;

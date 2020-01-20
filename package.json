@@ -22,7 +22,12 @@
   },
   "devDependencies": {
     "@symfony/webpack-encore": "^0.28.0",
+    "autoprefixer": "^9.7.4",
     "node-sass": "^4.13.0",
+    "postcss-loader": "^3.0.0",
     "sass-loader": "^7.3.1"
-  }
+  },
+  "browserslist": [
+    "defaults"
+  ]
 }

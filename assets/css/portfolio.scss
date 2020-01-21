@@ -9,6 +9,20 @@
     overflow: hidden;
     transition: background-color 300ms linear;
 
+    &.turn-left {
+        cursor: url('../img/left.png'), auto;
+    }
+
+    &.turn-right {
+        cursor: url('../img/right.png'), auto;
+    }
+
+    &.turn-left, &.turn-right  {
+        & > *:hover {
+            cursor: default;
+        }
+    }
+
     .menu-container .menu {
         a, a:visited {
             color: white;
@@ -87,6 +101,9 @@
                 margin-right: 2em;
                 border-right: 1px dotted $color-text-footer;
                 position: relative;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
             }
 
             .right {

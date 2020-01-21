@@ -25,6 +25,16 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-redo {
+  &:before {
+    content: $icon-redo;
+  }
+}
+.icon-undo {
+  &:before {
+    content: $icon-undo;
+  }
+}
 .icon-chevron-right {
   &:before {
     content: $icon-chevron-right;
@@ -75,6 +85,11 @@
     content: $icon-monitor;
   }
 }
+.icon-globe {
+  &:before {
+    content: $icon-globe;
+  }
+}
 .icon-instagram {
   &:before {
     content: $icon-instagram;
@@ -88,10 +103,5 @@
 .icon-github {
   &:before {
     content: $icon-github;
-  }
-}
-.icon-globe {
-  &:before {
-    content: $icon-globe;
   }
 }

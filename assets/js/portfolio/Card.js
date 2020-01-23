@@ -3,6 +3,7 @@ import { easeInOutCubic } from './easing';
 export default class Card {
     static get angle() { return 80; }
     static get duration() { return 300; }
+    static get zone() { return 1440; }
 
     constructor(element, onFlip) {
         this.element = element;
@@ -64,10 +65,13 @@ export default class Card {
     }
 
     onMouseMove(event) {
-        const { angle } = this.constructor;
+        const { angle, zone } = this.constructor;
+        const { innerWidth, innerHeight } = window;
+        const width = Math.min(innerWidth, zone);
+        const height = Math.min(innerHeight, zone);
 
-        this.x = ((event.clientX / window.innerWidth) - 0.5) * angle;
-        this.y = ((event.clientY / window.innerHeight) - 0.5) * angle;
+        this.x = Math.min(Math.max(event.clientX - (innerWidth / 2), -width / 2), width / 2) / width * angle;
+        this.y = Math.min(Math.max(event.clientY - (innerHeight / 2), -height / 2), height / 2) / height * angle;
 
         this.setDirection(this.x > 0);
     }

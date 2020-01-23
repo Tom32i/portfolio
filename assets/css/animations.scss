@@ -36,11 +36,7 @@ $easeOutBounce: cubic-bezier(.18,.76,.67,1.3);
 }
 
 @keyframes rotate {
-  from { transform: rotate3d(0, 1, 0, 0deg); }
-  to { transform: rotate3d(0, 1, 0, 360deg); }
-}
-
-@keyframes rotateCard {
-  from { transform: rotate3d(0, 1, 0, 0deg); }
-  to { transform: rotate3d(0, 1, 0.1, 360deg); }
+  0% { transform: rotateZ(-5deg) rotateY(0deg); }
+  50% { transform: rotateZ(5deg) rotateY(180deg); }
+  100% { transform: rotateZ(-5deg) rotateY(360deg); }
 }

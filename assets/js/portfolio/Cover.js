@@ -33,9 +33,11 @@ export default class Cover {
 
     /**
      * On card flip
+     *
+     * @param {Boolean} direction
      */
-    onFlip() {
-        this.setIndex(this.index >= this.max ? 0 : this.index + 1);
+    onFlip(direction) {
+        this.setIndex((this.length + (this.index + (direction ? 1 : -1))) % this.length);
     }
 
     /**

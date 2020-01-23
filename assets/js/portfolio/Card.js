@@ -3,6 +3,7 @@ import { easeInOutCubic } from './easing';
 export default class Card {
     static get angle() { return 80; }
     static get duration() { return 300; }
+    static get zone() { return 1440; }
 
     constructor(element, onFlip) {
         this.element = element;
@@ -20,6 +21,7 @@ export default class Card {
         this.alpha = null;
         this.beta = null;
         this.gamma = null;
+        this.direction = true;
 
         this.onMouseMove = this.onMouseMove.bind(this);
         this.onDeviceOrientation = this.onDeviceOrientation.bind(this);
@@ -40,6 +42,8 @@ export default class Card {
         this.start();
 
         this.element.addEventListener('animationend', this.flip);
+
+        document.body.classList.add('turn-right');
     }
 
     onClick(event) {
@@ -61,10 +65,15 @@ export default class Card {
     }
 
     onMouseMove(event) {
-        const { angle } = this.constructor;
+        const { angle, zone } = this.constructor;
+        const { innerWidth, innerHeight } = window;
+        const width = Math.min(innerWidth, zone);
+        const height = Math.min(innerHeight, zone);
 
-        this.x = ((event.clientX / window.innerWidth) - 0.5) * angle;
-        this.y = ((event.clientY / window.innerHeight) - 0.5) * angle;
+        this.x = Math.min(Math.max(event.clientX - (innerWidth / 2), -width / 2), width / 2) / width * angle;
+        this.y = Math.min(Math.max(event.clientY - (innerHeight / 2), -height / 2), height / 2) / height * angle;
+
+        this.setDirection(this.x > 0);
     }
 
     onDeviceOrientation(event) {
@@ -84,16 +93,35 @@ export default class Card {
         window.addEventListener('deviceorientation', this.onDeviceOrientation);
     }
 
+    /**
+     * Set direction
+     *
+     * @param {Boolean} direction
+     */
+    setDirection(direction) {
+        if (this.direction === direction) {
+            return;
+        }
+
+        this.direction = direction;
+
+        document.body.classList.replace(
+            this.direction ? 'turn-left' : 'turn-right',
+            this.direction ? 'turn-right' : 'turn-left'
+        );
+    }
+
     flip(changeCover = false) {
+        const destination = (this.flipped ? 180 : 0) + (this.direction ? 180 : -180);
+
         this.flipped = !this.flipped;
         this.flippedAt = Date.now();
         this.flippedFrom = this.angle;
-        const destination = this.flipped ? 180 : (this.angle < 180 ? 0 : 360);
         this.flippedDistance = destination - this.angle;
         this.flipping = true;
 
         if (changeCover === true && !this.flipped) {
-            this.onFlip();
+            this.onFlip(this.direction);
         }
     }
 

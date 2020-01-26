@@ -121,6 +121,8 @@
 
     .article-content {
         margin-top: 3em;
+        display: flex;
+        flex-direction: column;
         font-family: Georgia, Cambria, "Times New Roman", Times, serif;
 
         -webkit-font-smoothing: auto;
@@ -226,17 +228,40 @@
         font-style: normal;
     }
 
-    blockquote p {
-        font-style: italic;
+    blockquote {
+        margin: 1.5em 0;
+
+        p {
+            font-style: italic;
+            margin: 0;
+        }
     }
 
     ul {
         list-style: disc;
         padding-left: 2em;
+
+        li {
+            margin: 0.4em 0;
+        }
     }
 
     ol {
         padding-left: 2em;
+    }
+
+    img, svg {
+        max-width: 100%;
+        margin: 1em auto;
+    }
+
+    img + legend {
+        text-align: center;
+        font-size: 1em;
+        line-height: 1.5;
+        margin-bottom: 1em;
+        color: $text-mutted;
+        font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
     }
 
     .inline-code {

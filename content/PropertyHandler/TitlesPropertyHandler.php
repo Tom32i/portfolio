@@ -12,8 +12,12 @@ class TitlesPropertyHandler implements PropertyHandlerInterface
 {
     public function isSupported($value): bool
     {
+        if (!$value) {
+            return false;
+        }
+
         try {
-            new Crawler($value);
+            (new Crawler($value))->html();
         } catch (\Exception $e) {
             return false;
         }

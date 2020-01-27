@@ -36,6 +36,10 @@ services:
         tags:
             - { name: 'content.property_handler', property: 'slug' }
 
+    Content\PropertyHandler\TitlesPropertyHandler:
+        tags:
+            - { name: 'content.property_handler', property: 'content' }
+
     # Decorators
     Content\Routing\UrlGenerator:
         decorates: Symfony\Component\Routing\Generator\UrlGeneratorInterface

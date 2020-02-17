@@ -27,11 +27,13 @@ export default class Card {
         this.onDeviceOrientation = this.onDeviceOrientation.bind(this);
         this.onClick = this.onClick.bind(this);
         this.onTouch = this.onTouch.bind(this);
+        this.onResize = this.onResize.bind(this);
         this.enableOrientation = this.enableOrientation.bind(this);
         this.update = this.update.bind(this);
         this.flip = this.flip.bind(this);
 
 
+        document.addEventListener('resize', this.onResize);
         document.addEventListener('mousemove', this.onMouseMove);
         document.addEventListener('click', this.onClick);
 
@@ -74,6 +76,10 @@ export default class Card {
         this.y = Math.min(Math.max(event.clientY - (innerHeight / 2), -height / 2), height / 2) / height * angle;
 
         this.setDirection(this.x > 0);
+    }
+
+    onResize() {
+        this.setActive(window.innerWidth > 767);
     }
 
     onDeviceOrientation(event) {

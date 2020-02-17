@@ -2,10 +2,7 @@
   .menu-container {
     position: relative;
     padding: 1em;
-
-    a {
-      font-size: 14px;
-    }
+    font-size: 14px;
   }
 
 
@@ -17,12 +14,18 @@
 }
 
 @media (max-width: 767px) {
-  body {
+  .menu-container {
     font-size: 12px;
   }
 
   .portfolio {
+    font-size: 12px;
+    height: auto;
+    overflow: visible;
+
     header {
+      padding-bottom: 2.5em;
+
       h1 {
         font-size: 1.8em;
       }
@@ -32,14 +35,72 @@
       }
     }
 
+    .card, .card.fliped {
+      transform: none;
+    }
+
     .card {
-      font-size: 10px;
+      //font-size: 10px;
+      margin: 1em;
+      width: auto;
+      height: auto;
+      display: block;
+      position: inherit;
+      //display: flex;
+      //flex-direction: column;
+      //transform: none;
+      //position: inherit;
+      //box-shadow: none;
+
+      .recto {
+        display: none;
+      }
 
       .verso {
-        padding: 1.4em;
+        transform: none;
+        backface-visibility: initial;
+        flex-direction: column-reverse;
+        height: auto;
+        width: auto;
+        margin: 0;
+        padding: 1.2em;
+
+        .left {
+          margin: 0;
+          padding: 0;
+          border: none;
+        }
+
+        .right {
+          flex-direction: row-reverse;
+        }
+
+        .stamp {
+          width: 5em;
+          height: 6.25em;
+          align-self: auto;
+          //transform: rotateZ(2deg) scale(0.67);
+        }
+
+        .links {
+          align-self: flex-start;
+
+          a {
+            padding: 0;
+            margin: 0 0 0.6em 0;
+            border: none;
+          }
+        }
 
         .stamp-mark {
-          top: 1em;
+          top: 0;
+          right: 4em;
+          transform: rotateZ(8deg) scale(0.67);
+        }
+
+        .copyright {
+          position: static;
+          margin-bottom: 0;
         }
       }
     }

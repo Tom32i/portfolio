@@ -6,10 +6,10 @@ import Cover from './Cover';
  */
 function loadCard() {
     const cover = new Cover(document.body, 4);
-    console.log(window.innerWidth);
-    if (window.innerWidth > 767) {
+
+    //if (window.innerWidth > 767) {
         const card = new Card(document.getElementById('card'), cover.onFlip);
-    }
+    //}
 }
 
 // Loading

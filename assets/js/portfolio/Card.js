@@ -1,13 +1,14 @@
 import { easeInOutCubic } from './easing';
 
 export default class Card {
-    static get angle() { return 80; }
+    static get angle() { return 60; }
     static get duration() { return 300; }
     static get zone() { return 1440; }
 
     constructor(element, onFlip) {
         this.element = element;
         this.onFlip = onFlip;
+        this.active = window.innerWidth > 767;
         this.loop = null;
         this.transformation = '';
         this.flipped = false;
@@ -22,6 +23,7 @@ export default class Card {
         this.beta = null;
         this.gamma = null;
         this.direction = true;
+        this.orientationListener = false;
 
         this.onMouseMove = this.onMouseMove.bind(this);
         this.onDeviceOrientation = this.onDeviceOrientation.bind(this);
@@ -32,20 +34,29 @@ export default class Card {
         this.update = this.update.bind(this);
         this.flip = this.flip.bind(this);
 
-
-        document.addEventListener('resize', this.onResize);
+        window.addEventListener('resize', this.onResize);
         document.addEventListener('mousemove', this.onMouseMove);
         document.addEventListener('click', this.onClick);
 
         if (typeof DeviceMotionEvent !== 'undefined') {
-            document.addEventListener('click', this.onTouch);
+            try {
+                this.enableOrientation();
+            } catch (error) {
+                document.addEventListener('click', this.onTouch);
+            }
         }
 
         this.start();
 
-        this.element.addEventListener('animationend', this.flip);
+        if (this.active) {
+            this.element.addEventListener('animationend', this.flip);
+        }
 
         document.body.classList.add('turn-right');
+    }
+
+    setActive(active) {
+        this.active = active;
     }
 
     onClick(event) {
@@ -67,6 +78,10 @@ export default class Card {
     }
 
     onMouseMove(event) {
+        if (!this.active) {
+            return;
+        }
+
         const { angle, zone } = this.constructor;
         const { innerWidth, innerHeight } = window;
         const width = Math.min(innerWidth, zone);
@@ -83,6 +98,7 @@ export default class Card {
     }
 
     onDeviceOrientation(event) {
+        const { angle } = this.constructor;
         const { absolute, alpha, beta, gamma } = event;
 
         if (this.alpha === null) {
@@ -91,12 +107,15 @@ export default class Card {
             this.gamma = gamma;
         }
 
-        this.x = this.gamma - gamma;
-        this.y = this.beta - beta;
+        this.x = Math.min(Math.max((this.gamma - gamma) / 2, -angle / 2), angle / 2);
+        this.y = Math.min(Math.max((this.beta - beta) / 2, -angle / 2), angle / 2);
     }
 
     enableOrientation() {
-        window.addEventListener('deviceorientation', this.onDeviceOrientation);
+        if (!this.orientationListener) {
+            window.addEventListener('deviceorientation', this.onDeviceOrientation);
+            this.orientationListener = true;
+        }
     }
 
     /**
@@ -118,6 +137,10 @@ export default class Card {
     }
 
     flip(changeCover = false) {
+        if (!this.active) {
+            return this.onFlip(this.direction);
+        }
+
         const destination = (this.flipped ? 180 : 0) + (this.direction ? 180 : -180);
 
         this.flipped = !this.flipped;
@@ -133,7 +156,7 @@ export default class Card {
 
     render() {
         const X = (-this.y).toFixed(3);
-        const Y = (this.x + this.angle).toFixed(3);
+        const Y = (this.x + (this.active ? this.angle : 0)).toFixed(3);
 
         this.element.style.transform = `rotateX(${X}deg) rotateY(${Y}deg)`;
     }

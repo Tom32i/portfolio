@@ -94,14 +94,10 @@ class Parsedown extends BaseParsedown
 
     /**
      * Process code content
-     *
-     * @param string $text
-     *
-     * @return string
      */
-    protected function getCode(string $text, string $language): string
+    protected function getCode(string $text, string $language = null): string
     {
-        if ($this->highlighter) {
+        if ($this->highlighter && $language) {
             return $this->highlighter->highlight($text, $language);
         }
 
@@ -123,7 +119,7 @@ class Parsedown extends BaseParsedown
      *
      * @return string
      */
-    protected function getLanguage($Block)
+    protected function getLanguage($Block): ?string
     {
         if (!isset($Block['element']['text']['attributes'])) {
             return null;

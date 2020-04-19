@@ -6,7 +6,7 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "erusev/parsedown": "^1.7",
-        "sensio/framework-extra-bundle": "^5.3",
+        "sensio/framework-extra-bundle": "^5.5",
         "symfony/asset": "4.3.*",
         "symfony/console": "4.3.*",
         "symfony/css-selector": "4.3.*",

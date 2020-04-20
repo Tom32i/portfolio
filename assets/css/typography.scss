@@ -22,6 +22,15 @@ time {
     color: $text-mutted;
 }
 
+blockquote {
+    font-family: 'Cabin', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: $text-primary-light;
+    border-left: 0.4em solid rgba($text-primary-light, 0.4);
+    padding-left: 1em;
+    font-size: 1.1em;
+    font-style: italic;
+}
+
 p {
     line-height: 1.4em;
     margin: 0.8em 0;

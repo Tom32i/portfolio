@@ -1,7 +1,7 @@
 import { easeInOutCubic } from './easing';
 
 export default class Card {
-    static get angle() { return 60; }
+    static get angle() { return 30; }
     static get duration() { return 300; }
     static get zone() { return 1440; }
 

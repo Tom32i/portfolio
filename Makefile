@@ -56,5 +56,6 @@ build-content:
 deploy@demo: build
 	rsync -arzv --delete build/* tom32i@deployer.vm:/home/tom32i/portfolio/
 
+## Build and deploy to production
 deploy@prod: build
 	rsync -arzv --delete build/* tom32i@tom32i.fr:/home/tom32i/portfolio/

@@ -1,5 +1,10 @@
 {% extends 'blog/base.html.twig' %}
 
+{% block meta_title 'Jeux vidéo et expérimentations | ' ~ parent() %}
+{%- block meta_description -%}
+Petite sélection de mes jeux vidéo, créations intéractives et expérimentations de ces dernières années.
+{%- endblock -%}
+
 {% block header %}
     <header class="container header">
         <h1>Jeux vidéo et expérimentations</h1>

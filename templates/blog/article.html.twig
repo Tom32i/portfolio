@@ -1,5 +1,10 @@
 {% extends 'blog/base.html.twig' %}
 
+{% block meta_title article.title ~ ' | Blog technique de Thomas Jarrand' %}
+{% block meta_description article.description %}
+{% block meta_locale article.language %}
+{% block fb_og_type 'article' %}
+
 {% use 'blog/blocks.html.twig' %}
 
 {% block content %}

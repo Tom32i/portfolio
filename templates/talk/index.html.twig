@@ -1,5 +1,10 @@
 {% extends 'blog/base.html.twig' %}
 
+{% block meta_title 'Conférences | ' ~ parent() %}
+{%- block meta_description -%}
+Talk et conférences données à l'AFUP, au Forum PHP, au Blend Web Mix, à Lyon JS et aux Human Talks.
+{%- endblock -%}
+
 {% block header %}
     <header class="container header">
         <h1>Conférences</h1>

@@ -1,10 +1,14 @@
 {% extends 'blog/base.html.twig' %}
 
+{% block meta_title 'Blog technique de Thomas Jarrand' %}
+{% block meta_description block('subtitle') %}
+
 {% use 'blog/blocks.html.twig' %}
 
 {% block header %}
     <header class="container header">
         <h1>Mon blog technique <small>(mais pas que)</small></h1>
+        <p>{% block subtitle %}Retours d'expérience et cookbooks techniques pour Symfony, PHP, Javascript, React et autres technologies web de mon quotidien.{% endblock %}</p>
     </header>
 {% endblock %}
 

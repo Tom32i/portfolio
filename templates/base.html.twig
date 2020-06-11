@@ -1,26 +1,35 @@
 <!DOCTYPE html>
-<html lang="{{ app.request.locale }}">
+<html lang="{% block meta_locale app.request.locale %}">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>{% block title %}Thomas Jarrand - Lead Développeur Web{% endblock %}</title>
-        <meta name="title" content="{{ block('title') }}">
+        <title>{% block meta_title 'Thomas Jarrand' %}</title>
+        <meta name="title" content="{{ block('meta_title') }}">
         <meta name="description" content="{% block meta_description %}Lead Développeur web à Lyon. Je code des deux cotés de la requête HTTP.{% endblock %}">
+
         {% block social %}
             <!-- Open Graph / Facebook -->
-            <meta property="og:type" content="website">
-            <meta property="og:url" content="https://thomas.jarrand.fr/">
-            <meta property="og:title" content="{% block meta_title %}Thomas Jarrand - Lead Développeur Web{% endblock %}">
+            <meta property="og:type" content="{% block fb_og_type 'website' %}">
+            <meta property="og:url" content="{{ app.request.uri }}">
+            <meta property="og:title" content="{{ block('meta_title') }}">
             <meta property="og:description" content="{{ block('meta_description') }}">
-            <meta property="og:image" content="https://thomas.jarrand.fr/cover.png">
+            <meta property="og:local" content="{{ block('meta_locale') }}">
+            {% if meta_cover|default(false) %}
+            <meta property="og:image" content="{{ meta_cover }}">
+            {% endif %}
 
             <!-- Twitter -->
-            <meta property="twitter:card" content="summary_large_image">
-            <meta property="twitter:url" content="https://thomas.jarrand.fr/">
+            <meta property="twitter:card" content="{% block twitter_card_type 'summary' %}">
             <meta property="twitter:title" content="{{ block('meta_title') }}">
             <meta property="twitter:description" content="{{ block('meta_description') }}">
-            <meta property="twitter:image" content="https://thomas.jarrand.fr/cover.png">
+            <meta property="twitter:site" content="@tom32i">
+            <meta property="twitter:creator" content="@tom32i">
+            {% if meta_cover|default(false) %}
+            <meta property="twitter:image" content="{{ meta_cover }}">
+            {% endif %}
+
         {% endblock %}
+
         {% block icon %}
             <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
             <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">

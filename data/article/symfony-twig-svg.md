@@ -1,5 +1,5 @@
 ---
-date: "2020-06-11 10:00:00"
+date: "2020-06-12 08:00:00"
 tags: ["Symfony", "Twig", "svg", "graph", "graphique"]
 title: "Des graphiques dans Symfony avec Twig et SVG"
 description: "A-t-on toujours besoin d'une librairie javascript complexe pour génerer de jolis graphiques dans nos applications Symfony ? Regardons ce que le format SVG peut faire pour nos représentations de données, ce qu'il apporte et comment il s'intègre (bien) dans notre stack Symfony / Twig."

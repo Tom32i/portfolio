@@ -18,7 +18,7 @@ SVG, pour _Scalable Vector Graphics_, c'est un format d'image un peu particulier
 
 Une image SVG se compose d'une zone de travail (`viewBox`) dont les dimensions sont absolues (pas d'unité) dans lesquels sont placées des formes géométriques plus ou moins complexes : rectangle, cercles, lignes, courbes, etc.
 
-Chaque forme est décrite par un noeuds XML qui porte des informations de position, de taille, de couleur, de contour, d'épaisseur de trait, etc.
+Chaque forme est décrite par un noeud XML qui porte des informations de position, de taille, de couleur, de contour, d'épaisseur de trait, etc.
 
 > Un exemple ?
 
@@ -63,7 +63,7 @@ Nous allons bénéficier de toute la puissance de Twig pour générer nos diagra
 
 Une fois notre image SVG générée, il va falloir l'afficher.
 
-Pour cela il nous suffit renvoyer une réponse de type `image/svg+xml` à travers une route dédié :
+Pour cela il nous suffit renvoyer une réponse de type `image/svg+xml` à travers une route dédiée :
 
 ```php
 # GraphController.php
@@ -173,17 +173,17 @@ svg.histogram .axe {
 }
 ```
 
-💡 _Note : oui les animations et transitions CSS sont très bien supportées sur les propriétés SVG, soyons créatif !_ 😏
+💡 _Note : oui les animations et transitions CSS sont très bien supportées sur les propriétés SVG, soyons créatifs !_ 😏
 
 ## Bilan
 
 Quels-sont les avantages de l'utilisation de SVG coté serveur pour générer nos graphiques ?
 
 - **Poids modeste** : un graphique au format SVG est généralement assez léger, surtout face à son équivalent en bitmap.
-- **Mise en cache** : un graphique généré par le serveur peut être mis en cache et servit à tous les utilisateurs (contrairement à un rendu coté client sur chaque navigateur).
+- **Mise en cache** : un graphique généré par le serveur peut être mis en cache et servi à tous les utilisateurs (contrairement à un rendu coté client sur chaque navigateur).
 - **Sur mesure** : faire ses diagrammes soi-même permet de coller exactement à la charte de son produit plutôt que de subir l'identité visuelle d'une librairie tierce.
 - **Haute définition** : le SVG étant vectoriel, les graphiques SVG seront rendu en haute définition sur tous les supports, que ce soit sur des écrans haute densité ou lors de l'impression.
-- **Low tech** : le SVG est une _bonne vielle techno_™️, supporté par les plus vieux navigateurs et bien documentée. J'ai même fait tourné mes graphiques sur une liseuse 😊
+- **Low tech** : le SVG est une _bonne vielle techno_™️, supporté par les plus vieux navigateurs et bien documentée. J'ai même fait tourner mes graphiques sur une liseuse 😊
 
 Je ne suis d'ailleurs pas le seul à penser que c'est une bonne idée, certains des diagrammes que nous côtoyons quotidiennement sont générés en SVG :
 
@@ -194,11 +194,11 @@ Je ne suis d'ailleurs pas le seul à penser que c'est une bonne idée, certains 
 ![Symfony profiler](/img/articles/symfony-twig-svg/symfony-profiler-4.3.png)
 <legend>Le profiler de Symfony</legend>
 
-## A vous de jouer !
+## À vous de jouer !
 
-Le combo SVG + Twig ne répondra pas à tous vos besoin de _data visualisation_, notamment pour les plus interractifs.
+Le combo SVG + Twig ne répondra pas à tous vos besoin de _data visualisation_, notamment pour les plus interactifs.
 
 Mais il constitue une solution simple et solide pour des dashboards, diagrammes et autres rapports, dans vos projets Symfony. Je vous recommande de l'envisager pour votre prochain besoin de ce genre !
 
-Enfin, si vous décidez de vous lancer, j'ai préparé un petit [exemple concret et fonctionel](https://github.com/Tom32i/demo-twig-svg) avec quelques diagrammes classiques, qui peut servir de référence.
+Enfin, si vous décidez de vous lancer, j'ai préparé un petit [exemple concret et fonctionnel](https://github.com/Tom32i/demo-twig-svg) avec quelques diagrammes classiques, qui peut servir de référence.
 

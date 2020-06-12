@@ -4,13 +4,51 @@ tags: ["Symfony", "Twig", "svg", "graph", "graphique"]
 title: "Des graphiques dans Symfony avec Twig et SVG"
 description: "A-t-on toujours besoin d'une librairie javascript complexe pour génerer de jolis graphiques dans nos applications Symfony ? Regardons ce que le format SVG peut faire pour nos représentations de données, ce qu'il apporte et comment il s'intègre (bien) dans notre stack Symfony / Twig."
 language: fr
+cover: /img/articles/symfony-twig-svg/cover.png
 ---
 
 Pour afficher des graphiques et diagrammes dans nos applications Symfony, il existe une large offre de solutions en Javascript qui se chargent du rendu coté client.
 
 Mais je vous propose ici une alternative _low-tech_, coté serveur, qui fait appel à un standard depuis longtemps éprouvé : SVG.
 
-![Histogramme en SVG](/img/articles/symfony-twig-svg/histogram.svg)
+<svg class="pie" width="600" height="300"  viewBox="-182 -110 364 220" xmlns="http://www.w3.org/2000/svg">
+  <style type="text/css">
+    svg.pie .portion:nth-of-type(5n+1) { fill: #FFCDB2; }
+    svg.pie .portion:nth-of-type(5n+2) { fill: #FFB4A2; }
+    svg.pie .portion:nth-of-type(5n+3) { fill: #E5989B; }
+    svg.pie .portion:nth-of-type(5n+4) { fill: #B5838D; }
+    svg.pie .portion:nth-of-type(5n+0) { fill: #6D6875; }
+
+    svg.pie .label {
+      font-size: 12px;
+      fill: #666666;
+    }
+    svg.pie .label-line {
+      stroke: lightgrey;
+    }
+    svg.pie .portion {
+      transition: transform 200ms ease-in-out;
+    }
+    svg.pie .portion:hover {
+      transform: scale(1.05);
+    }
+  </style>
+  <line class="label-line" x1="36.812455268468" y1="92.977648588825" x2="180" y2="92.977648588825" />
+  <text class="label" x="102" y="104.97764858883">Abricot : 38%</text>
+  <path class="portion" d="M0,0 L100,0 A100,100 1 0,1 -72.896862742141,68.454710592869 Z" />
+  <line class="label-line" x1="-98.228725072869" y1="18.738131458573" x2="-180" y2="18.738131458573" />
+  <text class="label" x="-180" y="30.738131458573">Melon : 18%</text>
+  <path class="portion" d="M0,0 L-72.896862742141,68.454710592869 A100,100 1 0,1 -92.977648588825,-36.812455268468 Z"/>
+  <line class="label-line" x1="-83.580736136827" y1="-54.902281799813" x2="-180" y2="-54.902281799813" />
+  <text class="label" x="-180" y="-42.902281799813">Pêche : 6.5%</text>
+  <path class="portion" d="M0,0 L-92.977648588825,-36.812455268468 A100,100 1 0,1 -70.710678118655,-70.710678118655 Z"/>
+  <line class="label-line" x1="-33.873792024529" y1="-94.088076895423" x2="-180" y2="-94.088076895423" />
+  <text class="label" x="-180" y="-82.088076895423">Figue : 14%</text>
+  <path class="portion" d="M0,0 L-70.710678118655,-70.710678118655 A100,100 1 0,1 9.4108313318514,-99.556196460308 Z" />
+  <line class="label-line" x1="73.963109497861" y1="-67.301251350977" x2="180" y2="-67.301251350977" />
+  <text class="label" x="102" y="-55.301251350977">Prune : 23.5%</text>
+  <path class="portion" d="M0,0 L9.4108313318514,-99.556196460308 A100,100 1 0,1 100,-1.1331077795296E-13 Z"/>
+</svg>
 
 ## Qu'est-ce que SVG ?
 

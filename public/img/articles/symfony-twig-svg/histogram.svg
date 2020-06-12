@@ -1,10 +1,4 @@
-<svg
-  class="histogram"
-  width="1000"
-  height="280"
-  viewBox="-0 -240 1000 280"
-  xmlns="http://www.w3.org/2000/svg"
-  >
+<svg class="histogram" width="1000" height="280" viewBox="-0 -240 1000 280" xmlns="http://www.w3.org/2000/svg">
   <style type="text/css">
     @import url(&#039;https://fonts.googleapis.com/css?family=Ubuntu|Ubuntu+Mono&amp;display=swap&#039;);
 

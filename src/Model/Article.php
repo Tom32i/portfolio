@@ -4,13 +4,14 @@ namespace App\Model;
 
 class Article
 {
-    public $title;
-    public $slug;
-    public $description;
-    public $language;
-    public $date;
-    public $lastModified;
-    public $content;
+    public string $title;
+    public string $slug;
+    public string $description;
+    public string $language;
+    public \DateTime $date;
+    public \DateTime $lastModified;
+    public string $content;
+    public ?string $cover;
 
     public function __construct(
         string $title,
@@ -19,7 +20,8 @@ class Article
         \DateTime $date,
         \DateTime $lastModified,
         string $language,
-        string $content
+        string $content,
+        ?string $cover = null
     ) {
         $this->title = $title;
         $this->slug = $slug;
@@ -28,5 +30,6 @@ class Article
         $this->date = $date;
         $this->lastModified = $lastModified;
         $this->content = $content;
+        $this->cover = $cover;
     }
 }

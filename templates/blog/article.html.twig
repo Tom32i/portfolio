@@ -4,6 +4,8 @@
 {% block meta_description article.description %}
 {% block meta_locale article.language %}
 {% block fb_og_type 'article' %}
+{% block twitter_card_type article.cover ? 'summary_large_image' : 'summary' %}
+{% set meta_cover = article.cover ? absolute_url(article.cover) : null %}
 
 {% use 'blog/blocks.html.twig' %}
 

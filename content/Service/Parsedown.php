@@ -25,6 +25,9 @@ class Parsedown extends BaseParsedown
     public function __construct(HighlighterInterface $highlighter = null)
     {
         $this->highlighter = $highlighter;
+        $this->BlockTypes = array_merge($this->BlockTypes, [
+            '!' => array('Image'),
+        ]);
     }
 
     protected function blockCodeComplete($Block)
@@ -80,17 +83,24 @@ class Parsedown extends BaseParsedown
         return $data;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    /*protected function blockHeader($Line)
+    protected function blockImage($Line, $Block = null)
     {
-        $Block = parent::blockHeader($Line);
+        if (preg_match('/^!\[(.*)]\((.+)\)/', $Line['text'], $matches))
+        {
+            $Block = array(
+                'element' => array(
+                    'name' => 'img',
+                    'attributes' => array(
+                        'src' => $matches[2],
+                        'alt' => $matches[1],
+                        'title' => $matches[1],
+                    ),
+                ),
+            );
 
-        $Block['element']['attributes']['id'] = $this->getId($Block);
-
-        return $Block;
-    }*/
+            return $Block;
+        }
+    }
 
     /**
      * Process code content

@@ -42,7 +42,7 @@ class BlogController extends AbstractController
      */
     public function feed()
     {
-        $articles = $this->manager->getContents(Article::class, 'date');
+        $articles = $this->manager->getContents(Article::class, ['date' => true]);
 
         return $this->render('@Content/rss.xml.twig', [
             'title' => 'Thomas Jarrand Blog Technique',
@@ -52,7 +52,7 @@ class BlogController extends AbstractController
                 'name' => 'Thomas Jarrand',
             ],
             'image' => [
-                'url' => $this->assets->getUrl('/img/thomas-jarrand-blog.rss.png'),
+                'url' => $this->assets->getUrl('/ms-icon-144x144.png'),
                 'width' => 144,
                 'height' => 144,
             ],

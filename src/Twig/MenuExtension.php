@@ -25,13 +25,6 @@ class MenuExtension extends AbstractExtension
         $this->requestStack = $requestStack;
     }
 
-    /*public function getFunctions()
-    {
-        return [
-            new TwigFunction('split', [$this, 'split']);
-        ];
-    }*/
-
     public function getTests()
     {
         return [

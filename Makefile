@@ -28,7 +28,7 @@ install:
 
 ## Start dev server
 start:
-	bin/console server:run 0.0.0.0:8000
+	symfony server:start
 
 ## Watch and build assets
 watch:
@@ -45,7 +45,7 @@ build-assets:
 	./node_modules/.bin/encore production
 
 build-content:
-	bin/console content:build
+	bin/console content:build --env=prod
 	cp -r public/* build
 	rm -f build/*.php
 

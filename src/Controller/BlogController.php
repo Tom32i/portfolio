@@ -69,14 +69,15 @@ class BlogController extends AbstractController
     {
         $article = $this->manager->getContent(Article::class, $slug);
 
-        dump($article);
-
         return $this->render('blog/article.html.twig', [
             'article' => $article,
             'lastestArticles' => array_slice($this->manager->getContents(Article::class, ['date' => false]), 0, 3)
         ])->setLastModified($article->lastModified);
     }
 
+    /**
+     * Embeded
+     */
     public function latest(int $max = 3)
     {
         $articles = $this->manager->getContents(Article::class, ['date' => false]);

@@ -8,16 +8,16 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 class ArticleRssNormalizer implements NormalizerInterface
 {
-    private $urlGenerator;
+    private UrlGeneratorInterface $router;
 
-    public function __construct(UrlGeneratorInterface $urlGenerator)
+    public function __construct(UrlGeneratorInterface $router)
     {
-        $this->urlGenerator = $urlGenerator;
+        $this->router = $router;
     }
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $url = $this->urlGenerator->generate('blog_article', ['slug' => $object->slug], UrlGeneratorInterface::ABSOLUTE_URL);
+        $url = $this->router->generate('blog_article', ['slug' => $object->slug], UrlGeneratorInterface::ABSOLUTE_URL);
 
         return [
             'title' => $object->title,

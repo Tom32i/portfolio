@@ -45,7 +45,7 @@ build-assets:
 	npx encore production
 
 build-content:
-	bin/console -e prod stenope:build -vvv
+	bin/console -e prod stenope:build
 	#cp -r public/* build
 	#rm -f build/*.php
 

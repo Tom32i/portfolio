@@ -1,7 +1,3 @@
-import 'prismjs';
-
-Prism.manual = true;
-
 /**
  * Code block
  */
@@ -15,16 +11,11 @@ export default class Code {
         this.show = this.show.bind(this);
         this.hide = this.hide.bind(this);
 
-        this.trim();
         this.exec();
     }
 
     get keys() {
         return this.outputs.map(output => output.getAttribute('data-output'));
-    }
-
-    trim() {
-        this.input.innerHTML = this.highlight(this.input.innerText.trim());
     }
 
     highlight(content) {
@@ -55,7 +46,7 @@ export default class Code {
             output.innerHTML = this.highlight(JSON.stringify(values[key]));
         });
 
-        this.outputs.forEach(element => element.className = 'success');
+        this.outputs.forEach(element => element.className += ' success');
         this.outputs.forEach(this.show);
         this.hide(this.error);
     }

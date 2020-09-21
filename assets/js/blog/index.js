@@ -1,4 +1,7 @@
+import 'prismjs';
 import Code from './Code';
+
+Prism.manual = true;
 
 /**
  * Load codes

@@ -1,15 +1,15 @@
 @import "reset-css";
-@import "variables.scss";
-@import "layout.scss";
-@import "fonts.scss";
-@import "typography.scss";
-@import "icons.scss";
-@import "animations.scss";
+@import "variables";
+@import "layout";
+@import "fonts";
+@import "typography";
+@import "icons";
+@import "animations";
 
-@import "menu.scss";
-@import "portfolio.scss";
-@import "blog.scss";
-@import "talks.scss";
-@import "projects.scss";
+@import "menu";
+@import "portfolio";
+@import "blog";
+@import "talks";
+@import "projects";
 
-@import "responsive.scss";
+@import "responsive";

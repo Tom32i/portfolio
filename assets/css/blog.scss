@@ -7,6 +7,29 @@
     padding: 0;
     margin: 0;
 
+     h1, h2, h3, h4, h5, .title {
+        color: $text-black;
+        font-weight: bold;
+    }
+
+    h1 {
+        font-size: 2.4em;
+        margin: 1.4em 0 0.4em;
+    }
+
+    h2 {
+        font-size: 1.8em;
+        margin: 2em 0 1em;
+    }
+
+    h3 {
+        font-size: 1.4em;
+    }
+
+    h4 {
+        font-size: 1.2em;
+    }
+
     .header {
         //text-align: center;
         margin: 4em 0;
@@ -119,7 +142,7 @@
         }
     }
 
-    .article-content {
+    .article-content, .article {
         margin-top: 3em;
         display: flex;
         flex-direction: column;
@@ -128,7 +151,7 @@
         -webkit-font-smoothing: auto;
         -moz-osx-font-smoothing: auto;
 
-        h1, h2, h3, h4, h5 {
+        h1, h2, h3, h4, h5, .title {
             position: relative;
 
             .anchor {
@@ -168,6 +191,182 @@
                 opacity: 1;
             }
         }
+
+        section {
+            flex: 1;
+        }
+
+        a, a:visited {
+            color: $text-primary;
+        }
+
+        p, li {
+            line-height: 1.5em;
+            font-size: 1.3em;
+            font-style: normal;
+        }
+
+        blockquote {
+            margin: 1.5em 0;
+
+            p {
+                font-style: italic;
+                margin: 0;
+            }
+        }
+
+        ul {
+            list-style: disc;
+            padding-left: 2em;
+
+            li {
+                margin: 0.4em 0;
+            }
+        }
+
+        ol {
+            padding-left: 2em;
+        }
+
+        img, svg {
+            max-width: 100%;
+            margin: 1em auto;
+        }
+
+        img + legend {
+            text-align: center;
+            font-size: 1em;
+            line-height: 1.5;
+            margin-bottom: 1em;
+            color: $text-mutted;
+            font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+        }
+
+        .code-inline {
+            background-color: rgba($color-1-dark, 0.4);
+            color: $text-black;
+            border-radius: 0.2em;
+            padding: 0 0.2em;
+            font-size: 0.9em;
+            font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+        }
+
+        .code-multiline {
+            margin: 1em 0;
+            padding: 1em;
+            background: $code-background;
+            color: white;
+            white-space: pre;
+            display: block;
+            font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+            white-space: pre;
+            word-spacing: normal;
+            word-break: normal;
+            word-wrap: normal;
+            line-height: 1.5;
+            tab-size: 4;
+            hyphens: none;
+            overflow-x: auto;
+        }
+
+        .code-multiline.success {
+            color: $monokai-green;
+            margin-left: -0.5em;
+            border-left: 0.5em solid $monokai-green;
+        }
+
+        .code-multiline.error {
+            color: $monokai-error;
+            border-left: 0.5em solid $monokai-error;
+            margin-left: -0.5em;
+        }
+
+
+        code.input,
+        code.success,
+        code.error,
+        code[data-output] {
+            @extend .code-multiline;
+        }
+
+        code.success {
+            color: $monokai-green;
+            margin-left: -0.5em;
+            border-left: 0.5em solid $monokai-green;
+        }
+
+        code[data-output] {
+            position: relative;
+        }
+        code[data-output]::before {
+            content: attr(data-output);
+            color: $monokai-mutted;
+            margin-right: 1em;
+        }
+
+        .token.comment,
+        .token.block-comment,
+        .token.prolog,
+        .token.doctype,
+        .token.cdata {
+            color: $monokai-mutted;
+        }
+
+        .token.punctuation {
+            color: $monokai-grey;
+        }
+
+        .token.operator,
+        .token.entity,
+        .token.url,
+        .token.tag,
+        .token.attr-name,
+        .token.namespace,
+        .token.deleted {
+            color: $monokai-red;
+        }
+
+        .token.boolean,
+        .token.number {
+            color: $monokai-purple;
+        }
+
+        .token.property,
+        .token.class-name,
+        .token.constant,
+        .token.symbol {
+            color: $monokai-orange;
+        }
+
+        .token.function-name,
+        .token.function,
+        .token.selector,
+        .token.important,
+        .token.atrule,
+        .token.keyword,
+        .token.builtin {
+            color: $monokai-blue;
+        }
+
+        .token.string,
+        .token.char,
+        .token.attr-value,
+        .token.regex,
+        .token.variable {
+            color: $monokai-yellow;
+        }
+
+        .token.important,
+        .token.bold {
+            font-weight: bold;
+        }
+        .token.italic {
+            font-style: italic;
+        }
+
+        .token.entity {
+            cursor: help;
+        }
     }
 
     .preview {
@@ -189,197 +388,5 @@
             -webkit-font-smoothing: auto;
             -moz-osx-font-smoothing: auto;
         }
-    }
-
-    h1, h2, h3, h4, h5, .title {
-        color: $text-black;
-        font-weight: bold;
-    }
-
-    h1 {
-        font-size: 2.4em;
-        margin: 1.4em 0 0.4em;
-    }
-
-    h2 {
-        font-size: 1.8em;
-        margin: 2em 0 1em;
-    }
-
-    h3 {
-        font-size: 1.4em;
-    }
-
-    h4 {
-        font-size: 1.2em;
-    }
-
-    section {
-        flex: 1;
-    }
-
-    a, a:visited {
-        color: $text-primary;
-    }
-
-    p, li {
-        line-height: 1.5em;
-        font-size: 1.3em;
-        font-style: normal;
-    }
-
-    blockquote {
-        margin: 1.5em 0;
-
-        p {
-            font-style: italic;
-            margin: 0;
-        }
-    }
-
-    ul {
-        list-style: disc;
-        padding-left: 2em;
-
-        li {
-            margin: 0.4em 0;
-        }
-    }
-
-    ol {
-        padding-left: 2em;
-    }
-
-    img, svg {
-        max-width: 100%;
-        margin: 1em auto;
-    }
-
-    img + legend {
-        text-align: center;
-        font-size: 1em;
-        line-height: 1.5;
-        margin-bottom: 1em;
-        color: $text-mutted;
-        font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-    }
-
-    .code-inline {
-        background-color: rgba($color-1-dark, 0.4);
-        color: $text-black;
-        border-radius: 0.2em;
-        padding: 0 0.2em;
-        font-size: 0.9em;
-        font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-    }
-
-    .code-multiline {
-        margin: 1em 0;
-        padding: 1em;
-        background: $code-background;
-        color: white;
-        white-space: pre;
-        display: block;
-        font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-        white-space: pre;
-        word-spacing: normal;
-        word-break: normal;
-        word-wrap: normal;
-        line-height: 1.5;
-        tab-size: 4;
-        hyphens: none;
-        overflow-x: auto;
-    }
-
-    code.input,
-    code.success,
-    code.error,
-    code[data-output] {
-        @extend .code-multiline;
-    }
-
-    code.success {
-        color: $monokai-green;
-        margin-left: -0.5em;
-        border-left: 0.5em solid $monokai-green;
-    }
-
-    code.error {
-        color: $monokai-error;
-        border-left: 0.5em solid $monokai-error;
-        margin-left: -0.5em;
-    }
-
-    code[data-output] {
-        position: relative;
-    }
-    code[data-output]::before {
-        content: attr(data-output);
-        color: $monokai-mutted;
-        margin-right: 1em;
-    }
-
-    .token.comment,
-    .token.block-comment,
-    .token.prolog,
-    .token.doctype,
-    .token.cdata {
-        color: $monokai-mutted;
-    }
-
-    .token.punctuation {
-        color: $monokai-grey;
-    }
-
-    .token.operator,
-    .token.entity,
-    .token.url,
-    .token.tag,
-    .token.attr-name,
-    .token.namespace,
-    .token.deleted {
-        color: $monokai-red;
-    }
-
-    .token.boolean,
-    .token.number {
-        color: $monokai-purple;
-    }
-
-    .token.property,
-    .token.class-name,
-    .token.constant,
-    .token.symbol {
-        color: $monokai-orange;
-    }
-
-    .token.function-name,
-    .token.function,
-    .token.selector,
-    .token.important,
-    .token.atrule,
-    .token.keyword,
-    .token.builtin {
-        color: $monokai-blue;
-    }
-
-    .token.string,
-    .token.char,
-    .token.attr-value,
-    .token.regex,
-    .token.variable {
-        color: $monokai-yellow;
-    }
-
-    .token.important,
-    .token.bold {
-        font-weight: bold;
-    }
-    .token.italic {
-        font-style: italic;
-    }
-
-    .token.entity {
-        cursor: help;
     }
 }

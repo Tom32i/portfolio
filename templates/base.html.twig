@@ -53,14 +53,16 @@
             {{ encore_entry_link_tags('style') }}
         {% endblock %}
         {% block analytics %}
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-7324372-6"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'UA-7324372-6', { 'anonymize_ip': true });
-        </script>
+            {% if ga_tracking %}
+                <!-- Global site tag (gtag.js) - Google Analytics -->
+                <script async src="https://www.googletagmanager.com/gtag/js?id={{ ga_tracking }}"></script>
+                <script>
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', '{{ ga_tracking }}', { 'anonymize_ip': true });
+                </script>
+            {% endif %}
         {% endblock %}
         {% block javascripts %}{% endblock %}
     </head>

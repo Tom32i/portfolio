@@ -49,6 +49,41 @@ build-content:
 	bin/console c:c
 	bin/console -e prod stenope:build
 
+############
+# Security #
+############
+
+## Run security checks
+security:
+	security-checker security:check
+
+security@test: export SYMFONY_ENV = test
+security@test: security
+
+########
+# Lint #
+########
+
+lint: lint-phpcsfixer lint-phpstan lint-twig lint-yaml lint-eslint
+
+fix-phpcsfixer:
+	vendor/bin/php-cs-fixer fix
+
+lint-phpcsfixer:
+	vendor/bin/php-cs-fixer fix --dry-run --diff
+
+lint-phpstan:
+	vendor/bin/phpstan analyse src
+
+lint-twig:
+	bin/console lint:twig templates
+
+lint-yaml:
+	bin/console lint:yaml translations config
+
+lint-eslint:
+	npx eslint assets/js --ext .js,.json --fix
+
 ##########
 # Deploy #
 ##########

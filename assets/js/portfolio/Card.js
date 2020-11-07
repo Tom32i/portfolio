@@ -99,7 +99,7 @@ export default class Card {
 
     onDeviceOrientation(event) {
         const { angle } = this.constructor;
-        const { absolute, alpha, beta, gamma } = event;
+        const { alpha, beta, gamma } = event;
 
         if (this.alpha === null) {
             this.alpha = alpha;

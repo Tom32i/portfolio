@@ -68,6 +68,9 @@
             "config/packages/sensio_framework_extra.yaml"
         ]
     },
+    "stenope/stenope": {
+        "version": "v0.1.0"
+    },
     "symfony/asset": {
         "version": "v4.2.9"
     },

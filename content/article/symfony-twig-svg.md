@@ -104,6 +104,8 @@ Une fois notre image SVG générée, il va falloir l'afficher.
 Pour cela il nous suffit renvoyer une réponse de type `image/svg+xml` à travers une route dédiée :
 
 ```php
+<?php
+
 # GraphController.php
 use Symfony\Component\HttpFoundation\Response;
 

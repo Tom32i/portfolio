@@ -1,4 +1,3 @@
-import 'prismjs';
 import Code from './Code';
 
 /**

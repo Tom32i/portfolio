@@ -2,13 +2,14 @@
     "type": "project",
     "license": "proprietary",
     "require": {
-        "php": ">=7.2.5",
+        "php": "^7.4",
         "ext-ctype": "*",
         "ext-iconv": "*",
-        "erusev/parsedown": "1.7.4",
         "composer/package-versions-deprecated": "^1.11",
+        "erusev/parsedown": "1.7.4",
         "phpdocumentor/reflection-docblock": "^5.2",
         "sensio/framework-extra-bundle": "^5.5",
+        "stenope/stenope": "^0.1.0",
         "symfony/asset": "5.1.*",
         "symfony/console": "5.1.*",
         "symfony/css-selector": "^5.1",
@@ -29,9 +30,8 @@
         "symfony/web-link": "5.1.*",
         "symfony/webpack-encore-bundle": "^1.7",
         "symfony/yaml": "5.1.*",
-        "tom32i/content": "^1.0@dev",
-        "twig/extra-bundle": "^2.12|^3.0",
-        "twig/twig": "^2.12|^3.0"
+        "twig/extra-bundle": "^3.0",
+        "twig/twig": "^3.0"
     },
     "require-dev": {
         "symfony/browser-kit": "^5.1",
@@ -90,13 +90,5 @@
             "allow-contrib": false,
             "require": "5.1.*"
         }
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/Tom32i/content.git"
-        }
-    ]
+    }
 }

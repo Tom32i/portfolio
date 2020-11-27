@@ -264,7 +264,7 @@
         font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
     }
 
-    .inline-code {
+    .code-inline {
         background-color: rgba($color-1-dark, 0.4);
         color: $text-black;
         border-radius: 0.2em;
@@ -273,7 +273,7 @@
         font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
     }
 
-    code {
+    .code-multiline {
         margin: 1em 0;
         padding: 1em;
         background: $code-background;
@@ -289,6 +289,13 @@
         tab-size: 4;
         hyphens: none;
         overflow-x: auto;
+    }
+
+    code.input,
+    code.success,
+    code.error,
+    code[data-output] {
+        @extend .code-multiline;
     }
 
     code.success {

@@ -1,0 +1,5 @@
+stenope:
+  providers:
+    App\Model\Article: '%kernel.project_dir%/content/article'
+    App\Model\Project: '%kernel.project_dir%/content/project'
+    App\Model\Talk: '%kernel.project_dir%/content/talk'

@@ -1,3 +1,7 @@
+import 'prismjs';
+
+Prism.manual = true;
+
 /**
  * Code block
  */

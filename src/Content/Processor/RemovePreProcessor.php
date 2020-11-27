@@ -37,7 +37,6 @@ class RemovePreProcessor implements ProcessorInterface
 
     private function simplify(\DOMElement $element): void
     {
-        dump('symplify', $element);
         $classes = array_map('trim', array_unique(array_filter(explode(' ', $element->getAttribute('class') . ' ' . $element->firstChild->getAttribute('class')))));
         $element->firstChild->setAttribute('class', implode(' ', $classes));
         $element->parentNode->replaceChild($element->firstChild, $element);

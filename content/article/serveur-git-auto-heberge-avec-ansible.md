@@ -10,13 +10,17 @@ Git est capable de fonctionner en mode serveur sur n'importe quelle machine : c'
 
 C'est ce que font pour nous des plateformes comme *GitHub* et *GitLab* en nous fournissant une adresse SSH avec laquelle nous pouvons exécuter :
 
-`git clone git@github.com:Moi/MonProjet.git`.
+```bash
+git clone git@github.com:Moi/MonProjet.git
+```
 
 Mais nous pouvons tout à fait héberger notre propre serveur git et avoir un dépôt distant à notre nom, sur lequels nous pourrons push et pull en ligne de commande, comme nous le faisons avec ces services :
 
-`git clone git@mon-domaine.fr:mon-projet.git`
+```bash
+git clone git@mon-domaine.fr:mon-projet.git
+```
 
-Pouquoi faire ?
+> Pouquoi faire ?
 
 Cela permet d'avoir des dépôts privés qui ne dépendent pas de la disponibilité de services externes.
 Nous pourrons par exemple y versionner des contenus privés de manière illimité ou encore dupliquer nos projets sur ces dépôts secondaires comme copie de sauvegarde.
@@ -207,15 +211,21 @@ Maintenant que notre serveur est configuré avec Ansible, nous pouvons utiliser 
 
 L'adresse SSH de notre dépôt privé est au format suivant :
 
-`[user]@[host]:[path/to/repository]`.
+```
+[user]@[host]:[path/to/repository]
+```
 
 Dans notre cas, avec la configuration ci dessus cela donne :
 
-`git@mon-domaine.fr:/home/git/mon-projet.git`
+```
+git@mon-domaine.fr:/home/git/mon-projet.git
+```
 
 Et puisque nous avons placé nos dossiers de dépôt dans le dossier de l'utilisateur git, nous pouvons utiliser le chemin raccourci :
 
-`git@mon-domaine.fr:mon-projet.git`
+```
+git@mon-domaine.fr:mon-projet.git
+```
 
 Nous pouvons utiliser cette adresse pour définir un nouveau dépôt distant pour notre projet existant :
 

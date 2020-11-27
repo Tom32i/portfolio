@@ -5,6 +5,7 @@
     justify-content: stretch;
     transform: translate3d(0,0,0);
     height: 100vh;
+    perspective: 100vw;
     overflow: hidden;
     transition: background-color 300ms linear;
 

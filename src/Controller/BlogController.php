@@ -40,6 +40,18 @@ class BlogController extends AbstractController
     }
 
     /**
+     * Embeded
+     */
+    public function latest(int $max = 3)
+    {
+        $articles = $this->manager->getContents(Article::class, ['date' => false]);
+
+        return $this->render('blog/latest.html.twig', [
+            'articles' => array_slice($articles, 0, $max)
+        ]);
+    }
+
+    /**
      * @Route("/feed.rss", name="_feed", defaults={"_format": "atom"}, options={"mapped": false})
      */
     public function feed()
@@ -69,20 +81,9 @@ class BlogController extends AbstractController
     {
         $article = $this->manager->getContent(Article::class, $slug);
 
-        dump($article);
-
         return $this->render('blog/article.html.twig', [
             'article' => $article,
             'lastestArticles' => array_slice($this->manager->getContents(Article::class, ['date' => false]), 0, 3)
         ])->setLastModified($article->lastModified);
-    }
-
-    public function latest(int $max = 3)
-    {
-        $articles = $this->manager->getContents(Article::class, ['date' => false]);
-
-        return $this->render('blog/latest.html.twig', [
-            'articles' => array_slice($articles, 0, $max)
-        ]);
     }
 }

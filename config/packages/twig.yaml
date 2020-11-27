@@ -1,2 +1,4 @@
 twig:
     default_path: '%kernel.project_dir%/templates'
+    globals:
+        ga_tracking: "%env(APP_GA_TAG)%"

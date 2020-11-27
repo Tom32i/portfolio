@@ -44,10 +44,10 @@ build: build-assets build-content
 build-assets:
 	npx encore production
 
+build-content: export APP_ENV = prod
 build-content:
-	bin/console -e prod stenope:build -vvv
-	#cp -r public/* build
-	#rm -f build/*.php
+	bin/console c:c
+	bin/console -e prod stenope:build
 
 ##########
 # Deploy #

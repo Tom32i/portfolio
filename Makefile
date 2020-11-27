@@ -28,7 +28,7 @@ install:
 
 ## Start dev server
 start:
-	symfony server:start
+	symfony server:start --no-tls
 
 ## Watch and build assets
 watch:
@@ -42,12 +42,12 @@ serve:
 build: build-assets build-content
 
 build-assets:
-	./node_modules/.bin/encore production
+	npx encore production
 
 build-content:
-	bin/console content:build --env=prod
-	cp -r public/* build
-	rm -f build/*.php
+	bin/console -e prod stenope:build -vvv
+	#cp -r public/* build
+	#rm -f build/*.php
 
 ##########
 # Deploy #

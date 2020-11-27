@@ -34,7 +34,7 @@ class DateExtension extends AbstractExtension
 
     public function formatMonth($value, string $format = 'long-with-year')
     {
-        $date = $value instanceof \DateTime ? $value : new \DateTime($value);
+        $date = $value instanceof \DateTimeInterface ? $value : new \DateTimeImmutable($value);
 
         $formatter = \IntlDateFormatter::create(
             null,
@@ -50,7 +50,7 @@ class DateExtension extends AbstractExtension
 
     public function formatDay($value, string $format = 'full')
     {
-        $date = $value instanceof \DateTime ? $value : new \DateTime($value);
+        $date = $value instanceof \DateTimeInterface ? $value : new \DateTimeImmutable($value);
 
         $formatter = \IntlDateFormatter::create(
             null,

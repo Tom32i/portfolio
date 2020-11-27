@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Model\Article;
-use Content\ContentManager;
+use Stenope\Bundle\ContentManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Asset\Packages;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,7 +15,9 @@ use Symfony\Component\Serializer\SerializerInterface;
  */
 class BlogController extends AbstractController
 {
-    private $manager;
+    private ContentManager $manager;
+    private SerializerInterface $serializer;
+    private Packages $assets;
 
     public function __construct(ContentManager $manager, SerializerInterface $serializer, Packages $assets)
     {
@@ -44,7 +46,7 @@ class BlogController extends AbstractController
     {
         $articles = $this->manager->getContents(Article::class, ['date' => true]);
 
-        return $this->render('@Content/rss.xml.twig', [
+        return $this->render('@Stenope/rss.xml.twig', [
             'title' => 'Thomas Jarrand Blog Technique',
             'description' => '',
             'webmaster' => [
@@ -66,6 +68,8 @@ class BlogController extends AbstractController
     public function article(string $slug)
     {
         $article = $this->manager->getContent(Article::class, $slug);
+
+        dump($article);
 
         return $this->render('blog/article.html.twig', [
             'article' => $article,

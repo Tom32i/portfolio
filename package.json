@@ -17,13 +17,13 @@
   },
   "homepage": "https://github.com/Tom32i/portfolio-2019#readme",
   "dependencies": {
-    "prismjs": "^1.17.1",
+    "prismjs": "^1.22.0",
     "reset-css": "^5.0.1"
   },
   "devDependencies": {
-    "@symfony/webpack-encore": "^0.30.0",
+    "@symfony/webpack-encore": "^0.31.0",
     "autoprefixer": "^9.8.6",
-    "core-js": "^3.0.0",
+    "core-js": "^3.8.0",
     "node-sass": "^4.14.1",
     "postcss-loader": "^3.0.0",
     "regenerator-runtime": "^0.13.2",

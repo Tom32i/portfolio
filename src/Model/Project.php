@@ -4,25 +4,28 @@ namespace App\Model;
 
 class Project
 {
-    public $title;
-    public $description;
-    public $url;
-    public $date;
-    public $image;
+    public string $title;
+    public string $description;
+    public string $url;
+    public \DateTimeImmutable $date;
+    public \DateTimeImmutable $lastModified;
+    public string $image;
 
-    public function __construct(
+    /*public function __construct(
         string $title,
         string $description,
         string $url,
-        \DateTime $date,
+        \DateTimeImmutable $date,
+        \DateTimeImmutable $lastModified,
         string $image
     ) {
         $this->title = $title;
         $this->description = $description;
         $this->url = $url;
         $this->date = $date;
+        $this->lastModified = $lastModified;
         $this->image = $image;
-    }
+    }*/
 
     public function getSiteName(): string
     {

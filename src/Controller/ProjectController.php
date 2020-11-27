@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Model\Project;
-use Content\ContentManager;
+use Stenope\Bundle\ContentManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Asset\Packages;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,7 +12,7 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 class ProjectController extends AbstractController
 {
-    private $manager;
+    private ContentManager $manager;
 
     public function __construct(ContentManager $manager)
     {

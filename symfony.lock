@@ -2,6 +2,12 @@
     "composer/package-versions-deprecated": {
         "version": "1.x-dev"
     },
+    "composer/semver": {
+        "version": "3.2.2"
+    },
+    "composer/xdebug-handler": {
+        "version": "1.4.4"
+    },
     "doctrine/annotations": {
         "version": "1.0",
         "recipe": {
@@ -20,8 +26,23 @@
     "doctrine/lexer": {
         "version": "1.2.0"
     },
+    "ekino/phpstan-banned-code": {
+        "version": "v0.3.1"
+    },
     "erusev/parsedown": {
         "version": "1.7.3"
+    },
+    "friendsofphp/php-cs-fixer": {
+        "version": "2.2",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "2.2",
+            "ref": "cc05ab6abf6894bddb9bbd6a252459010ebe040b"
+        },
+        "files": [
+            ".php_cs.dist"
+        ]
     },
     "monolog/monolog": {
         "version": "1.24.0"
@@ -32,6 +53,9 @@
     "php": {
         "version": "7.4"
     },
+    "php-cs-fixer/diff": {
+        "version": "v1.3.1"
+    },
     "phpdocumentor/reflection-common": {
         "version": "2.x-dev"
     },
@@ -40,6 +64,12 @@
     },
     "phpdocumentor/type-resolver": {
         "version": "1.x-dev"
+    },
+    "phpstan/phpstan": {
+        "version": "0.12.54"
+    },
+    "phpstan/phpstan-symfony": {
+        "version": "0.12.11"
     },
     "psr/cache": {
         "version": "1.0.1"
@@ -215,6 +245,9 @@
             "config/packages/prod/monolog.yaml",
             "config/packages/test/monolog.yaml"
         ]
+    },
+    "symfony/options-resolver": {
+        "version": "v5.1.8"
     },
     "symfony/polyfill-intl-grapheme": {
         "version": "1.18-dev"

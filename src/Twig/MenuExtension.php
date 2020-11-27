@@ -12,7 +12,6 @@ namespace App\Twig;
 
 use Symfony\Component\HttpFoundation\RequestStack;
 use Twig\Extension\AbstractExtension;
-use Twig\TwigFunction;
 use Twig\TwigTest;
 
 class MenuExtension extends AbstractExtension

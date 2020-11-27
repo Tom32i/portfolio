@@ -24,10 +24,12 @@
     "@symfony/webpack-encore": "^0.31.0",
     "autoprefixer": "^9.8.6",
     "core-js": "^3.8.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.13.0",
     "node-sass": "^4.14.1",
     "postcss-loader": "^3.0.0",
     "regenerator-runtime": "^0.13.2",
-    "sass-loader": "^8.0.2"
+    "sass-loader": "^9.0.1"
   },
   "browserslist": [
     "defaults"

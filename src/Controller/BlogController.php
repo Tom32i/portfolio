@@ -6,9 +6,8 @@ use App\Model\Article;
 use Stenope\Bundle\ContentManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Asset\Packages;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 /**
  * @Route("/blog", name="blog", defaults={"_menu"="blog"})
@@ -16,10 +15,10 @@ use Symfony\Component\Serializer\SerializerInterface;
 class BlogController extends AbstractController
 {
     private ContentManager $manager;
-    private SerializerInterface $serializer;
+    private NormalizerInterface $serializer;
     private Packages $assets;
 
-    public function __construct(ContentManager $manager, SerializerInterface $serializer, Packages $assets)
+    public function __construct(ContentManager $manager, NormalizerInterface $serializer, Packages $assets)
     {
         $this->manager = $manager;
         $this->serializer = $serializer;
@@ -37,18 +36,6 @@ class BlogController extends AbstractController
         return $this->render('blog/index.html.twig', [
             'articles' => $articles,
         ])->setLastModified($lastModified);
-    }
-
-    /**
-     * Embeded
-     */
-    public function latest(int $max = 3)
-    {
-        $articles = $this->manager->getContents(Article::class, ['date' => false]);
-
-        return $this->render('blog/latest.html.twig', [
-            'articles' => array_slice($articles, 0, $max)
-        ]);
     }
 
     /**
@@ -83,7 +70,16 @@ class BlogController extends AbstractController
 
         return $this->render('blog/article.html.twig', [
             'article' => $article,
-            'lastestArticles' => array_slice($this->manager->getContents(Article::class, ['date' => false]), 0, 3)
+            'lastestArticles' => \array_slice($this->manager->getContents(Article::class, ['date' => false]), 0, 3),
         ])->setLastModified($article->lastModified);
+    }
+
+    public function latest(int $max = 3)
+    {
+        $articles = $this->manager->getContents(Article::class, ['date' => false]);
+
+        return $this->render('blog/latest.html.twig', [
+            'articles' => \array_slice($articles, 0, $max),
+        ]);
     }
 }

@@ -29,6 +29,9 @@ class RemovePreProcessor implements ProcessorInterface
         $crawler = new Crawler($data['content']);
 
         foreach ($crawler->filter('pre') as $element) {
+            /** @var \DOMElement $element */
+            $element = $element;
+
             $this->simplify($element);
         }
 

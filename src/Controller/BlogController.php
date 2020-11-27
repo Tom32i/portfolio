@@ -7,7 +7,7 @@ use Stenope\Bundle\ContentManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Asset\Packages;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 /**
  * @Route("/blog", name="blog", defaults={"_menu"="blog"})
@@ -15,10 +15,10 @@ use Symfony\Component\Serializer\SerializerInterface;
 class BlogController extends AbstractController
 {
     private ContentManager $manager;
-    private SerializerInterface $serializer;
+    private NormalizerInterface $serializer;
     private Packages $assets;
 
-    public function __construct(ContentManager $manager, SerializerInterface $serializer, Packages $assets)
+    public function __construct(ContentManager $manager, NormalizerInterface $serializer, Packages $assets)
     {
         $this->manager = $manager;
         $this->serializer = $serializer;

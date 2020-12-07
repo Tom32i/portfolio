@@ -53,14 +53,14 @@
             {{ encore_entry_link_tags('style') }}
         {% endblock %}
         {% block analytics %}
-            {% if ga_tracking %}
+            {% if google_analytics_token %}
                 <!-- Global site tag (gtag.js) - Google Analytics -->
-                <script async src="https://www.googletagmanager.com/gtag/js?id={{ ga_tracking }}"></script>
+                <script async src="https://www.googletagmanager.com/gtag/js?id={{ google_analytics_token }}"></script>
                 <script>
                   window.dataLayer = window.dataLayer || [];
                   function gtag(){dataLayer.push(arguments);}
                   gtag('js', new Date());
-                  gtag('config', '{{ ga_tracking }}', { 'anonymize_ip': true });
+                  gtag('config', '{{ google_analytics_token }}', { anonymize_ip: true });
                 </script>
             {% endif %}
         {% endblock %}

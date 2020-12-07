@@ -1,27 +1,20 @@
-Portfolio / Blog
+Portfolio & Blog
 ================
+
+https://thomas.jarrand.fr
 
 ## Installation
 
-    composer install
+    make install build
 
-    npm instlal
+## Development
 
-## Usage
+### Launch asset watcher
 
-    bin/console server:run
+    make watch
 
-http://localhost:8000
+### Launch server
 
-## Build
+    make start
 
-    bin/console content:build
-
-## Content
-
-### New content
-
-- Create a source folder: `data/foo`
-- Create a Foo class representinf the model: `src/Model/Foo.php`.
-- Create a content denormalizer: `src/Serializer/FooDenormalizer` that implements `Content\Behaviour\ContentDenormalizerInterface`.
-- Create a content provider: `src/Provider/FooProvider` that implements `Content\Behaviour\ContentProviderInterface`.
+Got to: http://localhost:8000

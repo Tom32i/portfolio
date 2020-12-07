@@ -47,18 +47,7 @@ build-assets:
 build-content: export APP_ENV = prod
 build-content:
 	bin/console c:c
-	bin/console -e prod stenope:build
-
-############
-# Security #
-############
-
-## Run security checks
-security:
-	security-checker security:check
-
-security@test: export SYMFONY_ENV = test
-security@test: security
+	bin/console stenope:build
 
 ########
 # Lint #

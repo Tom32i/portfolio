@@ -1,0 +1,98 @@
+<svg viewBox="-50 -10 850 2020" xmlns="http://www.w3.org/2000/svg">
+    <style type="text/css">
+        svg .wood {
+            fill: burlywood;
+        }
+        svg .cut {
+            stroke: #333;
+            stroke-width: 1;
+            fill: transparent;
+        }
+        svg .mark {
+            stroke: #328886;
+            stroke-width: 1;
+        }
+        svg .mark + text {
+            fill: #328886;
+            font-size: 1.8em;
+            margin-bottom: 10px;
+            font-family: monospace;
+            text-anchor: middle;
+        }
+        svg .label {
+            fill: #328886;
+            font-size: 4em;
+            font-family: monospace;
+            text-anchor: middle;
+        }
+    </style>
+
+    <defs>
+        <marker id="end" viewBox="0 0 1 10"
+              refX="0.5"
+              refY="5"
+              markerUnits="strokeWidth"
+              markerWidth="1"
+              markerHeight="10"
+              orient="auto">
+          <path d="M 0.5 0 L 0.5 10" class="mark"/>
+        </marker>
+      </defs>
+
+    <g id="P1">
+        <!-- Planche -->
+        <rect class="wood" x="0" y="0" width="300" height="2000" />
+
+        <!-- Coupe -->
+        <path class="cut" d="M0,1000 l300,0"></path>
+
+        <!-- Mesure -->
+        <path id="A1" class="mark" d="M-15,1000 -15,0" marker-end="url(#end)" marker-start="url(#end)"></path>
+        <text dy="-10"><textPath href="#A1" startOffset="50%">1000mm</textPath></text>
+
+        <!-- Labels -->
+        <text class="label" x="150" y="500">A1</text>
+        <text class="label" x="150" y="1500">A2</text>
+    </g>
+
+    <g id="P2" style="transform: translate(400px, 0px);">
+        <!-- Planche -->
+        <rect class="wood" x="0" y="0" width="300" height="2000" />
+
+        <!-- Coupes -->
+        <path class="cut" d="M0,632 l300,0"></path>
+        <path class="cut" d="M0,1011 l300,0"></path>
+        <path class="cut" d="M200,633 l0,378"></path>
+        <path class="cut" d="M0,1252 l300,0"></path>
+        <path class="cut" d="M0,1453 l300,0"></path>
+        <path class="cut" d="M150,1252 l0,200"></path>
+
+        <!-- Mesure -->
+        <path id="B" class="mark" d="M-15,632 L-15,0" marker-end="url(#end)" marker-start="url(#end)"></path>
+        <text dy="-10"><textPath href="#B" startOffset="50%">632mm</textPath></text>
+
+        <path id="C" class="mark" d="M315,633 L315,1011" marker-end="url(#end)" marker-start="url(#end)"></path>
+        <text dy="-10"><textPath href="#C" startOffset="50%">378mm</textPath></text>
+
+        <path id="C2" class="mark" d="M0,996 l200,0" marker-end="url(#end)" marker-start="url(#end)"></path>
+        <text dy="-10"><textPath href="#C2" startOffset="50%">200mm</textPath></text>
+
+        <path id="D" class="mark" d="M-15,1252 L-15,1012" marker-end="url(#end)" marker-start="url(#end)"></path>
+        <text dy="-10"><textPath href="#D" startOffset="50%">240mm</textPath></text>
+
+        <path id="E" class="mark" d="M315,1253 L315,1453" marker-end="url(#end)" marker-start="url(#end)"></path>
+        <text dy="-10"><textPath href="#E" startOffset="50%">200mm</textPath></text>
+
+        <path id="E2" class="mark" d="M0,1438 l150,0" marker-end="url(#end)" marker-start="url(#end)"></path>
+        <text dy="-10"><textPath href="#E2" startOffset="50%">150mm</textPath></text>
+
+
+        <!-- Labels -->
+        <text class="label" x="150" y="316">B</text>
+        <text class="label" x="100" y="822">C1</text>
+        <text class="label" x="250" y="822">C2</text>
+        <text class="label" x="150" y="1132">D</text>
+        <text class="label" x="75" y="1353">E1</text>
+        <text class="label" x="225" y="1353">E2</text>
+    </g>
+</svg>

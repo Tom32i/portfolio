@@ -1,0 +1,92 @@
+<svg viewBox="0 -50 632 350" xmlns="http://www.w3.org/2000/svg">
+    <style type="text/css">
+        svg .wood {
+            fill: burlywood;
+        }
+        svg .cut {
+            stroke: #333;
+            stroke-width: 1;
+            fill: transparent;
+        }
+        svg .vis {
+            fill: #666;
+        }
+        svg .mark {
+            stroke: #328886;
+            stroke-width: 1;
+        }
+        svg .mark + text {
+            fill: #328886;
+            font-size: 1.6em;
+            margin-bottom: 10px;
+            font-family: monospace;
+            text-anchor: middle;
+        }
+        svg .label {
+            fill: #328886;
+            font-size: 4em;
+            font-family: monospace;
+            text-anchor: middle;
+        }
+    </style>
+
+    <defs>
+        <marker id="end" viewBox="0 0 1 10" refX="0.5" refY="5" markerUnits="strokeWidth" markerWidth="1" markerHeight="10" orient="auto">
+          <path d="M 0.5 0 L 0.5 10" class="mark"/>
+        </marker>
+      </defs>
+
+    <g id="A">
+        <!-- Planche -->
+        <path class="wood" d="M 0,0 l0,300
+            l40,0
+            l0,-135.5 a14.5,14.5,0,0,1,29,0 l0,135.5
+            l40,0
+            l18,0
+            l40,0
+            l0,-135.5 a14.5,14.5,0,0,1,29,0 l0,135.5
+            l120,0
+            l120,0
+            l0,-135.5 a14.5,14.5,0,0,1,29,0 l0,135.5
+            l40,0
+            l18,0
+            l40,0
+            l0,-135.5 a14.5,14.5,0,0,1,29,0 l0,135.5
+            l40,0
+            l0,-300 Z"></path>
+
+        <!-- Vis -->
+        <circle class="vis" cx="118" cy="9" r="2"></circle>
+        <circle class="vis" cx="118" cy="291" r="2"></circle>
+
+        <circle class="vis" cx="205" cy="165" r="2"></circle>
+        <circle class="vis" cx="205" cy="291" r="2"></circle>
+
+        <circle class="vis" cx="316" cy="9" r="2"></circle>
+
+        <circle class="vis" cx="427" cy="165" r="2"></circle>
+        <circle class="vis" cx="427" cy="291" r="2"></circle>
+
+        <circle class="vis" cx="514" cy="9" r="2"></circle>
+        <circle class="vis" cx="514" cy="291" r="2"></circle>
+
+        <!-- Mesures -->
+        <path id="V0" class="mark" d="M0,-15 l316,0" marker-end="url(#end)" marker-start="url(#end)"></path>
+        <text dy="-10"><textPath href="#V0" startOffset="50%">316mm</textPath></text>
+
+        <path id="V1" class="mark" d="M0,33 l118,0" marker-end="url(#end)" marker-start="url(#end)"></path>
+        <text dy="-10"><textPath href="#V1" startOffset="50%">118mm</textPath></text>
+
+        <path id="V2" class="mark" d="M0,140 l205,0" marker-end="url(#end)" marker-start="url(#end)"></path>
+        <text dy="-10"><textPath href="#V2" startOffset="50%">205mm</textPath></text>
+
+        <path class="mark" d="M220,291 l0,9" marker-end="url(#end)" marker-start="url(#end)"></path>
+        <text x="230" y="300" style="text-anchor: start;">9mm</text>
+
+        <path id="V4" class="mark" d="M412,300 l0,-135" marker-end="url(#end)" marker-start="url(#end)"></path>
+        <text dy="-10"><textPath href="#V4" startOffset="50%">135mm</textPath></text>
+
+        <!-- Labels -->
+        <text class="label" y="150" x="316">B</text>
+    </g>
+</svg>

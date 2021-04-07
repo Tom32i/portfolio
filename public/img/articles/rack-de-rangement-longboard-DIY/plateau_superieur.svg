@@ -1,0 +1,91 @@
+<svg viewBox="0 0 632 370" xmlns="http://www.w3.org/2000/svg">
+    <style type="text/css">
+        svg .wood {
+            fill: burlywood;
+        }
+        svg .cut {
+            stroke: #333;
+            stroke-width: 1;
+            fill: transparent;
+        }
+        svg .vis {
+            fill: #666;
+        }
+        svg .mark {
+            stroke: #328886;
+            stroke-width: 1;
+        }
+        svg .mark + text {
+            fill: #328886;
+            font-size: 1.6em;
+            margin-bottom: 10px;
+            font-family: monospace;
+            text-anchor: middle;
+        }
+        svg .label {
+            fill: #328886;
+            font-size: 4em;
+            font-family: monospace;
+            text-anchor: middle;
+        }
+    </style>
+
+    <defs>
+        <marker id="end" viewBox="0 0 1 10" refX="0.5" refY="5" markerUnits="strokeWidth" markerWidth="1" markerHeight="10" orient="auto">
+          <path d="M 0.5 0 L 0.5 10" class="mark"/>
+        </marker>
+      </defs>
+
+    <g id="A">
+        <!-- Planche -->
+        <rect class="wood" x="0" y="0" width="632" height="300" />
+
+        <!-- Coupes -->
+        <circle class="cut" cy="164.5" cx="54.5" r="14.5"></circle>
+        <path class="cut" d="M40,164.5 l0,135.5"></path>
+        <path class="cut" d="M69,164.5 l0,135.5"></path>
+        <circle class="cut" cy="164.5" cx="181.5" r="14.5"></circle>
+        <path class="cut" d="M167,164.5 l0,135.5"></path>
+        <path class="cut" d="M196,164.5 l0,135.5"></path>
+        <circle class="cut" cy="164.5" cx="577.5" r="14.5"></circle>
+        <path class="cut" d="M436,164.5 l0,135.5"></path>
+        <path class="cut" d="M465,164.5 l0,135.5"></path>
+        <circle class="cut" cy="164.5" cx="450.5" r="14.5"></circle>
+        <path class="cut" d="M563,164.5 l0,135.5"></path>
+        <path class="cut" d="M592,164.5 l0,135.5"></path>
+
+
+        <!-- Mesures -->
+        <path class="mark" d="M54.5,160 l0,9 M50,164.5 l9,0"></path>
+        <path class="mark" d="M181.5,160 l0,9 M177,164.5 l9,0"></path>
+        <path class="mark" d="M577.5,160 l0,9 M573,164.5 l9,0"></path>
+        <path class="mark" d="M450.5,160 l0,9 M446,164.5 l9,0"></path>
+
+        <path id="P1" class="mark" d="M0,135 l54.5,0" marker-end="url(#end)" marker-start="url(#end)"></path>
+        <text dy="-10"><textPath href="#P1" startOffset="50%">54,5</textPath></text>
+
+        <path id="P2" class="mark" d="M450.5,135 l181.5,0" marker-end="url(#end)" marker-start="url(#end)"></path>
+        <text dy="-10"><textPath href="#P2" startOffset="50%">181,5mm</textPath></text>
+
+        <path id="P3" class="mark" d="M421,300 l0,-135.5" marker-end="url(#end)" marker-start="url(#end)"></path>
+        <text dy="-10"><textPath href="#P3" startOffset="50%">135,5mm</textPath></text>
+
+        <path id="P4" class="mark" d="M0,330 l40,0" marker-end="url(#end)" marker-start="url(#end)"></path>
+        <text dy="-10"><textPath href="#P4" startOffset="50%">40</textPath></text>
+
+        <path id="P5" class="mark" d="M0,365 l69,0" marker-end="url(#end)" marker-start="url(#end)"></path>
+        <text dy="-10"><textPath href="#P5" startOffset="50%">69mm</textPath></text>
+
+        <path id="P6" class="mark" d="M465,330 l167,0" marker-end="url(#end)" marker-start="url(#end)"></path>
+        <text dy="-10"><textPath href="#P6" startOffset="50%">167mm</textPath></text>
+
+        <path id="P7" class="mark" d="M436,365 l196,0" marker-end="url(#end)" marker-start="url(#end)"></path>
+        <text dy="-10"><textPath href="#P7" startOffset="50%">196mm</textPath></text>
+
+        <path id="p8" class="mark" d="M167,135 l29,0" marker-end="url(#end)" marker-start="url(#end)"></path>
+        <text dy="-10"><textPath href="#p8" startOffset="50%">29</textPath></text>
+
+        <!-- Labels -->
+        <text class="label" y="150" x="316">B</text>
+    </g>
+</svg>

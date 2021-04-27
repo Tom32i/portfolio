@@ -2,34 +2,31 @@
   "name": "portfolio",
   "version": "1.0.0",
   "description": "thomas.jarrand.fr",
+  "license": "UNLICENSED",
+  "private": true,
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Tom32i/portfolio-2019.git"
+    "url": "git+https://github.com/Tom32i/portfolio.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Thomas Jarrand <thomas.jarrand@gmail.com> (https://thomas.jarrand.fr)",
   "bugs": {
-    "url": "https://github.com/Tom32i/portfolio-2019/issues"
+    "url": "https://github.com/Tom32i/portfolio/issues"
   },
-  "homepage": "https://github.com/Tom32i/portfolio-2019#readme",
+  "homepage": "https://github.com/Tom32i/portfolio#readme",
   "dependencies": {
-    "prismjs": "^1.22.0",
+    "prismjs": "^1.23.0",
     "reset-css": "^5.0.1"
   },
   "devDependencies": {
-    "@symfony/webpack-encore": "^0.31.0",
+    "@symfony/webpack-encore": "^1.1.2",
     "autoprefixer": "^9.8.6",
     "babel-eslint": "^10.1.0",
-    "core-js": "^3.8.0",
-    "eslint": "^7.13.0",
+    "core-js": "^3.11.0",
+    "eslint": "^7.25.0",
     "node-sass": "^5.0.0",
-    "postcss-loader": "^3.0.0",
-    "regenerator-runtime": "^0.13.2",
-    "sass-loader": "^10.0.0"
+    "postcss-loader": "^4.0.0",
+    "sass-loader": "^10.1.1"
   },
   "browserslist": [
     "defaults"

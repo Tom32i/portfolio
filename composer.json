@@ -2,51 +2,42 @@
     "type": "project",
     "license": "proprietary",
     "require": {
-        "php": "^7.4",
+        "php": "^7.4.0",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "composer/package-versions-deprecated": "^1.11",
-        "erusev/parsedown": "1.7.4",
         "phpdocumentor/reflection-docblock": "^5.2",
         "sensio/framework-extra-bundle": "^5.5",
         "stenope/stenope": "^0.1.0",
-        "symfony/asset": "5.1.*",
-        "symfony/console": "5.1.*",
-        "symfony/css-selector": "^5.1",
-        "symfony/dotenv": "5.1.*",
-        "symfony/expression-language": "5.1.*",
+        "symfony/asset": "^5.2",
+        "symfony/console": "^5.2",
+        "symfony/css-selector": "^5.2",
+        "symfony/dotenv": "^5.2",
+        "symfony/expression-language": "^5.2",
         "symfony/flex": "^1.10.0",
-        "symfony/framework-bundle": "5.1.*",
-        "symfony/http-client": "5.1.*",
-        "symfony/intl": "5.1.*",
+        "symfony/framework-bundle": "^5.2",
+        "symfony/http-client": "^5.2",
+        "symfony/intl": "^5.2",
         "symfony/monolog-bundle": "^3.1",
-        "symfony/process": "5.1.*",
-        "symfony/property-access": "5.1.*",
-        "symfony/property-info": "5.1.*",
-        "symfony/serializer": "5.1.*",
-        "symfony/string": "5.1.*",
-        "symfony/translation": "5.1.*",
-        "symfony/twig-bundle": "5.1.*",
-        "symfony/web-link": "5.1.*",
-        "symfony/webpack-encore-bundle": "^1.7",
-        "symfony/yaml": "5.1.*",
-        "twig/extra-bundle": "^3.0",
-        "twig/twig": "^3.0"
+        "symfony/process": "^5.2",
+        "symfony/property-access": "^5.2",
+        "symfony/property-info": "^5.2",
+        "symfony/serializer-pack": "*",
+        "symfony/string": "^5.2",
+        "symfony/translation": "^5.2",
+        "symfony/twig-pack": "*",
+        "symfony/web-link": "^5.2",
+        "symfony/webpack-encore-bundle": "^1.11",
+        "symfony/yaml": "^5.2"
     },
     "require-dev": {
         "ekino/phpstan-banned-code": "^0.3.1",
         "friendsofphp/php-cs-fixer": "^2.16",
         "phpstan/phpstan": "^0.12.54",
         "phpstan/phpstan-symfony": "^0.12.11",
-        "symfony/browser-kit": "^5.1",
-        "symfony/css-selector": "^5.1",
-        "symfony/debug-bundle": "^5.1",
+        "symfony/debug-pack": "*",
         "symfony/maker-bundle": "^1.0",
-        "symfony/monolog-bundle": "^3.0",
-        "symfony/stopwatch": "^5.1",
-        "symfony/twig-bundle": "^5.1",
-        "symfony/var-dumper": "^5.1",
-        "symfony/web-profiler-bundle": "^5.1"
+        "symfony/profiler-pack": "*"
     },
     "config": {
         "optimize-autoloader": true,
@@ -89,10 +80,12 @@
     "conflict": {
         "symfony/symfony": "*"
     },
+    "prefer-stable": true,
+    "minimum-stability": "dev",
     "extra": {
         "symfony": {
             "allow-contrib": false,
-            "require": "5.1.*"
+            "require": "5.2.*"
         }
     }
 }

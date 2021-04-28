@@ -23,7 +23,9 @@ help:
 
 ## Install dependencies
 install:
-	composer install
+	# Composer
+	composer install --verbose
+	# Npm install
 	npm install
 
 ## Start dev server
@@ -32,11 +34,7 @@ start:
 
 ## Watch and build assets
 watch:
-	./node_modules/.bin/encore dev --watch
-
-## Server static site
-serve:
-	php -S 0.0.0.0:8001 -t build
+	npx encore dev --watch
 
 ## Build static site
 build: build-assets build-content
@@ -46,8 +44,11 @@ build-assets:
 
 build-content: export APP_ENV = prod
 build-content:
-	bin/console c:c
 	bin/console stenope:build
+
+## Server static site
+serve:
+	php -S 0.0.0.0:8001 -t build
 
 ########
 # Lint #
@@ -77,9 +78,9 @@ lint-eslint:
 # Deploy #
 ##########
 
-deploy@demo: build
+deploy@staging: build
 	rsync -arzv --delete build/* tom32i@deployer.vm:/home/tom32i/portfolio/
 
 ## Build and deploy to production
-deploy@prod: build
+deploy@production: build
 	rsync -arzv --delete build/* tom32i@tom32i.fr:/home/tom32i/portfolio/

@@ -33,5 +33,5 @@ services:
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
 
-    App\Content\Processor\RemovePreProcessor:
+    App\Stenope\Processor\RemovePreProcessor:
         tags: [{ name: 'content_processor', priority: -20 }]

@@ -1,4 +1,5 @@
 stenope:
+  shared_html_crawlers: true
   providers:
     App\Model\Article: '%kernel.project_dir%/content/article'
     App\Model\Project: '%kernel.project_dir%/content/project'

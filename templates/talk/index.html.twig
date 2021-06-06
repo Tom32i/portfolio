@@ -23,7 +23,10 @@ Talk et conférences données à l'AFUP, au Forum PHP, au Blend Web Mix, à Lyon
                 {% if talk.video %}
                     <iframe class="view" width="640" height="360" src="https://www.youtube-nocookie.com/embed/{{ talk.video }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 {% else %}
-                    <iframe class="view" width="640" height="360" src="{{ talk.slides }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <a target="_blank" href="{{ talk.slides }}">
+                        <img src="{{ asset('img/talk/' ~ talk.slug ~ '.png') }}">
+                    </a>
+                    {#<iframe class="view" width="640" height="360" src="{{ talk.slides }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>#}
                 {% endif %}
 
                 <p class="links">

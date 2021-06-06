@@ -6,6 +6,7 @@ class Talk
 {
     public string $title;
     public string $description;
+    public string $slug;
     public int $duration;
     public \DateTimeImmutable $date;
     public \DateTimeImmutable $lastModified;

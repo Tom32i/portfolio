@@ -22,7 +22,7 @@ class ProjectController extends AbstractController
     public function list()
     {
         return $this->render('project/index.html.twig', [
-            'projects' => $this->manager->getContents(Project::class, ['date' => false]),
+            'projects' => $this->manager->getContents(Project::class, ['priority' => false]),
         ]);
     }
 }

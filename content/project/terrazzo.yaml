@@ -3,3 +3,4 @@ description: Un générateur de motif Terrazzo aléatoire en Javascript avec SVG
 url: https://tom32i.github.io/terrazzo/
 image: terrazzo.jpg
 date: "2019-02-26"
+priority: 6

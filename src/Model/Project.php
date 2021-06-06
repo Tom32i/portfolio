@@ -4,12 +4,14 @@ namespace App\Model;
 
 class Project
 {
+    public string $slug;
     public string $title;
     public string $description;
     public string $url;
     public \DateTimeImmutable $date;
     public \DateTimeImmutable $lastModified;
     public string $image;
+    public int $priority;
 
     public function getSiteName(): string
     {

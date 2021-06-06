@@ -8,7 +8,7 @@
         "composer/package-versions-deprecated": "^1.11",
         "phpdocumentor/reflection-docblock": "^5.2",
         "sensio/framework-extra-bundle": "^5.5",
-        "stenope/stenope": "^0.x-dev",
+        "stenope/stenope": "^0.3.0",
         "symfony/asset": "^5.2",
         "symfony/console": "^5.2",
         "symfony/css-selector": "^5.2",

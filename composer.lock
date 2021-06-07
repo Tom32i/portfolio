@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d46ac3f3c84cea1cc55c732f79bcfad3",
+    "content-hash": "498c00d584357af02549ac70ede1e473",
     "packages": [
         {
             "name": "composer/package-versions-deprecated",
@@ -864,16 +864,16 @@
         },
         {
             "name": "stenope/stenope",
-            "version": "v0.3.0",
+            "version": "dev-html-processor",
             "source": {
                 "type": "git",
                 "url": "https://github.com/StenopePHP/Stenope.git",
-                "reference": "0a01b1bb98db4ce630c1f87b2fe13ca953fddde9"
+                "reference": "98bca15d9adc5a4ef98cf8cc505371293972acc7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/StenopePHP/Stenope/zipball/0a01b1bb98db4ce630c1f87b2fe13ca953fddde9",
-                "reference": "0a01b1bb98db4ce630c1f87b2fe13ca953fddde9",
+                "url": "https://api.github.com/repos/StenopePHP/Stenope/zipball/98bca15d9adc5a4ef98cf8cc505371293972acc7",
+                "reference": "98bca15d9adc5a4ef98cf8cc505371293972acc7",
                 "shasum": ""
             },
             "require": {
@@ -947,9 +947,9 @@
             ],
             "support": {
                 "issues": "https://github.com/StenopePHP/Stenope/issues",
-                "source": "https://github.com/StenopePHP/Stenope/tree/v0.3.0"
+                "source": "https://github.com/StenopePHP/Stenope/tree/html-processor"
             },
-            "time": "2021-06-02T15:03:52+00:00"
+            "time": "2021-06-04T13:29:02+00:00"
         },
         {
             "name": "symfony/asset",

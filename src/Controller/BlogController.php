@@ -1,9 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use App\Model\Article;
-use Stenope\Bundle\ContentManager;
+use Stenope\Bundle\ContentManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Asset\Packages;
 use Symfony\Component\Routing\Annotation\Route;
@@ -14,11 +16,11 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
  */
 class BlogController extends AbstractController
 {
-    private ContentManager $manager;
+    private ContentManagerInterface $manager;
     private NormalizerInterface $serializer;
     private Packages $assets;
 
-    public function __construct(ContentManager $manager, NormalizerInterface $serializer, Packages $assets)
+    public function __construct(ContentManagerInterface $manager, NormalizerInterface $serializer, Packages $assets)
     {
         $this->manager = $manager;
         $this->serializer = $serializer;

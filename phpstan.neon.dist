@@ -1,33 +1,11 @@
-includes:
-    - vendor/ekino/phpstan-banned-code/extension.neon
-    - vendor/phpstan/phpstan-symfony/extension.neon
-
 parameters:
     level: 5
+
+    checkMissingIterableValueType: false
+    checkGenericClassInNonGenericObjectType: false
 
     paths:
         - 'src'
 
-    banned_code:
-        nodes:
-            -
-                type: Stmt_Echo
-                functions: null
-            -
-                type: Expr_Eval
-                functions: null
-            -
-                type: Expr_Exit
-                functions: null
-            -
-                type: Expr_FuncCall
-                functions:
-                    - debug_backtrace
-                    - dump
-                    - passthru
-                    - phpinfo
-                    - print_r
-                    - proc_open
-                    - shell_exec
-                    - system
-                    - var_dump
+    symfony:
+        container_xml_path: var/cache/dev/App_KernelDevDebugContainer.xml

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Tribü project.
  *
@@ -15,11 +17,11 @@ use Twig\TwigFilter;
 
 class DateExtension extends AbstractExtension
 {
-    const MONTH_FORMATS = [
+    public const MONTH_FORMATS = [
         'long-with-year' => 'MMMM Y',
         'short' => 'LLL',
     ];
-    const DAY_FORMATS = [
+    public const DAY_FORMATS = [
         'full' => 'd MMMM Y',
         'short' => 'd/MM/Y',
     ];

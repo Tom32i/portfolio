@@ -1,41 +1,39 @@
 <?php
 
-namespace App\Content\Processor;
+declare(strict_types=1);
 
+namespace App\Stenope\Processor;
+
+use Stenope\Bundle\Behaviour\HtmlCrawlerManagerInterface;
 use Stenope\Bundle\Behaviour\ProcessorInterface;
 use Stenope\Bundle\Content;
-use Symfony\Component\DomCrawler\Crawler;
 
 /**
  * Apply syntax coloration to code blocs
  */
 class RemovePreProcessor implements ProcessorInterface
 {
-    public function __invoke(array &$data, string $type, Content $content): void
+    private HtmlCrawlerManagerInterface $crawlers;
+
+    public function __construct(HtmlCrawlerManagerInterface $crawlers)
+    {
+        $this->crawlers = $crawlers;
+    }
+
+    public function __invoke(array &$data, Content $content): void
     {
         if (!isset($data['content'])) {
             return;
         }
 
-        $crawler = new Crawler($data['content']);
+        $crawler = $this->crawlers->get($content, $data, 'content');
 
-        try {
-            $crawler->html();
-        } catch (\Exception $e) {
-            // Content is not valid HTML.
-            return;
-        }
-
-        $crawler = new Crawler($data['content']);
-
+        /** @var \DOMElement $element */
         foreach ($crawler->filter('pre') as $element) {
-            /** @var \DOMElement $element */
-            $element = $element;
-
             $this->simplify($element);
         }
 
-        $data['content'] = $crawler->html();
+        $this->crawlers->save($content, $data, 'content');
     }
 
     private function simplify(\DOMElement $element): void

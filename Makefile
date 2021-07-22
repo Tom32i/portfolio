@@ -56,11 +56,8 @@ serve:
 
 lint: lint-phpcsfixer lint-phpstan lint-twig lint-yaml lint-eslint
 
-fix-phpcsfixer:
-	vendor/bin/php-cs-fixer fix
-
 lint-phpcsfixer:
-	vendor/bin/php-cs-fixer fix --dry-run --diff
+	vendor/bin/php-cs-fixer fix
 
 lint-phpstan:
 	vendor/bin/phpstan analyse src

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Stenope\Processor;
 
 use Stenope\Bundle\Behaviour\HtmlCrawlerManagerInterface;

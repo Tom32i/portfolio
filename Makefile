@@ -37,7 +37,7 @@ watch:
 	npx encore dev --watch
 
 ## Build static site
-build: build-assets build-content
+build: build-assets build-content optimize
 
 build-assets:
 	npx encore production
@@ -45,6 +45,9 @@ build-assets:
 build-content: export APP_ENV = prod
 build-content:
 	bin/console stenope:build
+
+optimize:
+	node optimize.js build
 
 ## Server static site
 serve:

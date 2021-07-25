@@ -44,6 +44,7 @@ build-assets:
 
 build-content: export APP_ENV = prod
 build-content:
+	symfony console cache:clear
 	bin/console stenope:build
 
 optimize:

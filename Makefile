@@ -48,7 +48,7 @@ build-content:
 	bin/console stenope:build
 
 optimize:
-	node optimize.js build
+	npx optimage-cli "build/**/*.@(png|jpg|jpeg|gif|webp)"
 
 ## Server static site
 serve:

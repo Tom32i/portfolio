@@ -1,0 +1,54 @@
+{% extends 'blog/base.html.twig' %}
+
+{% block meta_title 'Créations | ' ~ parent() %}
+{%- block meta_description -%}
+Petite sélection de mes projets open-sources, jeux vidéo et expérimentations de ces dernières années.
+{%- endblock -%}
+
+{% block header %}
+    <header class="container header">
+        <h1>Créations</h1>
+        <p>Petite sélection des outils open-source que je maintiens, de mes créations vidéoludiques et des conférences que je redonnerais avec plaisir :</p>
+    </header>
+{% endblock %}
+
+{% block content_container %}
+<section class="content container projects">
+    {% block content %}
+        <h2 id="tools">Outils open-source</h2>
+
+        <ul class="point-list">
+        {%- for tool in tools -%}
+            <li>
+                <a target="_blank" href="{{ tool.url }}">{{ tool.title }}</a>
+                <span>: {{ tool.description }}</span>
+            </li>
+        {%- endfor -%}
+        </ul>
+
+        <h2 id="games">Jeux vidéo dans le navigateur</h2>
+
+        <ul class="point-list">
+        {%- for game in games -%}
+            <li>
+                <a target="_blank" href="{{ game.url }}">{{ game.title }}</a>
+                <span>: {{ game.description }}</span>
+            </li>
+        {%- endfor -%}
+        </ul>
+
+        <h2 id="talks">Conférences</h2>
+
+        <ul class="point-list">
+        {%- for talk in talks -%}
+            <li class="talk">
+                <a target="_blank" href="{{ talk.url }}">{{ talk.title }}</a>
+                <span class="details format">{{ talk.duration }} min</span>
+                <time datetime="{{ talk.date|date('c') }}" class="details date">{{ talk.date|date('Y') }}</time>
+            </li>
+        {%- endfor -%}
+        </ul>
+    {% endblock %}
+</section>
+{% endblock %}
+

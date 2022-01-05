@@ -1,6 +1,6 @@
 date: "2021-05-25"
 duration: 25
-title: Génération de site statiques
+title: "Stenope : Génération de site statiques"
 slides: https://tom32i.github.io/talk-stenope/
 description: |
   La génération de sites statiques est un atout efficace et complémentaire du développement web moderne.

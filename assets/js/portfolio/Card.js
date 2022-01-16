@@ -11,12 +11,12 @@ export default class Card {
         this.active = window.innerWidth > 767;
         this.loop = null;
         this.transformation = '';
-        this.flipped = false;
+        this.flipped = true;
         this.flippedAt = Date.now();
         this.flippFrom = 0;
         this.flippedDistance = 0;
         this.flipping = false;
-        this.angle = 0;
+        this.angle = 180;
         this.x = 0;
         this.y = 0;
         this.alpha = null;
@@ -49,10 +49,10 @@ export default class Card {
         this.start();
 
         if (this.active) {
-            this.element.addEventListener('animationend', this.flip);
+            this.element.parentNode.addEventListener('animationend', this.flip);
         }
 
-        document.body.classList.add('turn-right');
+        this.element.parentNode.classList.add('turn-right');
     }
 
     setActive(active) {
@@ -60,11 +60,11 @@ export default class Card {
     }
 
     onClick(event) {
-        if (event.target.tagName === 'A') {
-            return;
-        }
+        if (event.target.tagName !== 'A') {
+            event.preventDefault();
 
-        this.flip(true);
+            return this.flip(true);
+        }
     }
 
     onTouch() {
@@ -130,13 +130,14 @@ export default class Card {
 
         this.direction = direction;
 
-        document.body.classList.replace(
+        this.element.parentNode.classList.replace(
             this.direction ? 'turn-left' : 'turn-right',
             this.direction ? 'turn-right' : 'turn-left'
         );
     }
 
     flip(changeCover = false) {
+        console.log('flip', changeCover === true, this.flipped);
         if (!this.active) {
             return this.onFlip(this.direction);
         }
@@ -149,7 +150,7 @@ export default class Card {
         this.flippedDistance = destination - this.angle;
         this.flipping = true;
 
-        if (changeCover === true && !this.flipped) {
+        if (changeCover === true && this.flipped) {
             this.onFlip(this.direction);
         }
     }

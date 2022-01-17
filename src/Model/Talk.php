@@ -18,7 +18,7 @@ class Talk
     public function getUrl(): string
     {
         if ($this->video) {
-            return "https://www.youtube.com/{$this->video}";
+            return $this->video;
         }
 
         return $this->slides;

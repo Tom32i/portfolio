@@ -14,4 +14,13 @@ class Talk
     public \DateTimeImmutable $lastModified;
     public ?string $slides = null;
     public ?string $video = null;
+
+    public function getUrl(): string
+    {
+        if ($this->video) {
+            return "https://www.youtube.com/{$this->video}";
+        }
+
+        return $this->slides;
+    }
 }

@@ -4,12 +4,14 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Model\Tool;
+use App\Model\Game;
 use App\Model\Talk;
 use Stenope\Bundle\ContentManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class TalkController extends AbstractController
+class WorkController extends AbstractController
 {
     private ContentManagerInterface $manager;
 
@@ -19,12 +21,14 @@ class TalkController extends AbstractController
     }
 
     /**
-     * @Route("/talk", name="talk", defaults={"_menu"="talk"})
+     * @Route("/creations", name="work", defaults={"_menu"="work"})
      */
     public function list()
     {
-        return $this->render('talk/index.html.twig', [
+        return $this->render('work/index.html.twig', [
+            'games' => $this->manager->getContents(Game::class, ['priority' => false]),
             'talks' => $this->manager->getContents(Talk::class, ['date' => false]),
+            'tools' => $this->manager->getContents(Tool::class, ['priority' => false]),
         ]);
     }
 }

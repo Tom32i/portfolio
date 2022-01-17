@@ -1,0 +1,49 @@
+.point-list {
+    list-style: disc;
+    padding-left: 2em;
+    line-height: 1.8em;
+    font-size: 1em;
+
+    li {
+        margin-bottom: 0.5em;
+    }
+
+    a {
+        font-weight: bold;
+    }
+
+    .details {
+        color: #666;
+        font-family: 'Cabin', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        padding: 0.2em 0.4em;
+        margin: 0;
+        line-height: 1.2em;
+        white-space: nowrap;
+        //display: flex;
+        align-items: center;
+
+        &::before {
+            margin-right: 0.4em;
+            text-decoration: none;
+
+            font-family: '#{$icomoon-font-family}' !important;
+            speak: none;
+            font-style: normal;
+            font-weight: normal;
+            font-variant: normal;
+            text-transform: none;
+            line-height: 1;
+
+            /* Better Font Rendering =========== */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        &.date::before { content: $icon-calendar; }
+        &.format::before { content: $icon-clock; }
+        &.slides::before { content: $icon-monitor; }
+        &.url::before { content: $icon-globe; }
+        &.video::before { content: $icon-film; }
+        &.infos::before { content: $icon-file-text; }
+    }
+}

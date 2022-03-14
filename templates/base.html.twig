@@ -64,7 +64,9 @@
                 </script>
             {% endif %}
         {% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+            <script async src="https://lab.tom32i.fr/console/loader.js"></script>
+        {% endblock %}
     </head>
     <body class="{% block body_class '' %}">
         {% block body %}{% endblock %}

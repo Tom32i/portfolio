@@ -3,6 +3,7 @@
 {% block body_class 'blog' %}
 
 {% block javascripts %}
+    {{ parent() }}
     {% for file in encore_entry_js_files('blog') %}
         <script src="{{ asset(file) }}" async></script>
     {% endfor %}

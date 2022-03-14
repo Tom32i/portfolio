@@ -137,7 +137,6 @@ export default class Card {
     }
 
     flip(changeCover = false) {
-        console.log('flip', changeCover === true, this.flipped);
         if (!this.active) {
             return this.onFlip(this.direction);
         }

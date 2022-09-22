@@ -8,6 +8,8 @@ $finder = (new PhpCsFixer\Finder())
 ;
 
 return (new PhpCsFixer\Config())
+    ->setFinder($finder)
+    ->setRiskyAllowed(true)
     ->setRules([
         '@Symfony' => true,
         'array_syntax' => ['syntax' => 'short'],
@@ -26,6 +28,4 @@ return (new PhpCsFixer\Config())
         'void_return' => true,
         'yoda_style' => false,
     ])
-    ->setRiskyAllowed(true)
-    ->setFinder($finder)
 ;

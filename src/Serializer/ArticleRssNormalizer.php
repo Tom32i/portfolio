@@ -10,15 +10,17 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 class ArticleRssNormalizer implements NormalizerInterface
 {
-    private UrlGeneratorInterface $router;
-
-    public function __construct(UrlGeneratorInterface $router)
-    {
-        $this->router = $router;
+    public function __construct(
+        private UrlGeneratorInterface $router
+    ) {
     }
 
     public function normalize($object, $format = null, array $context = [])
     {
+        if (!(\is_object($object) && is_a($object, Article::class))) {
+            throw new \Exception('Must be an Article');
+        }
+
         $url = $this->router->generate('blog_article', ['slug' => $object->slug], UrlGeneratorInterface::ABSOLUTE_URL);
 
         return [
@@ -32,6 +34,6 @@ class ArticleRssNormalizer implements NormalizerInterface
 
     public function supportsNormalization($data, $format = null)
     {
-        return is_a($data, Article::class, true) && $format == 'rss';
+        return \is_object($data) && is_a($data, Article::class, true) && $format == 'rss';
     }
 }

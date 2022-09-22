@@ -20,17 +20,21 @@
     "reset-css": "^5.0.1"
   },
   "devDependencies": {
-    "@symfony/webpack-encore": "^1.7.0",
+    "@symfony/webpack-encore": "^4.0.0",
+    "@babel/core": "^7.17.0",
+    "@babel/preset-env": "^7.16.0",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0",
     "autoprefixer": "^10.3.0",
     "babel-eslint": "^10.1.0",
-    "core-js": "^3.0.0",
-    "eslint": "^7.31.0",
+    "core-js": "^3.23.0",
+    "eslint": "^8.23.0",
     "glob": "^7.1.7",
-    "postcss": "^8.3.6",
-    "postcss-loader": "^6.0.0",
-    "sass": "^1.4.9",
-    "sass-loader": "^12.0.0",
-    "sharp": "^0.28.3"
+    "postcss": "^8.4.16",
+    "postcss-loader": "^7.0.0",
+    "sass": "^1.55.0",
+    "sass-loader": "^13.0.0",
+    "sharp": "^0.31.0"
   },
   "scripts": {
     "dev-server": "encore dev-server",

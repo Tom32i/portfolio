@@ -15,9 +15,9 @@ class Talk
     public ?string $slides = null;
     public ?string $video = null;
 
-    public function getUrl(): string
+    public function getUrl(): ?string
     {
-        if ($this->video) {
+        if ($this->video !== null) {
             return $this->video;
         }
 

@@ -13,11 +13,9 @@ use Stenope\Bundle\Content;
  */
 class RemovePreProcessor implements ProcessorInterface
 {
-    private HtmlCrawlerManagerInterface $crawlers;
-
-    public function __construct(HtmlCrawlerManagerInterface $crawlers)
-    {
-        $this->crawlers = $crawlers;
+    public function __construct(
+        private HtmlCrawlerManagerInterface $crawlers
+    ) {
     }
 
     public function __invoke(array &$data, Content $content): void
@@ -27,6 +25,10 @@ class RemovePreProcessor implements ProcessorInterface
         }
 
         $crawler = $this->crawlers->get($content, $data, 'content');
+
+        if ($crawler === null) {
+            throw new \Exception('Could not instanciate crawler');
+        }
 
         /** @var \DOMElement $element */
         foreach ($crawler->filter('pre') as $element) {
@@ -38,8 +40,16 @@ class RemovePreProcessor implements ProcessorInterface
 
     private function simplify(\DOMElement $element): void
     {
-        $classes = array_map('trim', array_unique(array_filter(explode(' ', $element->getAttribute('class') . ' ' . $element->firstChild->getAttribute('class')))));
-        $element->firstChild->setAttribute('class', implode(' ', $classes));
-        $element->parentNode->replaceChild($element->firstChild, $element);
+        /** @var \DOMElement */
+        $child = $element->firstChild;
+
+        $classes = array_map('trim', array_unique(array_filter(explode(' ', $element->getAttribute('class') . ' ' . $child->getAttribute('class')))));
+        $child->setAttribute('class', implode(' ', $classes));
+
+        if ($element->parentNode === null) {
+            throw new \Exception('Element has no parent.');
+        }
+
+        $element->parentNode->replaceChild($child, $element);
     }
 }

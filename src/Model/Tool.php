@@ -16,6 +16,6 @@ class Tool
 
     public function getSiteName(): string
     {
-        return trim(preg_replace('/^https?:\/\/(.+)$/', '$1', $this->url), '/');
+        return trim(preg_replace('/^https?:\/\/(.+)$/', '$1', $this->url) ?? '', '/');
     }
 }

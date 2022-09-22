@@ -18,15 +18,12 @@ use Twig\TwigTest;
 
 class MenuExtension extends AbstractExtension
 {
-    /** @var RequestStack */
-    private $requestStack;
-
-    public function __construct(RequestStack $requestStack)
-    {
-        $this->requestStack = $requestStack;
+    public function __construct(
+        private RequestStack $requestStack
+    ) {
     }
 
-    public function getTests()
+    public function getTests(): array
     {
         return [
             new TwigTest('currentRoot', [$this, 'isCurrentRoot']),
@@ -46,11 +43,15 @@ class MenuExtension extends AbstractExtension
 
     /**
      * Get attribute from current request
-     *
-     * @return string|array
      */
-    private function getAttribute(string $name)
+    private function getAttribute(string $name): mixed
     {
-        return $this->requestStack->getCurrentRequest()->attributes->get($name);
+        $request = $this->requestStack->getCurrentRequest();
+
+        if ($request === null) {
+            return null;
+        }
+
+        return $request->attributes->get($name);
     }
 }

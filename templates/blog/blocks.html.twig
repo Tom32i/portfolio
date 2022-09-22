@@ -1,5 +1,6 @@
 {% block date %}
-    <time class="icon-calendar" datetime="{{ article.date|date('c') }}">
+    <time datetime="{{ article.date|date('c') }}">
+        <span class="icon-calendar"></span>
         {{ article.date|month }}
     </time>
 {% endblock %}

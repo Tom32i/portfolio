@@ -8,42 +8,37 @@ use App\Model\Article;
 use Stenope\Bundle\ContentManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Asset\Packages;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-/**
- * @Route("/blog", name="blog", defaults={"_menu"="blog"})
- */
+#[Route('/blog', name: 'blog', defaults: ['_menu' => 'blog'])]
 class BlogController extends AbstractController
 {
-    private ContentManagerInterface $manager;
-    private NormalizerInterface $serializer;
-    private Packages $assets;
-
-    public function __construct(ContentManagerInterface $manager, NormalizerInterface $serializer, Packages $assets)
-    {
-        $this->manager = $manager;
-        $this->serializer = $serializer;
-        $this->assets = $assets;
+    public function __construct(
+        private ContentManagerInterface $manager,
+        private NormalizerInterface $serializer,
+        private Packages $assets
+    ) {
     }
 
-    /**
-     * @Route("", name="")
-     */
-    public function list()
+    #[Route('', name: '')]
+    public function list(): Response
     {
         $articles = $this->manager->getContents(Article::class, ['date' => false]);
-        $lastModified = max(array_map(function ($article) { return $article->lastModified; }, $articles));
+        $lastModified = max(array_map(fn ($article) => $article->lastModified, $articles));
+
+        if ($lastModified === false) {
+            $lastModified = null;
+        }
 
         return $this->render('blog/index.html.twig', [
             'articles' => $articles,
         ])->setLastModified($lastModified);
     }
 
-    /**
-     * @Route("/feed.rss", name="_feed", defaults={"_format": "atom"}, options={"mapped": false})
-     */
-    public function feed()
+    #[Route('/feed.rss', name: '_feed', defaults: ['_format' => 'atom'], options: ['mapped' => false])]
+    public function feed(): Response
     {
         $articles = $this->manager->getContents(Article::class, ['date' => true]);
 
@@ -63,10 +58,8 @@ class BlogController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{slug}", name="_article")
-     */
-    public function article(string $slug)
+    #[Route('/{slug}', name: '_article')]
+    public function article(string $slug): Response
     {
         $article = $this->manager->getContent(Article::class, $slug);
 
@@ -76,7 +69,7 @@ class BlogController extends AbstractController
         ])->setLastModified($article->lastModified);
     }
 
-    public function latest(int $max = 3)
+    public function latest(int $max = 3): Response
     {
         $articles = $this->manager->getContents(Article::class, ['date' => false]);
 

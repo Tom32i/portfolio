@@ -26,7 +26,7 @@ class DateExtension extends AbstractExtension
         'short' => 'd/MM/Y',
     ];
 
-    public function getFilters()
+    public function getFilters(): array
     {
         return [
             new TwigFilter('month', [$this, 'formatMonth']),
@@ -34,23 +34,26 @@ class DateExtension extends AbstractExtension
         ];
     }
 
-    public function formatMonth($value, string $format = 'long-with-year')
+    /**
+     * @param string|\DateTimeInterface $value
+     */
+    public function formatMonth($value, string $format = 'long-with-year'): string
     {
-        $date = $value instanceof \DateTimeInterface ? $value : new \DateTimeImmutable($value);
-
-        $formatter = \IntlDateFormatter::create(
-            null,
-            \IntlDateFormatter::NONE,
-            \IntlDateFormatter::NONE,
-            \IntlTimeZone::createTimeZone($date->getTimezone()->getName()),
-            \IntlDateFormatter::GREGORIAN,
-            self::MONTH_FORMATS[$format]
-        );
-
-        return $formatter->format($date->getTimestamp());
+        return $this->format($value, self::MONTH_FORMATS[$format]);
     }
 
-    public function formatDay($value, string $format = 'full')
+    /**
+     * @param string|\DateTimeInterface $value
+     */
+    public function formatDay($value, string $format = 'full'): string
+    {
+        return $this->format($value, self::DAY_FORMATS[$format]);
+    }
+
+    /**
+     * @param string|\DateTimeInterface $value
+     */
+    private function format($value, string $format): string
     {
         $date = $value instanceof \DateTimeInterface ? $value : new \DateTimeImmutable($value);
 
@@ -60,9 +63,19 @@ class DateExtension extends AbstractExtension
             \IntlDateFormatter::NONE,
             \IntlTimeZone::createTimeZone($date->getTimezone()->getName()),
             \IntlDateFormatter::GREGORIAN,
-            self::DAY_FORMATS[$format]
+            $format
         );
 
-        return $formatter->format($date->getTimestamp());
+        if ($formatter === false) {
+            throw new \Exception('Could not create date formatter.');
+        }
+
+        $text = $formatter->format($date->getTimestamp());
+
+        if ($text === false) {
+            throw new \Exception('Could not format the given date.');
+        }
+
+        return $text;
     }
 }

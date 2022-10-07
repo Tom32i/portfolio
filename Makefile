@@ -54,10 +54,22 @@ optimize:
 serve:
 	php -S 0.0.0.0:8001 -t build
 
+############
+# Security #
+############
+
+## Run security checks
+security:
+	symfony check:security
+
+security@test: export APP_ENV = test
+security@test: security
+
 ########
 # Lint #
 ########
 
+## Run lint suite:
 lint: lint-phpcsfixer lint-phpstan lint-twig lint-yaml lint-eslint
 
 lint-phpcsfixer:

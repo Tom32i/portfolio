@@ -72,6 +72,7 @@ security@test: security
 ## Run lint suite:
 lint: lint-phpcsfixer lint-phpstan lint-twig lint-yaml lint-eslint
 
+lint-phpcsfixer: export PHP_CS_FIXER_IGNORE_ENV = 1
 lint-phpcsfixer:
 	vendor/bin/php-cs-fixer fix
 

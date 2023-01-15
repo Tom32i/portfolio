@@ -26,7 +26,7 @@ class BlogController extends AbstractController
     public function list(): Response
     {
         $articles = $this->manager->getContents(Article::class, ['date' => false]);
-        $lastModified = max(array_map(fn (Article $article): \DateTimeInterface => $article->lastModified, $articles));
+        $lastModified = max(array_map(static fn (Article $article): \DateTimeInterface => $article->lastModified, $articles));
 
         return $this->render('blog/index.html.twig', [
             'articles' => $articles,

@@ -66,7 +66,7 @@ class DateExtension extends AbstractExtension
             $format
         );
 
-        if ($formatter === false) {
+        if ($formatter === null) {
             throw new \Exception('Could not create date formatter.');
         }
 

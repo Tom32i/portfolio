@@ -7,7 +7,7 @@ language: fr
 cover: /img/articles/rack-de-rangement-longboard-DIY/intro.png
 ---
 
-Suite l'arrivée d'une troisième planche (pour le downhill cetet fois) et des protections qui vont avec, il était temps d'organiser un peu le rangement de mes longboards. J'ai donc conçu un rack un peu différent qui permettrais de les ranger verticalement pour éviter de prendre trop de place.
+Suite l'arrivée d'une troisième planche (pour le downhill cette fois) et des protections qui vont avec, il était temps d'organiser un peu le rangement de mes longboards. J'ai donc conçu un rack un peu différent qui permettrais de les ranger verticalement pour éviter de prendre trop de place.
 
 ![](/img/articles/rack-de-rangement-longboard-DIY/intro.jpg)
 

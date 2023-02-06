@@ -1,7 +1,7 @@
 ---
 date: "2023-02-01 12:00:00"
 tags: []
-title: "Des Query mises en cache avec Symfony"
+title: "Un cache middleware pour Symfony Messenger"
 description: "Comment mettre en place un système de cache des Query avec les composants Symfony Messenger et Cache"
 language: fr
 cover: /img/articles/cached-queries/cached_dark.png
@@ -9,13 +9,13 @@ cover: /img/articles/cached-queries/cached_dark.png
 
 J'ai eu récemment sur [l'un de mes sites](https://whatthetune.com/profil/1) des routes aux temps de réponse insatisfaisants.
 
-Les pages impliquées necéssitent des calculs statistiques assez coûteux sur de gros volumes de données et je souhaitais trouver un moyen d'améliorer ces temps de réponse tout en soulagant mon serveur de cette charge.
+Les pages impliquées nécessitent des calculs statistiques assez coûteux sur de gros volumes de données et je souhaitais trouver un moyen d'améliorer ces temps de réponse tout en soulageant mon serveur de cette charge.
 
-Mon code est organisé selon un pattern _CQRS_, j'ai donc des _Query_ et des _Handler_ chargés de les traiter, organisés autour d'un bus via composant **Mesenger** de Symfony.
+Mon code est organisé selon un pattern _CQRS_, j'ai donc des _Query_ et des _Handler_ chargés de les traiter, organisés autour d'un _Bus_ via le composant **Messenger** de Symfony.
 
-Après quelques optimisation, j'ai finalement opté pour un petit **système de cache** qui me permetrait de conserver le résultat de mes queries coûteuses pendant un certain temps sans avoir à les recalculer systématiquent.
+Après quelques optimisations, j'ai finalement opté pour un petit **système de cache** qui me permettrait de conserver le résultat de mes queries coûteuses pendant un certain temps sans avoir à les recalculer systématiquement.
 
-Dans cet article, nous detaillerons comment mettre en place ce système de cache dans un projet Symfony en s'appuyant sur les composant [symfony/messenger](https://symfony.com/doc/current/messenger.html) et [symfony/cache](https://symfony.com/doc/current/cache.html).
+Dans cet article, nous détaillerons comment mettre en place ce système de cache dans un projet Symfony en s'appuyant sur les composants [symfony/messenger](https://symfony.com/doc/current/messenger.html) et [symfony/cache](https://symfony.com/doc/current/cache.html).
 
 ## Le cas pratique
 
@@ -23,7 +23,7 @@ Nous prendrons l'exemple d'un cas pratique similaire à mon cas d'usage réel.
 
 ### La query et son handler
 
-Mettons que nous ayons une query representant la récupération de tout un tas de statistiques concernant un utilisateur donné :
+Mettons que nous ayons une query représentant la récupération de tout un tas de statistiques concernant un utilisateur donné :
 
 ```php
 namespace App\Query;
@@ -66,7 +66,7 @@ class GetUserMetricsQueryHandler
 
 ### Utilisation dans notre application
 
-Nous utilisons cette query dans un controller par exemple :
+Nous utilisons cette query dans un _controller_, par exemple :
 
 ```php
 use App\Query\GetUserMetricsQuery;
@@ -97,23 +97,23 @@ class UserMetricsController
 
 ## Le problème
 
-Maintenant, metons que l'execution de cette query est *très couteuse* : en CPU, en mémoire, parce qu'elle fait appel à un service tier, ou bien éxecute des requêtes SQL lourdes, ...
+Maintenant, mettons que l'exécution de cette query soit *très couteuse* : en CPU, en mémoire, parce qu'elle fait appel à un service tier, ou bien exécute des requêtes SQL lourdes, ...
 
-Comme nous l'avons vu en intro, nous voulons eviter d'executer cette query systématiquement alors que son resultat peut être considéré valide pendant un certain temps.
+Comme nous l'avons vu en introduction, nous voulons éviter d'exécuter cette query systématiquement alors que son résultat peut être considéré comme valide pendant un certain temps.
 
 ## Le système de cache comme solution
 
-Pour cela, nous allons ajouter un système de cache à notre bus, afin qu'il soit capable de mettre en cache le restulat de nos Query.
+Pour cela, nous allons ajouter un système de cache à notre bus, afin qu'il soit capable de mettre en cache le résultat de nos Query, puis retourner des résultats à partir du cache.
 
 ### Création d'un middleware de cache
 
-Nous allons implementer cette fonctionnalité en créant notre propre _Middleware_ qui s'interfacera avec le composant [symfony/messenger](https://symfony.com/doc/current/messenger.html#middleware).
+Nous allons implémenter cette fonctionnalité en créant notre propre _Middleware_ qui s'interfacera avec le composant [symfony/messenger](https://symfony.com/doc/current/messenger.html#middleware).
 
 Le traitement d'un message par notre middleware de cache va se dérouler ainsi :
-1. Vérifier que nous traitons une query qui peut etre mise en cache.
+1. Vérifier que nous traitons une query qui peut être mise en cache.
 2. Récupérer le cache correspondant à notre query.
-3. _Si le cache est vide :_ traiter notre query en reprenant l'execution normale et stocker le resultat en cache.
-4. Retourner le resultat depuis le cache.
+3. _Si le cache est vide :_ traiter notre query en reprenant l'exécution normale et stocker le résultat en cache.
+4. Retourner le résultat depuis le cache.
 
 Voici ce que ça donne :
 
@@ -176,14 +176,14 @@ interface CachableQueryResult
 ```
 
 Cette interface nous permet deux choses :
-- Activer le système de cache uniquement pour les query qui le supportent.
-- Segmenter le cache en fonction des propriétés de la Query via la méthode `getCacheKey`.
+- Activer le système de cache uniquement pour les queries qui le supportent.
+- Segmenter le cache en fonction des propriétés de la Query via la méthode `getCacheKey` (nous y reviendrons).
 
 ### Configuration du middleware
 
 Notre middleware de cache se repose sur un **Adapter** fourni par le composant [symfony/cache](https://symfony.com/doc/current/components/cache.html) qui va gérer le cache pour nous.
 
-Nous allons déclarer le service `AdapterInterface` à injecter dans notre middleware, parmis les différentes implementations fournies par le composant _symfony/cache_ :
+Nous allons déclarer le service `AdapterInterface` à injecter dans notre middleware, parmi les différentes implementations fournies par le composant _symfony/cache_ :
 
 ```yaml
 # config/services.yaml
@@ -211,7 +211,7 @@ framework:
 
 ### Notre query cachable
 
-Nous pouvons maintenant rendre notre query "cachable" en implementant l'interface `CachableQueryResult` :
+Nous pouvons maintenant rendre notre query "_cachable_" en implémentant l'interface `CachableQueryResult` :
 
 ```php
 namespace App\Query;
@@ -230,19 +230,19 @@ class GetUserMetricsQuery implements CachableQueryResult
 }
 ```
 
-_Note :_ Nous ne voulons pas que les statistiques de l'utilisateur A soient mises en cache et renvoyé à l'utilisateur B ! C'est pourquoi la clée de cache d'une query `GetUserMetricsQuery` dépends de sa propriété `userId`.
+_Note :_ Nous ne voulons pas que les statistiques de l'utilisateur A soient mises en cache et renvoyées à l'utilisateur B ! C'est pourquoi la clé de cache d'une query `GetUserMetricsQuery` dépend de sa propriété `userId`.
 
-### Le résultat !
+### Et voila le résultat !
 
-Lors d'une premier traitement de notre Query, c'est le Handler calcule le résultat, comme avant :
+Lors d'une premier traitement de notre Query, c'est le Handler associé qui calcule le résultat, comme avant :
 
 ![](/img/articles/cached-queries/standard_dark.png)
 
-À partir du second traitement (et pour toute la durée du cache), c'est le middleware de cache qui réponds :
+À partir du second traitement (et pour toute la durée du cache), c'est le middleware de cache qui répond :
 
 ![](/img/articles/cached-queries/cached_dark.png)
 
-Contrat rempli, nous avons des temps de réponse bien plus satisfaisants avec notre système de cache !
+Contrat rempli : nous avons des temps de réponse bien plus satisfaisants avec notre système de cache !
 
 ## Bonus et améliorations
 
@@ -250,11 +250,11 @@ Pour aller plus loin, voici quelques idées pour améliorer l'utilisabilité de 
 
 ### Forcer le rafraichissement du cache
 
-Dans certain cas, nous allons vouloir eviter de passer par le cache.
+Dans certains cas, nous allons éviter que le résultat de la Query soit retourné à partir du cache et, au contraire, forcer un nouveau calcul.
 
-Pour cela, nous allons utiliser le système de `Stamp` de _symfony/messenger_ qui permet d'associé un contexte au traitement d'une Query.
+Pour permettre cela, nous allons utiliser le système de `Stamp` de _symfony/messenger_ qui permet d'associer un contexte au traitement d'une Query.
 
-Nous créons notre propre Stamp qui representera l'information _"je veux forcer le rafraichissement du cache pour ce traitement"_ :
+Ici le contexte étant "_N'utilise pas le cache pour ce traitement._", nous créons notre propre _Stamp_ qui représentera cette instruction :
 
 ```php
 namespace App\Stamp;
@@ -269,7 +269,7 @@ class RefreshCacheStamp implements StampInterface
 }
 ```
 
-Dans notre middleware, nous allons nous baser sur la présence de ce stap pour déclencher une rafraichissement forcé du cache :
+Dans notre middleware, nous pouvons maintenant nous baser sur la présence de ce _Stamp_ pour déclencher un rafraichissement forcé du cache :
 
 ```php
 namespace App\Middleware;
@@ -284,6 +284,7 @@ class CacheMiddleware implements MiddlewareInterface
         // ...
         $force = $envelope->last(RefreshCacheStamp::class) !== null;
 
+	  // When in "force" mode, we behave like there was no cache result:
         if ($force || !$item->isHit()) {
             $item->set($this->continue($envelope, $stack));
             $this->cache->save($item);
@@ -344,7 +345,7 @@ class UserMetricCommand extends Command
 
 💡 Mais là où ce sera le plus pertinent, c'est pour pré-calculer le cache lorsqu'on sait qu'il n'est plus à jour.
 
-Par exemple, lorsqu'on modifie des données de notre utilisateur qui impacteront ses statistiques, on peut déclecher un rafraichissement du cache :
+Par exemple, lorsqu'on modifie des données d'un utilisateur qui impacteront ses statistiques, on peut déclencher un rafraichissement du cache :
 
 ```php
 <?php
@@ -377,7 +378,7 @@ class EditUserController
 }
 ```
 
-_Note :_ Puisque le re-calcul du cache est couteux, nous voudrons probablement différer ce traitement _après_ que la réponse ai été renvoyée à l'utilisateur. En traitant la query lors de l'evenement `kernel.terminate` ou bien via la mise en place d'un worker. C'est d'ailleurs ce que j'ai fais dans mon cas d'utilisation réel :)
+_Note :_ Puisque le rafraichissement du cache est couteux, nous voudrons probablement différer ce traitement _après_ que la réponse ai été renvoyée à l'utilisateur. En traitant la query lors de l'événement `kernel.terminate` ou bien via la mise en place d'un worker. C'est d'ailleurs ce que j'ai fais dans mon cas d'utilisation réel :)
 
 Ainsi :
 - Nous pouvons mettre une durée de cache assez haute (ex: 24h).
@@ -386,8 +387,8 @@ Ainsi :
 
 #### Invalidation du cache
 
-Nous pouvons aussi vouloir invalider le cache, sans pour autant lancer un recalcul.
-Pour ce cas là, nous utiliserons simplement la méthode `clear` de notre adapter:
+Nous pouvons aussi vouloir invalider le cache, sans pour autant lancer un re-calcul.
+Pour ce cas là, nous utiliserons simplement la méthode `clear` de notre Adapter :
 
 ```php
 // Invalidate cache a specific query:
@@ -398,11 +399,11 @@ $cache->clear('user_metrics_');
 $cache->clear();
 ```
 
-### Configurer la durée de mise cache en fonction de la query
+### Configurer la durée de mise cache en fonction de la Query
 
-Actuellement, la durée de mise en cache est définie globalement à 1 heure via la durée par défault fournie à notre Adapter.
+Actuellement, la durée de mise en cache est définie globalement via la durée par défaut fournie à notre Adapter.
 
-Une autre amélioration serait de pouvoir configurer la durée de mise en cache individuellement pour chaque type de query.
+Une autre amélioration serait de pouvoir configurer la durée de mise en cache individuellement pour chaque type de Query.
 
 Pour cela, nous allons étoffer notre interface `CachableQueryResult` d'une méthode `getLifeTime` :
 
@@ -416,7 +417,7 @@ interface CachableQueryResult
 }
 ```
 
-Ensuite nous mettons à jour notre query pour spécifier une durée de mise en cache :
+Ensuite nous mettons à jour notre Query pour spécifier une durée de mise en cache :
 
 ```php
 namespace App\Query;
@@ -432,7 +433,7 @@ class GetUserMetricsQuery implements CachableQueryResult
 }
 ```
 
-Maintenant, notre middleware de cache va utiliser cette nouvelle méthode pour définir un temps de mise en cache spécifique au niveau de l'item :
+Maintenant, notre middleware de cache va utiliser cette nouvelle méthode pour définir un temps de mise en cache spécifique pour cette Query:
 
 ```php
 namespace App\Middleware;
@@ -462,10 +463,10 @@ class CacheMiddleware implements MiddlewareInterface
 
 ## Conclusion
 
-Nous voici avec un bon petit système de cache assez souple pour nos Query CQRS utilisant le composant Messenger, à l'aide d'un simple Middleware.
+Nous voici avec un petit système de cache assez souple pour nos Query CQRS utilisant le composant Messenger, à l'aide d'un simple Middleware.
 
-Une démo complète et fonctionelle est disponible sur Github :
+Une démo complète et fonctionnelle est disponible sur Github :
 
 [Tom32i/demo-cached-queries](https://github.com/Tom32i/demo-cached-queries).
 
-Des remarques, des questions ? [N'hesitez pas !](https://twitter.com/tom32i)
+Des remarques, des questions ? [N'hésitez pas !](https://twitter.com/tom32i)

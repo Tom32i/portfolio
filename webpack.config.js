@@ -11,8 +11,8 @@ Encore
     .setOutputPath('public/assets/')
     // public path used by the web server to access the output path
     .setPublicPath('/assets')
-    // only needed for CDN's or sub-directory deploy
-    //.setManifestKeyPrefix('build/')
+    // only needed for CDN's or subdirectory deploy
+    //.setManifestKeyPrefix('assets/')
 
     /*
      * ENTRY CONFIG

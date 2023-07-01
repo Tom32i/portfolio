@@ -4,5 +4,7 @@ title: Les apis web insoupçonnées
 description: |
   Petit tour d'horizon de quelques capacités de vos navigateurs dont vous ignoriez peut-être l'existence !
 slides: https://talk.tom32i.fr/web-apis
-events: humantalks
+sources: https://github.com/Tom32i/talk-lightning-web-apis
+events:
+  - humantalks
 

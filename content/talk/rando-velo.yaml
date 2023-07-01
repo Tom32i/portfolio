@@ -1,8 +1,13 @@
-date: "2018-11-01"
-duration: 10
-title: La randonnée à vélo
+date: "2023-04-13"
+duration: 20
+title: Et si vos prochaines vacances se passaient à vélo ?
 description: |
-  Une semaine de congés pour parcourir 500km à vélo ?!
-  Découvrez le cyclo-tourisme : présentation, idées reçues, conseils et retour d'expérience.
-slides: https://talk.tom32i.fr/rando-velo
-events: humantalks
+  La randonnée à vélo, c'est économique, écologique, relaxant, dépaysant et c'est plus facile d'accès que ce que vous pourriez pensez.
+  Alors on y va ? Un talk pour bien démarrer, faire découvrir, chasser les idées reçues, partager des astuces et donner l'envie de pédaler !
+slides: https://talk.tom32i.fr/vacances-velo/
+sources: https://github.com/Tom32i/talk-vacances-velo
+video: https://mixitconf.org/2023/et-si-vos-prochaines-vacances-se-passaient-a-velo-
+events:
+  - Mixit
+  - Forum PHP
+  - Human Talks

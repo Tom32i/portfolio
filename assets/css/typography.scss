@@ -88,60 +88,21 @@ img.round {
 }
 
 .talk, .project {
-    .links {
-        display: flex;
-        flex-direction: row;
-        align-items: flex-end;
-        font-size: 1em;
-        margin: 0.4em 0 1em;
-        color: $text-mutted;
+    a.talk-title {
+        display: block;
+    }
 
-        > * {
-            font-family: 'Cabin', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            padding: 0.2em;
-            margin: 0;
-            line-height: 1.2em;
-            white-space: nowrap;
-            display: flex;
-            align-items: center;
+    .details.link {
+        text-decoration: none;
 
-            &::before {
-                margin-right: 0.4em;
-                text-decoration: none;
-
-                font-family: '#{$icomoon-font-family}' !important;
-                speak: none;
-                font-style: normal;
-                font-weight: normal;
-                font-variant: normal;
-                text-transform: none;
-                line-height: 1;
-
-                /* Better Font Rendering =========== */
-                -webkit-font-smoothing: antialiased;
-                -moz-osx-font-smoothing: grayscale;
-            }
-        }
-
-        a, button {
-            text-decoration: none;
-            border-radius: 0.2em;
-            border: 1px solid transparent;
-            background: none;
-            color: $text-primary;
-            font-size: 1em;
-            cursor: pointer;
-
-            &:hover {
-                color: white;
-                background-color: $text-primary;
-                border-color: $text-primary;
-            }
+        &::before {
+            margin-right: 0;
         }
     }
 
     .date::before { content: $icon-calendar; }
     .format::before { content: $icon-clock; }
+    .sources::before { content: $icon-github; }
     .slides::before { content: $icon-monitor; }
     .url::before { content: $icon-globe; }
     .video::before { content: $icon-film; }

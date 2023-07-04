@@ -15,7 +15,38 @@ Petite sélection de mes projets open-sources, jeux vidéo et expérimentations 
 {% block content_container %}
 <section class="content container projects">
     {% block content %}
+
+        <h2 id="talks">Conférences</h2>
+        <p>
+            J'ai eu le plaisir de parler dans tout un tas de super évènements comme :
+            <a href="https://event.afup.org/forumphp2018/">Forum PHP</a>,
+            <a href="https://mixitconf.org/2023">MiXiT</a>,
+            <a href="https://www.lyonjs.org/">Lyon JS</a>,
+            <a href="https://lyon.afup.org">Afup Lyon</a>,
+            <a href="https://tech.bedrockstreaming.com/lft/">Last Friday Talks</a>,
+            <a href="https://humantalks.com/cities/lyon">Human Talks</a>,
+            <a href="www.blendwebmix.com/">Blend Web Mix</a>,
+            <a href="https://www.facebook.com/groups/designerslyonnais">Apéro des Designers</a>,
+            ...
+        </p>
+
+        <ul class="point-list">
+        {%- for talk in talks -%}
+            <li class="talk">
+                <a target="_blank" href="{{ talk.url }}" class="">{{ talk.title }}</a>
+                <span class="details format" title="Durée">{{ talk.duration }} min</span>
+                <time datetime="{{ talk.date|date('c') }}" title="Date" class="details date">{{ talk.date|date('Y') }}</time>
+                <a target="_blank" title="Slides" href="{{ talk.slides }}" class="details link slides"></a>
+                <a target="_blank" title="Sources" href="{{ talk.sources }}" class="details link sources"></a>
+                {% if talk.video %}
+                    <a target="_blank" title="Vidéo" href="{{ talk.video }}" class="details link video"></a>
+                {% endif %}
+            </li>
+        {%- endfor -%}
+        </ul>
+
         <h2 id="tools">Outils open-source</h2>
+        <p>Je met à disposition et maintiens les outils open-source suivants :</p>
 
         <ul class="point-list">
         {%- for tool in tools -%}
@@ -26,7 +57,8 @@ Petite sélection de mes projets open-sources, jeux vidéo et expérimentations 
         {%- endfor -%}
         </ul>
 
-        <h2 id="games">Jeux vidéo dans le navigateur</h2>
+        <h2 id="games">Jeux vidéo</h2>
+        <p>Je créer aussi des jeux video, souvent multijoueur, dans le navigateur :</p>
 
         <ul class="point-list">
         {%- for game in games -%}
@@ -37,17 +69,7 @@ Petite sélection de mes projets open-sources, jeux vidéo et expérimentations 
         {%- endfor -%}
         </ul>
 
-        <h2 id="talks">Conférences</h2>
-
-        <ul class="point-list">
-        {%- for talk in talks -%}
-            <li class="talk">
-                <a target="_blank" href="{{ talk.url }}">{{ talk.title }}</a>
-                <span class="details format">{{ talk.duration }} min</span>
-                <time datetime="{{ talk.date|date('c') }}" class="details date">{{ talk.date|date('Y') }}</time>
-            </li>
-        {%- endfor -%}
-        </ul>
+        <p>Et je ne compte pas m'arrêter là ... 😇</p>
     {% endblock %}
 </section>
 {% endblock %}

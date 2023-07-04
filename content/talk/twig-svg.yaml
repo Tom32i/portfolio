@@ -6,3 +6,4 @@ description: |
   Regardons ce que le format SVG peut faire pour nos représentations de données, ce qu'il apporte et comment il s'intègre (bien) dans notre stack Symfony / Twig.
   Camemberts, courbes, diagrammes bâtons, ... des exemples concrets et cas d'usage à l'appui !
 slides: https://talk.tom32i.fr/svg-twig/
+sources: https://github.com/Tom32i/talk-svg-twig

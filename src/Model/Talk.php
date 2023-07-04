@@ -12,7 +12,8 @@ class Talk
     public int $duration;
     public \DateTimeImmutable $date;
     public \DateTimeImmutable $lastModified;
-    public ?string $slides = null;
+    public string $slides;
+    public string $sources;
     public ?string $video = null;
 
     public function getUrl(): ?string

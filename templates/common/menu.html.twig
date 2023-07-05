@@ -6,7 +6,7 @@
 
 {% block navigation %}
 <div class="menu-container">
-    <a href="{{ path('portfolio') }}" class="brand {{ 'portfolio' is currentRoot ? 'active' : '' }}"></a>
+    <a href="{{ path('portfolio') }}" class="brand {{ 'portfolio' is currentRoot ? 'active' : '' }}" title="À propos"></a>
     <nav class="menu">
         {% for item in menu %}
             {% set active =  item.route is currentRoot %}

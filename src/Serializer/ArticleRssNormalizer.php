@@ -15,7 +15,7 @@ class ArticleRssNormalizer implements NormalizerInterface
     ) {
     }
 
-    public function normalize(mixed $object, string $format = null, array $context = [])
+    public function normalize(mixed $object, ?string $format = null, array $context = [])
     {
         if (!(\is_object($object) && is_a($object, Article::class))) {
             throw new \Exception('Must be an Article');
@@ -32,8 +32,15 @@ class ArticleRssNormalizer implements NormalizerInterface
         ];
     }
 
-    public function supportsNormalization(mixed $data, string $format = null)
+    public function supportsNormalization(mixed $data, ?string $format = null)
     {
         return \is_object($data) && is_a($data, Article::class, true) && $format == 'rss';
+    }
+
+    public function getSupportedTypes(?string $format): array
+    {
+        return [
+            Article::class => true,
+        ];
     }
 }

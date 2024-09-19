@@ -19,7 +19,7 @@ use Twig\TwigTest;
 class MenuExtension extends AbstractExtension
 {
     public function __construct(
-        private RequestStack $requestStack
+        private RequestStack $requestStack,
     ) {
     }
 

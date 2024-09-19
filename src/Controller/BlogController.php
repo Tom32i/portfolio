@@ -18,7 +18,7 @@ class BlogController extends AbstractController
     public function __construct(
         private ContentManagerInterface $manager,
         private NormalizerInterface $serializer,
-        private Packages $assets
+        private Packages $assets,
     ) {
     }
 

@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class WorkController extends AbstractController
 {
     public function __construct(
-        private ContentManagerInterface $manager
+        private ContentManagerInterface $manager,
     ) {
     }
 

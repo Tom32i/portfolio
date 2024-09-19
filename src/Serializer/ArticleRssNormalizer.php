@@ -11,7 +11,7 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 class ArticleRssNormalizer implements NormalizerInterface
 {
     public function __construct(
-        private UrlGeneratorInterface $router
+        private UrlGeneratorInterface $router,
     ) {
     }
 

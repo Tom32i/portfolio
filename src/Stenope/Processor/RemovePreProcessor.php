@@ -14,7 +14,7 @@ use Stenope\Bundle\Content;
 class RemovePreProcessor implements ProcessorInterface
 {
     public function __construct(
-        private HtmlCrawlerManagerInterface $crawlers
+        private HtmlCrawlerManagerInterface $crawlers,
     ) {
     }
 

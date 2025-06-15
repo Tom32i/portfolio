@@ -2,11 +2,14 @@
 
 {% block body_class 'blog' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('blog') }}
+{% endblock %}
+
 {% block javascripts %}
     {{ parent() }}
-    {% for file in encore_entry_js_files('blog') %}
-        <script src="{{ asset(file) }}" async></script>
-    {% endfor %}
+    {{ encore_entry_script_tags('blog') }}
 {% endblock %}
 
 {% block body %}

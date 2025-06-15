@@ -6,11 +6,14 @@
 
 {% block body_class 'portfolio' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('portfolio') }}
+{% endblock %}
+
 {% block javascripts %}
     {{ parent() }}
-    {% for file in encore_entry_js_files('portfolio') %}
-        <script src="{{ asset(file) }}" async></script>
-    {% endfor %}
+    {{ encore_entry_script_tags('portfolio') }}
 {% endblock %}
 
 {% block body %}

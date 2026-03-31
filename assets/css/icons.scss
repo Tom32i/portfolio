@@ -1,8 +1,6 @@
 @font-face {
   font-family: '#{$icomoon-font-family}';
-  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?d8kxeh');
-  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?d8kxeh#iefix') format('embedded-opentype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?d8kxeh') format('truetype'),
+  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?d8kxeh') format('truetype'),
     url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?d8kxeh') format('woff'),
     url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?d8kxeh##{$icomoon-font-family}') format('svg');
   font-weight: normal;
@@ -108,5 +106,10 @@
 .icon-github {
   &:before {
     content: $icon-github;
+  }
+}
+.icon-bluesky {
+  &:before {
+    content: $icon-bluesky;
   }
 }

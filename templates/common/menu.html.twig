@@ -14,10 +14,12 @@
                 {{ item.label }}
             </a>
         {% endfor %}
-        <a href="/CV_Thomas_Jarrand.pdf" class="outline" download="CV_Thomas_Jarrand.pdf">
-            Mon CV
-            <span class="icon-download"></span>
-        </a>
+        {% if cv|default(false) %}
+            <a href="/CV_Thomas_Jarrand.pdf" class="outline" download="CV_Thomas_Jarrand.pdf">
+                Mon CV
+                <span class="icon-download"></span>
+            </a>
+        {% endif %}
     </nav>
 </div>
 {% endblock %}

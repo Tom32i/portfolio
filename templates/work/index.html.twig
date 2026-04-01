@@ -16,6 +16,18 @@ Petite sélection de mes projets open-sources, jeux vidéo et expérimentations 
 <section class="content container projects">
     {% block content %}
 
+        <h2 id="games">Jeux vidéo</h2>
+        <p>Je créer des jeux video, souvent multijoueur, dans le navigateur :</p>
+
+        <ul class="point-list">
+        {%- for game in games -%}
+            <li>
+                <a target="_blank" href="{{ game.url }}">{{ game.title }}</a>
+                <span>: {{ game.description }}</span>
+            </li>
+        {%- endfor -%}
+        </ul>
+
         <h2 id="talks">Conférences</h2>
         <p>
             J'ai eu le plaisir de parler dans tout un tas de super évènements comme :
@@ -56,19 +68,7 @@ Petite sélection de mes projets open-sources, jeux vidéo et expérimentations 
             </li>
         {%- endfor -%}
         </ul>
-
-        <h2 id="games">Jeux vidéo</h2>
-        <p>Je créer aussi des jeux video, souvent multijoueur, dans le navigateur :</p>
-
-        <ul class="point-list">
-        {%- for game in games -%}
-            <li>
-                <a target="_blank" href="{{ game.url }}">{{ game.title }}</a>
-                <span>: {{ game.description }}</span>
-            </li>
-        {%- endfor -%}
-        </ul>
-
+        <br>
         <p>Et je ne compte pas m'arrêter là ... 😇</p>
     {% endblock %}
 </section>

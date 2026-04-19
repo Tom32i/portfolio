@@ -53,15 +53,8 @@
             {{ encore_entry_link_tags('style') }}
         {% endblock %}
         {% block analytics %}
-            {% if google_analytics_token %}
-                <!-- Global site tag (gtag.js) - Google Analytics -->
-                <script async src="https://www.googletagmanager.com/gtag/js?id={{ google_analytics_token }}"></script>
-                <script>
-                  window.dataLayer = window.dataLayer || [];
-                  function gtag(){dataLayer.push(arguments);}
-                  gtag('js', new Date());
-                  gtag('config', '{{ google_analytics_token }}', { anonymize_ip: true });
-                </script>
+            {% if umami_id %}
+                <script defer src="https://a.tom32i.fr/script.js" data-website-id="{{umami_id}}"></script>
             {% endif %}
         {% endblock %}
         {% block javascripts %}

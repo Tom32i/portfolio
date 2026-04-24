@@ -1,7 +1,7 @@
 twig:
     file_name_pattern: '*.twig'
     globals:
-        google_analytics_token: "%env(APP_GA_TAG)%"
+        umami_id: "%env(APP_UMAMI_ID)%"
 
 when@test:
     twig:

@@ -31,11 +31,11 @@ Let's take our previous example and add one more feature:
 > The app should also generate an invoice PDF file and save it on the server when an order is placed.
 
 Given this highly coupled code:
-![](/img/article/coupled.svg)
+![](/img/articles/coupled.svg)
 
 Refactoring the same feature with events would look like:
 
-![](/img/article/decoupled.svg)
+![](/img/articles/decoupled.svg)
 
 Now the action and its two consequences are independent, linked by an event.
 

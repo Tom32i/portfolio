@@ -6,7 +6,7 @@ description: "Using data from Doctrine Lifecycle events to dispatch custom event
 language: en
 ---
 
-_Not familiar with Symfony Events? Check out [the basics](../events-part-1)._
+_Not familiar with Symfony Events? Check out [the basics](./events-part-1.md)._
 
 While defining your domain events, you may have noticed that events often reflect a change in the data.
 
@@ -470,4 +470,4 @@ We have a __decoupled workflow__: domain-related events that link our actions an
 
 We have __consistancy__: everytime a change occures on the model, regardless of what caused it, the corresponding domain event is fired.
 
-There's still an issue we need to adress: [it's about Response time optimisation](../events-part-3).
+There's still an issue we need to adress: [it's about Response time optimisation](./events-part-3.md).

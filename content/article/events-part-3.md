@@ -6,7 +6,7 @@ description: "Improve your app response time by calling your listeners on kernel
 language: en
 ---
 
-Although we just set up a [decoupled](../events-part-1) and [consistant](../events-part-2) event workflow, our work is not done yet.
+Although we just set up a [decoupled](./events-part-1.md) and [consistant](./events-part-2.md) event workflow, our work is not done yet.
 
 There's still a small problem with our code as it is:
 

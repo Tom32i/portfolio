@@ -54,11 +54,9 @@ class BlogController extends AbstractController
         ]);
     }
 
-    #[Route('/{slug}', name: '_article')]
-    public function article(string $slug): Response
+    #[Route('/{article}', name: '_article')]
+    public function article(Article $article): Response
     {
-        $article = $this->manager->getContent(Article::class, $slug);
-
         return $this->render('blog/article.html.twig', [
             'article' => $article,
             'lastestArticles' => \array_slice($this->manager->getContents(Article::class, ['date' => false]), 0, 3),

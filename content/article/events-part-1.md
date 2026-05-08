@@ -6,7 +6,7 @@ description: "How Symfony events can help you build a better workflow for your a
 language: en
 ---
 
-_Already familiar with the Symfony Event Dispather? [Skip the basics](../events-part-2)_
+_Already familiar with the Symfony Event Dispather? [Skip the basics](./events-part-2.md)_
 
 It's monday and your client tells you:
 
@@ -91,4 +91,4 @@ The cookbook for [subscribers and listeners](http://symfony.com/doc/current/cook
 
 # How about Doctrine events?
 
-Doctrine comes with its own event system, [how do we deal with these?](../events-part-2)
+Doctrine comes with its own event system, [how do we deal with these?](./events-part-2.md)

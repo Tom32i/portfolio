@@ -4,7 +4,7 @@
 <ul class="latest">
     {% for article in articles %}
         <li>
-            <a href="{{ path('blog_article', { slug: article.slug }) }}">{{ article.title }}</a>
+            <a href="{{ path('blog_article', { article: article.slug }) }}">{{ article.title }}</a>
             {{ block('date') }}
         </li>
     {% endfor %}

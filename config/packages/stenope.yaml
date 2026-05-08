@@ -5,3 +5,5 @@ stenope:
     App\Model\Game: '%kernel.project_dir%/content/game'
     App\Model\Talk: '%kernel.project_dir%/content/talk'
     App\Model\Tool: '%kernel.project_dir%/content/tool'
+  resolve_links:
+    App\Model\Article: { route: 'blog_article', slug: 'article' }

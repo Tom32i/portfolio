@@ -21,7 +21,7 @@ class ArticleRssNormalizer implements NormalizerInterface
             throw new \Exception('Must be an Article');
         }
 
-        $url = $this->router->generate('blog_article', ['slug' => $object->slug], UrlGeneratorInterface::ABSOLUTE_URL);
+        $url = $this->router->generate('blog_article', ['article' => $object->slug], UrlGeneratorInterface::ABSOLUTE_URL);
 
         return [
             'title' => $object->title,

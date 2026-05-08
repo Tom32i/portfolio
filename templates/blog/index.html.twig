@@ -16,7 +16,7 @@
     {% for article in articles %}
         {% block preview %}
             <article class="article preview" lang="{{ article.language }}">
-                <a class="title" href="{{ path('blog_article', { slug: article.slug }) }}">
+                <a class="title" href="{{ path('blog_article', { article: article.slug }) }}">
                     {{ article.title }}
                 </a>
 

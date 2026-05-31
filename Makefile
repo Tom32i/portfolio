@@ -93,8 +93,8 @@ lint-eslint:
 ##########
 
 deploy@staging: build
-	rsync -arzv --delete build/* tom32i@deployer.vm:/home/tom32i/portfolio/
+	rsync -arzv --mkpath --delete-after build/* tom32i@deployer.vm:/home/tom32i/portfolio/
 
 ## Build and deploy to production
 deploy@production: build
-	rsync -arzv --delete build/* tom32i@tom32i.fr:/home/tom32i/portfolio/
+	rsync -arzv --mkpath --delete-after build/* tom32i@tom32i.fr:/home/tom32i/portfolio/

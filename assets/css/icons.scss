@@ -1,8 +1,10 @@
+@use "variables";
+
 @font-face {
-  font-family: '#{$icomoon-font-family}';
-  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?d8kxeh') format('truetype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?d8kxeh') format('woff'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?d8kxeh##{$icomoon-font-family}') format('svg');
+  font-family: '#{variables.$icomoon-font-family}';
+  src:  url('#{variables.$icomoon-font-path}/#{variables.$icomoon-font-family}.ttf?d8kxeh') format('truetype'),
+    url('#{variables.$icomoon-font-path}/#{variables.$icomoon-font-family}.woff?d8kxeh') format('woff'),
+    url('#{variables.$icomoon-font-path}/#{variables.$icomoon-font-family}.svg?d8kxeh##{variables.$icomoon-font-family}') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -10,7 +12,7 @@
 
 [class^="icon-"], [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: '#{$icomoon-font-family}' !important;
+  font-family: '#{variables.$icomoon-font-family}' !important;
   speak: never;
   font-style: normal;
   font-weight: normal;
@@ -25,91 +27,91 @@
 
 .icon-download {
   &:before {
-    content: $icon-download;
+    content: variables.$icon-download;
   }
 }
 .icon-redo {
   &:before {
-    content: $icon-redo;
+    content: variables.$icon-redo;
   }
 }
 .icon-undo {
   &:before {
-    content: $icon-undo;
+    content: variables.$icon-undo;
   }
 }
 .icon-chevron-right {
   &:before {
-    content: $icon-chevron-right;
+    content: variables.$icon-chevron-right;
   }
 }
 .icon-chevron-left {
   &:before {
-    content: $icon-chevron-left;
+    content: variables.$icon-chevron-left;
   }
 }
 .icon-calendar {
   &:before {
-    content: $icon-calendar;
+    content: variables.$icon-calendar;
   }
 }
 .icon-clock {
   &:before {
-    content: $icon-clock;
+    content: variables.$icon-clock;
   }
 }
 .icon-file-text {
   &:before {
-    content: $icon-file-text;
+    content: variables.$icon-file-text;
   }
 }
 .icon-film {
   &:before {
-    content: $icon-film;
+    content: variables.$icon-film;
   }
 }
 .icon-link {
   &:before {
-    content: $icon-link;
+    content: variables.$icon-link;
   }
 }
 .icon-mail {
   &:before {
-    content: $icon-mail;
+    content: variables.$icon-mail;
   }
 }
 .icon-map-pin {
   &:before {
-    content: $icon-map-pin;
+    content: variables.$icon-map-pin;
   }
 }
 .icon-monitor {
   &:before {
-    content: $icon-monitor;
+    content: variables.$icon-monitor;
   }
 }
 .icon-globe {
   &:before {
-    content: $icon-globe;
+    content: variables.$icon-globe;
   }
 }
 .icon-instagram {
   &:before {
-    content: $icon-instagram;
+    content: variables.$icon-instagram;
   }
 }
 .icon-twitter {
   &:before {
-    content: $icon-twitter;
+    content: variables.$icon-twitter;
   }
 }
 .icon-github {
   &:before {
-    content: $icon-github;
+    content: variables.$icon-github;
   }
 }
 .icon-bluesky {
   &:before {
-    content: $icon-bluesky;
+    content: variables.$icon-bluesky;
   }
 }

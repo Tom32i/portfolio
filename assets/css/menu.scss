@@ -1,3 +1,5 @@
+@use "variables";
+
 .menu-container {
     perspective: 100vw;
     width: 100%;
@@ -34,7 +36,7 @@
             }
 
             &:visited {
-                color: $color-2-dark;
+                color: variables.$color-2-dark;
             }
         }
 
@@ -46,7 +48,7 @@
     }
 
     .brand {
-        color: $color-2-dark;
+        color: variables.$color-2-dark;
         display: flex;
         align-items: center;
         font-weight: bold;

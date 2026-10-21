@@ -1,3 +1,6 @@
+@use "sass:color";
+@use "variables";
+
 .blog {
     width: 100%;
     font-size: 16px;
@@ -8,7 +11,7 @@
     margin: 0;
 
      h1, h2, h3, h4, h5, .title {
-        color: $text-black;
+        color: variables.$text-black;
         font-weight: bold;
     }
 
@@ -49,7 +52,7 @@
     }
 
     footer {
-        background-color: $text-black;
+        background-color: variables.$text-black;
         width: 100%;
         padding: 4em 0;
         margin-top: 4em;
@@ -57,7 +60,7 @@
         justify-content: center;
 
         a, a:visited, h1, h2, h3, h4, h5, .title {
-            color: darken($color-gray, 15%);
+            color: color.adjust(variables.$color-gray, $lightness: -15%);
             text-decoration: none;
         }
 
@@ -111,7 +114,7 @@
             }
 
             time {
-                color: rgba($color-gray-light, 0.6);
+                color: rgba(variables.$color-gray-light, 0.6);
                 font-size: 0.8em;
             }
         }
@@ -133,7 +136,7 @@
         }
 
         a.title, a.title:visited {
-            color: $text-black;
+            color: variables.$text-black;
             text-decoration: none;
 
             &:hover {
@@ -162,14 +165,14 @@
                 padding: 1em;
                 line-height: 1.7em;
                 opacity: 0;
-                color: $text-mutted;
+                color: variables.$text-mutted;
                 text-decoration: none;
 
                 &:before {
-                    content: $icon-link;
+                    content: variables.$icon-link;
 
                     /* use !important to prevent issues with browser extensions that change fonts */
-                    font-family: '#{$icomoon-font-family}' !important;
+                    font-family: '#{variables.$icomoon-font-family}' !important;
                     speak: none;
                     font-style: normal;
                     font-weight: normal;
@@ -197,7 +200,7 @@
         }
 
         a, a:visited {
-            color: $text-primary;
+            color: variables.$text-primary;
         }
 
         p, li {
@@ -238,13 +241,13 @@
             font-size: 1em;
             line-height: 1.5;
             margin-bottom: 1em;
-            color: $text-mutted;
+            color: variables.$text-mutted;
             font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
         }
 
         .code-inline {
-            background-color: rgba($color-1-dark, 0.4);
-            color: $text-black;
+            background-color: rgba(variables.$color-1-dark, 0.4);
+            color: variables.$text-black;
             border-radius: 0.2em;
             padding: 0 0.2em;
             font-size: 0.9em;
@@ -254,7 +257,7 @@
         .code-multiline {
             margin: 1em 0;
             padding: 1em;
-            background: $code-background;
+            background: variables.$code-background;
             color: white;
             white-space: pre;
             display: block;
@@ -270,14 +273,14 @@
         }
 
         .code-multiline.success {
-            color: $monokai-green;
+            color: variables.$monokai-green;
             margin-left: -0.5em;
-            border-left: 0.5em solid $monokai-green;
+            border-left: 0.5em solid variables.$monokai-green;
         }
 
         .code-multiline.error {
-            color: $monokai-error;
-            border-left: 0.5em solid $monokai-error;
+            color: variables.$monokai-error;
+            border-left: 0.5em solid variables.$monokai-error;
             margin-left: -0.5em;
         }
 
@@ -290,9 +293,9 @@
         }
 
         code.success {
-            color: $monokai-green;
+            color: variables.$monokai-green;
             margin-left: -0.5em;
-            border-left: 0.5em solid $monokai-green;
+            border-left: 0.5em solid variables.$monokai-green;
         }
 
         code[data-output] {
@@ -300,7 +303,7 @@
         }
         code[data-output]::before {
             content: attr(data-output);
-            color: $monokai-mutted;
+            color: variables.$monokai-mutted;
             margin-right: 1em;
         }
 
@@ -309,11 +312,11 @@
         .token.prolog,
         .token.doctype,
         .token.cdata {
-            color: $monokai-mutted;
+            color: variables.$monokai-mutted;
         }
 
         .token.punctuation {
-            color: $monokai-grey;
+            color: variables.$monokai-grey;
         }
 
         .token.operator,
@@ -323,19 +326,19 @@
         .token.attr-name,
         .token.namespace,
         .token.deleted {
-            color: $monokai-red;
+            color: variables.$monokai-red;
         }
 
         .token.boolean,
         .token.number {
-            color: $monokai-purple;
+            color: variables.$monokai-purple;
         }
 
         .token.property,
         .token.class-name,
         .token.constant,
         .token.symbol {
-            color: $monokai-orange;
+            color: variables.$monokai-orange;
         }
 
         .token.function-name,
@@ -345,7 +348,7 @@
         .token.atrule,
         .token.keyword,
         .token.builtin {
-            color: $monokai-blue;
+            color: variables.$monokai-blue;
         }
 
         .token.string,
@@ -353,7 +356,7 @@
         .token.attr-value,
         .token.regex,
         .token.variable {
-            color: $monokai-yellow;
+            color: variables.$monokai-yellow;
         }
 
         .token.important,

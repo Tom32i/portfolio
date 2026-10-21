@@ -1,6 +1,8 @@
+@use "variables";
+
 body {
-    background-color: $color-gray;
-    color: $text-black;
+    background-color: variables.$color-gray;
+    color: variables.$text-black;
 }
 
 * {
@@ -11,7 +13,7 @@ body {
 .blog .hero,
 .blog .container {
     width: 100%;
-    max-width: $width;
+    max-width: variables.$width;
     padding: 0;
     margin: 0;
 }

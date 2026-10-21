@@ -1,3 +1,7 @@
+@use "sass:color";
+@use "animations";
+@use "variables";
+
 .portfolio {
     display: flex;
     flex-direction: column;
@@ -17,7 +21,7 @@
         text-align: center;
 
         h1, h2 {
-            animation: slideIn 1200ms backwards $easeOutExpo;
+            animation: slideIn 1200ms backwards animations.$easeOutExpo;
             margin: 0;
             color: white;
         }
@@ -43,7 +47,7 @@
         display: flex;
         flex-direction: column;
         //background-color: rgba(green, 0.2);
-        animation: slideUp 600ms backwards $easeOutCirc;
+        animation: slideUp 600ms backwards animations.$easeOutCirc;
         animation-delay: 100ms;
         align-items: center;
         justify-content: stretch;
@@ -98,7 +102,7 @@
         }
 
         .illustration {
-            background-color: $color-1;
+            background-color: variables.$color-1;
             background-size: cover;
             border: 1em solid white;
         }
@@ -108,14 +112,14 @@
             flex-direction: row;
             background-color: white;
             padding: 2em;
-            color: $text-black;
+            color: variables.$text-black;
             box-shadow: inset 0 0 20em rgba(#765d39, 0.1);
 
             .left {
                 flex: 4;
                 padding-right: 2em;
                 margin-right: 2em;
-                border-right: 1px dotted $color-text-footer;
+                border-right: 1px dotted variables.$color-text-footer;
                 position: relative;
                 display: flex;
                 flex-direction: column;
@@ -139,7 +143,7 @@
                 height: 10em;
                 object-fit: cover;
                 border-radius: 0.2em;
-                border: 0.4em solid $color-gray-light;
+                border: 0.4em solid variables.$color-gray-light;
                 transform: rotateZ(2deg);
             }
 
@@ -158,7 +162,7 @@
                 a {
                     padding: 0.2em 0;
                     margin: 0.5em 0;
-                    border-bottom: 1px dotted $color-text-footer;
+                    border-bottom: 1px dotted variables.$color-text-footer;
                 }
             }
 
@@ -168,7 +172,7 @@
 
             a, a:visited  {
                 text-decoration: none;
-                color: darken($color-2, 0.5);
+                color: color.adjust(variables.$color-2, $lightness: -0.5%);
 
                 &:hover {
                     text-decoration: underline;
@@ -191,9 +195,9 @@
     &.card-3 .card .illustration { background-image: url('../img/carte_glace.svg'); }
     &.card-4 .card .illustration { background-image: url('../img/carte_velo.svg'); }
 
-    &.card-0 { background-color: $color-3; }
-    &.card-1 { background-color: $color-4; }
-    &.card-2 { background-color: $color-7; }
-    &.card-3 { background-color: $color-1; }
-    &.card-4 { background-color: $color-2; }
+    &.card-0 { background-color: variables.$color-3; }
+    &.card-1 { background-color: variables.$color-4; }
+    &.card-2 { background-color: variables.$color-7; }
+    &.card-3 { background-color: variables.$color-1; }
+    &.card-4 { background-color: variables.$color-2; }
 }

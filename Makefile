@@ -85,7 +85,7 @@ lint-yaml:
 	bin/console lint:yaml translations config
 
 lint-eslint:
-	npx eslint assets/js --ext .js,.json --fix
+	npx eslint assets/js --fix
 
 ##########
 # Deploy #

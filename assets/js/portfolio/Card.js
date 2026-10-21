@@ -41,7 +41,7 @@ export default class Card {
         if (typeof DeviceMotionEvent !== 'undefined') {
             try {
                 this.enableOrientation();
-            } catch (error) {
+            } catch {
                 document.addEventListener('click', this.onTouch);
             }
         }

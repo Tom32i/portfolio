@@ -1,16 +1,16 @@
-@import "reset-css";
-@import "variables";
-@import "layout";
-@import "fonts";
-@import "typography";
-@import "icons";
-@import "animations";
+@use "reset-css/sass/reset";
+@use "variables";
+@use "layout";
+@use "fonts";
+@use "typography";
+@use "icons";
+@use "animations";
 
-@import "menu";
-@import "portfolio";
-@import "blog";
-@import "talks";
-@import "projects";
-@import "point-list";
+@use "menu";
+@use "portfolio";
+@use "blog";
+@use "talks";
+@use "projects";
+@use "point-list";
 
-@import "responsive";
+@use "responsive";

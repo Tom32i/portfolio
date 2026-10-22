@@ -1,3 +1,5 @@
+@use "variables";
+
 .point-list {
     list-style: disc;
     padding-left: 2em;
@@ -26,7 +28,7 @@
             margin-right: 0.4em;
             text-decoration: none;
 
-            font-family: '#{$icomoon-font-family}' !important;
+            font-family: '#{variables.$icomoon-font-family}' !important;
             speak: none;
             font-style: normal;
             font-weight: normal;
@@ -39,11 +41,11 @@
             -moz-osx-font-smoothing: grayscale;
         }
 
-        &.date::before { content: $icon-calendar; }
-        &.format::before { content: $icon-clock; }
-        &.slides::before { content: $icon-monitor; }
-        &.url::before { content: $icon-globe; }
-        &.video::before { content: $icon-film; }
-        &.infos::before { content: $icon-file-text; }
+        &.date::before { content: variables.$icon-calendar; }
+        &.format::before { content: variables.$icon-clock; }
+        &.slides::before { content: variables.$icon-monitor; }
+        &.url::before { content: variables.$icon-globe; }
+        &.video::before { content: variables.$icon-film; }
+        &.infos::before { content: variables.$icon-file-text; }
     }
 }

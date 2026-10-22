@@ -6,4 +6,5 @@ parameters:
         - public/
         - src/
 
-    checkMissingIterableValueType: false
+    ignoreErrors:
+        - identifier: missingType.iterableValue

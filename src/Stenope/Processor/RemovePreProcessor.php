@@ -43,7 +43,7 @@ class RemovePreProcessor implements ProcessorInterface
         /** @var \DOMElement */
         $child = $element->firstChild;
 
-        $classes = array_map('trim', array_unique(array_filter(explode(' ', $element->getAttribute('class') . ' ' . $child->getAttribute('class')))));
+        $classes = array_map('trim', array_unique(array_filter(explode(' ', $element->getAttribute('class') . ' ' . $child->getAttribute('class')), static fn (string $class): bool => $class !== '')));
         $child->setAttribute('class', implode(' ', $classes));
 
         if ($element->parentNode === null) {

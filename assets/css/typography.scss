@@ -1,3 +1,5 @@
+@use "variables";
+
 body {
     font-size: 18px;
     font-family: 'Cabin', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -20,13 +22,13 @@ h1, h2, h3, h4, h5, .title {
 
 time {
     font-family: 'Cabin', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    color: $text-mutted;
+    color: variables.$text-mutted;
 }
 
 blockquote {
     font-family: 'Cabin', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    color: $text-primary-light;
-    border-left: 0.4em solid rgba($text-primary-light, 0.4);
+    color: variables.$text-primary-light;
+    border-left: 0.4em solid rgba(variables.$text-primary-light, 0.4);
     padding-left: 1em;
     font-size: 1.1em;
     font-style: italic;
@@ -57,11 +59,11 @@ img {
 }
 
 a {
-    color: $color-2-dark;
+    color: variables.$color-2-dark;
 }
 
 a:visited {
-    color: rgba($color-2-dark, 0.8);
+    color: rgba(variables.$color-2-dark, 0.8);
 }
 
 .notice {
@@ -69,7 +71,7 @@ a:visited {
 }
 
 .invit {
-    color: $color-1-dark;
+    color: variables.$color-1-dark;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -80,7 +82,7 @@ hr {
     height: 1px;
     margin: 4em auto;
     border: none;
-    background-color: $monokai-mutted;
+    background-color: variables.$monokai-mutted;
 }
 
 img.round {
@@ -100,11 +102,11 @@ img.round {
         }
     }
 
-    .date::before { content: $icon-calendar; }
-    .format::before { content: $icon-clock; }
-    .sources::before { content: $icon-github; }
-    .slides::before { content: $icon-monitor; }
-    .url::before { content: $icon-globe; }
-    .video::before { content: $icon-film; }
-    .infos::before { content: $icon-file-text; }
+    .date::before { content: variables.$icon-calendar; }
+    .format::before { content: variables.$icon-clock; }
+    .sources::before { content: variables.$icon-github; }
+    .slides::before { content: variables.$icon-monitor; }
+    .url::before { content: variables.$icon-globe; }
+    .video::before { content: variables.$icon-film; }
+    .infos::before { content: variables.$icon-file-text; }
 }

@@ -5,11 +5,16 @@ $finder = (new PhpCsFixer\Finder())
     ->exclude('var')
     ->exclude('node_modules')
     ->exclude('build')
+    ->notPath([
+        'config/bundles.php',
+        'config/reference.php',
+    ])
 ;
 
 return (new PhpCsFixer\Config())
     ->setFinder($finder)
     ->setRiskyAllowed(true)
+    ->setUnsupportedPhpVersionAllowed(true)
     ->setRules([
         '@Symfony' => true,
         'array_syntax' => ['syntax' => 'short'],

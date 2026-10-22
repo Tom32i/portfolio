@@ -34,7 +34,7 @@ class ArticleRssNormalizer implements NormalizerInterface
 
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return \is_object($data) && is_a($data, Article::class, true) && $format == 'rss';
+        return \is_object($data) && is_a($data, Article::class, true) && $format === 'rss';
     }
 
     public function getSupportedTypes(?string $format): array

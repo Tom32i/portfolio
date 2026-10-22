@@ -9,7 +9,7 @@ use Stenope\Bundle\ContentManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Asset\Packages;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 #[Route('/blog', name: 'blog', defaults: ['_menu' => 'blog'])]
@@ -26,7 +26,7 @@ class BlogController extends AbstractController
     public function list(): Response
     {
         $articles = $this->manager->getContents(Article::class, ['date' => false]);
-        $lastModified = max(array_map(static fn (Article $article): \DateTimeInterface => $article->lastModified, $articles));
+        $lastModified = $articles === [] ? null : max(array_map(static fn (Article $article): \DateTimeInterface => $article->lastModified, $articles));
 
         return $this->render('blog/index.html.twig', [
             'articles' => $articles,

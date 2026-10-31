@@ -1,31 +1,26 @@
-{% extends 'blog/base.html.twig' %}
-
-{% block meta_title 'Blog technique de Thomas Jarrand' %}
-{% block meta_description block('subtitle') %}
+{% extends 'base.html.twig' %}
 
 {% use 'blog/blocks.html.twig' %}
 
-{% block header %}
-    <header class="container header">
-        <h1>Mon blog technique <small>(mais pas que)</small></h1>
-        <p>{% block subtitle %}Retours d'expérience et cookbooks techniques pour Symfony, PHP, Javascript, React et autres technologies web de mon quotidien.{% endblock %}</p>
-    </header>
+{% block meta_title 'blog.meta_title'|trans %}
+{% block meta_description 'blog.subtitle'|trans %}
+{% block body_class 'page-blog' %}
+
+{% block head %}
+    <link rel="alternate" type="application/rss+xml" title="{{ 'blog.meta_title'|trans }}" href="{{ url('blog_feed') }}">
 {% endblock %}
 
-{% block content %}
-    {% for article in articles %}
-        {% block preview %}
-            <article class="article preview" lang="{{ article.language }}">
-                <a class="title" href="{{ path('blog_article', { article: article.slug }) }}">
-                    {{ article.title }}
-                </a>
+{% block body %}
+    <header class="page-header wrap">
+        <h1>{{ 'blog.title'|trans }}</h1>
+        <p>{{ 'blog.subtitle'|trans }}</p>
+    </header>
 
-                {% if article.description is defined %}
-                    <p class="description">{{ article.description }}</p>
-                {% endif %}
-
-                {{ block('date') }}
-            </article>
-        {% endblock %}
-    {% endfor %}
+    <main class="section section-posts wrap">
+        <ul class="posts">
+            {% for article in articles %}
+                {{ block('preview') }}
+            {% endfor %}
+        </ul>
+    </main>
 {% endblock %}

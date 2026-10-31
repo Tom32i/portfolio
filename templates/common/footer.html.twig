@@ -1,0 +1,39 @@
+{% set on_blog = app.request.attributes.get('_menu') == 'blog' %}
+{% set photo = [
+    { name: 'Unsplash', url: 'https://unsplash.com/@tom32i' },
+    { name: 'Instagram', url: 'https://instagram.com/tom32i' },
+    { name: 'Gameoscope', url: 'https://gameoscope.fr' },
+] %}
+<footer class="contact wrap" id="p-contact">
+    <div class="contact-grid">
+        {% if on_blog %}
+            <img class="contact-icon" src="{{ asset('/3d/coffee_cup.png') }}" alt="" width="220" height="200" loading="lazy">
+        {% else %}
+            <div class="contact-icon scene-icon" data-scene="coffee_cup" aria-hidden="true"></div>
+        {% endif %}
+        <div class="contact-main">
+            <h2>{{ 'contact.title'|trans }}</h2>
+            <a class="email" href="mailto:{{ email }}"><span class="icon-mail" aria-hidden="true"></span>{{ email }}</a>
+        </div>
+        <div class="contact-about">
+            <p>{{ 'contact.about'|trans }}</p>
+            <h3>{{ 'contact.photo'|trans }}</h3>
+            <ul class="pills">
+                {% for link in photo %}
+                    <li><a class="pill pill-white" href="{{ link.url }}" target="_blank" rel="noopener">{{ link.name }} ↗</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="footer">
+        <span>{{ 'footer.copyright'|trans({ '%year%': 'now'|date('Y') }) }}</span>
+        <span class="footer-links">
+            <a href="/CV_Thomas_Jarrand.pdf" download="CV_Thomas_Jarrand.pdf">{{ 'footer.cv'|trans }} ↓</a>
+            {% if not on_blog %}
+                <a href="{{ path('blog') }}" hreflang="fr">{{ 'footer.blog'|trans }} →</a>
+            {% else %}
+                <a href="{{ path('portfolio') }}">{{ 'footer.home'|trans }} →</a>
+            {% endif %}
+        </span>
+    </div>
+</footer>

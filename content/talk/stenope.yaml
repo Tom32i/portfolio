@@ -13,3 +13,7 @@ description: |
   - Pourrait-on faire mieux ?
 
   Laissez-moi vous présenter : Stenope ! L'outils de génération de site statique pour Symfony. ✨
+image: stenope.png
+summary:
+  fr: La génération de sites statiques est un atout efficace et complémentaire du développement web moderne.
+  en: Static site generation is an efficient complement to modern web development.

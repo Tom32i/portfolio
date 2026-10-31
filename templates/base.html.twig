@@ -1,11 +1,14 @@
+{%- set locale = app.request.locale -%}
+{%- set home = locale == 'en' ? 'portfolio_en' : 'portfolio' -%}
+{%- set email = 'thomas.jarrand@gmail.com' -%}
 <!DOCTYPE html>
-<html lang="{% block meta_locale app.request.locale %}">
+<html lang="{% block meta_locale locale %}">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>{% block meta_title 'Thomas Jarrand' %}</title>
+        <title>{% block meta_title 'meta.title'|trans %}</title>
         <meta name="title" content="{{ block('meta_title') }}">
-        <meta name="description" content="{% block meta_description %}Lead Développeur web à Lyon. Je code des deux cotés de la requête HTTP.{% endblock %}">
+        <meta name="description" content="{% block meta_description 'meta.description'|trans %}">
 
         {% block social %}
             <!-- Open Graph / Facebook -->
@@ -13,7 +16,7 @@
             <meta property="og:url" content="{{ app.request.uri }}">
             <meta property="og:title" content="{{ block('meta_title') }}">
             <meta property="og:description" content="{{ block('meta_description') }}">
-            <meta property="og:local" content="{{ block('meta_locale') }}">
+            <meta property="og:locale" content="{{ block('meta_locale') }}">
             {% if meta_cover|default(false) %}
             <meta property="og:image" content="{{ meta_cover }}">
             {% endif %}
@@ -27,7 +30,6 @@
             {% if meta_cover|default(false) %}
             <meta property="twitter:image" content="{{ meta_cover }}">
             {% endif %}
-
         {% endblock %}
 
         {% block icon %}
@@ -45,12 +47,16 @@
             <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
             <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
             <link rel="manifest" href="/manifest.json">
-            <meta name="msapplication-TileColor" content="#ffffff">
+            <meta name="msapplication-TileColor" content="#ff9aa6">
             <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
-            <meta name="theme-color" content="#ffffff">
+            <meta name="theme-color" content="#ff9aa6">
         {% endblock %}
+        {% block head %}{% endblock %}
         {% block stylesheets %}
-            {{ encore_entry_link_tags('style') }}
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Space+Mono:wght@400;700&display=swap">
+            {{ encore_entry_link_tags('app') }}
         {% endblock %}
         {% block analytics %}
             {% if umami_id %}
@@ -62,6 +68,8 @@
         {% endblock %}
     </head>
     <body class="{% block body_class '' %}">
+        {% include 'common/nav.html.twig' %}
         {% block body %}{% endblock %}
+        {% include 'common/footer.html.twig' %}
     </body>
 </html>

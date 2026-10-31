@@ -1,0 +1,67 @@
+@use "../abstracts/tokens" as *;
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 16px;
+
+    @media (prefers-reduced-motion: reduce) {
+        scroll-behavior: auto;
+    }
+}
+
+body {
+    margin: 0;
+    background: $coral;
+    color: $ink;
+    font-family: $font-display;
+    font-size: 16px;
+    line-height: 1.4;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+:focus-visible {
+    outline: 3px solid $ink;
+    outline-offset: 3px;
+}
+
+img,
+video {
+    max-width: 100%;
+}
+
+.wrap {
+    padding-inline: $wrap;
+
+    @include mobile {
+        padding-inline: $gutter-mobile;
+    }
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}

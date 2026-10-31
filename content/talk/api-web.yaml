@@ -6,5 +6,9 @@ description: |
 slides: https://talk.tom32i.fr/web-apis
 sources: https://github.com/Tom32i/talk-lightning-web-apis
 events:
-  - humantalks
+  - Human Talks
 
+image: api-web.png
+summary:
+  fr: "Petit tour d'horizon de quelques capacités de vos navigateurs dont vous ignoriez peut-être l'existence !"
+  en: A quick tour of browser capabilities you may not know exist.

@@ -1,0 +1,21 @@
+@use "reset-css/sass/reset";
+
+@use "base/base";
+@use "base/icons";
+
+@use "components/nav";
+@use "components/pill";
+@use "components/section";
+@use "components/card";
+@use "components/footer";
+
+@use "pages/home";
+@use "pages/blog";
+
+@font-face {
+    font-family: 'icon';
+    src: url('../fonts/icon.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}

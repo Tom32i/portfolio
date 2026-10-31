@@ -1,0 +1,38 @@
+// Glyphs of the site icon font (assets/fonts/icon.woff)
+$icons: (
+    calendar: "\e900",
+    clock: "\e901",
+    monitor: "\e902",
+    mail: "\e905",
+    film: "\e907",
+    chevron-right: "\e908",
+    chevron-left: "\e909",
+    link: "\e904",
+    bluesky: "\e90e",
+    instagram: "\ea92",
+    twitter: "\ea96",
+    github: "\eab0",
+);
+
+[class^="icon-"],
+[class*=" icon-"] {
+    font-family: 'icon' !important;
+    speak: never;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+}
+
+@each $name, $glyph in $icons {
+    .icon-#{$name}::before {
+        content: $glyph;
+    }
+}
+
+.icon-svg {
+    width: 1em;
+    height: 1em;
+    flex: none;
+}

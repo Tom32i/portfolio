@@ -16,7 +16,8 @@
   "homepage": "https://github.com/Tom32i/portfolio#readme",
   "dependencies": {
     "prismjs": "^1.24.1",
-    "reset-css": "^5.0.1"
+    "reset-css": "^5.0.1",
+    "three": "^0.184.0"
   },
   "devDependencies": {
     "@babel/core": "^8.0.7",

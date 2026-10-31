@@ -1,0 +1,472 @@
+@use "../abstracts/tokens" as *;
+
+// Monokai-ish code colours, tuned for the ink background.
+$code-red: #ff6188;
+$code-green: #a9dc76;
+$code-yellow: #ffd866;
+$code-orange: #fc9867;
+$code-purple: #ab9df2;
+$code-blue: #78dce8;
+$code-grey: #ccc;
+$code-muted: #9a90a8;
+
+.page-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    padding-block: 40px 80px;
+
+    h1 {
+        margin: 0;
+        max-width: 960px;
+        font-size: 72px;
+        line-height: .95;
+        font-weight: 800;
+        letter-spacing: -.035em;
+        text-wrap: balance;
+    }
+
+    > p {
+        margin: 0;
+        max-width: 640px;
+        font-size: 19px;
+        line-height: 1.5;
+    }
+
+    .page-article & h1 {
+        font-size: 64px;
+    }
+
+    @include mobile {
+        gap: 16px;
+        padding-block: 16px 44px;
+
+        h1,
+        .page-article & h1 {
+            font-size: 40px;
+        }
+
+        > p {
+            font-size: 16px;
+        }
+    }
+}
+
+.back {
+    @include mono-label;
+}
+
+.post-date {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    @include mono-label;
+    letter-spacing: .08em;
+}
+
+// Article list
+
+.section-posts {
+    background: $lilac-light;
+}
+
+.posts-title {
+    margin: 0;
+    font-size: 44px;
+    font-weight: 800;
+    letter-spacing: -.03em;
+}
+
+.posts {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 32px;
+
+    @include mobile {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 14px;
+    }
+}
+
+.post-card {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    height: 100%;
+    padding: 28px;
+    border-radius: 24px;
+    background: $white;
+    transition: transform .2s;
+
+    &:hover {
+        text-decoration: none;
+        transform: rotate(-1deg) translateY(-4px);
+    }
+
+    .post-date {
+        color: $talk-meta;
+        font-size: 12px;
+    }
+
+    p {
+        margin: 0;
+        font-size: 16px;
+        line-height: 1.5;
+        text-wrap: pretty;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        transition: none;
+    }
+
+    @include mobile {
+        padding: 20px;
+        border-radius: 20px;
+    }
+}
+
+.post-card-title {
+    margin: 0;
+    font-size: 26px;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -.01em;
+    text-wrap: balance;
+}
+
+.post-card-read {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: auto;
+    padding-top: 4px;
+    color: $link;
+    font-weight: 700;
+    font-size: 15px;
+}
+
+// Article body
+
+.section-article {
+    background: $cream;
+}
+
+.prose {
+    width: 100%;
+    max-width: 760px;
+    margin-inline: auto;
+    font-size: 19px;
+    line-height: 1.65;
+    text-wrap: pretty;
+
+    > section {
+        display: contents;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+        position: relative;
+        margin: 2em 0 .6em;
+        font-weight: 800;
+        line-height: 1.15;
+        letter-spacing: -.02em;
+        text-wrap: balance;
+
+        &:first-child {
+            margin-top: 0;
+        }
+
+        .anchor {
+            position: absolute;
+            right: 100%;
+            top: 0;
+            padding-right: .4em;
+            opacity: 0;
+            color: $talk-meta;
+            font-size: .6em;
+            line-height: 2;
+            text-decoration: none;
+
+            &::before {
+                content: "\e904";
+                font-family: 'icon' !important;
+                font-weight: normal;
+            }
+
+            &:hover,
+            &:focus-visible {
+                opacity: 1;
+            }
+        }
+
+        &:hover .anchor {
+            opacity: .5;
+        }
+    }
+
+    h2 {
+        font-size: 40px;
+    }
+
+    h3 {
+        font-size: 28px;
+    }
+
+    h4,
+    h5 {
+        font-size: 22px;
+    }
+
+    p,
+    ul,
+    ol,
+    blockquote,
+    table {
+        margin: 0 0 1.2em;
+    }
+
+    a {
+        color: $link;
+        text-decoration: underline;
+        text-decoration-thickness: 1.5px;
+        text-underline-offset: 3px;
+
+        &:hover {
+            text-decoration-thickness: 3px;
+        }
+    }
+
+    strong {
+        font-weight: 700;
+    }
+
+    em {
+        font-style: italic;
+    }
+
+    ul {
+        list-style: disc;
+        padding-left: 1.4em;
+    }
+
+    ol {
+        list-style: decimal;
+        padding-left: 1.4em;
+    }
+
+    li {
+        margin: .4em 0;
+
+        &::marker {
+            color: $link;
+        }
+    }
+
+    blockquote {
+        padding: .2em 0 .2em 1em;
+        border-left: 4px solid $coral;
+        font-style: italic;
+
+        p:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    img,
+    svg {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: 1.5em auto;
+    }
+
+    img {
+        border-radius: 14px;
+    }
+
+    img + legend,
+    legend {
+        display: block;
+        margin: -.8em 0 1.5em;
+        color: $talk-meta;
+        font-family: $font-mono;
+        font-size: 13px;
+        text-align: center;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: .85em;
+
+        th,
+        td {
+            padding: .5em .75em;
+            border-bottom: 1px solid $rule;
+            text-align: left;
+        }
+
+        th {
+            font-weight: 700;
+        }
+    }
+
+    .code-inline {
+        padding: .1em .35em;
+        border-radius: 6px;
+        background: $tag-bg;
+        font-family: $font-mono;
+        font-size: .85em;
+    }
+
+    .code-multiline,
+    code.input,
+    code.success,
+    code.error,
+    code[data-output] {
+        display: block;
+        margin: 1.5em 0;
+        padding: 20px 24px;
+        border-radius: 14px;
+        background: $ink;
+        color: $white;
+        font-family: $font-mono;
+        font-size: 15px;
+        line-height: 1.6;
+        white-space: pre;
+        word-spacing: normal;
+        word-break: normal;
+        overflow-wrap: normal;
+        tab-size: 4;
+        hyphens: none;
+        overflow-x: auto;
+        text-wrap: nowrap;
+        scrollbar-color: rgba(255, 255, 255, .3) transparent;
+    }
+
+    .code-multiline.success,
+    code.success {
+        color: $code-green;
+        border-left: 8px solid $code-green;
+    }
+
+    .code-multiline.error,
+    code.error {
+        color: $code-red;
+        border-left: 8px solid $code-red;
+    }
+
+    code[data-output] {
+        position: relative;
+
+        &::before {
+            content: attr(data-output);
+            margin-right: 1em;
+            color: $code-muted;
+        }
+    }
+
+    .token {
+        &.comment,
+        &.block-comment,
+        &.prolog,
+        &.doctype,
+        &.cdata {
+            color: $code-muted;
+        }
+
+        &.punctuation {
+            color: $code-grey;
+        }
+
+        &.operator,
+        &.entity,
+        &.url,
+        &.tag,
+        &.attr-name,
+        &.namespace,
+        &.deleted {
+            color: $code-red;
+        }
+
+        &.boolean,
+        &.number {
+            color: $code-purple;
+        }
+
+        &.property,
+        &.class-name,
+        &.constant,
+        &.symbol {
+            color: $code-orange;
+        }
+
+        &.function-name,
+        &.function,
+        &.selector,
+        &.important,
+        &.atrule,
+        &.keyword,
+        &.builtin {
+            color: $code-blue;
+        }
+
+        &.string,
+        &.char,
+        &.attr-value,
+        &.regex,
+        &.variable {
+            color: $code-yellow;
+        }
+
+        &.important,
+        &.bold {
+            font-weight: bold;
+        }
+
+        &.italic {
+            font-style: italic;
+        }
+
+        &.entity {
+            cursor: help;
+        }
+    }
+
+    @include mobile {
+        font-size: 17px;
+
+        h2 {
+            font-size: 30px;
+        }
+
+        h3 {
+            font-size: 24px;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            .anchor {
+                display: none;
+            }
+        }
+
+        .code-multiline,
+        code.input,
+        code.success,
+        code.error,
+        code[data-output] {
+            margin-inline: -$gutter-mobile;
+            padding: 16px $gutter-mobile;
+            border-radius: 0;
+            font-size: 13px;
+        }
+    }
+}

@@ -1,5 +1,7 @@
 title: Lazerdrive
-description: Une variante massivement multijoueur de Curvytron.
+description:
+  fr: Une variante massivement multijoueur de Curvytron.
+  en: A massively multiplayer take on Curvytron.
 url: http://lazerdrive.io
 image: lazerdrive.png
 date: "2015-10-27"

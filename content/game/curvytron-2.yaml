@@ -1,6 +1,10 @@
 title: Curvytron 2
-description: La suite de Curvytron, en 3D.
+description:
+  fr: La suite de Curvytron, en 3D.
+  en: The sequel to Curvytron, in 3D.
 url: http://curvytron2.com
-image: ''
+image: curvytron2.jpg
+video: /video/curvytron2-demo.mp4
+featured: true
 date: "2026-04-01"
 priority: 11

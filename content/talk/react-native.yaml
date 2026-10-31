@@ -4,3 +4,6 @@ title: Le développement mobile natif vu par un developpeur web
 description: Retour d'experience sur React Native
 slides: https://talk.tom32i.fr/react-native/
 sources: https://github.com/Tom32i/talk-react-native
+summary:
+  fr: Retour d'experience sur React Native
+  en: Lessons learned with React Native.

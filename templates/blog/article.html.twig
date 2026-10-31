@@ -1,22 +1,47 @@
-{% extends 'blog/base.html.twig' %}
+{% extends 'base.html.twig' %}
 
-{% block meta_title article.title ~ ' | Blog technique de Thomas Jarrand' %}
+{% use 'blog/blocks.html.twig' %}
+
+{% block meta_title article.title ~ ' | ' ~ 'blog.meta_title'|trans %}
 {% block meta_description article.description %}
 {% block meta_locale article.language %}
 {% block fb_og_type 'article' %}
 {% block twitter_card_type article.cover ? 'summary_large_image' : 'summary' %}
 {% set meta_cover = article.cover ? absolute_url(article.cover) : null %}
 
-{% use 'blog/blocks.html.twig' %}
+{% block body_class 'page-blog page-article' %}
 
-{% block content %}
-    <article lang="{{ article.language }}">
-        <header>
-            <h1>{{ article.title }}</h1>
-            {{ block('date') }}
-        </header>
-        <div class="article-content">
-            {{ article.content|raw }}
-        </div>
-    </article>
+{% block head %}
+    <link rel="alternate" type="application/rss+xml" title="{{ 'blog.meta_title'|trans }}" href="{{ url('blog_feed') }}">
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('blog') }}
+{% endblock %}
+
+{% block body %}
+    <main>
+        <article lang="{{ article.language }}">
+            <header class="page-header wrap">
+                <a class="back" href="{{ path('blog') }}"><span class="icon-chevron-left" aria-hidden="true"></span> {{ 'blog.all'|trans }}</a>
+                <h1>{{ article.title }}</h1>
+                {{ block('date') }}
+            </header>
+            <div class="section section-article wrap">
+                <div class="prose">
+                    {{ article.content|raw }}
+                </div>
+            </div>
+        </article>
+
+        <section class="section section-posts wrap">
+            <h2 class="posts-title">{{ 'blog.latest'|trans }}</h2>
+            <ul class="posts">
+                {% for article in latestArticles %}
+                    {{ block('preview') }}
+                {% endfor %}
+            </ul>
+        </section>
+    </main>
 {% endblock %}

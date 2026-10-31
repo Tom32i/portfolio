@@ -1,0 +1,24 @@
+{% set on_blog = app.request.attributes.get('_menu') == 'blog' %}
+<nav class="nav wrap">
+    <a class="nav-brand" href="{{ path(home) }}">Thomas Jarrand</a>
+    <div class="nav-links" id="nav-links">
+        {% for section in ['games', 'talks', 'oss', 'contact'] %}
+            <a href="{{ path(home) }}#p-{{ section }}">{{ ('nav.' ~ section)|trans }}</a>
+        {% endfor %}
+        {% if on_blog %}
+            <a class="nav-blog" href="{{ path('blog') }}" aria-current="page">{{ 'nav.blog'|trans }}</a>
+        {% endif %}
+    </div>
+    <div class="nav-tools">
+        {% if not on_blog %}
+            <div class="lang" role="group" aria-label="{{ 'nav.language'|trans }}">
+                <a href="{{ path('portfolio') }}" hreflang="fr" lang="fr" data-lang="fr" {{ locale == 'fr' ? 'aria-current="true"' }}>FR</a>
+                <a href="{{ path('portfolio_en') }}" hreflang="en" lang="en" data-lang="en" {{ locale == 'en' ? 'aria-current="true"' }}>EN</a>
+            </div>
+        {% endif %}
+        <button class="burger" type="button" aria-expanded="false" aria-controls="nav-links">
+            <span aria-hidden="true"></span><span aria-hidden="true"></span>
+            <span class="sr-only">{{ 'nav.menu'|trans }}</span>
+        </button>
+    </div>
+</nav>

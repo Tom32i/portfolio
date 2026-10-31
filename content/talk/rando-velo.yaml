@@ -8,6 +8,10 @@ slides: https://talk.tom32i.fr/vacances-velo/
 sources: https://github.com/Tom32i/talk-vacances-velo
 video: https://mixitconf.org/2023/et-si-vos-prochaines-vacances-se-passaient-a-velo-
 events:
-  - Mixit
+  - MiXiT
   - Forum PHP
   - Human Talks
+image: rando-velo.png
+summary:
+  fr: "La randonnée à vélo, c'est économique, écologique, relaxant, dépaysant et c'est plus facile d'accès que ce que vous pourriez pensez."
+  en: Bike touring is cheap, green, relaxing, a change of scenery, and easier to start than you might think.

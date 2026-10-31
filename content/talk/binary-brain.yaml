@@ -18,3 +18,7 @@ sources: https://github.com/Tom32i/talk-binary-brain
 video: https://youtu.be/LuCXFhaRXcw
 events:
   - Forum PHP
+image: binary-brain.png
+summary:
+  fr: "Parcourir l’intérieur de votre cerveau, sur votre téléphone, uniquement avec des technologies web : c’est possible !"
+  en: Explore the inside of your brain, on your phone, with nothing but web technologies.

@@ -1,0 +1,43 @@
+// Palette
+$coral: #ff9aa6;
+$mint: #8ed9cf;
+$lilac-light: #d9c2f0;
+$lilac: #c9a6e8;
+$lemon: #fff07a;
+$ink: #241a33;
+$ink-soft: #3a2c4f;
+$white: #ffffff;
+$cream: #fffaf3;
+$talk-meta: #5a3a7a;
+$link: #c8237a;
+$link-bg: #fdeaf4;
+$tag-bg: #f6efff;
+$tag-stripe: #efe3ff;
+$oss-desc: #e6ddf2;
+$video-bg: #141927;
+$rule: rgba(36, 26, 51, .3);
+
+// Type
+$font-display: 'Bricolage Grotesque', system-ui, sans-serif;
+$font-mono: 'Space Mono', ui-monospace, monospace;
+
+// Layout
+$content-width: 1168px;
+$gutter: 56px;
+$gutter-mobile: 20px;
+$wrap: max(#{$gutter}, calc((100% - #{$content-width}) / 2));
+$breakpoint: 900px;
+
+@mixin mobile {
+    @media (max-width: $breakpoint) {
+        @content;
+    }
+}
+
+@mixin mono-label($size: 13px) {
+    font-family: $font-mono;
+    font-size: $size;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}

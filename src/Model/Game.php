@@ -8,15 +8,18 @@ class Game
 {
     public string $slug;
     public string $title;
-    public string $description;
+    /** @var array<string, string> Description by locale */
+    public array $description;
     public string $url;
     public \DateTimeImmutable $date;
     public \DateTimeImmutable $lastModified;
     public string $image;
+    public ?string $video = null;
+    public bool $featured = false;
     public int $priority;
 
-    public function getSiteName(): string
+    public function getDescription(string $locale): string
     {
-        return trim(preg_replace('/^https?:\/\/(.+)$/', '$1', $this->url) ?? '', '/');
+        return $this->description[$locale] ?? $this->description['fr'];
     }
 }

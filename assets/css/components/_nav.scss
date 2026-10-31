@@ -1,0 +1,146 @@
+@use "../abstracts/tokens" as *;
+
+.nav {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding-block: 28px;
+
+    @include mobile {
+        padding-block: 20px;
+    }
+}
+
+.nav-brand {
+    font-weight: 800;
+    font-size: 22px;
+    letter-spacing: -.01em;
+
+    @include mobile {
+        font-size: 19px;
+    }
+}
+
+.nav-links {
+    display: flex;
+    gap: 36px;
+    font-weight: 600;
+    font-size: 17px;
+
+    .nav-blog[aria-current] {
+        text-decoration: underline;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 4px;
+    }
+
+    @include mobile {
+        display: none;
+        position: absolute;
+        top: calc(100% - 8px);
+        left: $gutter-mobile;
+        right: $gutter-mobile;
+        flex-direction: column;
+        gap: 0;
+        padding: 10px;
+        border-radius: 20px;
+        background: $white;
+        font-size: 20px;
+
+        &.is-open {
+            display: flex;
+        }
+
+        a {
+            padding: 12px 16px;
+            border-radius: 12px;
+
+            &:hover {
+                background: $lemon;
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+.nav-tools {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.lang {
+    display: flex;
+    gap: 2px;
+    padding: 4px;
+    border-radius: 999px;
+    background: $ink;
+    font-family: $font-mono;
+    font-size: 13px;
+    font-weight: 700;
+
+    a {
+        padding: 6px 12px;
+        border-radius: 999px;
+        color: $white;
+
+        &:hover {
+            text-decoration: none;
+            background: $ink-soft;
+        }
+
+        &[aria-current] {
+            background: $coral;
+            color: $ink;
+        }
+    }
+
+    @include mobile {
+        padding: 3px;
+        gap: 0;
+        font-size: 12px;
+
+        a {
+            padding: 6px 10px;
+        }
+    }
+}
+
+.burger {
+    display: none;
+    width: 44px;
+    height: 44px;
+    border: 0;
+    border-radius: 50%;
+    background: $white;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    cursor: pointer;
+    padding: 0;
+
+    span[aria-hidden] {
+        width: 18px;
+        height: 2px;
+        border-radius: 2px;
+        background: $ink;
+        transition: transform .2s;
+    }
+
+    &[aria-expanded="true"] span[aria-hidden] {
+        &:first-child {
+            transform: translateY(3px) rotate(45deg);
+        }
+
+        &:nth-child(2) {
+            transform: translateY(-3px) rotate(-45deg);
+        }
+    }
+
+    @include mobile {
+        display: flex;
+    }
+}

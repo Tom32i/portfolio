@@ -1,5 +1,7 @@
 title: Curvytron
-description: Un snake multijoueur en ligne.
+description:
+  fr: Un snake multijoueur en ligne.
+  en: An online multiplayer snake.
 url: http://curvytron.com
 image: curvytron.png
 date: "2014-07-01"

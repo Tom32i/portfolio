@@ -1,5 +1,8 @@
 import 'prismjs';
 import Code from './Code';
+import initNav from '../common/nav';
+
+initNav();
 
 Prism.manual = true;
 

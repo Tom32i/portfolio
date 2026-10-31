@@ -1,6 +1,19 @@
 {% block date %}
-    <time datetime="{{ article.date|date('c') }}">
-        <span class="icon-calendar"></span>
+    <time class="post-date" datetime="{{ article.date|date('c') }}">
+        <span class="icon-calendar" aria-hidden="true"></span>
         {{ article.date|month }}
     </time>
+{% endblock %}
+
+{% block preview %}
+    <li>
+        <a class="post-card" href="{{ path('blog_article', { article: article.slug }) }}" lang="{{ article.language }}">
+            {{ block('date') }}
+            <h2 class="post-card-title">{{ article.title }}</h2>
+            {% if article.description is defined and article.description %}
+                <p>{{ article.description }}</p>
+            {% endif %}
+            <span class="post-card-read">{{ 'blog.read'|trans }} <span class="icon-chevron-right" aria-hidden="true"></span></span>
+        </a>
+    </li>
 {% endblock %}

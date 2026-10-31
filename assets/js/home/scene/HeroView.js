@@ -5,10 +5,9 @@ import { addRealtimeLights, bakedFloor } from './lighting';
 import { cloneObjects } from './load';
 import { createRenderer, watchContext } from './renderer';
 
-const LIFT = 0.035;
-
 /**
- * The hero desk: all objects, gentle sway, pointer tilt, hover lift, click to scroll to a section.
+ * The hero desk: all objects, gentle sway, pointer tilt, click to scroll to a section.
+ * Objects never move relative to the floor, so the baked shadows stay under them.
  * Has its own renderer (and so its own WebGL context).
  */
 export default class HeroView {
@@ -57,8 +56,6 @@ export default class HeroView {
         this.spin.rotation.y = REST_ANGLE;
         this.spin.add(content);
         this.scene.add(this.spin);
-
-        this.baseY = new Map(this.objects.children.map((object) => [object, object.position.y]));
 
         this.onPointerMove = this.onPointerMove.bind(this);
         this.onPointerLeave = this.onPointerLeave.bind(this);
@@ -139,12 +136,6 @@ export default class HeroView {
             this.tilt.x += (this.pointer.y * 0.06 - this.tilt.x) * 0.06;
             this.tilt.y += (this.pointer.x * 0.18 - this.tilt.y) * 0.06;
             this.spin.rotation.set(this.tilt.x, REST_ANGLE + this.tilt.y + Math.sin(this.time * 0.45) * SWAY, 0);
-
-            this.objects.children.forEach((object) => {
-                const target = this.baseY.get(object) + (object === this.hovered ? LIFT : 0);
-
-                object.position.y += (target - object.position.y) * 0.15;
-            });
         }
 
         this.renderer.render(this.scene, this.camera);

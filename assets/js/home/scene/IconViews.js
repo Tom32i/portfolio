@@ -51,7 +51,7 @@ class Icon {
         this.canvas.height = this.height;
 
         if (this.width && this.height) {
-            fitCamera(this.camera, this.width, this.height, this.radius, this.size.y, { zoom: 0.92 });
+            fitCamera(this.camera, this.width, this.height, this.radius, this.size.y, { zoom: 1.12 });
         }
     }
 }

@@ -22,10 +22,6 @@
     <link rel="alternate" hreflang="fr" href="{{ url('portfolio') }}">
     <link rel="alternate" hreflang="en" href="{{ url('portfolio_en') }}">
     <link rel="alternate" hreflang="x-default" href="{{ url('portfolio') }}">
-    {% if locale == 'fr' %}
-        {# Send visitors who picked English back to /en/ before anything renders #}
-        <script>try { if (localStorage.getItem('lang') === 'en') location.replace({{ path('portfolio_en')|json_encode|raw }} + location.hash); } catch (e) {}</script>
-    {% endif %}
     {% set person = url('portfolio') ~ '#person' %}
     <script type="application/ld+json">
         {{- {

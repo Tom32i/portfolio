@@ -1,5 +1,5 @@
 /**
- * Mobile burger menu and language preference.
+ * Mobile burger menu.
  */
 export default function initNav() {
     const burger = document.querySelector('.burger');
@@ -24,15 +24,4 @@ export default function initNav() {
             }
         });
     }
-
-    // Remember the chosen language: the French page sends EN visitors to /en/.
-    document.querySelectorAll('[data-lang]').forEach((link) => {
-        link.addEventListener('click', () => {
-            try {
-                localStorage.setItem('lang', link.dataset.lang);
-            } catch {
-                // Storage unavailable (private mode…): the link still works.
-            }
-        });
-    });
 }

@@ -12,8 +12,8 @@
     <div class="nav-tools">
         {% if not on_blog %}
             <div class="lang" role="group" aria-label="{{ 'nav.language'|trans }}">
-                <a href="{{ path('portfolio') }}" hreflang="fr" lang="fr" data-lang="fr" {{ locale == 'fr' ? 'aria-current="true"' }}>FR</a>
-                <a href="{{ path('portfolio_en') }}" hreflang="en" lang="en" data-lang="en" {{ locale == 'en' ? 'aria-current="true"' }}>EN</a>
+                <a href="{{ path('portfolio') }}" hreflang="fr" lang="fr" {{ locale == 'fr' ? 'aria-current="true"' }}>FR</a>
+                <a href="{{ path('portfolio_en') }}" hreflang="en" lang="en" {{ locale == 'en' ? 'aria-current="true"' }}>EN</a>
             </div>
         {% endif %}
         <button class="burger" type="button" aria-expanded="false" aria-controls="nav-links">

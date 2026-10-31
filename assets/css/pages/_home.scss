@@ -2,8 +2,16 @@
 
 // Hero
 
-.hero {
+// Positioning context of the 3D layer: hero + facts row, down to the first section.
+.intro-area {
     position: relative;
+
+    &.is-pointing {
+        cursor: pointer;
+    }
+}
+
+.hero {
     display: grid;
     grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
     gap: 24px;
@@ -41,10 +49,11 @@
     }
 }
 
-// Full-width background layer behind the hero, overflowing so shadows aren't clipped.
+// Full-width background layer behind the hero and facts row, from above the hero (so shadows
+// aren't clipped) down to the first section.
 .hero-scene {
     position: absolute;
-    inset: -40px 0 -96px;
+    inset: -40px 0 0;
     z-index: 0;
     pointer-events: none;
 
@@ -60,10 +69,6 @@
         height: 320px;
         margin-inline: -$gutter-mobile;
     }
-}
-
-.hero.is-pointing {
-    cursor: pointer;
 }
 
 .kicker {

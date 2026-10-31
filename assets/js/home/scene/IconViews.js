@@ -1,5 +1,5 @@
 import { Box3, Group, Scene, Vector3 } from 'three';
-import { createCamera, fitCamera } from './camera';
+import { createCamera, fitSphere } from './camera';
 import { REST_ANGLE } from './config';
 import { addRealtimeLights } from './lighting';
 import { placedClone } from './load';
@@ -26,10 +26,13 @@ class Icon {
         const clone = placedClone(object);
         const box = new Box3().setFromObject(clone);
         const center = box.getCenter(new Vector3());
+        const size = box.getSize(new Vector3());
 
-        this.size = box.getSize(new Vector3());
-        this.radius = Math.max(Math.hypot(this.size.x, this.size.z) / 2, this.size.y * 0.8);
         clone.position.sub(new Vector3(center.x, box.min.y, center.z));
+
+        // Turning on itself, the object sweeps a cylinder: frame the sphere around it, centred.
+        this.center = new Vector3(0, size.y / 2, 0);
+        this.radius = Math.hypot(Math.hypot(size.x, size.z) / 2, size.y / 2);
 
         this.spin = new Group();
         this.spin.add(clone);
@@ -51,7 +54,7 @@ class Icon {
         this.canvas.height = this.height;
 
         if (this.width && this.height) {
-            fitCamera(this.camera, this.width, this.height, this.radius, this.size.y, { zoom: 1.12 });
+            fitSphere(this.camera, this.width, this.height, this.center, this.radius);
         }
     }
 }

@@ -6,6 +6,13 @@ export const LINKS = { gamepad: 'p-games', laptop: 'p-talks', plant: 'p-oss', co
 
 /** Resting Y rotation of the hero group: the Blender bake is lit for this pose. */
 export const REST_ANGLE = -0.35;
+
+/**
+ * Hero motion: 'turn' (continuous turntable, starting from the rest angle) or 'sway' (back and forth around it).
+ */
+export const HERO_MOTION = 'turn';
+/** Turntable speed in rad/s: about one revolution per minute. */
+export const TURN_SPEED = 0.1;
 export const SWAY = 0.22;
 
 export const COLORS = {

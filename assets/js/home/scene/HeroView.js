@@ -1,19 +1,20 @@
 import { Box3, Group, Raycaster, Scene, Vector2, Vector3 } from 'three';
 import { createCamera, fitCamera } from './camera';
-import { LINKS, OBJECTS, REST_ANGLE, SWAY } from './config';
+import { HERO_MOTION, LINKS, OBJECTS, REST_ANGLE, SWAY, TURN_SPEED } from './config';
 import { addRealtimeLights, bakedFloor } from './lighting';
 import { cloneObjects } from './load';
 import { createRenderer, watchContext } from './renderer';
 
 /**
- * The hero desk: all objects, gentle sway, pointer tilt, click to scroll to a section.
+ * The hero desk: all objects, slow turntable (or sway), pointer tilt, click to scroll to a section.
  * Objects never move relative to the floor, so the baked shadows stay under them.
  * Has its own renderer (and so its own WebGL context).
  */
 export default class HeroView {
     constructor(element, source, { desktop, still }) {
         this.element = element;
-        this.trigger = element.closest('.hero') ?? element;
+        this.trigger = element.closest('.intro-area') ?? element;
+        this.hero = element.closest('.hero');
         this.desktop = desktop;
         this.still = still;
         this.visible = false;
@@ -81,7 +82,13 @@ export default class HeroView {
         }
 
         this.renderer.setSize(width, height, false);
-        fitCamera(this.camera, width, height, this.radius, this.size.y, { zoom: 0.66, right: this.desktop.matches });
+        const desktop = this.desktop.matches;
+
+        // On desktop the layer runs down to the first section; keep framing the objects as if it
+        // only covered the hero (+ the 40px/96px overflow for shadows), so they keep their size and place.
+        const frameHeight = desktop && this.hero ? Math.min(height, this.hero.offsetHeight + 136) : height;
+
+        fitCamera(this.camera, width, height, this.radius, this.size.y, { zoom: 0.66, right: desktop, frameHeight });
     }
 
     /**
@@ -130,12 +137,21 @@ export default class HeroView {
         }
     }
 
+    /**
+     * Rotation added to the rest angle.
+     */
+    motion() {
+        return HERO_MOTION === 'turn'
+            ? (this.time * TURN_SPEED) % (Math.PI * 2)
+            : Math.sin(this.time * 0.45) * SWAY;
+    }
+
     update(delta) {
         if (this.animated) {
             this.time += delta;
             this.tilt.x += (this.pointer.y * 0.06 - this.tilt.x) * 0.06;
             this.tilt.y += (this.pointer.x * 0.18 - this.tilt.y) * 0.06;
-            this.spin.rotation.set(this.tilt.x, REST_ANGLE + this.tilt.y + Math.sin(this.time * 0.45) * SWAY, 0);
+            this.spin.rotation.set(this.tilt.x, REST_ANGLE + this.tilt.y + this.motion(), 0);
         }
 
         this.renderer.render(this.scene, this.camera);

@@ -1,8 +1,8 @@
 {
   "name": "Thomas Jarrand",
   "short_name": "Thomas Jarrand",
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
+  "theme_color": "#ff9aa6",
+  "background_color": "#ff9aa6",
   "icons": [
     {
       "src": "\/android-icon-36x36.png",

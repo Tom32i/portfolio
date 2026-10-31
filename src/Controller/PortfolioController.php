@@ -39,7 +39,7 @@ class PortfolioController extends AbstractController
     /**
      * The former "Créations" page now lives in the one-pager sections.
      */
-    #[Route('/creations', name: 'work', options: ['stenope' => ['sitemap' => false]])]
+    #[Route('/creations/', name: 'work', options: ['stenope' => ['sitemap' => false]])]
     public function work(): Response
     {
         return $this->render('portfolio/redirect.html.twig', [

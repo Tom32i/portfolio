@@ -13,6 +13,7 @@
 ] %}
 
 {% block twitter_card_type 'summary_large_image' %}
+{% block og_locale_alternate %}<meta property="og:locale:alternate" content="{{ locale == 'en' ? 'fr_FR' : 'en_US' }}">{% endblock %}
 {% set meta_cover = absolute_url('/cover.png') %}
 
 {% block body_class 'page-home' %}
@@ -21,12 +22,38 @@
     <link rel="alternate" hreflang="fr" href="{{ url('portfolio') }}">
     <link rel="alternate" hreflang="en" href="{{ url('portfolio_en') }}">
     <link rel="alternate" hreflang="x-default" href="{{ url('portfolio') }}">
-    <link rel="canonical" href="{{ url(home) }}">
     {% if locale == 'fr' %}
         {# Send visitors who picked English back to /en/ before anything renders #}
         <script>try { if (localStorage.getItem('lang') === 'en') location.replace({{ path('portfolio_en')|json_encode|raw }} + location.hash); } catch (e) {}</script>
     {% endif %}
-    <link rel="preload" href="{{ asset('/3d/scene.glb') }}" as="fetch" type="model/gltf-binary" crossorigin>
+    {% set person = url('portfolio') ~ '#person' %}
+    <script type="application/ld+json">
+        {{- {
+            '@context': 'https://schema.org',
+            '@graph': [
+                {
+                    '@type': 'Person',
+                    '@id': person,
+                    name: 'Thomas Jarrand',
+                    url: url(home),
+                    jobTitle: 'meta.job_title'|trans,
+                    description: 'meta.description'|trans,
+                    email: 'mailto:thomas.jarrand@gmail.com',
+                    address: { '@type': 'PostalAddress', addressLocality: 'Lyon', addressCountry: 'FR' },
+                    knowsAbout: ['Symfony', 'PHP', 'JavaScript', 'Go', 'React', 'Vue.js', 'Laravel', 'WebGL', 'Multiplayer games'],
+                    sameAs: socials|filter(social => social.url starts with 'http')|map(social => social.url),
+                },
+                {
+                    '@type': 'WebSite',
+                    '@id': url('portfolio') ~ '#website',
+                    url: url(home),
+                    name: 'Thomas Jarrand',
+                    inLanguage: locale,
+                    author: { '@id': person },
+                },
+            ],
+        }|json_encode(constant('JSON_UNESCAPED_SLASHES') b-or constant('JSON_UNESCAPED_UNICODE') b-or constant('JSON_HEX_TAG'))|raw -}}
+    </script>
 {% endblock %}
 
 {% block javascripts %}
@@ -84,7 +111,7 @@
             {% if featured %}
                 <a class="featured" href="{{ featured.url }}" target="_blank" rel="noopener">
                     {% if featured.video %}
-                        <video src="{{ asset(featured.video) }}" poster="{{ asset('/img/project/' ~ featured.image) }}" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+                        <video src="{{ asset(featured.video) }}" poster="{{ asset('/img/project/' ~ featured.image) }}" muted loop playsinline preload="none" data-autoplay aria-hidden="true"></video>
                     {% else %}
                         <img src="{{ asset('/img/project/' ~ featured.image) }}" alt="">
                     {% endif %}

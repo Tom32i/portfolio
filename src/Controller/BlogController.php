@@ -22,7 +22,7 @@ class BlogController extends AbstractController
     ) {
     }
 
-    #[Route('', name: '')]
+    #[Route('/', name: '')]
     public function list(): Response
     {
         $articles = $this->manager->getContents(Article::class, ['date' => false]);
@@ -33,7 +33,7 @@ class BlogController extends AbstractController
         ])->setLastModified($lastModified);
     }
 
-    #[Route('/feed.rss', name: '_feed', defaults: ['_format' => 'atom'], options: ['mapped' => false])]
+    #[Route('/feed.rss', name: '_feed', defaults: ['_format' => 'atom'], options: ['mapped' => false, 'stenope' => ['sitemap' => false]])]
     public function feed(): Response
     {
         $articles = $this->manager->getContents(Article::class, ['date' => true]);
@@ -54,7 +54,7 @@ class BlogController extends AbstractController
         ]);
     }
 
-    #[Route('/{article}', name: '_article')]
+    #[Route('/{article}/', name: '_article')]
     public function article(Article $article): Response
     {
         return $this->render('blog/article.html.twig', [

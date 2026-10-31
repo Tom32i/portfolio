@@ -2,11 +2,20 @@ import initNav from '../common/nav';
 
 initNav();
 
-// Some browsers ignore the autoplay attribute until the video is explicitly played.
-document.querySelectorAll('video[autoplay]').forEach((video) => {
-    video.muted = true;
-    video.play().catch(() => {});
-});
+// Videos only load and play while on screen, and never move with reduced motion.
+const stillMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+const videoObserver = new IntersectionObserver((entries) => {
+    entries.forEach(({ target: video, isIntersecting }) => {
+        if (isIntersecting && !stillMotion.matches) {
+            video.muted = true;
+            video.play().catch(() => {});
+        } else {
+            video.pause();
+        }
+    });
+}, { rootMargin: '200px' });
+
+document.querySelectorAll('video[data-autoplay]').forEach((video) => videoObserver.observe(video));
 
 // The 3D scene (three.js + GLB) loads once the page is idle, off the critical path.
 function loadScene() {

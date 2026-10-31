@@ -1,6 +1,9 @@
 {%- set locale = app.request.locale -%}
 {%- set home = locale == 'en' ? 'portfolio_en' : 'portfolio' -%}
 {%- set email = 'thomas.jarrand@gmail.com' -%}
+{%- set route = app.request.attributes.get('_route') -%}
+{%- set canonical = route ? url(route, app.request.attributes.get('_route_params')) : app.request.uri -%}
+{%- set og_locales = { fr: 'fr_FR', en: 'en_US' } -%}
 <!DOCTYPE html>
 <html lang="{% block meta_locale locale %}">
     <head>
@@ -9,21 +12,24 @@
         <title>{% block meta_title 'meta.title'|trans %}</title>
         <meta name="title" content="{{ block('meta_title') }}">
         <meta name="description" content="{% block meta_description 'meta.description'|trans %}">
+        <link rel="canonical" href="{{ canonical }}">
 
         {% block social %}
             <!-- Open Graph / Facebook -->
             <meta property="og:type" content="{% block fb_og_type 'website' %}">
-            <meta property="og:url" content="{{ app.request.uri }}">
-            <meta property="og:title" content="{{ block('meta_title') }}">
+            <meta property="og:site_name" content="Thomas Jarrand">
+            <meta property="og:url" content="{{ canonical }}">
+            <meta property="og:title" content="{% block og_title block('meta_title') %}">
             <meta property="og:description" content="{{ block('meta_description') }}">
-            <meta property="og:locale" content="{{ block('meta_locale') }}">
+            <meta property="og:locale" content="{{ og_locales[block('meta_locale')] ?? block('meta_locale') }}">
+            {% block og_locale_alternate '' %}
             {% if meta_cover|default(false) %}
             <meta property="og:image" content="{{ meta_cover }}">
             {% endif %}
 
             <!-- Twitter -->
             <meta property="twitter:card" content="{% block twitter_card_type 'summary' %}">
-            <meta property="twitter:title" content="{{ block('meta_title') }}">
+            <meta property="twitter:title" content="{{ block('og_title') }}">
             <meta property="twitter:description" content="{{ block('meta_description') }}">
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">

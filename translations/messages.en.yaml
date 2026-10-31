@@ -1,6 +1,7 @@
 meta:
-    title: Thomas Jarrand, Lead Web Developer
-    description: Lead web developer in Lyon. I code on both sides of the HTTP request.
+    title: Thomas Jarrand, lead web developer in Lyon
+    description: "Lead web developer in Lyon for over 15 years: Symfony, PHP, JavaScript and Go. Multiplayer browser games, conference talks and open-source tools."
+    job_title: Lead web developer
 nav:
     label: Sections
     games: Games

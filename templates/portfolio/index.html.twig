@@ -22,34 +22,7 @@
     <link rel="alternate" hreflang="fr" href="{{ url('portfolio') }}">
     <link rel="alternate" hreflang="en" href="{{ url('portfolio_en') }}">
     <link rel="alternate" hreflang="x-default" href="{{ url('portfolio') }}">
-    {% set person = url('portfolio') ~ '#person' %}
-    <script type="application/ld+json">
-        {{- {
-            '@context': 'https://schema.org',
-            '@graph': [
-                {
-                    '@type': 'Person',
-                    '@id': person,
-                    name: 'Thomas Jarrand',
-                    url: url(home),
-                    jobTitle: 'meta.job_title'|trans,
-                    description: 'meta.description'|trans,
-                    email: 'mailto:' ~ email,
-                    address: { '@type': 'PostalAddress', addressLocality: 'Lyon', addressCountry: 'FR' },
-                    knowsAbout: ['Symfony', 'PHP', 'JavaScript', 'Go', 'React', 'Vue.js', 'Laravel', 'WebGL', 'Multiplayer games'],
-                    sameAs: socials|filter(social => social.url starts with 'http')|map(social => social.url),
-                },
-                {
-                    '@type': 'WebSite',
-                    '@id': url('portfolio') ~ '#website',
-                    url: url(home),
-                    name: 'Thomas Jarrand',
-                    inLanguage: locale,
-                    author: { '@id': person },
-                },
-            ],
-        }|json_encode(constant('JSON_UNESCAPED_SLASHES') b-or constant('JSON_UNESCAPED_UNICODE') b-or constant('JSON_HEX_TAG'))|raw -}}
-    </script>
+    {% include 'portfolio/structured_data.html.twig' %}
 {% endblock %}
 
 {% block javascripts %}

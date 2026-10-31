@@ -1,6 +1,8 @@
+import initBackToTop from '../common/backToTop';
 import initNav from '../common/nav';
 
 initNav();
+initBackToTop();
 
 // Videos only load and play while on screen, and never move with reduced motion.
 const stillMotion = window.matchMedia('(prefers-reduced-motion: reduce)');

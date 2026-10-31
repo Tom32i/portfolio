@@ -1,8 +1,7 @@
-{% set on_blog = app.request.attributes.get('_menu') == 'blog' %}
 {% set photo = [
-    { name: 'Unsplash', url: 'https://unsplash.com/@tom32i' },
-    { name: 'Instagram', url: 'https://instagram.com/tom32i' },
-    { name: 'Gameoscope', url: 'https://gameoscope.fr' },
+    { name: 'Unsplash', url: links.unsplash },
+    { name: 'Instagram', url: links.instagram },
+    { name: 'Gameoscope', url: links.gameoscope },
 ] %}
 <footer class="contact wrap" id="p-contact">
     <div class="contact-grid">

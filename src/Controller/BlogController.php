@@ -8,6 +8,7 @@ use App\Model\Article;
 use Stenope\Bundle\ContentManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Asset\Packages;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
@@ -19,6 +20,8 @@ class BlogController extends AbstractController
         private ContentManagerInterface $manager,
         private NormalizerInterface $serializer,
         private Packages $assets,
+        #[Autowire('%email%')]
+        private string $email,
     ) {
     }
 
@@ -42,7 +45,7 @@ class BlogController extends AbstractController
             'title' => 'Thomas Jarrand Blog Technique',
             'description' => '',
             'webmaster' => [
-                'email' => 'thomas.jarrand@gmail.com',
+                'email' => $this->email,
                 'name' => 'Thomas Jarrand',
             ],
             'image' => [

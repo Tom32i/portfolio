@@ -3,13 +3,13 @@
 {% import 'common/icons.html.twig' as icons %}
 
 {% set socials = [
-    { name: 'Github', url: 'https://github.com/tom32i', icon: 'github' },
-    { name: 'Instagram', url: 'https://instagram.com/tom32i', icon: 'instagram' },
-    { name: 'Bluesky', url: 'https://bsky.app/profile/tom32i.bsky.social', icon: 'bluesky' },
-    { name: 'Twitter', url: 'https://twitter.com/tom32i', icon: 'twitter' },
-    { name: 'Unsplash', url: 'https://unsplash.com/@tom32i', svg: 'unsplash' },
-    { name: 'LinkedIn', url: 'https://www.linkedin.com/in/thomasjarrand/', svg: 'linkedin' },
-    { name: 'Mail', url: 'mailto:thomas.jarrand@gmail.com', icon: 'mail' },
+    { name: 'Github', url: links.github, icon: 'github' },
+    { name: 'Instagram', url: links.instagram, icon: 'instagram' },
+    { name: 'Bluesky', url: links.bluesky, icon: 'bluesky' },
+    { name: 'Twitter', url: links.twitter, icon: 'twitter' },
+    { name: 'Unsplash', url: links.unsplash, svg: 'unsplash' },
+    { name: 'LinkedIn', url: links.linkedin, svg: 'linkedin' },
+    { name: 'Mail', url: 'mailto:' ~ email, icon: 'mail' },
 ] %}
 
 {% block twitter_card_type 'summary_large_image' %}
@@ -34,7 +34,7 @@
                     url: url(home),
                     jobTitle: 'meta.job_title'|trans,
                     description: 'meta.description'|trans,
-                    email: 'mailto:thomas.jarrand@gmail.com',
+                    email: 'mailto:' ~ email,
                     address: { '@type': 'PostalAddress', addressLocality: 'Lyon', addressCountry: 'FR' },
                     knowsAbout: ['Symfony', 'PHP', 'JavaScript', 'Go', 'React', 'Vue.js', 'Laravel', 'WebGL', 'Multiplayer games'],
                     sameAs: socials|filter(social => social.url starts with 'http')|map(social => social.url),

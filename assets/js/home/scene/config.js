@@ -12,8 +12,11 @@ export const REST_ANGLE = -0.35;
  * or 'sway' (back and forth).
  */
 export const HERO_MOTION = 'still';
-/** Turntable speed in rad/s: about one revolution per minute. */
-export const TURN_SPEED = 0.1;
+/** Hero turntable speed in rad/s ('turn' motion): about one revolution per minute. */
+export const HERO_TURN_SPEED = 0.1;
+
+/** Section icons turning speed, in rad/s. */
+export const ICON_TURN_SPEED = 0.35;
 export const SWAY = 0.22;
 
 /** Colour multiplied onto an object's (baked) material, e.g. to dim the white gamepad. */

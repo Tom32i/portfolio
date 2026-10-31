@@ -1,12 +1,11 @@
 import { Box3, Group, Scene, Vector3 } from 'three';
 import { createCamera, fitSphere } from './camera';
-import { REST_ANGLE } from './config';
+import { ICON_TURN_SPEED, REST_ANGLE } from './config';
 import { addRealtimeLights } from './lighting';
 import { placedClone } from './load';
 import { createRenderer, watchContext } from './renderer';
 
 const PIXEL_RATIO = Math.min(window.devicePixelRatio, 1.5);
-const TURN_SPEED = 0.35;
 
 /**
  * One object alone, slowly turning.
@@ -70,7 +69,14 @@ export default class IconViews {
         this.renderer = createRenderer({ canvas: document.createElement('canvas'), shadows: !source.baked });
         this.renderer.setPixelRatio(1);
         this.renderer.setScissorTest(true);
-        watchContext(this.renderer, (ready) => { this.ready = ready; });
+        this.onRestore = null;
+        watchContext(this.renderer, (ready) => {
+            this.ready = ready;
+
+            if (ready) {
+                this.onRestore?.();
+            }
+        });
 
         this.icons = elements
             .filter((element) => source.objects[element.dataset.scene])
@@ -104,7 +110,7 @@ export default class IconViews {
     update(delta) {
         this.icons.filter((icon) => icon.visible).forEach((icon) => {
             if (this.animated) {
-                icon.angle += delta * TURN_SPEED;
+                icon.angle += delta * ICON_TURN_SPEED;
                 icon.spin.rotation.y = icon.angle;
             }
 

@@ -20,6 +20,6 @@ class Game
 
     public function getDescription(string $locale): string
     {
-        return $this->description[$locale] ?? $this->description['fr'];
+        return $this->description[$locale] ?? $this->description['fr'] ?? (string) reset($this->description);
     }
 }

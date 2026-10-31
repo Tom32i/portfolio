@@ -1,6 +1,6 @@
 {%- set locale = app.request.locale -%}
 {%- set home = locale == 'en' ? 'portfolio_en' : 'portfolio' -%}
-{%- set email = 'thomas.jarrand@gmail.com' -%}
+{%- set on_blog = app.request.attributes.get('_menu') == 'blog' -%}
 {%- set route = app.request.attributes.get('_route') -%}
 {%- set canonical = route ? url(route, app.request.attributes.get('_route_params')) : app.request.uri -%}
 {%- set og_locales = { fr: 'fr_FR', en: 'en_US' } -%}
@@ -71,6 +71,7 @@
         {% endblock %}
         {% block javascripts %}
             <script async src="https://lab.tom32i.fr/console/loader.js"></script>
+            {{ encore_entry_script_tags('common') }}
         {% endblock %}
     </head>
     <body class="{% block body_class '' %}">

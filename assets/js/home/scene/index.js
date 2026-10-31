@@ -68,7 +68,17 @@ export default async function initScene() {
         schedule();
     };
 
-    new ResizeObserver(resize).observe(document.body);
+    // After a lost GPU context comes back, redraw and restart the loop.
+    views.forEach((view) => { view.onRestore = resize; });
+
+    // Only the 3D elements' own size matters, not every change in page height.
+    const resizeObserver = new ResizeObserver(resize);
+
+    if (hero) {
+        resizeObserver.observe(hero.element);
+    }
+
+    icons?.icons.forEach((icon) => resizeObserver.observe(icon.element));
     desktop.addEventListener('change', resize);
     still.addEventListener('change', schedule);
     document.addEventListener('visibilitychange', () => {

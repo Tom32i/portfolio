@@ -1,9 +1,12 @@
 import { Box3, Group, Raycaster, Scene, Vector2, Vector3 } from 'three';
 import { createCamera, fitCamera } from './camera';
-import { HERO_MOTION, LINKS, OBJECTS, REST_ANGLE, SWAY, TURN_SPEED } from './config';
+import { HERO_MOTION, HERO_TURN_SPEED, LINKS, OBJECTS, REST_ANGLE, SWAY } from './config';
 import { addRealtimeLights, bakedFloor } from './lighting';
 import { cloneObjects } from './load';
 import { createRenderer, watchContext } from './renderer';
+
+/** Room kept below the hero when framing the desk on desktop, so its shadows aren't framed out. */
+const SHADOW_ROOM = 96;
 
 /**
  * The hero desk: all objects, slow turntable (or sway), pointer tilt, click to scroll to a section.
@@ -23,13 +26,22 @@ export default class HeroView {
         this.pointer = new Vector2(0, 0);
         this.tilt = new Vector2(0, 0);
         this.hovered = null;
+        this.hoverFrame = null;
+        this.lastPointer = null;
         this.raycaster = new Raycaster();
 
         this.canvas = document.createElement('canvas');
         element.append(this.canvas);
         this.renderer = createRenderer({ canvas: this.canvas, shadows: !source.baked });
         this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-        watchContext(this.renderer, (ready) => { this.ready = ready; });
+        this.onRestore = null;
+        watchContext(this.renderer, (ready) => {
+            this.ready = ready;
+
+            if (ready) {
+                this.onRestore?.();
+            }
+        });
 
         this.scene = new Scene();
         this.camera = createCamera();
@@ -85,8 +97,10 @@ export default class HeroView {
         const desktop = this.desktop.matches;
 
         // On desktop the layer runs down to the first section; keep framing the objects as if it
-        // only covered the hero (+ the 40px/96px overflow for shadows), so they keep their size and place.
-        const frameHeight = desktop && this.hero ? Math.min(height, this.hero.offsetHeight + 136) : height;
+        // ended a little below the hero, so they keep their size and place whatever comes after.
+        const frameHeight = desktop && this.hero
+            ? Math.min(height, this.hero.getBoundingClientRect().bottom - this.canvas.getBoundingClientRect().top + SHADOW_ROOM)
+            : height;
 
         fitCamera(this.camera, width, height, this.radius, this.size.y, { zoom: 0.66, right: desktop, frameHeight });
     }
@@ -113,12 +127,19 @@ export default class HeroView {
         const rect = this.canvas.getBoundingClientRect();
 
         this.pointer.set(((event.clientX - rect.left) / rect.width) * 2 - 1, ((event.clientY - rect.top) / rect.height) * 2 - 1);
-        this.hovered = event.pointerType === 'mouse' && !event.target.closest('a, button') ? this.pick(event.clientX, event.clientY) : null;
-        this.trigger.classList.toggle('is-pointing', Boolean(this.hovered && LINKS[this.hovered.name]));
+
+        // Hover only drives the cursor: raycast at most once per frame, on the latest position.
+        this.lastPointer = event.pointerType === 'mouse' && !event.target.closest('a, button') ? [event.clientX, event.clientY] : null;
+        this.hoverFrame ??= requestAnimationFrame(() => {
+            this.hoverFrame = null;
+            this.hovered = this.lastPointer ? this.pick(...this.lastPointer) : null;
+            this.trigger.classList.toggle('is-pointing', Boolean(this.hovered && LINKS[this.hovered.name]));
+        });
     }
 
     onPointerLeave() {
         this.pointer.set(0, 0);
+        this.lastPointer = null;
         this.hovered = null;
         this.trigger.classList.remove('is-pointing');
     }
@@ -143,7 +164,7 @@ export default class HeroView {
     motion() {
         switch (HERO_MOTION) {
             case 'turn':
-                return (this.time * TURN_SPEED) % (Math.PI * 2);
+                return (this.time * HERO_TURN_SPEED) % (Math.PI * 2);
             case 'sway':
                 return Math.sin(this.time * 0.45) * SWAY;
             default:

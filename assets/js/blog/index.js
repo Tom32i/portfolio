@@ -1,10 +1,5 @@
 import 'prismjs';
 import Code from './Code';
-import initBackToTop from '../common/backToTop';
-import initNav from '../common/nav';
-
-initNav();
-initBackToTop();
 
 Prism.manual = true;
 

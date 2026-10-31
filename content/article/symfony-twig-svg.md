@@ -18,7 +18,6 @@ Mais je vous propose ici une alternative _low-tech_, coté serveur, qui fait app
     svg.pie .portion:nth-of-type(5n+3) { fill: #E5989B; }
     svg.pie .portion:nth-of-type(5n+4) { fill: #B5838D; }
     svg.pie .portion:nth-of-type(5n+0) { fill: #6D6875; }
-
     svg.pie .label {
       font-size: 12px;
       fill: #666666;

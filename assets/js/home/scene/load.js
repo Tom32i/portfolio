@@ -1,6 +1,6 @@
-import { Group, MeshBasicMaterial } from 'three';
+import { Color, Group, MeshBasicMaterial } from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-import { OBJECTS } from './config';
+import { OBJECT_TINTS, OBJECTS } from './config';
 
 /**
  * Screens ignore the lights: render them flat in their own colour.
@@ -53,6 +53,10 @@ export async function loadScene(url) {
 
         if (object) {
             objects[name] = object;
+
+            if (OBJECT_TINTS[name]) {
+                tint(object, OBJECT_TINTS[name]);
+            }
         }
     }
 
@@ -61,6 +65,18 @@ export async function loadScene(url) {
     }
 
     return { objects, floor, baked };
+}
+
+/**
+ * Multiply an object's materials by a colour, on its own copies (the baked material is shared).
+ */
+function tint(object, color) {
+    object.traverse((node) => {
+        if (node.isMesh && !isScreen(node)) {
+            node.material = node.material.clone();
+            node.material.color.multiply(new Color(color));
+        }
+    });
 }
 
 /**

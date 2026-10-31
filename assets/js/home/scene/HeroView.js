@@ -141,9 +141,14 @@ export default class HeroView {
      * Rotation added to the rest angle.
      */
     motion() {
-        return HERO_MOTION === 'turn'
-            ? (this.time * TURN_SPEED) % (Math.PI * 2)
-            : Math.sin(this.time * 0.45) * SWAY;
+        switch (HERO_MOTION) {
+            case 'turn':
+                return (this.time * TURN_SPEED) % (Math.PI * 2);
+            case 'sway':
+                return Math.sin(this.time * 0.45) * SWAY;
+            default:
+                return 0;
+        }
     }
 
     update(delta) {

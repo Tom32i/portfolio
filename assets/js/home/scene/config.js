@@ -8,12 +8,18 @@ export const LINKS = { gamepad: 'p-games', laptop: 'p-talks', plant: 'p-oss', co
 export const REST_ANGLE = -0.35;
 
 /**
- * Hero motion: 'turn' (continuous turntable, starting from the rest angle) or 'sway' (back and forth around it).
+ * Hero motion around the rest angle: 'still' (only the pointer parallax), 'turn' (continuous turntable)
+ * or 'sway' (back and forth).
  */
-export const HERO_MOTION = 'turn';
+export const HERO_MOTION = 'still';
 /** Turntable speed in rad/s: about one revolution per minute. */
 export const TURN_SPEED = 0.1;
 export const SWAY = 0.22;
+
+/** Colour multiplied onto an object's (baked) material, e.g. to dim the white gamepad. */
+export const OBJECT_TINTS = {
+    gamepad: '#e4dfe8',
+};
 
 export const COLORS = {
     coral: '#ff9aa6',

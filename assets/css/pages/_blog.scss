@@ -97,11 +97,13 @@ $code-muted: #9a90a8;
     padding: 28px;
     border-radius: 24px;
     background: $white;
-    transition: transform .2s;
 
     &:hover {
         text-decoration: none;
-        transform: rotate(-1deg) translateY(-4px);
+
+        .post-card-title {
+            text-decoration: underline;
+        }
     }
 
     .post-date {
@@ -114,10 +116,6 @@ $code-muted: #9a90a8;
         font-size: 16px;
         line-height: 1.5;
         text-wrap: pretty;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-        transition: none;
     }
 
     @include mobile {

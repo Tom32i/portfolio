@@ -9,9 +9,11 @@ use Stenope\Bundle\ContentManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Asset\Packages;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+use Symfony\Component\Translation\LocaleSwitcher;
 
 #[Route('/blog', name: 'blog', defaults: ['_menu' => 'blog'])]
 class BlogController extends AbstractController
@@ -20,6 +22,7 @@ class BlogController extends AbstractController
         private ContentManagerInterface $manager,
         private NormalizerInterface $serializer,
         private Packages $assets,
+        private LocaleSwitcher $localeSwitcher,
         #[Autowire('%email%')]
         private string $email,
     ) {
@@ -58,8 +61,12 @@ class BlogController extends AbstractController
     }
 
     #[Route('/{article}/', name: '_article')]
-    public function article(Article $article): Response
+    public function article(Request $request, Article $article): Response
     {
+        // The whole page (nav, footer, dates) speaks the article's language, not just its body.
+        $request->setLocale($article->language);
+        $this->localeSwitcher->setLocale($article->language);
+
         return $this->render('blog/article.html.twig', [
             'article' => $article,
             'latestArticles' => \array_slice(

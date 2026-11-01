@@ -52,3 +52,10 @@ footer:
     cv: Résumé (PDF)
     blog: Blog (archives)
     home: Home
+blog:
+    title: The blog
+    subtitle: Field notes and technical cookbooks on Symfony, PHP, JavaScript, React and the other web technologies I use every day.
+    meta_title: Thomas Jarrand's tech blog
+    latest: Latest articles
+    all: All articles
+    read: Read

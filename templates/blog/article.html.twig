@@ -4,7 +4,6 @@
 
 {% block meta_title article.title ~ ' | ' ~ 'blog.meta_title'|trans %}
 {% block meta_description article.description %}
-{% block meta_locale article.language %}
 {% block fb_og_type 'article' %}
 {% block og_title article.title %}
 {% block twitter_card_type article.cover ? 'summary_large_image' : 'summary' %}
@@ -54,7 +53,7 @@
 
 {% block body %}
     <main>
-        <article lang="{{ article.language }}">
+        <article>
             <header class="page-header wrap">
                 <a class="back" href="{{ path('blog') }}"><span class="icon-chevron-left" aria-hidden="true"></span> {{ 'blog.all'|trans }}</a>
                 <h1>{{ article.title }}</h1>

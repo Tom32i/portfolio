@@ -16,7 +16,7 @@ hero:
     pronouns: il/lui
     hello: Salut, moi c'est Thomas.
     tagline: Je code des deux côtés de la requête HTTP.
-    stack: "Depuis plus de 15 ans, je fabrique pour le web : des applis solides avec Symfony, Laravel, React, Vue et Go, des jeux multijoueur en temps réel, des outils open-source. J'accompagne aussi des équipes dans leur montée en compétence, les choix techniques et les architectures. Je partage tout ça dans des conférences."
+    stack: "Depuis plus de 15 ans, je fabrique pour le web : des applis solides et performantes avec Symfony, Laravel, React, Vue et Go, des jeux multijoueurs en temps réel, des outils open-source. Aujourd'hui, j'encadre une équipe et je guide les choix produit et techniques aux côtés du métier. Je partage tout ça en conférence."
     scene: "Mon bureau en 3D : laptop, longboard, manette, café, monstera"
     socials: Réseaux sociaux
 proofs:
@@ -44,7 +44,7 @@ oss:
     intro: Les outils open-source que je mets à disposition et maintiens.
 contact:
     title: Pour discuter, c’est par ici.
-    about: Photographe amateur, jardinier d'appartement, fan de jeux indés et redoutable au blind-test. Pour me ressourcer, je bivouaque dans les Alpes, je traverse la France à vélo ou je plonge en apnée en Méditerranée.
+    about: Photographe amateur, jardinier d'appartement, fan de jeux indés et redoutable au blind test. Pour me ressourcer, je bivouaque dans les Alpes, je traverse la France à vélo ou je plonge en apnée en Méditerranée.
     photo: J'apprends aussi la photographie
 footer:
     copyright: Créé avec enthousiasme par Thomas Jarrand · © %year%

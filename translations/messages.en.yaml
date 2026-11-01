@@ -16,7 +16,7 @@ hero:
     pronouns: he/him
     hello: Hi, I'm Thomas.
     tagline: I code on both sides of the HTTP request.
-    stack: "For over 15 years I have been building for the web: solid apps with Symfony, Laravel, React, Vue and Go, real-time multiplayer games, open-source tools. I also support teams with upskilling, technical choices and architecture. I share all of it in conference talks."
+    stack: "For over 15 years I've been building for the web: solid, fast apps with Symfony, Laravel, React, Vue and Go, real-time multiplayer games, open-source tools. Today I lead a team and guide product and technical decisions alongside the business. I share all of it in conference talks."
     scene: "My desk in 3D: laptop, longboard, gamepad, coffee, monstera"
     socials: Social networks
 proofs:
@@ -45,7 +45,7 @@ oss:
 contact:
     title: Let's talk.
     about: Amateur photographer, apartment gardener, indie game fan and fearsome at music quizzes. To recharge, I bivouac in the Alps, cross France by bike or freedive in the Mediterranean.
-    photo: I'm learning photography
+    photo: I'm also learning photography
 footer:
     copyright: Made with enthusiasm by Thomas Jarrand · © %year%
     cv: View my résumé (French)

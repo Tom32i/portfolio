@@ -23,10 +23,6 @@
     pointer-events: none;
     transition: opacity .2s, transform .2s, background-color .15s, color .15s;
 
-    [class^="icon-"] {
-        transform: rotate(-90deg);
-    }
-
     &.is-visible {
         opacity: 1;
         transform: none;

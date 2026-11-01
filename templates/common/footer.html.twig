@@ -19,7 +19,7 @@
             <h3>{{ 'contact.photo'|trans }}</h3>
             <ul class="pills">
                 {% for link in photo %}
-                    <li><a class="pill pill-white" href="{{ link.url }}" target="_blank" rel="noopener">{{ link.name }} ↗</a></li>
+                    <li><a class="pill pill-white" href="{{ link.url }}" target="_blank" rel="noopener">{{ link.name }}<span class="icon-arrow-up-right" aria-hidden="true"></span></a></li>
                 {% endfor %}
             </ul>
         </div>
@@ -27,11 +27,11 @@
     <div class="footer">
         <span>{{ 'footer.copyright'|trans({ '%year%': 'now'|date('Y') }) }}</span>
         <span class="footer-links">
-            <a href="/CV_Thomas_Jarrand.pdf" download="CV_Thomas_Jarrand.pdf">{{ 'footer.cv'|trans }} ↓</a>
+            <a href="/CV_Thomas_Jarrand.pdf" download="CV_Thomas_Jarrand.pdf">{{ 'footer.cv'|trans }}<span class="icon-download" aria-hidden="true"></span></a>
             {% if not on_blog %}
-                <a href="{{ path('blog') }}" hreflang="fr">{{ 'footer.blog'|trans }} →</a>
+                <a href="{{ path('blog') }}" hreflang="fr">{{ 'footer.blog'|trans }}<span class="icon-arrow-right" aria-hidden="true"></span></a>
             {% else %}
-                <a href="{{ path(home) }}">{{ 'footer.home'|trans }} →</a>
+                <a href="{{ path(home) }}">{{ 'footer.home'|trans }}<span class="icon-arrow-right" aria-hidden="true"></span></a>
             {% endif %}
         </span>
     </div>

@@ -1,14 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% import 'common/icons.html.twig' as icons %}
-
 {% set socials = [
     { name: 'Github', url: links.github, icon: 'github' },
     { name: 'Instagram', url: links.instagram, icon: 'instagram' },
     { name: 'Bluesky', url: links.bluesky, icon: 'bluesky' },
     { name: 'Twitter', url: links.twitter, icon: 'twitter' },
-    { name: 'Unsplash', url: links.unsplash, svg: 'unsplash' },
-    { name: 'LinkedIn', url: links.linkedin, svg: 'linkedin' },
+    { name: 'Unsplash', url: links.unsplash, icon: 'unsplash' },
+    { name: 'LinkedIn', url: links.linkedin, icon: 'linkedin' },
     { name: 'Mail', url: 'mailto:' ~ email, icon: 'mail' },
 ] %}
 
@@ -49,11 +47,7 @@
                 {% for social in socials %}
                     <li>
                         <a class="pill pill-white" href="{{ social.url }}" {{ social.url starts with 'http' ? 'target="_blank" rel="me noopener"' }}>
-                            {%- if social.icon is defined -%}
-                                <span class="icon-{{ social.icon }}" aria-hidden="true"></span>
-                            {%- else -%}
-                                {{ icons.svg(social.svg) }}
-                            {%- endif -%}
+                            <span class="icon-{{ social.icon }}" aria-hidden="true"></span>
                             {{ social.name }}
                         </a>
                     </li>

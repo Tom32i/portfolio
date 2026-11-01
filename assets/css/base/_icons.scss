@@ -1,18 +1,4 @@
-// Glyphs of the site icon font (assets/fonts/icon.woff)
-$icons: (
-    calendar: "\e900",
-    clock: "\e901",
-    monitor: "\e902",
-    mail: "\e905",
-    film: "\e907",
-    chevron-right: "\e908",
-    chevron-left: "\e909",
-    link: "\e904",
-    bluesky: "\e90e",
-    instagram: "\ea92",
-    twitter: "\ea96",
-    github: "\eab0",
-);
+@use "../abstracts/icons" as *;
 
 [class^="icon-"],
 [class*=" icon-"] {
@@ -29,10 +15,4 @@ $icons: (
     .icon-#{$name}::before {
         content: $glyph;
     }
-}
-
-.icon-svg {
-    width: 1em;
-    height: 1em;
-    flex: none;
 }

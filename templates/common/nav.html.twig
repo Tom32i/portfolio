@@ -2,7 +2,7 @@
     <a class="nav-brand" href="{{ path(home) }}">Thomas Jarrand</a>
     <div class="nav-links" id="nav-links">
         {% for section in ['games', 'talks', 'oss', 'contact'] %}
-            <a href="{{ path(home) }}#p-{{ section }}">{{ ('nav.' ~ section)|trans }}</a>
+            <a href="{{ path(home) }}#{{ section }}">{{ ('nav.' ~ section)|trans }}</a>
         {% endfor %}
         {% if on_blog %}
             <a class="nav-blog" href="{{ path('blog') }}" aria-current="page">{{ 'nav.blog'|trans }}</a>

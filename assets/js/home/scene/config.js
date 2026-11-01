@@ -2,7 +2,7 @@
 export const OBJECTS = ['laptop', 'coffee_cup', 'gamepad', 'longboard', 'plant'];
 
 /** Clicking an object in the hero scrolls to its section. */
-export const LINKS = { gamepad: 'p-games', laptop: 'p-talks', plant: 'p-oss', coffee_cup: 'p-contact' };
+export const LINKS = { gamepad: 'games', laptop: 'talks', plant: 'oss', coffee_cup: 'contact' };
 
 /** Resting Y rotation of the hero group: the Blender bake is lit for this pose. */
 export const REST_ANGLE = -0.35;

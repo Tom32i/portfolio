@@ -1,6 +1,7 @@
 {#
-    Printable resume: the layout of the Pages CV (labels on the left, content on the right, on white)
-    in the site's fonts and colours. Dev only: `make cv` prints it to public/CV_Thomas_Jarrand.pdf.
+    Resume, in French: the layout of the former Pages CV (labels on the left, content on the right, on white)
+    in the site's fonts and colours. A public page, also printed to public/CV_Thomas_Jarrand.pdf by `make cv`:
+    the toolbar only shows on screen, and the page balance rules in cv.scss only apply to the print.
 #}
 {% set jobs = [
     {
@@ -62,7 +63,7 @@
 {% set skills = [
     { label: 'Management', value: 'Encadrement, recrutement, mentorat, one-to-ones, animation des rituels, leadership technique, direction de projet, arbitrages produit et technique.' },
     { label: 'Back end', value: 'PHP 8, Symfony (certifié Symfony Expert), Laravel, Go, Node.js.' },
-    { label: 'Front end', value: 'JavaScript, React, React Native, Vue, WebSocket, HTML/CSS, SVG.' },
+    { label: 'Front end', value: 'JavaScript, React, React Native, Vue, Three.js, WebSocket, HTML/CSS, SVG.' },
     { label: 'Méthode', value: 'Scrum, Kanban, revue de code, tests automatisés, CI/CD, pair programming.' },
     { label: 'Qualité', value: 'Robustesse, résilience, modularité, évolutivité, performance.' },
     { label: 'Infra', value: 'Docker, Ansible, AWS, Debian, Nginx, Caddy.' },
@@ -76,15 +77,41 @@
 ] %}
 {% macro link(url, label) %}<a href="{{ url }}">{{ label ?? url|replace({ 'https://': '', 'http://': '', 'www.': '' })|trim('/', 'right') }}</a>{% endmacro %}
 {% import _self as cv %}
+{% import 'common/json_ld.html.twig' as json_ld %}
 <!DOCTYPE html>
 <html lang="fr">
     <head>
         <meta charset="UTF-8">
-        <meta name="robots" content="noindex">
-        <title>CV Thomas Jarrand</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CV Thomas Jarrand, lead développeur web à Lyon</title>
+        <meta name="description" content="CV de Thomas Jarrand, lead développeur web à Lyon : management d’équipe, PHP / Symfony, React et Go, plus de 15 ans d’expérience, conférences et projets open source.">
+        <link rel="canonical" href="{{ url('cv') }}">
+        <meta property="og:type" content="profile">
+        <meta property="og:site_name" content="Thomas Jarrand">
+        <meta property="og:url" content="{{ url('cv') }}">
+        <meta property="og:title" content="CV Thomas Jarrand, lead développeur web à Lyon">
+        <meta property="og:locale" content="fr_FR">
+        <meta property="og:image" content="{{ absolute_url(asset('/cover.png')) }}">
+        {{ block('icon', 'base.html.twig') }}
+        {# The Person itself is described on the homepage graph. #}
+        {{ json_ld.script({
+            '@context': 'https://schema.org',
+            '@type': 'ProfilePage',
+            url: url('cv'),
+            name: 'CV Thomas Jarrand',
+            inLanguage: 'fr',
+            mainEntity: { '@id': url('portfolio') ~ '#person' },
+        }) }}
         {{ encore_entry_link_tags('cv') }}
+        {{ block('analytics', 'base.html.twig') }}
     </head>
     <body>
+        {# Screen only: hidden when printed to PDF. #}
+        <nav class="cv-toolbar">
+            <a href="{{ path('portfolio') }}"><span class="icon-chevron-left" aria-hidden="true"></span>thomas.jarrand.fr</a>
+            <a class="cv-download" href="/CV_Thomas_Jarrand.pdf" download="CV_Thomas_Jarrand.pdf"><span class="icon-download" aria-hidden="true"></span>Télécharger le PDF</a>
+        </nav>
+
         <header class="cv-header">
             <div class="cv-identity">
                 <h1>Thomas <strong>Jarrand</strong></h1>
@@ -168,7 +195,7 @@
                         Je maintiens des projets open source comme :<br>
                         {{ cv.link('https://github.com/StenopePHP/Stenope', 'Stenope') }} : un générateur de site statique pour Symfony,<br>
                         {{ cv.link('https://github.com/Tom32i/synchroplayer', 'Synchroplayer') }} : un lecteur vidéo synchronisé pour regarder à plusieurs,<br>
-                        {{ cv.link('https://github.com/Tom32i/netcode', 'Netcode') }} : un moteur de communication temps réel pour le web.
+                        {{ cv.link('https://github.com/Tom32i/netcode', 'Netcode') }} : un moteur de communication binaire temps réel pour le web.
                     </p>
                     <p>
                         Je donne des conférences sur des sujets aussi variés que

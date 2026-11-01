@@ -102,7 +102,7 @@ deploy@production: build
 # CV #
 ######
 
-## Print the resume (dev page /cv/, needs `make start`) to public/CV_Thomas_Jarrand.pdf
+## Print the resume page /cv/ (needs `make start`) to public/CV_Thomas_Jarrand.pdf
 cv:
 	npx encore dev
 	"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless --disable-gpu --no-pdf-header-footer --virtual-time-budget=5000 --print-to-pdf=public/CV_Thomas_Jarrand.pdf http://127.0.0.1:8000/cv/

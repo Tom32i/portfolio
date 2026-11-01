@@ -47,9 +47,9 @@ class PortfolioController extends AbstractController
     }
 
     /**
-     * Printable resume (public/CV_Thomas_Jarrand.pdf), printed to PDF by `make cv`. Dev only: never built.
+     * Resume, in French: a web page that `make cv` also prints to public/CV_Thomas_Jarrand.pdf.
      */
-    #[Route('/cv/', name: 'cv', env: 'dev', defaults: ['_locale' => 'fr'])]
+    #[Route('/cv/', name: 'cv', defaults: ['_locale' => 'fr'])]
     public function cv(): Response
     {
         return $this->render('portfolio/cv.html.twig');

@@ -57,6 +57,6 @@ To regenerate it, open http://127.0.0.1:8000/cover/ in a 1200×630 viewport once
 
 ### Resume
 
-`public/CV_Thomas_Jarrand.pdf` (linked from the footer) is printed from the dev-only page `/cv/`: two A4 pages, with the content in `templates/portfolio/cv.html.twig` and the styles in `assets/css/cv.scss`.
+The resume is a page, `/cv/` (in French, linked from the footer next to the PDF), and `public/CV_Thomas_Jarrand.pdf` is that same page printed: two A4 pages. The content is in `templates/portfolio/cv.html.twig` and the styles in `assets/css/cv.scss` (screen and phone layout, plus print rules).
 To regenerate it, start the dev server (`make start`) and run `make cv`: it builds the assets and prints the page to PDF with headless Chrome.
-Check it still prints 2 pages; the page balance rules at the end of `cv.scss` are tuned for the current content.
+Check it still prints 2 pages; the page balance rules at the end of `cv.scss` (print only) are tuned for the current content.

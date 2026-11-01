@@ -1,5 +1,14 @@
 @use "../abstracts/icons" as *;
 
+// Declared here so every stylesheet using the icons (app, cv) gets the font.
+@font-face {
+    font-family: 'icon';
+    src: url('../../fonts/icon.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
 [class^="icon-"],
 [class*=" icon-"] {
     font-family: 'icon' !important;

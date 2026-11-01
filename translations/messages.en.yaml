@@ -48,7 +48,8 @@ contact:
     photo: I'm learning photography
 footer:
     copyright: Made with enthusiasm by Thomas Jarrand · © %year%
-    cv: Résumé (PDF)
+    cv: View my résumé (French)
+    cv_pdf: Download (PDF)
     blog: Blog (archives)
     home: Home
 blog:

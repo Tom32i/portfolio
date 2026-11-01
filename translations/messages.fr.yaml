@@ -45,10 +45,11 @@ oss:
 contact:
     title: Pour discuter, c’est par ici.
     about: Photographe amateur, jardinier d'appartement, fan de jeux indés et redoutable au blind-test. Pour me ressourcer, je bivouaque dans les Alpes, je traverse la France à vélo ou je plonge en apnée en Méditerranée.
-    photo: J'apprends la photographie
+    photo: J'apprends aussi la photographie
 footer:
     copyright: Créé avec enthousiasme par Thomas Jarrand · © %year%
-    cv: CV (PDF)
+    cv: Consulter mon CV
+    cv_pdf: Télécharger (PDF)
     blog: Le blog (archives)
     home: Accueil
 blog:

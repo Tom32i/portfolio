@@ -99,7 +99,8 @@ img.contact-icon {
     padding-top: 8px;
 
     p {
-        margin: 0 0 4px;
+        // Space before the photography heading, which starts a new topic.
+        margin: 0 0 16px;
         max-width: 440px;
         font-size: 18px;
         line-height: 1.55;

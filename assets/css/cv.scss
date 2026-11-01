@@ -2,6 +2,7 @@
 // Same layout as the former Pages CV: section labels on the left, content on the right, on white.
 @use "reset-css/sass/reset";
 @use "base/fonts";
+@use "base/icons";
 @use "abstracts/tokens" as *;
 
 $margin-x: 14mm;
@@ -31,7 +32,7 @@ html {
 }
 
 body {
-    width: 210mm;
+    max-width: 210mm;
     margin: 0 auto;
     padding: $margin-y $margin-x;
     color: $ink;
@@ -156,22 +157,102 @@ em {
     break-inside: avoid;
 }
 
+// Toolbar: back to the site and PDF download, on screen only
+
+.cv-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 3mm;
+    margin-bottom: 10mm;
+    font-size: 10pt;
+
+    a {
+        display: inline-flex;
+        align-items: center;
+        gap: 1.5mm;
+        color: $ink;
+        text-decoration: none;
+    }
+
+    @media print {
+        display: none;
+    }
+}
+
+.cv-download {
+    padding: 2mm 4mm;
+    border-radius: 999px;
+    background: $ink;
+    font-weight: 700;
+
+    .cv-toolbar & {
+        color: $white;
+    }
+}
+
+// Phones: labels above their content, header stacked
+
+@media screen and (max-width: 210mm) {
+    body {
+        padding: 20px;
+        font-size: 15px;
+    }
+
+    .cv-header {
+        grid-template-columns: 1fr auto;
+        gap: 16px 20px;
+
+        .cv-identity {
+            grid-column: 1 / -1;
+        }
+    }
+
+    .cv-identity h1 {
+        font-size: 40px;
+    }
+
+    .cv-portrait {
+        width: 96px;
+        height: 96px;
+    }
+
+    .cv-job {
+        margin-left: 0;
+    }
+
+    .cv-section {
+        display: block;
+
+        > h3 {
+            margin-bottom: 8px;
+        }
+    }
+
+    .cv-footer {
+        margin-left: 0;
+    }
+}
+
 // ---------------------------------------------------------------------------
 // Page balance, tuned by hand for the current content (2 pages, page 1 ending
 // after the Wecandoo entry). These only add air to page 1, which has room to
 // spare. Remove or retune them whenever the resume content changes, then check
-// `make cv` still prints 2 pages.
+// `make cv` still prints 2 pages. Print only, so the web page keeps its own spacing.
 // ---------------------------------------------------------------------------
 
-.cv-header {
-    margin-bottom: 12mm;
-}
+@media print {
+    .cv-header {
+        margin-bottom: 12mm;
+    }
 
-.cv-job {
-    margin-bottom: 10mm;
-}
+    .cv-job {
+        margin-bottom: 10mm;
+    }
 
-// Profil and Compétences, the two sections that always sit on page 1.
-.cv-section:nth-of-type(-n+2) {
-    margin-bottom: 10mm;
+    // Profil and Compétences, the two sections that always sit on page 1.
+    .cv-section:nth-of-type(-n+2) {
+        margin-bottom: 10mm;
+    }
 }

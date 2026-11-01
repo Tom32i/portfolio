@@ -38,4 +38,14 @@ It must contain the objects `laptop`, `coffee_cup`, `gamepad`, `longboard` and `
 - With a `floor` mesh, the scene is considered baked: unlit materials using the GLB textures, no realtime lights.
 
 Replacing `public/3d/scene.glb` with the Blender bake requires no code change.
+
+The Blender source lives in `3D/`: `scene1.blend` is the scene, `bake_export.py` bakes it (colour + light atlas, floor shadow) and exports `public/3d/scene.glb`:
+
+```sh
+cd 3D && ATLAS=2048 FLOOR=1024 SAMPLES=1024 \
+    /Applications/Blender.app/Contents/MacOS/Blender --background scene1.blend --python bake_export.py
+```
+
+`scene1.blend` is never modified by the bake; its outputs (`scene1_baked.blend`, `baked/`) are not versioned.
+`leaves_from_mask.py` rebuilt the monstera leaves as real geometry from their alpha mask.
 `public/3d/coffee_cup.png` is a static render of the coffee cup used in the blog footer.

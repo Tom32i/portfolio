@@ -4,6 +4,7 @@ import { HERO_MOTION, HERO_TURN_SPEED, LINKS, OBJECTS, REST_ANGLE, SWAY } from '
 import { addRealtimeLights, bakedFloor } from './lighting';
 import { cloneObjects } from './load';
 import { createRenderer, watchContext } from './renderer';
+import { markLoaded } from '../loading';
 
 /** Room kept below the hero when framing the desk on desktop, so its shadows aren't framed out. */
 const SHADOW_ROOM = 96;
@@ -181,5 +182,6 @@ export default class HeroView {
         }
 
         this.renderer.render(this.scene, this.camera);
+        markLoaded(this.element);
     }
 }

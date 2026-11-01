@@ -4,6 +4,7 @@ import { ICON_TURN_SPEED, REST_ANGLE } from './config';
 import { addRealtimeLights } from './lighting';
 import { placedClone } from './load';
 import { createRenderer, watchContext } from './renderer';
+import { markLoaded } from '../loading';
 
 const PIXEL_RATIO = Math.min(window.devicePixelRatio, 1.5);
 
@@ -133,5 +134,6 @@ export default class IconViews {
         this.renderer.render(icon.scene, icon.camera);
         icon.context.clearRect(0, 0, icon.width, icon.height);
         icon.context.drawImage(this.renderer.domElement, 0, height - icon.height, icon.width, icon.height, 0, 0, icon.width, icon.height);
+        markLoaded(icon.element);
     }
 }

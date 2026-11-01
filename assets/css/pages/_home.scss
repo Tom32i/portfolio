@@ -56,6 +56,10 @@
     inset: -40px 0 0;
     z-index: 0;
     pointer-events: none;
+    // Loading circle on the laptop, where the desk appears (framed right on desktop).
+    --loader-size: 44px;
+    --loader-x: 73%;
+    --loader-y: 44%;
 
     canvas {
         display: block;
@@ -68,6 +72,9 @@
         inset: auto;
         height: 320px;
         margin-inline: -$gutter-mobile;
+        --loader-size: 36px;
+        --loader-x: 50%;
+        --loader-y: 50%;
     }
 }
 

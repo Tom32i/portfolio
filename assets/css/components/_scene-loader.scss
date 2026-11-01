@@ -1,0 +1,55 @@
+@use "../abstracts/tokens" as *;
+
+// Loading circle where a 3D view will appear (`.is-loading` is set by the home script until
+// the view's first frame). It only shows after a short delay, so a fast load never flashes it,
+// and the canvas fades in once drawn.
+[data-scene] {
+    --loader-size: 28px;
+    --loader-x: 50%;
+    --loader-y: 50%;
+
+    canvas {
+        transition: opacity .5s ease;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: var(--loader-y);
+        left: var(--loader-x);
+        width: var(--loader-size);
+        height: var(--loader-size);
+        box-sizing: border-box;
+        margin: calc(var(--loader-size) / -2) 0 0 calc(var(--loader-size) / -2);
+        border: 3px solid rgba($ink, .15);
+        border-top-color: $ink;
+        border-radius: 50%;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity .3s ease, visibility 0s linear .3s;
+        animation: scene-loader .9s linear infinite;
+
+        @media (prefers-reduced-motion: reduce) {
+            animation-duration: 2.4s;
+        }
+    }
+
+    &.is-loading {
+        canvas {
+            opacity: 0;
+        }
+
+        &::after {
+            opacity: 1;
+            visibility: visible;
+            transition: opacity .3s ease .4s, visibility 0s linear .4s;
+        }
+    }
+}
+
+@keyframes scene-loader {
+    to {
+        transform: rotate(1turn);
+    }
+}

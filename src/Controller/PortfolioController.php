@@ -47,6 +47,15 @@ class PortfolioController extends AbstractController
     }
 
     /**
+     * Printable resume (public/CV_Thomas_Jarrand.pdf), printed to PDF by `make cv`. Dev only: never built.
+     */
+    #[Route('/cv/', name: 'cv', env: 'dev', defaults: ['_locale' => 'fr'])]
+    public function cv(): Response
+    {
+        return $this->render('portfolio/cv.html.twig');
+    }
+
+    /**
      * The former "Créations" page now lives in the one-pager sections.
      */
     #[Route('/creations/', name: 'work', options: ['stenope' => ['sitemap' => false]])]

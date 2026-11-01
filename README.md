@@ -54,3 +54,9 @@ cd 3D && ATLAS=2048 FLOOR=1024 SAMPLES=1024 \
 
 `public/cover.png` (1200×630, used for `og:image` and `twitter:image`) is a screenshot of the dev-only page `/cover/`: the name and tagline in the site fonts, with the live 3D scene.
 To regenerate it, open http://127.0.0.1:8000/cover/ in a 1200×630 viewport once the scene has loaded, and screenshot the page.
+
+### Resume
+
+`public/CV_Thomas_Jarrand.pdf` (linked from the footer) is printed from the dev-only page `/cv/`: two A4 pages, with the content in `templates/portfolio/cv.html.twig` and the styles in `assets/css/cv.scss`.
+To regenerate it, start the dev server (`make start`) and run `make cv`: it builds the assets and prints the page to PDF with headless Chrome.
+Check it still prints 2 pages; the page balance rules at the end of `cv.scss` are tuned for the current content.

@@ -14,7 +14,8 @@
 
 .section-header {
     display: flex;
-    align-items: center;
+    // The intro sits on the title's baseline.
+    align-items: baseline;
     flex-wrap: wrap;
     column-gap: 32px;
     row-gap: 8px;
@@ -24,10 +25,6 @@
         max-width: 560px;
         font-size: 19px;
         line-height: 1.45;
-    }
-
-    &.section-header-narrow > p {
-        max-width: 420px;
     }
 
     @include mobile {
@@ -47,6 +44,9 @@
     gap: 20px;
 
     h2 {
+        // Gives the title block its baseline: otherwise browsers may take it from the 3D icon,
+        // which has no text, and use the bottom of the box (under the descenders) instead.
+        align-self: baseline;
         margin: 0;
         font-size: 72px;
         font-weight: 800;

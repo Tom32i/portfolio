@@ -4,11 +4,15 @@
 {%- set route = app.request.attributes.get('_route') -%}
 {%- set canonical = route ? url(route, app.request.attributes.get('_route_params')) : app.request.uri -%}
 {%- set og_locales = { fr: 'fr_FR', en: 'en_US' } -%}
+{#- The site's author, described in full on the homepage JSON-LD and referenced from every page's. -#}
+{%- set author = { '@type': 'Person', '@id': url('portfolio') ~ '#person', name: 'Thomas Jarrand', url: url('portfolio') } -%}
 <!DOCTYPE html>
 <html lang="{% block meta_locale locale %}">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {# Before first paint: styles that need JS (the mobile burger menu) apply only when it runs. #}
+        <script>document.documentElement.classList.add('js');</script>
         <title>{% block meta_title 'meta.title'|trans %}</title>
         <meta name="title" content="{{ block('meta_title') }}">
         <meta name="description" content="{% block meta_description 'meta.description'|trans %}">

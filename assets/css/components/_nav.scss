@@ -10,6 +10,8 @@
     padding-block: 28px;
 
     @include mobile {
+        flex-wrap: wrap;
+        row-gap: 12px;
         padding-block: 20px;
     }
 }
@@ -37,29 +39,39 @@
     }
 
     @include mobile {
-        display: none;
-        position: absolute;
-        top: calc(100% - 8px);
-        left: $gutter-mobile;
-        right: $gutter-mobile;
-        flex-direction: column;
-        gap: 0;
-        padding: 10px;
-        border-radius: 20px;
-        background: $white;
-        font-size: 20px;
+        // Without JS: the links wrap on their own row, under the brand.
+        order: 1;
+        flex-basis: 100%;
+        flex-wrap: wrap;
+        gap: 8px 20px;
+        font-size: 16px;
 
-        &.is-open {
-            display: flex;
-        }
+        // With JS: a panel under the nav, opened by the burger.
+        :root.js & {
+            display: none;
+            position: absolute;
+            top: calc(100% - 8px);
+            left: $gutter-mobile;
+            right: $gutter-mobile;
+            flex-direction: column;
+            gap: 0;
+            padding: 10px;
+            border-radius: 20px;
+            background: $white;
+            font-size: 20px;
 
-        a {
-            padding: 12px 16px;
-            border-radius: 12px;
+            &.is-open {
+                display: flex;
+            }
 
-            &:hover {
-                background: $lemon;
-                text-decoration: none;
+            a {
+                padding: 12px 16px;
+                border-radius: 12px;
+
+                &:hover {
+                    background: $lemon;
+                    text-decoration: none;
+                }
             }
         }
     }
@@ -140,7 +152,10 @@
         }
     }
 
+    // Only once JS can open the menu.
     @include mobile {
-        display: flex;
+        :root.js & {
+            display: flex;
+        }
     }
 }

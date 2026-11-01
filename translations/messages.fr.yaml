@@ -3,7 +3,6 @@ meta:
     description: "Lead développeur web à Lyon depuis plus de 15 ans : Symfony, PHP, JavaScript et Go. Jeux multijoueur dans le navigateur, conférences et outils open-source."
     job_title: Lead développeur web
 nav:
-    label: Sections
     games: Jeux
     talks: Conférences
     oss: Open-source

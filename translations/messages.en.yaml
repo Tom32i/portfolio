@@ -3,7 +3,6 @@ meta:
     description: "Lead web developer in Lyon for over 15 years: Symfony, PHP, JavaScript and Go. Multiplayer browser games, conference talks and open-source tools."
     job_title: Lead web developer
 nav:
-    label: Sections
     games: Games
     talks: Talks
     oss: Open-source

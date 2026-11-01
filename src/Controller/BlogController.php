@@ -31,7 +31,8 @@ class BlogController extends AbstractController
     #[Route('/', name: '')]
     public function list(): Response
     {
-        $articles = $this->manager->getContents(Article::class, ['date' => false]);
+        // Keyed by slug: pass a plain list, so it also encodes as a JSON array.
+        $articles = array_values($this->manager->getContents(Article::class, ['date' => false]));
         $lastModified = $articles === [] ? null : max(array_map(static fn (Article $article): \DateTimeInterface => $article->lastModified, $articles));
 
         return $this->render('blog/index.html.twig', [
@@ -70,10 +71,10 @@ class BlogController extends AbstractController
         return $this->render('blog/article.html.twig', [
             'article' => $article,
             'latestArticles' => \array_slice(
-                array_filter(
+                array_values(array_filter(
                     $this->manager->getContents(Article::class, ['date' => false]),
                     static fn (Article $other): bool => $other->slug !== $article->slug,
-                ),
+                )),
                 0,
                 3,
             ),

@@ -94,17 +94,20 @@ export default class IconViews {
         return this.icons.some((icon) => icon.visible);
     }
 
-    resize() {
-        this.icons.forEach((icon) => icon.resize());
+    /**
+     * Resize the given icons (all by default); the shared canvas fits the largest one.
+     */
+    resize(icons = this.icons) {
+        icons.forEach((icon) => icon.resize());
         this.renderer.setSize(
             Math.max(1, ...this.icons.map((icon) => icon.width)),
             Math.max(1, ...this.icons.map((icon) => icon.height)),
             false,
         );
 
-        // Resizing a canvas wipes it: redraw every icon, including the off-screen ones.
+        // Resizing a canvas wipes it: redraw the resized icons, including the off-screen ones.
         if (this.ready) {
-            this.icons.forEach((icon) => this.draw(icon));
+            icons.forEach((icon) => this.draw(icon));
         }
     }
 

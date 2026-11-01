@@ -20,19 +20,20 @@ class PortfolioController extends AbstractController
     ) {
     }
 
-    #[Route('/', name: 'portfolio', defaults: ['_locale' => 'fr', '_menu' => 'portfolio'])]
-    #[Route('/en/', name: 'portfolio_en', defaults: ['_locale' => 'en', '_menu' => 'portfolio'])]
+    #[Route('/', name: 'portfolio', defaults: ['_locale' => 'fr'])]
+    #[Route('/en/', name: 'portfolio_en', defaults: ['_locale' => 'en'])]
     public function index(): Response
     {
         $games = $this->manager->getContents(Game::class, ['priority' => false]);
         $featured = array_find($games, static fn (Game $game): bool => $game->featured);
 
+        // Contents come keyed by slug: pass plain lists, so they also encode as JSON arrays.
         return $this->render('portfolio/index.html.twig', [
             'featured' => $featured,
-            'games' => array_filter($games, static fn (Game $game): bool => $game !== $featured),
-            'talks' => $this->manager->getContents(Talk::class, ['date' => false]),
-            'events' => $this->manager->getContents(Event::class, ['priority' => false]),
-            'tools' => $this->manager->getContents(Tool::class, ['priority' => false]),
+            'games' => array_values(array_filter($games, static fn (Game $game): bool => $game !== $featured)),
+            'talks' => array_values($this->manager->getContents(Talk::class, ['date' => false])),
+            'events' => array_values($this->manager->getContents(Event::class, ['priority' => false])),
+            'tools' => array_values($this->manager->getContents(Tool::class, ['priority' => false])),
         ]);
     }
 

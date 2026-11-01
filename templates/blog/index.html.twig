@@ -2,30 +2,31 @@
 
 {% use 'blog/blocks.html.twig' %}
 
+{% import 'common/json_ld.html.twig' as json_ld %}
+
 {% block meta_title 'blog.meta_title'|trans %}
 {% block meta_description 'blog.subtitle'|trans %}
 {% block body_class 'page-blog' %}
 
 {% block head %}
     <link rel="alternate" type="application/rss+xml" title="{{ 'blog.meta_title'|trans }}" href="{{ url('blog_feed') }}">
-    <script type="application/ld+json">
-        {{- {
-            '@context': 'https://schema.org',
-            '@type': 'Blog',
-            '@id': url('blog') ~ '#blog',
-            url: url('blog'),
-            name: 'blog.meta_title'|trans,
-            description: 'blog.subtitle'|trans,
-            inLanguage: 'fr',
-            author: { '@type': 'Person', '@id': url('portfolio') ~ '#person', name: 'Thomas Jarrand', url: url('portfolio') },
-            blogPost: articles|map(article => {
-                '@type': 'BlogPosting',
-                headline: article.title,
-                url: url('blog_article', { article: article.slug }),
-                datePublished: article.date|date('c'),
-            }),
-        }|json_encode(constant('JSON_UNESCAPED_SLASHES') b-or constant('JSON_UNESCAPED_UNICODE') b-or constant('JSON_HEX_TAG'))|raw -}}
-    </script>
+    {# Posts are in French or English: each one states its language. #}
+    {{ json_ld.script({
+        '@context': 'https://schema.org',
+        '@type': 'Blog',
+        '@id': url('blog') ~ '#blog',
+        url: url('blog'),
+        name: 'blog.meta_title'|trans,
+        description: 'blog.subtitle'|trans,
+        author: author,
+        blogPost: articles|map(article => {
+            '@type': 'BlogPosting',
+            headline: article.title,
+            url: url('blog_article', { article: article.slug }),
+            datePublished: article.date|date('c'),
+            inLanguage: article.language,
+        }),
+    }) }}
 {% endblock %}
 
 {% block body %}

@@ -2,11 +2,11 @@
     Homepage structured data: who I am and what I made, as one linked graph for search engines and agents.
     Types are chosen to avoid Google rich-result checks we can't satisfy (no VideoGame, Event or VideoObject).
 #}
+{% import 'common/json_ld.html.twig' as json_ld %}
+{#- The page is per language; the site and its author are one entity, at the French (default) URL. -#}
 {% set page = url(home) %}
-{% set person = url('portfolio') ~ '#person' %}
-{% set author = { '@id': person } %}
-{# Content lists may be keyed by slug: rebuild them as plain lists so they encode as JSON arrays. #}
-{% set game_nodes = ([featured]|filter(game => game)|merge(games|reduce((carry, item) => carry|merge([item]), [])))|reduce((carry, item) => carry|merge([item]), [])|map(game => {
+{% set site = url('portfolio') %}
+{% set game_nodes = (featured ? [featured] : [])|merge(games)|map(game => {
     '@type': 'Game',
     '@id': page ~ '#game-' ~ game.slug,
     name: game.title,
@@ -15,10 +15,10 @@
     image: absolute_url(asset('/img/project/' ~ game.image)),
     dateCreated: game.date|date('Y-m-d'),
     genre: 'Browser game',
-    author: author,
+    author: { '@id': author['@id'] },
 }) %}
 
-{% set talk_nodes = talks|reduce((carry, item) => carry|merge([item]), [])|map(talk => {
+{% set talk_nodes = talks|map(talk => {
     '@type': 'PresentationDigitalDocument',
     '@id': page ~ '#talk-' ~ talk.slug,
     name: talk.title,
@@ -28,59 +28,58 @@
     inLanguage: 'fr',
     timeRequired: 'PT' ~ talk.duration ~ 'M',
     sameAs: [talk.sources]|merge(talk.video ? [talk.video] : []),
-    author: author,
+    author: { '@id': author['@id'] },
 }|merge(talk.image ? { image: absolute_url(asset('/img/talk/' ~ talk.image)) } : {})) %}
 
-{% set tool_nodes = tools|reduce((carry, item) => carry|merge([item]), [])|map(tool => {
+{% set tool_nodes = tools|map(tool => {
     '@type': 'SoftwareSourceCode',
     '@id': page ~ '#tool-' ~ tool.slug,
     name: tool.title,
     url: tool.url,
     codeRepository: tool.url,
     description: tool.description,
-    author: author,
+    author: { '@id': author['@id'] },
 }) %}
 
-<script type="application/ld+json">
-    {{- {
-        '@context': 'https://schema.org',
-        '@graph': [
-            {
-                '@type': 'ProfilePage',
-                '@id': page ~ '#page',
-                url: page,
-                name: 'meta.title'|trans,
-                inLanguage: locale,
-                mainEntity: author,
-                isPartOf: { '@id': url('portfolio') ~ '#website' },
+{# sameAs: filter() keeps keys, so the profile URLs are rebuilt as a list to encode as a JSON array. #}
+{{ json_ld.script({
+    '@context': 'https://schema.org',
+    '@graph': [
+        {
+            '@type': 'ProfilePage',
+            '@id': page ~ '#page',
+            url: page,
+            name: 'meta.title'|trans,
+            inLanguage: locale,
+            mainEntity: { '@id': author['@id'] },
+            isPartOf: { '@id': site ~ '#website' },
+        },
+        {
+            '@type': 'Person',
+            '@id': author['@id'],
+            name: author.name,
+            url: site,
+            jobTitle: 'meta.job_title'|trans,
+            description: 'meta.description'|trans,
+            email: 'mailto:' ~ email,
+            address: { '@type': 'PostalAddress', addressLocality: 'Lyon', addressCountry: 'FR' },
+            knowsLanguage: ['fr', 'en'],
+            knowsAbout: ['Symfony', 'PHP', 'JavaScript', 'Go', 'React', 'Vue.js', 'Laravel', 'WebGL', 'Multiplayer games'],
+            hasCredential: {
+                '@type': 'EducationalOccupationalCredential',
+                name: 'Symfony Certified Expert',
+                credentialCategory: 'certification',
+                recognizedBy: { '@type': 'Organization', name: 'Symfony', url: 'https://certification.symfony.com/' },
             },
-            {
-                '@type': 'Person',
-                '@id': person,
-                name: 'Thomas Jarrand',
-                url: page,
-                jobTitle: 'meta.job_title'|trans,
-                description: 'meta.description'|trans,
-                email: 'mailto:' ~ email,
-                address: { '@type': 'PostalAddress', addressLocality: 'Lyon', addressCountry: 'FR' },
-                knowsLanguage: ['fr', 'en'],
-                knowsAbout: ['Symfony', 'PHP', 'JavaScript', 'Go', 'React', 'Vue.js', 'Laravel', 'WebGL', 'Multiplayer games'],
-                hasCredential: {
-                    '@type': 'EducationalOccupationalCredential',
-                    name: 'Symfony Certified Expert',
-                    credentialCategory: 'certification',
-                    recognizedBy: { '@type': 'Organization', name: 'Symfony', url: 'https://certification.symfony.com/' },
-                },
-                sameAs: socials|filter(social => social.url starts with 'http')|map(social => social.url)|reduce((carry, item) => carry|merge([item]), []),
-            },
-            {
-                '@type': 'WebSite',
-                '@id': url('portfolio') ~ '#website',
-                url: url(home),
-                name: 'Thomas Jarrand',
-                inLanguage: locale,
-                author: author,
-            },
-        ]|merge(game_nodes)|merge(talk_nodes)|merge(tool_nodes),
-    }|json_encode(constant('JSON_UNESCAPED_SLASHES') b-or constant('JSON_UNESCAPED_UNICODE') b-or constant('JSON_HEX_TAG'))|raw -}}
-</script>
+            sameAs: socials|filter(social => social.url starts with 'http')|map(social => social.url)|reduce((carry, item) => carry|merge([item]), []),
+        },
+        {
+            '@type': 'WebSite',
+            '@id': site ~ '#website',
+            url: site,
+            name: author.name,
+            inLanguage: ['fr', 'en'],
+            author: { '@id': author['@id'] },
+        },
+    ]|merge(game_nodes)|merge(talk_nodes)|merge(tool_nodes),
+}) }}

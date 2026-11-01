@@ -49,3 +49,8 @@ cd 3D && ATLAS=2048 FLOOR=1024 SAMPLES=1024 \
 `scene1.blend` is never modified by the bake; its outputs (`scene1_baked.blend`, `baked/`) are not versioned.
 `leaves_from_mask.py` rebuilt the monstera leaves as real geometry from their alpha mask.
 `public/3d/coffee_cup.png` is a static render of the coffee cup used in the blog footer.
+
+### Link preview image
+
+`public/cover.png` (1200×630, used for `og:image` and `twitter:image`) is a screenshot of the dev-only page `/cover/`: the name and tagline in the site fonts, with the live 3D scene.
+To regenerate it, open http://127.0.0.1:8000/cover/ in a 1200×630 viewport once the scene has loaded, and screenshot the page.

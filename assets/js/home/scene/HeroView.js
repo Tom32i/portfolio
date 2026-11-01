@@ -103,7 +103,12 @@ export default class HeroView {
             ? Math.min(height, this.hero.getBoundingClientRect().bottom - this.canvas.getBoundingClientRect().top + SHADOW_ROOM)
             : height;
 
-        fitCamera(this.camera, width, height, this.radius, this.size.y, { zoom: 0.66, right: desktop, frameHeight });
+        // The element can set its own framing (the cover shows the whole desk, closer to the name);
+        // the hero frames it tight, in the right part of the page on desktop.
+        const zoom = Number(this.element.dataset.zoom) || 0.66;
+        const offset = desktop ? Number(this.element.dataset.offset ?? 0.24) : 0;
+
+        fitCamera(this.camera, width, height, this.radius, this.size.y, { zoom, offset, frameHeight });
     }
 
     /**

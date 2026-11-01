@@ -1,0 +1,63 @@
+@use "../abstracts/tokens" as *;
+
+// Link preview image (dev-only route /cover/): a 1200x630 frame, name on the left, desk on the right.
+.cover {
+    position: relative;
+    width: 1200px;
+    height: 630px;
+    overflow: hidden;
+    background: $coral;
+
+    .hero-scene {
+        inset: 0;
+    }
+}
+
+// Nothing but the frame on screen, ready to screenshot.
+.page-cover {
+    overflow: hidden;
+
+    .sf-toolbar {
+        display: none !important;
+    }
+}
+
+.cover-text {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 22px;
+    width: 600px;
+    height: 100%;
+    padding-left: 72px;
+
+    h1 {
+        margin: 0;
+        font-size: 116px;
+        font-weight: 800;
+        line-height: .92;
+        letter-spacing: -.035em;
+    }
+}
+
+.cover-tagline {
+    margin: 0;
+    font-size: 27px;
+    font-weight: 600;
+    line-height: 1.2;
+    color: $white;
+}
+
+.cover-url {
+    margin-top: 10px;
+    padding: 10px 20px;
+    border-radius: 999px;
+    background: $ink;
+    color: $white;
+    @include mono-label(16px);
+    letter-spacing: .04em;
+    text-transform: none;
+}

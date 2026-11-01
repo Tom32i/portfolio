@@ -38,6 +38,15 @@ class PortfolioController extends AbstractController
     }
 
     /**
+     * Link preview image (public/cover.png), drawn live with the 3D scene. Dev only: never built.
+     */
+    #[Route('/cover/', name: 'cover', env: 'dev', defaults: ['_locale' => 'fr'])]
+    public function cover(): Response
+    {
+        return $this->render('portfolio/cover.html.twig');
+    }
+
+    /**
      * The former "Créations" page now lives in the one-pager sections.
      */
     #[Route('/creations/', name: 'work', options: ['stenope' => ['sitemap' => false]])]

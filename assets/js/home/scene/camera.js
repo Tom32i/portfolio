@@ -12,22 +12,22 @@ export function createCamera() {
  * @param {number} objectHeight Height of the objects
  * @param {object} options
  *   zoom: fit factor
- *   right: frame the objects in the right part of a wide canvas
+ *   offset: shift the objects right by this fraction of the width (0: centred), on a wide canvas
  *   frameHeight: height the framing is computed for; a taller canvas extends the view below it
  *                without scaling or moving the objects
  */
-export function fitCamera(camera, width, height, radius, objectHeight, { zoom, right = false, frameHeight = height }) {
+export function fitCamera(camera, width, height, radius, objectHeight, { zoom, offset = 0, frameHeight = height }) {
     camera.aspect = width / frameHeight;
 
     const vertical = MathUtils.degToRad(camera.fov) / 2;
-    const horizontal = Math.atan(Math.tan(vertical) * (right ? Math.min(camera.aspect, 0.95) : camera.aspect));
+    const horizontal = Math.atan(Math.tan(vertical) * (offset ? Math.min(camera.aspect, 0.95) : camera.aspect));
     const distance = (radius / Math.sin(Math.min(vertical, horizontal))) * zoom;
 
     camera.position.set(0, distance * 0.66, distance * 0.75);
     camera.lookAt(0, objectHeight * 0.18, 0);
 
-    if (right || frameHeight !== height) {
-        camera.setViewOffset(width, frameHeight, right ? -width * 0.24 : 0, 0, width, height);
+    if (offset || frameHeight !== height) {
+        camera.setViewOffset(width, frameHeight, -width * offset, 0, width, height);
     } else {
         camera.clearViewOffset();
     }

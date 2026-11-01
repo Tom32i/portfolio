@@ -398,6 +398,12 @@
         border-radius: 14px;
     }
 
+    // Some first slides are white: keep their edge visible on the white card.
+    > img {
+        outline: 1px solid rgba($ink, .1);
+        outline-offset: -1px;
+    }
+
     .card-body {
         gap: 12px;
         padding: 0 10px 10px;

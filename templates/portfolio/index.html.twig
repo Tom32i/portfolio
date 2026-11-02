@@ -1,81 +1,188 @@
 {% extends 'base.html.twig' %}
 
-{% block meta_title 'Thomas Jarrand, Lead Développeur Web' %}
+{% set socials = [
+    { name: 'Github', url: links.github, icon: 'github' },
+    { name: 'Instagram', url: links.instagram, icon: 'instagram' },
+    { name: 'Bluesky', url: links.bluesky, icon: 'bluesky' },
+    { name: 'Twitter', url: links.twitter, icon: 'twitter' },
+    { name: 'Unsplash', url: links.unsplash, icon: 'unsplash' },
+    { name: 'LinkedIn', url: links.linkedin, icon: 'linkedin' },
+    { name: 'Mail', url: 'mailto:' ~ email, icon: 'mail' },
+] %}
+
 {% block twitter_card_type 'summary_large_image' %}
-{% set meta_cover = absolute_url('cover.png') %}
+{% block og_locale_alternate %}<meta property="og:locale:alternate" content="{{ locale == 'en' ? 'fr_FR' : 'en_US' }}">{% endblock %}
+{% set meta_cover = absolute_url('/cover.png') %}
 
-{% block body_class 'portfolio' %}
+{% block body_class 'page-home' %}
 
-{% block stylesheets %}
-    {{ parent() }}
-    {{ encore_entry_link_tags('portfolio') }}
+{% block head %}
+    <link rel="alternate" hreflang="fr" href="{{ url('portfolio') }}">
+    <link rel="alternate" hreflang="en" href="{{ url('portfolio_en') }}">
+    <link rel="alternate" hreflang="x-default" href="{{ url('portfolio') }}">
+    {% include 'portfolio/structured_data.html.twig' %}
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
-    {{ encore_entry_script_tags('portfolio') }}
+    {{ encore_entry_script_tags('home') }}
 {% endblock %}
 
 {% block body %}
-    {% include 'common/menu.html.twig' %}
-
-    <header>
-        <h1>Salut ! Moi c'est <span class="notice">Thomas</span>,</h1>
-        <h2>Je code des deux cotés de la requête HTTP.</h2>
+    {# Hero + facts row share the coral background and the 3D layer behind them. #}
+    <div class="intro-area">
+    <header class="hero wrap" id="hero">
+        <div class="hero-text">
+            <div class="kicker">
+                <span>{{ 'hero.job'|trans }}</span>
+                <span class="pronouns">{{ 'hero.pronouns'|trans }}</span>
+            </div>
+            <div class="hero-titles">
+                <p class="hello">{{ 'hero.hello'|trans }}</p>
+                <h1>{{ 'hero.tagline'|trans }}</h1>
+            </div>
+            <p class="intro">{{ 'hero.stack'|trans }}</p>
+            <div class="hero-scene" data-scene="hero" role="img" aria-label="{{ 'hero.scene'|trans }}"></div>
+            <ul class="pills socials" aria-label="{{ 'hero.socials'|trans }}">
+                {% for social in socials %}
+                    <li>
+                        <a class="pill pill-white" href="{{ social.url }}" {{ social.url starts with 'http' ? 'target="_blank" rel="me noopener"' }}>
+                            <span class="icon-{{ social.icon }}" aria-hidden="true"></span>
+                            {{ social.name }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
     </header>
 
-    <div class="card-container">
-        <div id="card" class="card">
-            <div class="recto content">
-                <div class="left">
-                    <div>
-                        <p>Je suis <span class="notice">lead développeur web</span> à Lyon,<br><span class="note">c'est mon métier depuis plus de <span class="notice">15 ans</span></span>.</p>
-
-                        <p>Je travaille notamment avec <a class="notice" target="_blank" href="https://symfony.com">Symfony</a>, <a class="notice" target="_blank" href="https://fr.reactjs.org/">React</a> et <a class="notice" target="_blank" href="https://go.dev">Go</a>.</p>
-
-                        <p>J'aime <a href="{{ path('work') }}#games">expérimenter</a> dans le navigateur avec des jeux vidéo en temps réel comme <a class="notice" target="_blank" href="http://curvytron2.com">Curvytron 2</a> et <a class="notice" target="_blank" href="https://whatthetune.com">What the tune?!</a></p>
-
-                        <p>Je me déplace essentiellement à <span class="notice">vélo</span> et en <span class="notice">longboard</span>.</p>
-
-                        <p>Je partage mon savoir faire via des <a class="notice" href="{{ path('blog') }}">articles</a>, des <a class="notice" href="{{ path('work') }}#tools">outils open-source</a> et des <a class="notice" href="{{ path('work') }}#talks">conférences</a>.</p>
-
-                        <p>J'apprends la photographie <a target="_blank" href="https://unsplash.com/tom32i">ici</a> et <a target="_blank" href="https://instagram.com/tom32i">là</a> (et même <a target="_blank" href="https://gameoscope.fr">là-bas</a>).</p>
-
-                        <p>Pour discuter, c'est par <a href="mailto:thomas.jarrand@gmail.com">mail</a> et sur mes réseaux sociaux.</p>
-                    </div>
-                    <span class="copyright">
-                        Créé avec enthousiame par Thomas Jarrand - © {{ 'now'|date('Y') }}
-                    </span>
-                </div>
-                <div class="right">
-                    <img class="stamp" src="{{ asset('/img/portrait.jpg') }}" alt="Thomas Jarrand">
-                    <div class="links">
-                        <a target="_blank" href="https://github.com/tom32i">
-                            <span title="Github" class="icon-github"></span>
-                            Github
-                        </a>
-                        <a target="_blank" href="https://instagram.com/tom32i">
-                            <span title="Instagram" class="icon-instagram"></span>
-                            Instagram
-                        </a>
-                        <a target="_blank" href="https://bsky.app/profile/tom32i.bsky.social">
-                            <span title="Bluesky" class="icon-bluesky"></span>
-                            Bluesky
-                        </a>
-                        <a target="_blank" href="https://twitter.com/tom32i">
-                            <span title="Twitter" class="icon-twitter"></span>
-                            Twitter
-                        </a>
-                        <a href="mailto:thomas.jarrand@gmail.com">
-                            <span title="Mail" class="icon-mail"></span>
-                            Mail
-                        </a>
-                    </div>
-                    <img class="stamp-mark" src="{{ asset('/img/stamp.svg') }}">
-                </div>
-            </div>
-            <div class="verso illustration">
-            </div>
-        </div>
+    <ul class="proofs wrap">
+        {% for i in 0..5 %}
+            <li class="pill pill-outline">{{ ('proofs.' ~ i)|trans }}</li>
+            {% if i == 3 %}<li class="break" aria-hidden="true"></li>{% endif %}
+        {% endfor %}
+    </ul>
     </div>
+
+    <main>
+        <section class="section section-games wrap" id="games">
+            <div class="section-header">
+                <div class="section-title">
+                    <div class="scene-icon" data-scene="gamepad" aria-hidden="true"></div>
+                    <h2>{{ 'games.title'|trans }}</h2>
+                </div>
+                <p>{{ 'games.intro'|trans }}</p>
+            </div>
+
+            {% if featured %}
+                <a class="featured" href="{{ featured.url }}" target="_blank" rel="noopener">
+                    {% if featured.video %}
+                        <video src="{{ asset(featured.video) }}" poster="{{ asset('/img/project/' ~ featured.image) }}" muted loop playsinline preload="none" data-autoplay aria-hidden="true"></video>
+                    {% else %}
+                        <img src="{{ asset('/img/project/' ~ featured.image) }}" alt="">
+                    {% endif %}
+                    <div class="featured-body">
+                        <div class="badges">
+                            <span class="badge badge-new">{{ 'games.new'|trans }}</span>
+                            <span class="badge badge-outline">{{ featured.date|date('Y') }}</span>
+                        </div>
+                        <div class="featured-text">
+                            <h3>{{ featured.title }}</h3>
+                            <p>{{ featured.getDescription(locale) }}</p>
+                        </div>
+                        <span class="play">{{ 'games.play'|trans }} <span class="icon-chevron-right" aria-hidden="true"></span></span>
+                    </div>
+                </a>
+            {% endif %}
+
+            <ul class="slider games">
+                {% for game in games %}
+                    <li>
+                        <a class="card game" href="{{ game.url }}" target="_blank" rel="noopener">
+                            <img src="{{ asset('/img/project/' ~ game.image) }}" alt="" loading="lazy" width="400" height="300">
+                            <div class="card-body">
+                                <div class="game-head">
+                                    <h3>{{ game.title }}</h3>
+                                    <span class="year">{{ game.date|date('Y') }}</span>
+                                </div>
+                                <p>{{ game.getDescription(locale) }}</p>
+                            </div>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <section class="section section-talks wrap" id="talks">
+            <div class="section-header">
+                <div class="section-title">
+                    <div class="scene-icon" data-scene="laptop" aria-hidden="true"></div>
+                    <h2>{{ 'talks.title'|trans }}</h2>
+                </div>
+                <p>{{ 'talks.intro'|trans }}</p>
+            </div>
+
+            <ul class="pills events">
+                {% for event in events %}
+                    <li><a class="pill pill-ink" href="{{ event.url }}" target="_blank" rel="noopener">{{ event.title }}</a></li>
+                {% endfor %}
+            </ul>
+
+            <ul class="slider talks">
+                {% for talk in talks %}
+                    <li class="card talk">
+                        {% if talk.image %}
+                            <img src="{{ asset('/img/talk/' ~ talk.image) }}" alt="" loading="lazy" width="640" height="360">
+                        {% else %}
+                            <div class="talk-placeholder" aria-hidden="true"></div>
+                        {% endif %}
+                        <div class="card-body">
+                            <div class="talk-meta">
+                                <span title="{{ 'talks.date'|trans }}"><span class="icon-calendar" aria-hidden="true"></span> <time datetime="{{ talk.date|date('Y-m-d') }}">{{ talk.date|date('Y') }}</time></span>
+                                <span title="{{ 'talks.duration'|trans }}"><span class="icon-clock" aria-hidden="true"></span> {{ talk.duration }} min</span>
+                            </div>
+                            <h3 lang="fr">{{ talk.title }}</h3>
+                            <p>{{ talk.getSummary(locale) }}</p>
+                            {% if talk.events %}
+                                <ul class="talk-events">
+                                    {% for event in talk.events %}<li>{{ event }}</li>{% endfor %}
+                                </ul>
+                            {% endif %}
+                            <div class="talk-links">
+                                <a href="{{ talk.slides }}" target="_blank" rel="noopener"><span class="icon-monitor" aria-hidden="true"></span> {{ 'talks.slides'|trans }}</a>
+                                <a href="{{ talk.sources }}" target="_blank" rel="noopener"><span class="icon-github" aria-hidden="true"></span> {{ 'talks.sources'|trans }}</a>
+                                {% if talk.video %}
+                                    <a href="{{ talk.video }}" target="_blank" rel="noopener"><span class="icon-film" aria-hidden="true"></span> {{ 'talks.video'|trans }}</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <section class="section section-oss wrap" id="oss">
+            <div class="section-header">
+                <div class="section-title">
+                    <div class="scene-icon" data-scene="plant" aria-hidden="true"></div>
+                    <h2>{{ 'oss.title'|trans }}</h2>
+                </div>
+                <p>{{ 'oss.intro'|trans }}</p>
+            </div>
+
+            <ul class="tools">
+                {% for tool in tools %}
+                    <li>
+                        <a class="tool" href="{{ tool.url }}" target="_blank" rel="noopener">
+                            <span class="tool-head">
+                                <span class="tool-name">{{ tool.title }}</span>
+                                <span class="icon-github" aria-hidden="true"></span>
+                            </span>
+                            <span class="tool-desc" lang="en">{{ tool.description }}</span>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+    </main>
 {% endblock %}

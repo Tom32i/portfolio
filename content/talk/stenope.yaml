@@ -1,7 +1,7 @@
 date: "2021-05-25"
 duration: 25
 title: "Stenope : Génération de site statiques"
-slides: https://tom32i.github.io/talk-stenope/
+slides: https://talk.tom32i.fr/stenope/
 sources: https://github.com/Tom32i/talk-stenope
 description: |
   La génération de sites statiques est un atout efficace et complémentaire du développement web moderne.
@@ -13,3 +13,7 @@ description: |
   - Pourrait-on faire mieux ?
 
   Laissez-moi vous présenter : Stenope ! L'outils de génération de site statique pour Symfony. ✨
+image: stenope.webp
+summary:
+  fr: La génération de sites statiques est un atout efficace et complémentaire du développement web moderne.
+  en: Static site generation is an efficient complement to modern web development.

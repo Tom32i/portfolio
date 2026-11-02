@@ -1,0 +1,226 @@
+{#
+    Resume, in French: the layout of the former Pages CV (labels on the left, content on the right, on white)
+    in the site's fonts and colours. A public page, also printed to public/CV_Thomas_Jarrand.pdf by `make cv`:
+    the toolbar only shows on screen, and the page balance rules in cv.scss only apply to the print.
+#}
+{% set jobs = [
+    {
+        title: 'Lead développeur web',
+        company: 'Wecandoo',
+        place: 'Lyon, France',
+        period: 'CDI depuis août 2024',
+        missions: 'Management opérationnel d’une équipe de 3 développeurs et responsabilité technique de la plateforme. Interlocuteur du produit et du métier : cadrage des besoins, priorisation, choix techniques et architecture. Accompagnement individuel de chaque développeur en one-to-ones.',
+        url: 'https://www.wecandoo.com',
+        structure: 'Marketplace d’ateliers chez l’artisan, 50 personnes.',
+        achievements: 'Coûts de recherche géographique divisés par 10 en migrant de Google Maps vers Mapbox, avec un système de cache. Mise en œuvre avec Algolia de fonctionnalités produit attendues de longue date, jusque-là jugées impossibles.',
+    },
+    {
+        title: 'Senior Software Developer',
+        company: 'Bedrock',
+        place: 'Lyon, France',
+        period: 'CDI décembre 2022 – juillet 2024',
+        duration: '1 an et 8 mois',
+        missions: 'Référent technique sur les API PHP / Symfony et Go des plateformes de streaming 6play (M6+) et RTL+ : développement, maintenance, architecture et montée en compétences des collaborateurs.',
+        url: 'https://www.bedrockstreaming.com',
+        structure: 'Filiale streaming de M6 et RTL, 200 personnes.',
+        achievements: 'Pilotage de la migration des API du catalogue de PHP vers Go, pour gagner en performance et réduire les coûts d’infrastructure.',
+    },
+    {
+        title: 'Développeur web, puis lead développeur',
+        company: 'Elao',
+        place: 'Lyon, France',
+        period: 'CDI janvier 2013 – mai 2022',
+        duration: '9 ans',
+        missions: 'Évolution de développeur junior à lead développeur. Conception et développement d’applications web Symfony, React (Angular, Ember), applications mobiles React Native.',
+        url: 'https://www.elao.com',
+        structure: 'Agence web lyonnaise, 16 personnes.',
+        projects: {
+            'Tribü': 'https://www.tribu-recyclage.fr',
+            'Musique Music': 'https://www.musique-music.com',
+            'Mounki': 'https://www.mounki.fr',
+        },
+    },
+    {
+        title: 'Développeur web',
+        company: 'Inhouse Group',
+        place: 'Perth, Australie',
+        period: 'CDD juin 2012 – novembre 2012',
+        duration: '6 mois',
+        missions: 'Conception et développement d’applications web avec Symfony 2.',
+        structure: 'Agence web australienne, 15 personnes.',
+    },
+    {
+        title: 'Développeur web',
+        company: 'La bonne agence',
+        place: 'Grenoble, France',
+        period: 'CDI avril 2010 – avril 2012',
+        duration: '2 ans',
+        missions: 'Développement PHP objet, Drupal, AJAX et apps Facebook, intégration.',
+        url: 'https://www.labonneagence.com',
+        structure: 'Agence web grenobloise, 20 personnes.',
+    },
+] %}
+{% set skills = [
+    { label: 'Management', value: 'Encadrement, recrutement, mentorat, one-to-ones, animation des rituels, leadership technique, direction de projet, arbitrages produit et technique.' },
+    { label: 'Back end', value: 'PHP 8, Symfony (certifié Symfony Expert), Laravel, Go, Node.js.' },
+    { label: 'Front end', value: 'JavaScript, React, React Native, Vue, Three.js, WebSocket, HTML/CSS, SVG.' },
+    { label: 'Méthode', value: 'Scrum, Kanban, revue de code, tests automatisés, CI/CD, pair programming.' },
+    { label: 'Qualité', value: 'Robustesse, résilience, modularité, évolutivité, performance.' },
+    { label: 'Infra', value: 'Docker, Ansible, AWS, Debian, Nginx, Caddy.' },
+    { label: 'Organisation', value: 'Apprécie le télétravail partiel et privilégie le présentiel.' },
+    { label: 'Langues', value: 'Français natif, anglais courant.' },
+] %}
+{% set studies = [
+    { years: '2009–2010', what: 'Licence pro Conception et administration de sites web, Arles.' },
+    { years: '2007–2009', what: 'DUT Services et Réseaux de Communication, Chambéry.' },
+    { years: '2006–2007', what: 'Bac Scientifique SVT (mention Bien), option Arts plastiques, Grenoble.' },
+] %}
+{% macro link(url, label) %}<a href="{{ url }}">{{ label ?? url|replace({ 'https://': '', 'http://': '', 'www.': '' })|trim('/', 'right') }}</a>{% endmacro %}
+{% import _self as cv %}
+{% import 'common/json_ld.html.twig' as json_ld %}
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CV Thomas Jarrand, lead développeur web à Lyon</title>
+        <meta name="description" content="CV de Thomas Jarrand, lead développeur web à Lyon : management d’équipe, PHP / Symfony, React et Go, plus de 15 ans d’expérience, conférences et projets open source.">
+        <link rel="canonical" href="{{ url('cv') }}">
+        <meta property="og:type" content="profile">
+        <meta property="og:site_name" content="Thomas Jarrand">
+        <meta property="og:url" content="{{ url('cv') }}">
+        <meta property="og:title" content="CV Thomas Jarrand, lead développeur web à Lyon">
+        <meta property="og:locale" content="fr_FR">
+        <meta property="og:image" content="{{ absolute_url(asset('/cover.png')) }}">
+        {{ block('icon', 'base.html.twig') }}
+        {# The Person itself is described on the homepage graph. #}
+        {{ json_ld.script({
+            '@context': 'https://schema.org',
+            '@type': 'ProfilePage',
+            url: url('cv'),
+            name: 'CV Thomas Jarrand',
+            inLanguage: 'fr',
+            mainEntity: { '@id': url('portfolio') ~ '#person' },
+        }) }}
+        {{ encore_entry_link_tags('cv') }}
+        {{ block('analytics', 'base.html.twig') }}
+    </head>
+    <body>
+        {# Screen only: hidden when printed to PDF. #}
+        <nav class="cv-toolbar">
+            <a href="{{ path('portfolio') }}"><span class="icon-chevron-left" aria-hidden="true"></span>thomas.jarrand.fr</a>
+            <a class="cv-download" href="/CV_Thomas_Jarrand.pdf" download="CV_Thomas_Jarrand.pdf"><span class="icon-download" aria-hidden="true"></span>Télécharger le PDF</a>
+        </nav>
+
+        <header class="cv-header">
+            <div class="cv-identity">
+                <h1>Thomas <strong>Jarrand</strong></h1>
+                <p>{{ 'hero.tagline'|trans }}</p>
+            </div>
+            <img class="cv-portrait" src="{{ asset('/img/portrait.jpg') }}" alt="">
+            <ul class="cv-contacts">
+                <li>Lyon</li>
+                <li>{{ email }}</li>
+                <li>{{ cv.link(url('portfolio'), 'thomas.jarrand.fr') }}<br>{{ cv.link(links.github, 'github.com/tom32i') }}<br>{{ cv.link(links.linkedin, 'linkedin.com/in/thomasjarrand') }}</li>
+            </ul>
+        </header>
+
+        <main>
+            <h2 class="cv-job">Lead développeur web</h2>
+
+            <section class="cv-section">
+                <h3>Profil</h3>
+                <div class="cv-paragraphs">
+                    <p>
+                        Développeur depuis plus de 15 ans, j’encadre aujourd’hui une équipe au quotidien et je guide les choix produit et techniques aux côtés du métier.
+                    </p>
+                    <p>
+                        Enthousiaste et créatif, je conçois et développe des solutions full-stack performantes, maintenables et orientées produit.
+                        J’aime relever les défis techniques exigeants, notamment en performance et en optimisation des coûts.
+                        Je travaille principalement en PHP avec Symfony et Laravel, et côté front avec React et Vue. Je fais aussi appel à Go pour les traitements critiques et parallélisés.
+                    </p>
+                    <p>
+                        Je partage mon savoir-faire via les revues de code, des conférences, des articles et des outils open source.
+                        Je suis moteur en équipe et j’organise volontiers des game jams et des sorties randonnée entre collègues&nbsp;!
+                    </p>
+                </div>
+            </section>
+
+            <section class="cv-section">
+                <h3>Compétences</h3>
+                <ul>
+                    {% for skill in skills %}
+                        <li><strong>{{ skill.label }}&nbsp;:</strong> {{ skill.value }}</li>
+                    {% endfor %}
+                </ul>
+            </section>
+
+            <section class="cv-section">
+                <h3>Expérience</h3>
+                <div class="cv-entries">
+                    {% for job in jobs %}
+                        <article class="cv-entry">
+                            <p><strong>{{ job.title }}</strong> chez <em>{{ job.company }}{% if job.place is defined %} – {{ job.place }}{% endif %}</em></p>
+                            <p><span class="cv-key">Période :</span> {{ job.period }}{% if job.duration is defined %} · <strong>{{ job.duration }}</strong>{% endif %}</p>
+                            <p><span class="cv-key">Missions :</span> {{ job.missions }}</p>
+                            {% if job.achievements is defined %}
+                                <p><span class="cv-key">Réalisations :</span> {{ job.achievements }}</p>
+                            {% endif %}
+                            {% if job.projects is defined %}
+                                <p><span class="cv-key">Projets :</span> lead sur {% for name, url in job.projects %}{{ cv.link(url, name) }}{{ loop.revindex0 > 1 ? ', ' : (loop.revindex0 == 1 ? ' et ' : '.') }}{% endfor %}</p>
+                            {% endif %}
+                            <p><span class="cv-key">Structure :</span> {% if job.url is defined %}{{ cv.link(job.url) }}, {% endif %}{{ job.structure }}</p>
+                        </article>
+                    {% endfor %}
+                </div>
+            </section>
+
+            <section class="cv-section">
+                <h3>Études</h3>
+                <ul>
+                    {% for study in studies %}
+                        <li><span class="cv-key">{{ study.years }} :</span> {{ study.what }}</li>
+                    {% endfor %}
+                </ul>
+            </section>
+
+            <section class="cv-section">
+                <h3>Créations</h3>
+                <div class="cv-entries">
+                    <p>
+                        J’ai créé les jeux multijoueurs en ligne {{ cv.link('https://curvytron.com', 'Curvytron') }},
+                        sa suite en 3D {{ cv.link('https://curvytron2.com', 'Curvytron 2') }}, et {{ cv.link('https://whatthetune.com', 'What the Tune ?!') }}
+                    </p>
+                    <p>
+                        Je maintiens des projets open source comme :<br>
+                        {{ cv.link('https://github.com/StenopePHP/Stenope', 'Stenope') }} : un générateur de site statique pour Symfony,<br>
+                        {{ cv.link('https://github.com/Tom32i/synchroplayer', 'Synchroplayer') }} : un lecteur vidéo synchronisé pour regarder à plusieurs,<br>
+                        {{ cv.link('https://github.com/Tom32i/netcode', 'Netcode') }} : un moteur de communication binaire temps réel pour le web.
+                    </p>
+                    <p>
+                        Je donne des conférences sur des sujets aussi variés que
+                        la {{ cv.link('https://talk.tom32i.fr/svg-twig/', 'génération de graphiques SVG avec Symfony') }},
+                        les {{ cv.link('https://talk.tom32i.fr/emoji/', 'emojis') }},
+                        la {{ cv.link('https://talk.tom32i.fr/vacances-velo/', 'randonnée à vélo') }},
+                        la {{ cv.link('https://talk.tom32i.fr/stenope/', 'génération de sites statiques') }}
+                        ou encore la {{ cv.link('https://talk.tom32i.fr/binary-brain/', 'lecture d’IRM du cerveau en JavaScript') }}
+                        ({{ cv.link('https://youtu.be/LuCXFhaRXcw', 'filmée') }} au Forum PHP 2018).
+                    </p>
+                </div>
+            </section>
+
+            <section class="cv-section">
+                <h3>À propos de moi</h3>
+                <p>
+                    Je me déplace essentiellement à vélo et en longboard.<br>
+                    Je suis photographe amateur, jardinier d’appartement, fan de jeux vidéo indépendants, redoutable au blind test et spécialiste du gratin dauphinois.<br>
+                    Pour me ressourcer, je pars bivouaquer dans les Alpes, traverser la France à vélo ou encore plonger en apnée en Méditerranée.
+                </p>
+            </section>
+        </main>
+
+        <footer class="cv-footer">
+            Jeux, conférences et projets open source sur {{ cv.link(url('portfolio'), 'thomas.jarrand.fr') }}
+        </footer>
+    </body>
+</html>

@@ -8,9 +8,12 @@ use App\Model\Article;
 use Stenope\Bundle\ContentManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Asset\Packages;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+use Symfony\Component\Translation\LocaleSwitcher;
 
 #[Route('/blog', name: 'blog', defaults: ['_menu' => 'blog'])]
 class BlogController extends AbstractController
@@ -19,13 +22,17 @@ class BlogController extends AbstractController
         private ContentManagerInterface $manager,
         private NormalizerInterface $serializer,
         private Packages $assets,
+        private LocaleSwitcher $localeSwitcher,
+        #[Autowire('%email%')]
+        private string $email,
     ) {
     }
 
-    #[Route('', name: '')]
+    #[Route('/', name: '')]
     public function list(): Response
     {
-        $articles = $this->manager->getContents(Article::class, ['date' => false]);
+        // Keyed by slug: pass a plain list, so it also encodes as a JSON array.
+        $articles = array_values($this->manager->getContents(Article::class, ['date' => false]));
         $lastModified = $articles === [] ? null : max(array_map(static fn (Article $article): \DateTimeInterface => $article->lastModified, $articles));
 
         return $this->render('blog/index.html.twig', [
@@ -33,7 +40,7 @@ class BlogController extends AbstractController
         ])->setLastModified($lastModified);
     }
 
-    #[Route('/feed.rss', name: '_feed', defaults: ['_format' => 'atom'], options: ['mapped' => false])]
+    #[Route('/feed.rss', name: '_feed', defaults: ['_format' => 'atom'], options: ['mapped' => false, 'stenope' => ['sitemap' => false]])]
     public function feed(): Response
     {
         $articles = $this->manager->getContents(Article::class, ['date' => true]);
@@ -42,7 +49,7 @@ class BlogController extends AbstractController
             'title' => 'Thomas Jarrand Blog Technique',
             'description' => '',
             'webmaster' => [
-                'email' => 'thomas.jarrand@gmail.com',
+                'email' => $this->email,
                 'name' => 'Thomas Jarrand',
             ],
             'image' => [
@@ -54,21 +61,23 @@ class BlogController extends AbstractController
         ]);
     }
 
-    #[Route('/{article}', name: '_article')]
-    public function article(Article $article): Response
+    #[Route('/{article}/', name: '_article')]
+    public function article(Request $request, Article $article): Response
     {
+        // The whole page (nav, footer, dates) speaks the article's language, not just its body.
+        $request->setLocale($article->language);
+        $this->localeSwitcher->setLocale($article->language);
+
         return $this->render('blog/article.html.twig', [
             'article' => $article,
-            'lastestArticles' => \array_slice($this->manager->getContents(Article::class, ['date' => false]), 0, 3),
+            'latestArticles' => \array_slice(
+                array_values(array_filter(
+                    $this->manager->getContents(Article::class, ['date' => false]),
+                    static fn (Article $other): bool => $other->slug !== $article->slug,
+                )),
+                0,
+                3,
+            ),
         ])->setLastModified($article->lastModified);
-    }
-
-    public function latest(int $max = 3): Response
-    {
-        $articles = $this->manager->getContents(Article::class, ['date' => false]);
-
-        return $this->render('blog/latest.html.twig', [
-            'articles' => \array_slice($articles, 0, $max),
-        ]);
     }
 }

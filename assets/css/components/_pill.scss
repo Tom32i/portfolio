@@ -1,0 +1,74 @@
+@use "../abstracts/tokens" as *;
+
+.pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    @include mobile {
+        gap: 8px;
+    }
+}
+
+.pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border-radius: 999px;
+    white-space: nowrap;
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+.pill-white {
+    padding: 10px 16px;
+    background: $white;
+    font-weight: 600;
+    font-size: 16px;
+    transition: background-color .15s;
+
+    &:hover {
+        background: $lemon;
+    }
+
+    @include mobile {
+        height: 44px;
+        padding: 0 14px;
+        gap: 7px;
+        font-size: 15px;
+    }
+}
+
+.pill-outline {
+    padding: 8px 14px;
+    border: 1.5px solid $ink;
+    font-family: $font-mono;
+    font-size: 13px;
+    font-weight: 700;
+
+    @include mobile {
+        padding: 6px 11px;
+        font-size: 12px;
+        white-space: normal;
+    }
+}
+
+.pill-ink {
+    padding: 8px 14px;
+    background: $ink;
+    color: $white;
+    font-weight: 600;
+    font-size: 15px;
+    transition: background-color .15s;
+
+    &:hover {
+        background: $ink-soft;
+    }
+
+    @include mobile {
+        padding: 6px 11px;
+        font-size: 13px;
+    }
+}

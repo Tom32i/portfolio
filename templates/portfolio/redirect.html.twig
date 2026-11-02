@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <title>Thomas Jarrand</title>
+        <link rel="canonical" href="{{ absolute_url(target) }}">
+        <meta http-equiv="refresh" content="0; url={{ target }}#games">
+        <script>
+            {# Former anchors of the "Créations" page → one-pager sections #}
+            location.replace({{ target|json_encode|raw }} + '#' + ({ '#talks': 'talks', '#tools': 'oss' }[location.hash] || 'games'));
+        </script>
+    </head>
+    <body>
+        <a href="{{ target }}#games">Thomas Jarrand</a>
+    </body>
+</html>

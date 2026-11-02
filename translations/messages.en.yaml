@@ -1,0 +1,61 @@
+meta:
+    title: Thomas Jarrand, lead web developer in Lyon
+    description: "Lead web developer in Lyon for over 15 years: Symfony, PHP, JavaScript and Go. Multiplayer browser games, conference talks and open-source tools."
+    job_title: Lead web developer
+nav:
+    games: Games
+    talks: Talks
+    oss: Open-source
+    contact: Contact
+    menu: Menu
+    language: Language
+    blog: Blog
+    top: Back to top
+hero:
+    job: Lead web developer · Lyon
+    pronouns: he/him
+    hello: Hi, I'm Thomas.
+    tagline: I code on both sides of the HTTP request.
+    stack: "For over 15 years I've been building for the web: solid, fast apps with Symfony, Laravel, React, Vue and Go, real-time multiplayer games, open-source tools. Today I lead a team and guide product and technical decisions alongside the business. I share all of it in conference talks."
+    scene: "My desk in 3D: laptop, longboard, gamepad, coffee, monstera"
+    socials: Social networks
+proofs:
+    - 15+ years in the job
+    - Team lead & mentoring
+    - Symfony Certified Expert
+    - PHP · JavaScript · Go
+    - Speaker
+    - Open-source contributor
+games:
+    title: Video games
+    intro: Video games, often multiplayer, right in the browser.
+    new: New
+    play: Play
+talks:
+    title: Talks
+    intro: "I've had the pleasure of speaking at all these great events."
+    date: Date
+    duration: Duration
+    slides: Slides
+    sources: Sources
+    video: Video
+oss:
+    title: Open-source
+    intro: Open-source tools I publish and maintain.
+contact:
+    title: Let's talk.
+    about: Amateur photographer, apartment gardener, indie game fan and fearsome at music quizzes. To recharge, I bivouac in the Alps, cross France by bike or freedive in the Mediterranean.
+    photo: I'm also learning photography
+footer:
+    copyright: Made with enthusiasm by Thomas Jarrand · © %year%
+    cv: View my résumé (French)
+    cv_pdf: Download (PDF)
+    blog: Blog (archives)
+    home: Home
+blog:
+    title: The blog
+    subtitle: Field notes and technical cookbooks on Symfony, PHP, JavaScript, React and the other web technologies I use every day.
+    meta_title: Thomas Jarrand's tech blog
+    latest: Latest articles
+    all: All articles
+    read: Read

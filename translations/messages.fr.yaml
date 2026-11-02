@@ -1,0 +1,61 @@
+meta:
+    title: Thomas Jarrand, lead développeur web à Lyon
+    description: "Lead développeur web à Lyon depuis plus de 15 ans : Symfony, PHP, JavaScript et Go. Jeux multijoueur dans le navigateur, conférences et outils open-source."
+    job_title: Lead développeur web
+nav:
+    games: Jeux
+    talks: Conférences
+    oss: Open-source
+    contact: Contact
+    menu: Menu
+    language: Langue
+    blog: Blog
+    top: Revenir en haut
+hero:
+    job: Lead développeur web · Lyon
+    pronouns: il/lui
+    hello: Salut, moi c'est Thomas.
+    tagline: Je code des deux côtés de la requête HTTP.
+    stack: "Depuis plus de 15 ans, je fabrique pour le web : des applis solides et performantes avec Symfony, Laravel, React, Vue et Go, des jeux multijoueurs en temps réel, des outils open-source. Aujourd'hui, j'encadre une équipe et je guide les choix produit et techniques aux côtés du métier. Je partage tout ça en conférence."
+    scene: "Mon bureau en 3D : laptop, longboard, manette, café, monstera"
+    socials: Réseaux sociaux
+proofs:
+    - 15+ ans de métier
+    - Lead d'équipe & mentorat
+    - Certifié Symfony Expert
+    - PHP · JavaScript · Go
+    - Conférencier
+    - Contributeur open-source
+games:
+    title: Jeux vidéo
+    intro: Des jeux vidéo, souvent multijoueur, dans le navigateur.
+    new: Nouveau
+    play: Jouer
+talks:
+    title: Conférences
+    intro: "J'ai eu le plaisir de parler dans tous ces super évènements."
+    date: Date
+    duration: Durée
+    slides: Slides
+    sources: Sources
+    video: Vidéo
+oss:
+    title: Open-source
+    intro: Les outils open-source que je mets à disposition et maintiens.
+contact:
+    title: Pour discuter, c’est par ici.
+    about: Photographe amateur, jardinier d'appartement, fan de jeux indés et redoutable au blind test. Pour me ressourcer, je bivouaque dans les Alpes, je traverse la France à vélo ou je plonge en apnée en Méditerranée.
+    photo: J'apprends aussi la photographie
+footer:
+    copyright: Créé avec enthousiasme par Thomas Jarrand · © %year%
+    cv: Consulter mon CV
+    cv_pdf: Télécharger (PDF)
+    blog: Le blog (archives)
+    home: Accueil
+blog:
+    title: Le blog
+    subtitle: Retours d'expérience et cookbooks techniques pour Symfony, PHP, Javascript, React et autres technologies web de mon quotidien.
+    meta_title: Blog technique de Thomas Jarrand
+    latest: Derniers articles
+    all: Tous les articles
+    read: Lire

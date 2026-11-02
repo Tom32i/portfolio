@@ -1,33 +1,45 @@
+{%- set locale = app.request.locale -%}
+{%- set home = locale == 'en' ? 'portfolio_en' : 'portfolio' -%}
+{%- set on_blog = app.request.attributes.get('_menu') == 'blog' -%}
+{%- set route = app.request.attributes.get('_route') -%}
+{%- set canonical = route ? url(route, app.request.attributes.get('_route_params')) : app.request.uri -%}
+{%- set og_locales = { fr: 'fr_FR', en: 'en_US' } -%}
+{#- The site's author, described in full on the homepage JSON-LD and referenced from every page's. -#}
+{%- set author = { '@type': 'Person', '@id': url('portfolio') ~ '#person', name: 'Thomas Jarrand', url: url('portfolio') } -%}
 <!DOCTYPE html>
-<html lang="{% block meta_locale app.request.locale %}">
+<html lang="{% block meta_locale locale %}">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>{% block meta_title 'Thomas Jarrand' %}</title>
+        {# Before first paint: styles that need JS (the mobile burger menu) apply only when it runs. #}
+        <script>document.documentElement.classList.add('js');</script>
+        <title>{% block meta_title 'meta.title'|trans %}</title>
         <meta name="title" content="{{ block('meta_title') }}">
-        <meta name="description" content="{% block meta_description %}Lead Développeur web à Lyon. Je code des deux cotés de la requête HTTP.{% endblock %}">
+        <meta name="description" content="{% block meta_description 'meta.description'|trans %}">
+        <link rel="canonical" href="{{ canonical }}">
 
         {% block social %}
             <!-- Open Graph / Facebook -->
             <meta property="og:type" content="{% block fb_og_type 'website' %}">
-            <meta property="og:url" content="{{ app.request.uri }}">
-            <meta property="og:title" content="{{ block('meta_title') }}">
+            <meta property="og:site_name" content="Thomas Jarrand">
+            <meta property="og:url" content="{{ canonical }}">
+            <meta property="og:title" content="{% block og_title block('meta_title') %}">
             <meta property="og:description" content="{{ block('meta_description') }}">
-            <meta property="og:local" content="{{ block('meta_locale') }}">
+            <meta property="og:locale" content="{{ og_locales[block('meta_locale')] ?? block('meta_locale') }}">
+            {% block og_locale_alternate '' %}
             {% if meta_cover|default(false) %}
             <meta property="og:image" content="{{ meta_cover }}">
             {% endif %}
 
             <!-- Twitter -->
             <meta property="twitter:card" content="{% block twitter_card_type 'summary' %}">
-            <meta property="twitter:title" content="{{ block('meta_title') }}">
+            <meta property="twitter:title" content="{{ block('og_title') }}">
             <meta property="twitter:description" content="{{ block('meta_description') }}">
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
             {% if meta_cover|default(false) %}
             <meta property="twitter:image" content="{{ meta_cover }}">
             {% endif %}
-
         {% endblock %}
 
         {% block icon %}
@@ -45,12 +57,13 @@
             <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
             <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
             <link rel="manifest" href="/manifest.json">
-            <meta name="msapplication-TileColor" content="#ffffff">
+            <meta name="msapplication-TileColor" content="#ff9aa6">
             <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
-            <meta name="theme-color" content="#ffffff">
+            <meta name="theme-color" content="#ff9aa6">
         {% endblock %}
+        {% block head %}{% endblock %}
         {% block stylesheets %}
-            {{ encore_entry_link_tags('style') }}
+            {{ encore_entry_link_tags('app') }}
         {% endblock %}
         {% block analytics %}
             {% if umami_id %}
@@ -59,9 +72,16 @@
         {% endblock %}
         {% block javascripts %}
             <script async src="https://lab.tom32i.fr/console/loader.js"></script>
+            {{ encore_entry_script_tags('common') }}
         {% endblock %}
     </head>
     <body class="{% block body_class '' %}">
+        {% include 'common/nav.html.twig' %}
         {% block body %}{% endblock %}
+        {% include 'common/footer.html.twig' %}
+        <button class="back-to-top" type="button" aria-hidden="true" tabindex="-1" title="{{ 'nav.top'|trans }}">
+            <span class="icon-chevron-up" aria-hidden="true"></span>
+            <span class="sr-only">{{ 'nav.top'|trans }}</span>
+        </button>
     </body>
 </html>

@@ -1,22 +1,77 @@
-{% extends 'blog/base.html.twig' %}
-
-{% block meta_title article.title ~ ' | Blog technique de Thomas Jarrand' %}
-{% block meta_description article.description %}
-{% block meta_locale article.language %}
-{% block fb_og_type 'article' %}
-{% block twitter_card_type article.cover ? 'summary_large_image' : 'summary' %}
-{% set meta_cover = article.cover ? absolute_url(article.cover) : null %}
+{% extends 'base.html.twig' %}
 
 {% use 'blog/blocks.html.twig' %}
 
-{% block content %}
-    <article lang="{{ article.language }}">
-        <header>
-            <h1>{{ article.title }}</h1>
-            {{ block('date') }}
-        </header>
-        <div class="article-content">
-            {{ article.content|raw }}
-        </div>
-    </article>
+{% import 'common/json_ld.html.twig' as json_ld %}
+
+{% block meta_title article.title ~ ' | ' ~ 'blog.meta_title'|trans %}
+{% block meta_description article.description %}
+{% block fb_og_type 'article' %}
+{% block og_title article.title %}
+{% block twitter_card_type article.cover ? 'summary_large_image' : 'summary' %}
+{% set meta_cover = article.cover ? absolute_url(article.cover) : null %}
+
+{% block body_class 'page-blog page-article' %}
+
+{% block head %}
+    <link rel="alternate" type="application/rss+xml" title="{{ 'blog.meta_title'|trans }}" href="{{ url('blog_feed') }}">
+    <meta property="article:published_time" content="{{ article.date|date('c') }}">
+    <meta property="article:modified_time" content="{{ article.lastModified|date('c') }}">
+    {{ json_ld.script({
+        '@context': 'https://schema.org',
+        '@graph': [
+            {
+                '@type': 'BlogPosting',
+                headline: article.title,
+                description: article.description,
+                url: canonical,
+                mainEntityOfPage: canonical,
+                datePublished: article.date|date('c'),
+                dateModified: article.lastModified|date('c'),
+                inLanguage: article.language,
+                author: author,
+                publisher: author,
+                isPartOf: { '@type': 'Blog', '@id': url('blog') ~ '#blog', url: url('blog') },
+            }|merge(article.cover ? { image: absolute_url(article.cover) } : {}),
+            {
+                '@type': 'BreadcrumbList',
+                itemListElement: [
+                    { '@type': 'ListItem', position: 1, name: 'Thomas Jarrand', item: url('portfolio') },
+                    { '@type': 'ListItem', position: 2, name: 'blog.title'|trans, item: url('blog') },
+                    { '@type': 'ListItem', position: 3, name: article.title, item: canonical },
+                ],
+            },
+        ],
+    }) }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('blog') }}
+{% endblock %}
+
+{% block body %}
+    <main>
+        <article>
+            <header class="page-header wrap">
+                <a class="back" href="{{ path('blog') }}"><span class="icon-chevron-left" aria-hidden="true"></span> {{ 'blog.all'|trans }}</a>
+                <h1>{{ article.title }}</h1>
+                {{ block('date') }}
+            </header>
+            <div class="section section-article wrap">
+                <div class="prose">
+                    {{ article.content|raw }}
+                </div>
+            </div>
+        </article>
+
+        <section class="section section-posts wrap">
+            <h2 class="posts-title">{{ 'blog.latest'|trans }}</h2>
+            <ul class="posts">
+                {% for article in latestArticles %}
+                    {{ block('preview') }}
+                {% endfor %}
+            </ul>
+        </section>
+    </main>
 {% endblock %}

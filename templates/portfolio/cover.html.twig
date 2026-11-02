@@ -1,0 +1,25 @@
+{#
+    Link preview image (public/cover.png), drawn live with the real 3D scene: dev only.
+    Screenshot it at 1200x630 to regenerate the image (see README).
+#}
+<!DOCTYPE html>
+<html lang="{{ app.request.locale }}">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="robots" content="noindex">
+        <title>Cover</title>
+        {{ encore_entry_link_tags('app') }}
+        {{ encore_entry_script_tags('home') }}
+    </head>
+    <body class="page-cover">
+        <div class="cover">
+            <div class="hero-scene" data-scene="hero" data-zoom="0.74" data-offset="0.14" aria-hidden="true"></div>
+            <div class="cover-text">
+                <p class="kicker">{{ 'hero.job'|trans }}</p>
+                <h1>Thomas<br>Jarrand</h1>
+                <p class="cover-tagline">{{ 'hero.tagline'|trans }}</p>
+                <span class="cover-url">thomas.jarrand.fr</span>
+            </div>
+        </div>
+    </body>
+</html>

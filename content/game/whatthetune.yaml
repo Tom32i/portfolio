@@ -1,6 +1,8 @@
 title: What the Tune ?!
-description: Un blind-test musical multijoueur en temps réel.
+description:
+  fr: Un blind test musical multijoueur en temps réel.
+  en: A real-time multiplayer music quiz.
 url: https://whatthetune.com
-image: whatthetune.png
+image: whatthetune.webp
 date: "2018-03-22"
 priority: 10

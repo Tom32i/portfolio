@@ -1,0 +1,258 @@
+// Printable resume (dev-only route /cv/), printed to PDF by `make cv`.
+// Same layout as the former Pages CV: section labels on the left, content on the right, on white.
+@use "reset-css/sass/reset";
+@use "base/fonts";
+@use "base/icons";
+@use "abstracts/tokens" as *;
+
+$margin-x: 14mm;
+$margin-y: 12mm;
+$label: 40mm;
+// Name in mint, section labels in violet, links in coral.
+$name-color: #6dcabe;
+$label-color: #a576d6;
+$accent: #eb596b;
+$muted: rgba($ink, .55);
+
+@page {
+    size: A4;
+    margin: $margin-y 0;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    background: $white;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+
+body {
+    max-width: 210mm;
+    margin: 0 auto;
+    padding: $margin-y $margin-x;
+    color: $ink;
+    font-family: $font-display;
+    font-size: 10.5pt;
+    line-height: 1.45;
+    -webkit-font-smoothing: antialiased;
+
+    @media print {
+        padding-block: 0;
+    }
+
+    .sf-toolbar {
+        display: none !important;
+    }
+}
+
+a {
+    color: $accent;
+    text-decoration: underline;
+    text-decoration-thickness: .25mm;
+    text-underline-offset: .6mm;
+}
+
+strong {
+    font-weight: 700;
+}
+
+em {
+    font-style: italic;
+}
+
+// Header: name, portrait, contacts
+
+.cv-header {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    align-items: center;
+    gap: 6mm;
+    margin-bottom: 8mm;
+}
+
+.cv-identity {
+    h1 {
+        color: $name-color;
+        font-size: 34pt;
+        font-weight: 400;
+        letter-spacing: -.02em;
+        line-height: 1;
+
+        strong {
+            font-weight: 800;
+        }
+    }
+
+    p {
+        margin-top: 2mm;
+        font-size: 12pt;
+    }
+}
+
+.cv-portrait {
+    display: block;
+    width: 40mm;
+    height: 40mm;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.cv-contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 3mm;
+    color: $muted;
+    font-size: 9pt;
+    line-height: 1.35;
+}
+
+// Sections: label on the left, content on the right
+
+.cv-job {
+    margin: 0 0 7mm $label;
+    font-size: 17pt;
+    font-weight: 500;
+}
+
+.cv-section {
+    display: grid;
+    grid-template-columns: $label 1fr;
+    margin-bottom: 7mm;
+
+    > h3 {
+        color: $label-color;
+        font-weight: 600;
+    }
+}
+
+.cv-entries {
+    display: flex;
+    flex-direction: column;
+    gap: 4.5mm;
+}
+
+.cv-paragraphs {
+    display: flex;
+    flex-direction: column;
+    gap: 2mm;
+}
+
+.cv-entry {
+    break-inside: avoid;
+}
+
+.cv-key {
+    color: $muted;
+}
+
+.cv-footer {
+    // Centred under the content column, not the whole page.
+    margin: 6mm 0 0 $label;
+    text-align: center;
+    break-inside: avoid;
+}
+
+// Toolbar: back to the site and PDF download, on screen only
+
+.cv-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 3mm;
+    margin-bottom: 10mm;
+    font-size: 10pt;
+
+    a {
+        display: inline-flex;
+        align-items: center;
+        gap: 1.5mm;
+        color: $ink;
+        text-decoration: none;
+    }
+
+    @media print {
+        display: none;
+    }
+}
+
+.cv-download {
+    padding: 2mm 4mm;
+    border-radius: 999px;
+    background: $ink;
+    font-weight: 700;
+
+    .cv-toolbar & {
+        color: $white;
+    }
+}
+
+// Phones: labels above their content, header stacked
+
+@media screen and (max-width: 210mm) {
+    body {
+        padding: 20px;
+        font-size: 15px;
+    }
+
+    .cv-header {
+        grid-template-columns: 1fr auto;
+        gap: 16px 20px;
+
+        .cv-identity {
+            grid-column: 1 / -1;
+        }
+    }
+
+    .cv-identity h1 {
+        font-size: 40px;
+    }
+
+    .cv-portrait {
+        width: 96px;
+        height: 96px;
+    }
+
+    .cv-job {
+        margin-left: 0;
+    }
+
+    .cv-section {
+        display: block;
+
+        > h3 {
+            margin-bottom: 8px;
+        }
+    }
+
+    .cv-footer {
+        margin-left: 0;
+    }
+}
+
+// ---------------------------------------------------------------------------
+// Page balance, tuned by hand for the current content (2 pages, page 1 ending
+// after the Wecandoo entry). These only add air to page 1, which has room to
+// spare. Remove or retune them whenever the resume content changes, then check
+// `make cv` still prints 2 pages. Print only, so the web page keeps its own spacing.
+// ---------------------------------------------------------------------------
+
+@media print {
+    .cv-header {
+        margin-bottom: 12mm;
+    }
+
+    .cv-job {
+        margin-bottom: 10mm;
+    }
+
+    // Profil and Compétences, the two sections that always sit on page 1.
+    .cv-section:nth-of-type(-n+2) {
+        margin-bottom: 10mm;
+    }
+}

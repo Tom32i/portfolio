@@ -7,3 +7,7 @@ description: |
   Camemberts, courbes, diagrammes bâtons, ... des exemples concrets et cas d'usage à l'appui !
 slides: https://talk.tom32i.fr/svg-twig/
 sources: https://github.com/Tom32i/talk-svg-twig
+image: twig-svg.webp
+summary:
+  fr: "A-t-on toujours besoin d'une librairie javascript complexe pour génerer de jolis graphiques dans nos applications Symfony ?"
+  en: Do we always need a complex JavaScript library to draw nice charts in our Symfony apps?

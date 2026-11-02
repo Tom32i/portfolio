@@ -1,0 +1,6 @@
+{# Structured data as a JSON-LD script: unescaped URLs and accents, "<" escaped so content can't close the script. #}
+{% macro script(data) %}
+    <script type="application/ld+json">
+        {{- data|json_encode(constant('JSON_UNESCAPED_SLASHES') b-or constant('JSON_UNESCAPED_UNICODE') b-or constant('JSON_HEX_TAG'))|raw -}}
+    </script>
+{% endmacro %}

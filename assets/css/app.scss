@@ -1,16 +1,18 @@
 @use "reset-css/sass/reset";
-@use "variables";
-@use "layout";
-@use "fonts";
-@use "typography";
-@use "icons";
-@use "animations";
 
-@use "menu";
-@use "portfolio";
-@use "blog";
-@use "talks";
-@use "projects";
-@use "point-list";
+@use "base/fonts";
+@use "base/base";
+@use "base/icons";
 
-@use "responsive";
+@use "components/nav";
+@use "components/pill";
+@use "components/section";
+@use "components/card";
+@use "components/footer";
+@use "components/back-to-top";
+@use "components/scene-loader";
+
+@use "pages/home";
+@use "pages/blog";
+@use "pages/cover";
+

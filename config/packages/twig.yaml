@@ -2,6 +2,15 @@ twig:
     file_name_pattern: '*.twig'
     globals:
         umami_id: "%env(APP_UMAMI_ID)%"
+        email: '%email%'
+        links:
+            github: https://github.com/tom32i
+            instagram: https://instagram.com/tom32i
+            bluesky: https://bsky.app/profile/tom32i.bsky.social
+            twitter: https://twitter.com/tom32i
+            unsplash: https://unsplash.com/@tom32i
+            linkedin: https://www.linkedin.com/in/thomasjarrand/
+            gameoscope: https://gameoscope.fr
 
 when@test:
     twig:

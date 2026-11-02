@@ -1,0 +1,39 @@
+{% set photo = [
+    { name: 'Unsplash', url: links.unsplash },
+    { name: 'Instagram', url: links.instagram },
+    { name: 'Gameoscope', url: links.gameoscope },
+] %}
+<footer class="contact wrap" id="contact">
+    <div class="contact-grid">
+        {% if on_blog %}
+            <img class="contact-icon" src="{{ asset('/3d/coffee_cup.png') }}" alt="" width="220" height="200" loading="lazy">
+        {% else %}
+            <div class="contact-icon scene-icon" data-scene="coffee_cup" aria-hidden="true"></div>
+        {% endif %}
+        <div class="contact-main">
+            <h2>{{ 'contact.title'|trans }}</h2>
+            <a class="email" href="mailto:{{ email }}"><span class="icon-mail" aria-hidden="true"></span>{{ email }}</a>
+        </div>
+        <div class="contact-about">
+            <p>{{ 'contact.about'|trans }}</p>
+            <h3>{{ 'contact.photo'|trans }}</h3>
+            <ul class="pills">
+                {% for link in photo %}
+                    <li><a class="pill pill-white" href="{{ link.url }}" target="_blank" rel="noopener">{{ link.name }}<span class="icon-arrow-up-right" aria-hidden="true"></span></a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="footer">
+        <span>{{ 'footer.copyright'|trans({ '%year%': 'now'|date('Y') }) }}</span>
+        <span class="footer-links">
+            <a href="{{ path('cv') }}" hreflang="fr">{{ 'footer.cv'|trans }}<span class="icon-arrow-right" aria-hidden="true"></span></a>
+            <a href="/CV_Thomas_Jarrand.pdf" download="CV_Thomas_Jarrand.pdf">{{ 'footer.cv_pdf'|trans }}<span class="icon-download" aria-hidden="true"></span></a>
+            {% if not on_blog %}
+                <a href="{{ path('blog') }}" hreflang="fr">{{ 'footer.blog'|trans }}<span class="icon-arrow-right" aria-hidden="true"></span></a>
+            {% else %}
+                <a href="{{ path(home) }}">{{ 'footer.home'|trans }}<span class="icon-arrow-right" aria-hidden="true"></span></a>
+            {% endif %}
+        </span>
+    </div>
+</footer>

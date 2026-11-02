@@ -27,3 +27,8 @@ yarn-error.log
 ###> phpstan/phpstan ###
 phpstan.neon
 ###< phpstan/phpstan ###
+
+# Blender: backups and bake outputs (3D/bake_export.py regenerates them)
+*.blend1
+/3D/scene1_baked.blend
+/3D/baked/

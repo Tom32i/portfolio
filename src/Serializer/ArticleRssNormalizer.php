@@ -27,7 +27,9 @@ class ArticleRssNormalizer implements NormalizerInterface
             'title' => $object->title,
             'description' => $object->description ?? '',
             'pubDate' => $object->date,
-            'guid' => $url,
+            // Articles moved to trailing-slash URLs: keep the former URL as guid, so feed readers
+            // don't see every past article as new (it still redirects to the article).
+            'guid' => rtrim($url, '/'),
             'link' => $url,
         ];
     }

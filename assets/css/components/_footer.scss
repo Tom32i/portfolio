@@ -1,0 +1,159 @@
+@use "../abstracts/tokens" as *;
+
+.contact {
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+    padding-block: 96px 40px;
+
+    @include mobile {
+        gap: 40px;
+        padding-block: 56px 24px;
+    }
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1.2fr) minmax(0, 1fr);
+    gap: 40px;
+    align-items: start;
+
+    @include mobile {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+.contact-icon {
+    display: block;
+    width: 220px;
+    height: 200px;
+    margin: -30px -30px 0 -40px;
+
+    @include mobile {
+        width: 110px;
+        height: 96px;
+        margin: -24px 0 -16px -22px;
+    }
+}
+
+img.contact-icon {
+    object-fit: contain;
+}
+
+.contact-main {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    h2 {
+        margin: 0;
+        font-size: 64px;
+        line-height: .95;
+        font-weight: 800;
+        letter-spacing: -.035em;
+        text-wrap: balance;
+    }
+
+    @include mobile {
+        gap: 20px;
+
+        h2 {
+            font-size: 52px;
+        }
+    }
+}
+
+.email {
+    align-self: flex-start;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 18px 28px;
+    border-radius: 999px;
+    background: $ink;
+    color: $white;
+    font-weight: 700;
+    font-size: 20px;
+    transition: background-color .15s;
+
+    &:hover {
+        background: $ink-soft;
+        text-decoration: none;
+    }
+
+    @include mobile {
+        align-self: stretch;
+        justify-content: center;
+        height: 56px;
+        padding: 0 20px;
+        font-size: 16px;
+    }
+}
+
+.contact-about {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-top: 8px;
+
+    p {
+        // Space before the photography heading, which starts a new topic.
+        margin: 0 0 16px;
+        max-width: 440px;
+        font-size: 18px;
+        line-height: 1.55;
+        text-wrap: pretty;
+    }
+
+    h3 {
+        margin: 0;
+        @include mono-label;
+    }
+
+    @include mobile {
+        gap: 10px;
+        padding-top: 20px;
+
+        p {
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            font-size: 12px;
+            letter-spacing: .1em;
+        }
+    }
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding-top: 20px;
+    border-top: 1px solid $rule;
+    font-size: 14px;
+
+    @include mobile {
+        flex-direction: column-reverse;
+        gap: 10px;
+        padding-top: 16px;
+        font-size: 13px;
+    }
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    a {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-weight: 700;
+    }
+}

@@ -536,26 +536,42 @@
 .tool-head {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.tool-meta {
+    display: flex;
+    align-items: center;
     gap: 10px;
+    flex-shrink: 0;
 
     .icon-github {
-        margin-left: auto;
         color: $lemon;
         font-size: 20px;
+
+        @include mobile {
+            font-size: 18px;
+        }
     }
 }
 
 .tool-stars {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 4px;
-    color: $oss-desc;
+    gap: 6px;
+    padding: 5px 11px 5px 9px;
+    border-radius: 999px;
+    background: rgba($lemon, .14);
+    color: $lemon;
     font-family: $font-mono;
+    font-weight: 700;
     font-size: 13px;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
 
     .icon-star {
-        color: $white;
-        font-size: 13px;
+        font-size: 12px;
     }
 }
 

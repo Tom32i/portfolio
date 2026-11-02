@@ -44,6 +44,7 @@ oss:
     intro: Open-source tools I publish and maintain.
     stars: "%count% stars"
     downloads: "%count% downloads over the last year"
+    per_year: "%count%/yr"
 contact:
     title: Let's talk.
     about: Amateur photographer, apartment gardener, indie game fan and fearsome at music quizzes. To recharge, I bivouac in the Alps, cross France by bike or freedive in the Mediterranean.

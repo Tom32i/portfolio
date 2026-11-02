@@ -182,7 +182,7 @@
                             <span class="tool-stats">
                                 <span class="tool-stat" aria-label="{{ 'oss.stars'|trans({'%count%': tool.stars}) }}"><span class="icon-star" aria-hidden="true"></span>{{ tool.stars }}</span>
                                 {% if tool.downloads is not null %}
-                                    <span class="tool-stat" aria-label="{{ 'oss.downloads'|trans({'%count%': tool.downloads}) }}"><span class="icon-download" aria-hidden="true"></span>{{ tool.downloads|compact }}</span>
+                                    <span class="tool-stat" aria-label="{{ 'oss.downloads'|trans({'%count%': tool.downloads}) }}"><span class="icon-download" aria-hidden="true"></span>{{ 'oss.per_year'|trans({'%count%': tool.downloads|compact}) }}</span>
                                 {% endif %}
                             </span>
                         </a>

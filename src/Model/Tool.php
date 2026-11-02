@@ -11,5 +11,6 @@ class Tool
     public string $description;
     public string $url;
     public \DateTimeImmutable $lastModified;
+    public int $stars;
     public int $priority;
 }

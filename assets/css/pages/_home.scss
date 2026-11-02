@@ -544,6 +544,18 @@
     }
 }
 
+.tool-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.tool-stars {
+    color: $oss-desc;
+    font-family: $font-mono;
+    font-size: 13px;
+}
+
 .tool-name {
     font-family: $font-mono;
     font-weight: 700;

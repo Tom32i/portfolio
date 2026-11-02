@@ -551,9 +551,16 @@
 }
 
 .tool-stars {
+    display: flex;
+    align-items: center;
+    gap: 4px;
     color: $oss-desc;
     font-family: $font-mono;
     font-size: 13px;
+
+    .icon-star {
+        font-size: 13px;
+    }
 }
 
 .tool-name {

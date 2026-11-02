@@ -535,19 +535,14 @@
 
 .tool-head {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    gap: 10px;
 
-    [class^="icon-"] {
+    .icon-github {
+        margin-left: auto;
         color: $lemon;
         font-size: 20px;
     }
-}
-
-.tool-meta {
-    display: flex;
-    align-items: center;
-    gap: 10px;
 }
 
 .tool-stars {
@@ -559,6 +554,7 @@
     font-size: 13px;
 
     .icon-star {
+        color: $white;
         font-size: 13px;
     }
 }

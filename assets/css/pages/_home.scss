@@ -535,16 +535,9 @@
 
 .tool-head {
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
-    gap: 8px 12px;
-}
-
-.tool-meta {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-left: auto;
+    justify-content: space-between;
+    gap: 12px;
 
     .icon-github {
         color: $lemon;
@@ -554,6 +547,14 @@
             font-size: 18px;
         }
     }
+}
+
+.tool-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: auto;
+    padding-top: 4px;
 }
 
 .tool-stat {
@@ -576,7 +577,6 @@
 }
 
 .tool-name {
-    white-space: nowrap;
     font-family: $font-mono;
     font-weight: 700;
     font-size: 19px;

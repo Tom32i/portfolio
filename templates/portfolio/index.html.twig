@@ -176,15 +176,15 @@
                         <a class="tool" href="{{ tool.url }}" target="_blank" rel="noopener">
                             <span class="tool-head">
                                 <span class="tool-name">{{ tool.title }}</span>
-                                <span class="tool-meta">
-                                    <span class="tool-stat" aria-label="{{ 'oss.stars'|trans({'%count%': tool.stars}) }}"><span class="icon-star" aria-hidden="true"></span>{{ tool.stars }}</span>
-                                    {% if tool.downloads is not null %}
-                                        <span class="tool-stat" aria-label="{{ 'oss.downloads'|trans({'%count%': tool.downloads}) }}"><span class="icon-download" aria-hidden="true"></span>{{ tool.downloads|compact }}</span>
-                                    {% endif %}
-                                    <span class="icon-github" aria-hidden="true"></span>
-                                </span>
+                                <span class="icon-github" aria-hidden="true"></span>
                             </span>
                             <span class="tool-desc" lang="en">{{ tool.description }}</span>
+                            <span class="tool-stats">
+                                <span class="tool-stat" aria-label="{{ 'oss.stars'|trans({'%count%': tool.stars}) }}"><span class="icon-star" aria-hidden="true"></span>{{ tool.stars }}</span>
+                                {% if tool.downloads is not null %}
+                                    <span class="tool-stat" aria-label="{{ 'oss.downloads'|trans({'%count%': tool.downloads}) }}"><span class="icon-download" aria-hidden="true"></span>{{ tool.downloads|compact }}</span>
+                                {% endif %}
+                            </span>
                         </a>
                     </li>
                 {% endfor %}

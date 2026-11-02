@@ -50,9 +50,9 @@ build-content:
 optimize:
 	npx optimage-cli "build/**/*.@(png|jpg|jpeg|gif|webp)"
 
-## Fetch GitHub stars and npm/Packagist downloads into content/tool/*.yaml (a failed fetch keeps the current value)
+## Fetch GitHub stars and npm/Packagist downloads into content/tool/*.yaml (a failed fetch keeps the current value); GitHub calls use the gh CLI token when it is logged in
 stats:
-	bin/console app:refresh-tool-stats
+	GITHUB_TOKEN=$$(gh auth token 2>/dev/null || true) bin/console app:refresh-tool-stats
 
 ## Server static site
 serve:

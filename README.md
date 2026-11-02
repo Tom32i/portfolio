@@ -31,7 +31,8 @@ One-pager (`/` in French, `/en/` in English) + blog (`/blog`), built as a static
 
 ### Open-source stats
 
-Each `content/tool/*.yaml` carries the GitHub `stars` and the `downloads` over the last year from the registry named by its `npm` or `packagist` key. `make build` refreshes them first (`make stats`, no credentials needed); a failed fetch keeps the committed value, so the dev server and an offline build show the last fetched figures. Commit the refreshed files when they change.
+Each `content/tool/*.yaml` carries the GitHub `stars` and the `downloads` over the last year from the registry named by its `npm` or `packagist` key. `make build` refreshes them first (`make stats`); a failed fetch keeps the committed value and never fails the build, so the dev server and an offline build show the last fetched figures. Commit the refreshed files when they change.
+GitHub caps anonymous API calls at 60 an hour per IP, so `make stats` passes the `gh` CLI token as `GITHUB_TOKEN` when `gh` is logged in (5000 an hour); npm and Packagist need no credentials.
 
 ### 3D scene
 

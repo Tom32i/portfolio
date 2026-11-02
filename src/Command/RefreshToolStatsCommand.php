@@ -25,6 +25,8 @@ class RefreshToolStatsCommand extends Command
         private HttpClientInterface $httpClient,
         #[Autowire('%kernel.project_dir%/content/tool')]
         private string $toolsDirectory,
+        #[Autowire(env: 'default::GITHUB_TOKEN')]
+        private ?string $githubToken = null,
     ) {
         parent::__construct();
     }
@@ -33,6 +35,10 @@ class RefreshToolStatsCommand extends Command
     {
         $io = new SymfonyStyle($input, $output);
         $failures = 0;
+
+        if ($this->githubToken === null || $this->githubToken === '') {
+            $io->note('No GITHUB_TOKEN: GitHub calls are anonymous, capped at 60 an hour per IP.');
+        }
 
         foreach ((new Finder())->files()->in($this->toolsDirectory)->name('*.yaml')->sortByName() as $file) {
             $path = $file->getRealPath();
@@ -68,7 +74,11 @@ class RefreshToolStatsCommand extends Command
             $io->text(\sprintf('%s: %s', $file->getFilename(), json_encode($values)));
         }
 
-        return $failures === 0 ? Command::SUCCESS : Command::FAILURE;
+        if ($failures > 0) {
+            $io->note('Kept values are the designed fallback: the build goes on with the committed figures.');
+        }
+
+        return Command::SUCCESS;
     }
 
     /**
@@ -93,7 +103,9 @@ class RefreshToolStatsCommand extends Command
             throw new \InvalidArgumentException(\sprintf('"%s" is not a GitHub repository URL.', $repositoryUrl));
         }
 
-        $repository = $this->httpClient->request('GET', 'https://api.github.com/repos/' . $matches[1])->toArray();
+        // Anonymous calls are capped at 60 an hour per IP; a token (e.g. `gh auth token`) lifts that to 5000.
+        $headers = $this->githubToken !== null && $this->githubToken !== '' ? ['Authorization' => 'Bearer ' . $this->githubToken] : [];
+        $repository = $this->httpClient->request('GET', 'https://api.github.com/repos/' . $matches[1], ['headers' => $headers])->toArray();
         $stars = $repository['stargazers_count'] ?? null;
 
         if (!\is_int($stars)) {

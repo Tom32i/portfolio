@@ -1,7 +1,15 @@
 {#
-    Link preview image (public/cover.png), drawn live with the real 3D scene: dev only.
-    Screenshot it at 1200x630 to regenerate the image (see README).
+    Cover images, drawn live with the real 3D scene: dev only.
+    Two versions, each a fixed frame to screenshot (`make cover`, see README):
+    - og (/cover/): link preview, 1200x630, public/cover.png;
+    - linkedin (/cover/?version=linkedin): profile banner, 1584x396, public/linkedin.png.
+      The profile shows the name and the photo covers the bottom left corner, so the frame
+      leads with the tagline instead, to the right of the photo.
 #}
+{% set frames = {
+    og: { zoom: 0.74, offset: 0.14 },
+    linkedin: { zoom: 0.76, offset: 0.31 },
+} %}
 <!DOCTYPE html>
 <html lang="{{ app.request.locale }}">
     <head>
@@ -12,11 +20,13 @@
         {{ encore_entry_script_tags('home') }}
     </head>
     <body class="page-cover">
-        <div class="cover">
-            <div class="hero-scene" data-scene="hero" data-zoom="0.74" data-offset="0.14" aria-hidden="true"></div>
+        <div class="cover cover-{{ version }}">
+            <div class="hero-scene" data-scene="hero" data-zoom="{{ frames[version].zoom }}" data-offset="{{ frames[version].offset }}" aria-hidden="true"></div>
             <div class="cover-text">
                 <p class="kicker">{{ 'hero.job'|trans }}</p>
-                <h1>Thomas<br>Jarrand</h1>
+                {% if version == 'og' %}
+                    <h1>Thomas<br>Jarrand</h1>
+                {% endif %}
                 <p class="cover-tagline">{{ 'hero.tagline'|trans }}</p>
                 <span class="cover-url">thomas.jarrand.fr</span>
             </div>

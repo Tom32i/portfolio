@@ -98,6 +98,16 @@ deploy@staging: build
 deploy@production: build
 	rsync -arzv --mkpath --delete-after build/* tom32i@tom32i.fr:/home/tom32i/portfolio/
 
+##########
+# Covers #
+##########
+
+## Screenshot the cover pages (needs `make start`): public/cover.png (link preview) and public/linkedin.png (banner)
+cover:
+	npx encore dev
+	npx -y playwright-core screenshot --channel chrome --viewport-size=1200,630 --wait-for-selector=".hero-scene:not(.is-loading)" --wait-for-timeout=500 http://127.0.0.1:8000/cover/ public/cover.png
+	npx -y playwright-core screenshot --channel chrome --viewport-size=1584,396 --wait-for-selector=".hero-scene:not(.is-loading)" --wait-for-timeout=500 "http://127.0.0.1:8000/cover/?version=linkedin" public/linkedin.png
+
 ######
 # CV #
 ######

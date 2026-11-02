@@ -1,15 +1,58 @@
 @use "../abstracts/tokens" as *;
 
-// Link preview image (dev-only route /cover/): a 1200x630 frame, name on the left, desk on the right.
+// Cover images (dev-only route /cover/): a fixed frame, name on the left, desk on the right.
 .cover {
     position: relative;
-    width: 1200px;
-    height: 630px;
     overflow: hidden;
     background: $coral;
 
     .hero-scene {
         inset: 0;
+    }
+}
+
+// Link preview.
+.cover-og {
+    width: 1200px;
+    height: 630px;
+}
+
+// LinkedIn banner: the round profile photo overlaps its bottom left corner (about 320px wide,
+// from 250px down), so the text starts past it; no name (the profile shows it), the tagline
+// takes the headline's place.
+.cover-linkedin {
+    width: 1584px;
+    height: 396px;
+
+    // The desk is drawn taller than the frame, so it runs past the top and bottom edges.
+    .hero-scene {
+        inset: -70px 0;
+    }
+
+    .cover-text {
+        gap: 20px;
+        width: auto;
+        padding-left: 470px;
+    }
+
+    .kicker {
+        @include mono-label(22px);
+    }
+
+    .cover-tagline {
+        max-width: 580px;
+        font-size: 56px;
+        font-weight: 800;
+        line-height: 1.02;
+        letter-spacing: -.03em;
+    }
+
+    .cover-url {
+        margin-top: 4px;
+        padding: 12px 24px;
+        @include mono-label(19px);
+        letter-spacing: .04em;
+        text-transform: none;
     }
 }
 

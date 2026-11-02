@@ -10,6 +10,7 @@ use App\Model\Talk;
 use App\Model\Tool;
 use Stenope\Bundle\ContentManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -38,12 +39,19 @@ class PortfolioController extends AbstractController
     }
 
     /**
-     * Link preview image (public/cover.png), drawn live with the 3D scene. Dev only: never built.
+     * Cover images drawn live with the 3D scene (`make cover` screenshots them): the link preview
+     * (public/cover.png) and, with ?version=linkedin, the LinkedIn banner (public/linkedin.png). Dev only: never built.
      */
     #[Route('/cover/', name: 'cover', env: 'dev', defaults: ['_locale' => 'fr'])]
-    public function cover(): Response
+    public function cover(Request $request): Response
     {
-        return $this->render('portfolio/cover.html.twig');
+        $version = $request->query->getString('version', 'og');
+
+        if (!\in_array($version, ['og', 'linkedin'], true)) {
+            throw $this->createNotFoundException(\sprintf('Unknown cover version "%s".', $version));
+        }
+
+        return $this->render('portfolio/cover.html.twig', ['version' => $version]);
     }
 
     /**

@@ -43,6 +43,7 @@ oss:
     title: Open-source
     intro: Les outils open-source que je mets à disposition et maintiens.
     stars: "%count% étoiles"
+    downloads: "%count% téléchargements sur un an"
 contact:
     title: Pour discuter, c’est par ici.
     about: Photographe amateur, jardinier d'appartement, fan de jeux indés et redoutable au blind test. Pour me ressourcer, je bivouaque dans les Alpes, je traverse la France à vélo ou je plonge en apnée en Méditerranée.

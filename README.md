@@ -29,6 +29,10 @@ One-pager (`/` in French, `/en/` in English) + blog (`/blog`), built as a static
 - Styles: `assets/css/` (`abstracts/_tokens.scss` holds the palette, fonts and breakpoint).
 - 3D: `assets/js/home/scene/` (three.js), lazy-loaded on the homepage.
 
+### Open-source stats
+
+Each `content/tool/*.yaml` carries the GitHub `stars` and the `downloads` over the last year from the registry named by its `npm` or `packagist` key. `make build` refreshes them first (`make stats`, no credentials needed); a failed fetch keeps the committed value, so the dev server and an offline build show the last fetched figures. Commit the refreshed files when they change.
+
 ### 3D scene
 
 The hero and section icons load a single file: `public/3d/scene.glb`.

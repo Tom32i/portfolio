@@ -1,5 +1,7 @@
 title: container.js
 description: Microscopic dependency injection container.
 url: https://github.com/Elao/container.js
+npm: "@elao/container.js"
 stars: 5
+downloads: 579
 priority: 0

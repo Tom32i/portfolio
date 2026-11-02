@@ -1,4 +1,7 @@
 title: Netcode
 description: Fast and efficient real-time communication engine for multiplayer games in the browser.
 url: https://github.com/Tom32i/netcode
+npm: netcode
+stars: 16
+downloads: 1592
 priority: 3

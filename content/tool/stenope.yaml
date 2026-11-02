@@ -1,4 +1,7 @@
 title: Stenope
 description: Static website building tool for Symfony.
 url: https://github.com/StenopePHP/Stenope
+packagist: stenope/stenope
+stars: 140
+downloads: 4294
 priority: 5
